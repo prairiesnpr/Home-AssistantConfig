@@ -1,0 +1,7 @@
+binary_sensor.wiebelo_away:
+  device_class: presence
+binary_sensor.button: {}
+automation.garage_toggle_off:
+  hidden: true
+automation.garage_toggle_on:
+  hidden: true

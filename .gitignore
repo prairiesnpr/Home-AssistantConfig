@@ -1,0 +1,13 @@
+*
+
+!*.yaml
+!.gitignore
+!*.md
+
+.storage
+.cloud
+.google.token
+
+ip_bans.yanl
+secrets.yaml
+known_devices.yaml

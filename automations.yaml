@@ -1,0 +1,86 @@
+- id: coffee_on_morn
+  alias: Turn on Coffee Pot in the morning
+  trigger:
+  - at: 06:15:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.wiebelo_away
+    state: 'off'
+  action:
+  - entity_id: switch.zha_02a1172f_2_238
+    service: switch.turn_on
+- id: coffee_off_night
+  alias: Turn off the Coffee Pot at night
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.wiebelo_away
+    state: 'off'
+  action:
+  - entity_id: switch.zha_02a1172f_2_238
+    service: switch.turn_off
+- id: coffee_on_home
+  alias: Turn on the Coffee Pot when home
+  trigger:
+  - entity_id: binary_sensor.wiebelo_away
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+  - entity_id: switch.zha_02a1172f_2_238
+    service: switch.turn_on
+- id: coffee_off_away
+  alias: Turn off the Coffee Pot when away
+  trigger:
+  - entity_id: binary_sensor.wiebelo_away
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - entity_id: switch.zha_02a1172f_2_238
+    service: switch.turn_off
+- id: '1546826068070'
+  alias: Garage Toggle On
+  trigger:
+  - entity_id: binary_sensor.button
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - entity_id: switch.garage_door
+    service: switch.turn_on
+- id: '1546826459762'
+  alias: Garage Toggle Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.button
+      for: 00:00:01
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: switch.garage_door
+      for: 00:00:01
+      from: 'off'
+      to: 'on'
+  action:
+    service: switch.turn_off
+    data:
+      entity_id:
+       - switch.garage_door
+- id: 'Garage_Ope_Alert'
+  alias: Garage Open Alert
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.status
+      for: 00:05:00
+      from: 'off'
+      to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: "Garage Door Left Open Alert"
+      message: "The garage door has been open for more than five minutes."
+

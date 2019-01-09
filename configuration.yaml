@@ -1,0 +1,147 @@
+homeassistant:
+  name: !secret ha_name 
+  latitude: !secret home_lat 
+  longitude: !secret home_long 
+  elevation: 727
+  unit_system: imperial 
+  time_zone: America/New_York
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  api_password: !secret http_api_pwd 
+
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Sensors
+sensor:
+  # Weather prediction
+  - platform: yr
+    name: Weather
+    forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+      - precipitation
+      - windSpeed
+      - pressure
+      - windDirection
+      - humidity
+      - fog
+      - cloudiness
+      - lowClouds
+      - mediumClouds
+      - highClouds
+      - dewpointTemperature
+  - platform: plex
+    host: !secret plex_ip
+    name: Son of Joel (Plex)
+    token: !secret plex_token 
+    port: 32400
+    #  - platform: fedex
+    #username: !secret fedex_uid
+    #password: !secret fedex_pwd
+  - platform: ups
+    username: !secret ups_uid
+    password: !secret ups_pwd
+
+    #usps:
+    #username: !secret usps_uid
+    #password: !secret usps_pwd
+    #driver: phantomjs
+   
+# Text to speech
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+    base_url: !secret base_url
+
+media_player:
+  - platform: onkyo
+    host: !secret avr_ip 
+    name: receiver
+  - platform: plex
+
+
+nest:
+  client_id: !secret nest_client_id 
+  client_secret: !secret nest_client_secret 
+  sensors:
+    monitored_conditions:
+      - temperature
+      - target
+      - humidity
+      - operation_mode
+      - hvac_state
+
+cloud:
+
+zha:
+  radio_type: xbee
+  usb_path: /dev/ttyAMA0
+  database_path: /home/homeassistant/.homeassistant/zigbee.db 
+  baudrate: 38400
+
+mqtt:
+  broker: !secret mqtt_path 
+  discovery: true
+  discovery_prefix: !secret mqtt_prefix 
+
+logger:
+  default: debug 
+  logs:
+    homeassistant.components.mqtt: debug
+    homeassistant.helpers.template: debug
+    homeassistant.components.zigpy: debug
+#   homeassistant.components.bellows: debug
+#   homeassistant.components.zha: debug
+#   homeassistant.components.zigpy_xbee: debug
+
+
+group: !include groups.yaml
+
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+device_tracker:
+  - platform: tomato
+    host: !secret router_ip 
+    username: !secret router_uid 
+    password: !secret router_pwd 
+    http_id: !secret router_http_id 
+
+recorder:
+  purge_keep_days: 5
+  db_url: !secret recorder_url 
+
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key 

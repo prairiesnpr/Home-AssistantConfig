@@ -104,7 +104,7 @@ cloud:
 
 zha:
   radio_type: xbee
-  usb_path: /dev/ttyAMA0
+  usb_path: /dev/ttyUSB0
   database_path: /home/homeassistant/.homeassistant/zigbee.db 
   baudrate: 38400
 
@@ -112,6 +112,12 @@ mqtt:
   broker: !secret mqtt_path 
   discovery: true
   discovery_prefix: !secret mqtt_prefix 
+  birth_message:
+    topic: !secret mqtt_status
+    payload: 'online'
+  will_message:
+    topic: !secret mqtt_status
+    payload: 'offline'
 
 logger:
   default: debug 

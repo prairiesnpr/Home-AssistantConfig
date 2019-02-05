@@ -5,10 +5,12 @@
     platform: time
   condition:
   - condition: state
-    entity_id: binary_sensor.wiebelo_away
+    entity_id: group.ryan_presence 
     state: 'off'
   action:
-  - entity_id: switch.zha_02a1172f_2_238
+  - data:
+      entity_id:
+      - switch.iris_alertme_025b8357_2_238
     service: switch.turn_on
 - id: coffee_off_night
   alias: Turn off the Coffee Pot at night
@@ -17,30 +19,36 @@
     platform: time
   condition:
   - condition: state
-    entity_id: binary_sensor.wiebelo_away
+    entity_id: group.ryan_presence 
     state: 'off'
   action:
-  - entity_id: switch.zha_02a1172f_2_238
+  - data:
+      entity_id:
+      - switch.iris_alertme_025b8357_2_238
     service: switch.turn_off
 - id: coffee_on_home
   alias: Turn on the Coffee Pot when home
   trigger:
-  - entity_id: binary_sensor.wiebelo_away
+  - entity_id: group.ryan_presence
     from: 'on'
     platform: state
     to: 'off'
   action:
-  - entity_id: switch.zha_02a1172f_2_238
+  - data:
+      entity_id:
+      - switch.iris_alertme_025b8357_2_238
     service: switch.turn_on
 - id: coffee_off_away
   alias: Turn off the Coffee Pot when away
   trigger:
-  - entity_id: binary_sensor.wiebelo_away
+  - entity_id: group.ryan_presence
     from: 'off'
     platform: state
     to: 'on'
   action:
-  - entity_id: switch.zha_02a1172f_2_238
+  - data:
+      entity_id:
+      - switch.iris_alertme_025b8357_2_238
     service: switch.turn_off
 - id: '1546826068070'
   alias: Garage Toggle On
@@ -50,37 +58,155 @@
     platform: state
     to: 'on'
   action:
-  - entity_id: switch.garage_door
     service: switch.turn_on
+    data:
+      entity_id:
+      - switch.garage_door
 - id: '1546826459762'
   alias: Garage Toggle Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.button
-      for: 00:00:01
-      from: 'on'
-      to: 'off'
-    - platform: state
-      entity_id: switch.garage_door
-      for: 00:00:01
-      from: 'off'
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.button
+    for: 00:00:01
+    from: 'on'
+    to: 'off'
+  - platform: state
+    entity_id: switch.garage_door
+    for: 00:00:01
+    from: 'off'
+    to: 'on'
   action:
     service: switch.turn_off
     data:
       entity_id:
-       - switch.garage_door
-- id: 'Garage_Ope_Alert'
+      - switch.garage_door
+- id: Garage_Ope_Alert
   alias: Garage Open Alert
   trigger:
-    - platform: state
-      entity_id: binary_sensor.status
-      for: 00:05:00
-      from: 'off'
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.status
+    for: 00:05:00
+    from: 'off'
+    to: 'on'
   action:
     service: notify.pushbullet
     data:
-      title: "Garage Door Left Open Alert"
-      message: "The garage door has been open for more than five minutes."
-
+      title: Garage Door Left Open Alert
+      message: The garage door has been open for more than five minutes.
+- id: Bed_Lght_Morn_On
+  alias: Turn on bedroom lights in the morning
+  trigger:
+  - at: 06:15:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.workday
+    state: 'on'
+  action:
+    service: homeassistant.turn_on
+    data:
+      entity_id:
+      - group.bedroom
+- id: Bed_Lght_Eve_Off
+  alias: Turn off bedroom lights at night
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  action:
+    service: homeassistant.turn_off
+    data:
+      entity_id:
+      - group.bedroom
+- id: Lights_off_away
+  alias: Turn off all lights when away
+  trigger:
+  - entity_id: group.ryan_presence
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+    service: homeassistant.turn_off
+    data:
+      entity_id:
+      - group.bedroom
+- id: greeting_come_home
+  alias: Arrival Greeting
+  trigger:
+  - entity_id: group.ryan_presence
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: script.arrival
+- id: Front_Door_Open_Alert 
+  alias: Front Door Opened Alert 
+  trigger: 
+  - platform: state
+    entity_id: binary_sensor.zha_02e2146c_1_6
+    from: 'off'
+    to: 'on' 
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  action:
+    service: notify.pushbullet 
+    data:
+      title: Front Door Opened 
+      message: The front door was opened.
+- id: Back_Door_Open_Alert 
+  alias: Back Door Opened Alert 
+  trigger: 
+  - platform: state
+    entity_id: binary_sensor.zha_02bfefd9_1_6
+    from: 'off'
+    to: 'on' 
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  action:
+    service: notify.pushbullet 
+    data:
+      title: Back Door Opened 
+      message: The back door was opened.
+- id: Side_Door_Open_Alert 
+  alias: Kitchen-Garage Door Opened Alert 
+  trigger: 
+  - platform: state
+    entity_id: binary_sensor.zha_02ec0d9e_1_6
+    from: 'off'
+    to: 'on' 
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  action:
+    service: notify.pushbullet 
+    data:
+      title: Kitchen-Garage Door Opened 
+      message: The kitchen to garage door was opened.
+- id: Garage_Door_Open_Away_Alert 
+  alias: Garage Door Opened Alert 
+  trigger: 
+  - platform: state
+    entity_id: binary_sensor.status
+    from: 'off'
+    to: 'on' 
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: 'off'
+  action:
+    service: notify.pushbullet 
+    data:
+      title: Garage Door Opened 
+      message: The garage door was opened.

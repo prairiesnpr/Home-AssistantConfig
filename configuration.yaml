@@ -39,24 +39,6 @@ sun:
 
 # Sensors
 sensor:
-  # Weather prediction
-  - platform: yr
-    name: Weather
-    forecast: 24
-    monitored_conditions:
-      - temperature
-      - symbol
-      - precipitation
-      - windSpeed
-      - pressure
-      - windDirection
-      - humidity
-      - fog
-      - cloudiness
-      - lowClouds
-      - mediumClouds
-      - highClouds
-      - dewpointTemperature
   - platform: plex
     host: !secret plex_ip
     name: Son of Joel (Plex)
@@ -69,6 +51,12 @@ sensor:
     username: !secret ups_uid
     password: !secret ups_pwd
 
+binary_sensor:
+  - platform: workday
+    country: US 
+    province: TN
+    workdays: [mon, tue, wed, thu, fri]
+
     #usps:
     #username: !secret usps_uid
     #password: !secret usps_pwd
@@ -76,17 +64,46 @@ sensor:
    
 # Text to speech
 tts:
-  - platform: google
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 300
-    base_url: !secret base_url
-
+        #  - platform: google
+        # cache: true
+        # cache_dir: /tmp/tts
+        # time_memory: 300
+        # base_url: !secret base_url
+  - platform: microsoft
+    api_key: !secret msft_tts_key 
+    language: en-gb
+    gender: Female
+    type: Susan, Apollo
+    # arguments: '--alsa-audio-device=plughw:CARD=ALSA,DEV=1'
+    #  rate: 20
+    #   volume: -50
+  #  pitch: high
+    #    contour: (0, 0) (100, 100)
 media_player:
   - platform: onkyo
     host: !secret avr_ip 
+    sources:
+      hdmi-6: 'ha'
+      hdmi-5: 'hdmi-5'
+      strm-box: 'Strm-Box'
+      dvd_bd_dvd: 'XBOX'
+      bluetooth: 'Bluetooth'
+      usb_usb: 'USB'
+      network_net: 'Network'
+      fm: 'Radio'
+      am: 'AM'
+      video4: 'Video 4'
+      video3: 'Game'
+      video2: 'Cable/Sat'
+      'cd_tv/cd': 'CD'
+      tv: 'TV'
+      phono: 'Phono'
+      aux: 'AUX'
     name: receiver
+  - platform: gstreamer
   - platform: plex
+    #  - platform: vlc
+    # name: vlc
 
 
 nest:
@@ -100,13 +117,17 @@ nest:
       - operation_mode
       - hvac_state
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+
 cloud:
 
 zha:
   radio_type: xbee
   usb_path: /dev/ttyUSB0
   database_path: /home/homeassistant/.homeassistant/zigbee.db 
-  baudrate: 38400
+  baudrate: 57600
 
 mqtt:
   broker: !secret mqtt_path 
@@ -120,28 +141,43 @@ mqtt:
     payload: 'offline'
 
 logger:
-  default: debug 
+  default: error 
   logs:
-    homeassistant.components.mqtt: debug
-    homeassistant.helpers.template: debug
-    homeassistant.components.zigpy: debug
-#   homeassistant.components.bellows: debug
-#   homeassistant.components.zha: debug
-#   homeassistant.components.zigpy_xbee: debug
+    # homeassistant.components.mqtt: debug
+    # homeassistant.helpers.template: debug
+    homeassistant.components.zha: debug
+    #homeassistant.components.switch: debug
+    zigpy_xbee: debug
+    zigpy_xbee.zigbee.application: debug
+    zigpy_xbee.api: debug
+    zigpy_xbee.uart: debug
+    zigpy: debug
+    zigpy.device: debug
+    zigpy.endpoint: debug
+    zigpy.application: debug
+    zigpy.appdb: debug
+    zigpy.zdo: debug
+    zigpy.zcl: debug
+    #bellows: debug
+    #zha_quirks: debug
 
 
 group: !include groups.yaml
+
+light: !include light_groups.yaml
 
 
 automation: !include automations.yaml
 script: !include scripts.yaml
 
 device_tracker:
-  - platform: tomato
-    host: !secret router_ip 
-    username: !secret router_uid 
-    password: !secret router_pwd 
-    http_id: !secret router_http_id 
+        #Never worked correctly, tomato keeps everyone as present
+        #  - platform: tomato
+        # host: !secret router_ip 
+        # username: !secret router_uid 
+        # password: !secret router_pwd 
+        # http_id: !secret router_http_id 
+  - platform: bluetooth_tracker
 
 recorder:
   purge_keep_days: 5

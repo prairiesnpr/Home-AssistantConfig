@@ -1,7 +1,56 @@
 binary_sensor.wiebelo_away:
   device_class: presence
-binary_sensor.button: {}
+binary_sensor.button:
+  hidden: true
+binary_sensor.workday:
+  hidden: true
 automation.garage_toggle_off:
   hidden: true
 automation.garage_toggle_on:
   hidden: true
+zha.zha_ge_appliances_zll_light_000230a7:
+  hidden: true
+zha.zha_ge_appliances_zll_light_0006c093:
+  hidden: true
+group.all_automations:
+  hidden: false
+group.all_scripts:
+  hidden: false
+sensor.samsung_m262x_282x_series_10_10_1_136:
+  hidden: true
+binary_sensor.downstairs_thermostat_is_locked:
+  hidden: true
+binary_sensor.downstairs_thermostat_is_using_emergency_heat:
+  hidden: true
+binary_sensor.downstairs_thermostat_has_leaf:
+  hidden: true
+binary_sensor.downstairs_thermostat_online:
+  hidden: true
+binary_sensor.downstairs_thermostat_fan:
+  hidden: true
+sensor.downstairs_thermostat_hvac_state:
+  hidden: true
+sensor.downstairs_thermostat_operation_mode:
+  hidden: true
+sensor.downstairs_thermostat_temperature:
+  hidden: true
+sensor.downstairs_thermostat_target:
+  hidden: true
+group.printer:
+  order: 3
+group.router:
+  order: 2
+group.amos:
+  order: 1
+zha.zha_02ec0d9e:
+  friendly_name: Kitchen to Garge Door
+binary_sensor.zha_02ec0d9e_1_6:
+  device_class: door
+binary_sensor.zha_02e2146c_1_6:
+  device_class: door
+binary_sensor.zha_02bfefd9_1_6:
+  device_class: door
+sensor.zha_40c04e54_5_1026:
+  device_class: temperature
+sensor.zha_40c04e54_5_1029:
+  device_class: humidity

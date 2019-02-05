@@ -3,11 +3,12 @@
 !*.yaml
 !.gitignore
 !*.md
+!*.yml
 
 .storage
 .cloud
 .google.token
 
-ip_bans.yanl
+ip_bans.yaml
 secrets.yaml
 known_devices.yaml

@@ -32,8 +32,6 @@ sensor.downstairs_thermostat_hvac_state:
   hidden: true
 sensor.downstairs_thermostat_operation_mode:
   hidden: true
-sensor.downstairs_thermostat_temperature:
-  hidden: true
 sensor.downstairs_thermostat_target:
   hidden: true
 group.printer:
@@ -54,3 +52,31 @@ sensor.zha_40c04e54_5_1026:
   device_class: temperature
 sensor.zha_40c04e54_5_1029:
   device_class: humidity
+binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1:
+  device_class: door
+sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1:
+  device_class: battery
+sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1:
+  device_class: battery
+sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1:
+  device_class: battery
+sensor.zha_02ec0d9e_1_1:
+  device_class: battery
+sensor.zha_02e2146c_1_1:
+  device_class: battery
+sensor.zha_02bfefd9_1_1:
+  device_class: battery
+sensor.lumi_lumi_weather_02c9fa4a_1_1:
+  device_class: battery
+sensor.processorload:
+  icon: mdi:chip
+sensor.processorload_4:
+  icon: mdi:chip
+sensor.processorload_5:
+  icon: mdi:chip
+sensor.processorload_2:
+  icon: mdi:chip
+sensor.processorload_3:
+  icon: mdi:chip
+sensor.cpu_usage:
+  icon: mdi:chip

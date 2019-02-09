@@ -210,3 +210,57 @@
     data:
       title: Garage Door Opened 
       message: The garage door was opened.
+- id: Skip_Door_Alert
+  alias: Skip Door Alert
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
+    to: 'off'
+    for:
+      seconds: 1
+  condition:
+  - condition: template
+    value_template: >
+        {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed)) > 5 }}
+  action:
+    service: notify.pushbullet
+    data:
+      title: Scipio Alert
+      message: Scipio has left or arrived!
+- id: dishwasher_leak_detect
+  alias: Dishwasher Leak Detected
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+    to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Dishwasher Leak
+      message: Water leak deteted at the dishwasher!
+- id: washing_machine_leak_detect                                            
+  alias: Clothes Washer Leak Detected                     
+  trigger:
+  - platform: state                                                            
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280 
+    to: 'on'                                                                   
+  action:                                                                
+    service: notify.pushbullet                                         
+    data:                                                             
+      title: Washing Machine Leak 
+      message: Water leak deteted at the clothes washer!
+- id: turn_stair_lights_on_if_door_open_night
+  alias: Turn on Stair Lights if Door Opened at Night
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zha_02e2146c_1_6
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.stairway_lights
+      brightness: 50

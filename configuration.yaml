@@ -62,23 +62,12 @@ binary_sensor:
     #password: !secret usps_pwd
     #driver: phantomjs
    
-# Text to speech
 tts:
-        #  - platform: google
-        # cache: true
-        # cache_dir: /tmp/tts
-        # time_memory: 300
-        # base_url: !secret base_url
   - platform: microsoft
     api_key: !secret msft_tts_key 
     language: en-gb
     gender: Female
     type: Susan, Apollo
-    # arguments: '--alsa-audio-device=plughw:CARD=ALSA,DEV=1'
-    #  rate: 20
-    #   volume: -50
-  #  pitch: high
-    #    contour: (0, 0) (100, 100)
 media_player:
   - platform: onkyo
     host: !secret avr_ip 
@@ -123,11 +112,14 @@ weather:
 
 cloud:
 
+lovelace:
+  mode: yaml
+
 zha:
   radio_type: xbee
   usb_path: /dev/ttyUSB0
   database_path: /home/homeassistant/.homeassistant/zigbee.db 
-  baudrate: 57600
+  baudrate: 115200 
 
 mqtt:
   broker: !secret mqtt_path 
@@ -142,25 +134,9 @@ mqtt:
 
 logger:
   default: error 
-  logs:
-    # homeassistant.components.mqtt: debug
-    # homeassistant.helpers.template: debug
-    homeassistant.components.zha: debug
-    #homeassistant.components.switch: debug
-    zigpy_xbee: debug
-    zigpy_xbee.zigbee.application: debug
-    zigpy_xbee.api: debug
-    zigpy_xbee.uart: debug
-    zigpy: debug
-    zigpy.device: debug
-    zigpy.endpoint: debug
-    zigpy.application: debug
-    zigpy.appdb: debug
-    zigpy.zdo: debug
-    zigpy.zcl: debug
-    #bellows: debug
-    #zha_quirks: debug
+  logs: !include zigbee_logging.yaml
 
+system_health:
 
 group: !include groups.yaml
 
@@ -170,14 +146,16 @@ light: !include light_groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+
 device_tracker:
-        #Never worked correctly, tomato keeps everyone as present
-        #  - platform: tomato
-        # host: !secret router_ip 
-        # username: !secret router_uid 
-        # password: !secret router_pwd 
-        # http_id: !secret router_http_id 
   - platform: bluetooth_tracker
+  - platform: unifi
+    host: !secret unifi_host
+    username: !secret unifi_uid
+    password: !secret unifi_pwd
+    verify_ssl: false
+    ssid_filter:
+      - 'PrairieSnpr'
 
 recorder:
   purge_keep_days: 5

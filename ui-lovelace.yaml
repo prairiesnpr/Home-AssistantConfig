@@ -1,0 +1,180 @@
+title: Wiebelo Villa
+views:
+  - icon: mdi:home-assistant
+    title: Home
+    cards:
+      - type: entities 
+        entities:
+          - binary_sensor.wiebelo_away
+          - sensor.ups
+          - sensor.son_of_joel_plex
+      - type: entity-button
+        name: Garage Door
+        entity: binary_sensor.status
+        tap_action:
+          action: call-service
+          service: switch.turn_on
+          service_data:
+            entity_id: switch.garage_door
+      - type: light
+        entity: light.bedroom_lights
+      - type: light
+        entity: light.stairway_lights
+      - type: glance
+        title: Doors
+        entities:
+           - binary_sensor.zha_02bfefd9_1_6
+           - binary_sensor.zha_02e2146c_1_6 
+           - binary_sensor.zha_02ec0d9e_1_6
+           - binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
+      - type: weather-forecast
+        entity: weather.dark_sky
+      - type: picture-entity 
+        entity: group.ryan_presence
+        state_image:
+          "home": /images/ryan_home.jpg
+          "away": /images/ryan_away.jpg
+
+  - icon: mdi:play-network
+    title: Media
+    cards:
+      - type: media-control
+        entity: media_player.receiver
+      - type: conditional
+        conditions:
+          - entity: media_player.plex
+            state_not: "unavailable"
+        card:  
+          type: media-control
+          entity: media_player.plex 
+      - type: media-control
+        entity: media_player.living_room_un55js6900
+      - type: media-control
+        entity: media_player.gstreamer
+  - icon: mdi:thermostat
+    title: Climate
+    cards:
+      - type: thermostat
+        entity: climate.downstairs
+      - type: vertical-stack 
+        cards:
+          - type: history-graph
+            entities:
+               - sensor.downstairs_thermostat_temperature
+               - sensor.lumi_lumi_weather_02c9fa4a_1_1026
+               - sensor.zha_40c04e54_5_1026
+          - type: history-graph
+            entities:
+               - sensor.downstairs_thermostat_humidity
+               - sensor.lumi_lumi_weather_02c9fa4a_1_1029
+               - sensor.zha_40c04e54_5_1029
+          - type: history-graph
+            entities:
+               - sensor.lumi_lumi_weather_02c9fa4a_1_1027
+  - icon: mdi:heart-broken           
+    title: Device Health
+    cards:
+      - type: glance
+        title: Leak Detection
+        entities:
+          - binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+          - binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+      - type: entity-filter
+        entities:
+          - zha.zha_sengled_e11_n1ea_00038574
+          - zha.zha_lumi_lumi_vibration_aq1_02af6e3c
+          - zha.zha_lumi_lumi_sensor_wleak_aq1_027b09f4
+          - zha.zha_lumi_lumi_sensor_wleak_aq1_0279bc76
+          - zha.zha_lumi_lumi_sensor_magnet_01e1363b
+          - zha.zha_ge_appliances_zll_light_0006c093
+          - zha.zha_ge_appliances_zll_light_000230a7
+          - zha.zha_40c04e54
+          - zha.zha_40b41517
+          - zha.zha_40acb4ab
+          - zha.zha_02ec0d9e
+          - zha.zha_02e2146c
+          - zha.zha_02c9fa4a
+          - zha.zha_02bfefd9
+          - zha.zha_0003232a           
+        state_filter:
+          - 'offline'
+        card:
+          type: glance
+          title: Offline Devices   
+      - type: glance
+        title: Battery Level
+        entities:
+          - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1
+          - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1
+          - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1
+          - sensor.lumi_lumi_weather_02c9fa4a_1_1
+          - sensor.zha_02bfefd9_1_1
+          - sensor.zha_02e2146c_1_1
+          - sensor.zha_02ec0d9e_1_1
+      - type: glance
+        title: Device Temperature
+        entities:
+          - sensor.zha_02ec0d9e_1_1026
+          - sensor.zha_02e2146c_1_1026
+          - sensor.zha_02bfefd9_1_1026
+          - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1026
+          - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1026
+          - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1026
+  - icon: mdi:server-network
+    title: Server/VMs
+    cards:
+      - type: glance
+        title: Amos
+        entities:
+          - sensor.cpu_usage 
+          - sensor.virtual_memory
+          - sensor.swap_memory    
+      - type: glance
+        title: Router
+        entities:
+          - sensor.upnp_router_packets_sec_received_2
+          - sensor.upnp_router_kbyte_sec_sent_2
+          - sensor.upnp_router_packets_received_2
+          - sensor.upnp_router_packets_sent_2
+          - sensor.upnp_router_bytes_received_2
+          - sensor.upnp_router_bytes_sent_2
+          - sensor.upnp_router_packets_sec_sent_2
+          - sensor.upnp_router_kbyte_sec_received_2      
+      - type: glance
+        title: Printer
+        entities:
+          - sensor.samsung_m262x_282x_series_10_10_1_136_output_tray_0
+          - sensor.samsung_m262x_282x_series_10_10_1_136_tray_1
+          - sensor.samsung_m262x_282x_series_10_10_1_136_toner_black
+      - type: glance
+        title: Benaiah (Webserver/Docker)
+        entities:
+          - sensor.memoryavailable_4
+          - sensor.memoryusage_4
+          - sensor.processorload_4
+          - sensor.statusdescriptions_4
+          - sensor.uptime_4
+      - type: glance
+        title: Joel the Lesser (Plex)
+        entities:
+          - sensor.memoryavailable_5
+          - sensor.memoryusage_5
+          - sensor.processorload_5
+          - sensor.statusdescriptions_5
+          - sensor.uptime_5
+      - type: glance
+        title: Ezra (Pihole)
+        entities:
+          - sensor.memoryavailable_2
+          - sensor.memoryusage_2
+          - sensor.processorload_2
+          - sensor.statusdescriptions_2
+          - sensor.uptime_2
+      - type: glance
+        title: Nehemiah (Dad's VM)
+        entities:
+          - sensor.memoryavailable
+          - sensor.memoryusage 
+          - sensor.processorload
+          - sensor.statusdescriptions
+          - sensor.uptime 

@@ -27,6 +27,7 @@ device_health:
   entities:
     - group.batteries
     - group.temp
+    - group.leak_detect
 climate:
   name: Climate
   view: true
@@ -34,18 +35,18 @@ climate:
     - sensor.downstairs_thermostat_temperature
     - sensor.zha_40c04e54_5_1026
     - sensor.zha_40c04e54_5_1029
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1026
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1027
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1029
+    - sensor.downstairs_thermostat_humidity
 stairway:
   name: Stairway
   entities:
     - light.stairway_lights
-          #  - light.ge_appliances_zll_light_000230a7_1
-          # - light.ge_appliances_zll_light_0006c093_1
 bedroom:
   name: Bedroom
   entities:
     - light.bedroom_lights
-          # - light.sengled_e11_n1ea_00038574_1
-          # - light.sengled_e11_n1ea_0003232a_1
 av_closet:
   name: A/V Closet
   view: false
@@ -60,6 +61,7 @@ doors:
     - binary_sensor.zha_02e2146c_1_6
     - binary_sensor.zha_02bfefd9_1_6
     - binary_sensor.zha_02ec0d9e_1_6
+    - binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
 batteries:
   name: Batteries
   view: false
@@ -68,6 +70,10 @@ batteries:
     - sensor.zha_02bfefd9_1_1
     - sensor.zha_02e2146c_1_1
     - sensor.zha_02ec0d9e_1_1
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1
+    - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1
+    - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1
+    - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1
 temp:
   name: Temperature
   view: false
@@ -76,6 +82,9 @@ temp:
     - sensor.zha_02bfefd9_1_1026
     - sensor.zha_02e2146c_1_1026
     - sensor.zha_02ec0d9e_1_1026  
+    - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1026
+    - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1026
+    - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1026
 garage:
   name: Garage
   view: false 
@@ -105,14 +114,14 @@ router:
   name: Router
   control: hidden
   entities:
-    - sensor.upnp_router_packets_sec_received
-    - sensor.upnp_router_kbyte_sec_sent
-    - sensor.upnp_router_packets_received
-    - sensor.upnp_router_packets_sent
-    - sensor.upnp_router_bytes_received
-    - sensor.upnp_router_bytes_sent 
-    - sensor.upnp_router_packets_sec_sent
-    - sensor.upnp_router_kbyte_sec_received
+    - sensor.upnp_router_packets_sec_received_2
+    - sensor.upnp_router_kbyte_sec_sent_2
+    - sensor.upnp_router_packets_received_2
+    - sensor.upnp_router_packets_sent_2
+    - sensor.upnp_router_bytes_received_2
+    - sensor.upnp_router_bytes_sent_2
+    - sensor.upnp_router_packets_sec_sent_2
+    - sensor.upnp_router_kbyte_sec_received_2
 printer:
   name: Printer
   control: hidden
@@ -217,21 +226,62 @@ mobile_devices:
   view: true
   control: hidden
   entities:
-    - group.misc_presence 
     - group.ryan_presence
+    - group.ryan_phone
+    - group.ryan_work_phone
+    - group.ryan_work_ipad
+    - group.ryan_ipad
+    - group.ryan_surface
+    - group.ryan_westrock_macbook
 ryan_presence:
   name: Ryan
+  control: hidden
   entities:
     - device_tracker.balaam
     - device_tracker.ryans_iphone
-misc_presence:
-  name: Misc
-  entities:                                                                    
-    - device_tracker.ryans_ipad                                     
-    - device_tracker.ryans_westrock_ipad  
+ryan_phone:
+  name: Balaam
+  control: hidden
+  entities:
+    - device_tracker.balaam
+    - device_tracker.balaam_2
+ryan_work_phone:
+  name: Ryan's WestRock iPhone
+  control: hidden
+  entities:
+    - device_tracker.ryans_iphone
+    - device_tracker.ryans_iphone_2
+ryan_work_ipad:
+  name: Ryan's WestRock iPad
+  control: hidden
+  entities:
+    - device_tracker.ryans_westrock_ipad
+    - device_tracker.ryanswerockipad
+ryan_ipad:
+  name: Ryan's iPad
+  control: hidden
+  entities:
+    - device_tracker.ryans_ipad
+    - device_tracker.ryans_ipad_2
+ryan_surface:
+  name: 'Phinehas [Ryan’s Surface]'
+  control: hidden
+  entities:
+    - device_tracker.phinehas
+ryan_westrock_macbook:
+   name: 'Ryan’s WestRock MacBook'
+   control: hidden
+   entities:
+    - device_tracker.cx0gehv2r
 automation_view:
   name: Automation
   view: true
   entities:
     - group.all_automations
     - group.all_scripts
+leak_detect:
+  name: Leak Detectors
+  control: hidden
+  entities:
+    - binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+    - binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280

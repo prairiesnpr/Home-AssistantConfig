@@ -264,3 +264,23 @@
     data:
       entity_id: light.stairway_lights
       brightness: 50
+- id: set_nest_away_when_away
+  alias: Set Nest Away When Away
+  trigger:
+  - platform: state
+    entity_id: group.ryan_presence
+    to: away
+  action:
+    service: nest.set_away_mode
+    data:
+      away_mode: away
+- id: set_nest_home_when_home
+  alias: Set Nest to Home When Home
+  trigger:
+  - platform: state
+    entity_id: group.ryan_presence
+    to: home
+  action:
+    service: nest.set_away_mode
+    data:
+      away_mode: home

@@ -33,8 +33,7 @@ views:
         entity: group.ryan_presence
         state_image:
           "home": /images/ryan_home.jpg
-          "away": /images/ryan_away.jpg
-
+          "not_home": /images/ryan_away.jpg
   - icon: mdi:play-network
     title: Media
     cards:
@@ -48,7 +47,14 @@ views:
           type: media-control
           entity: media_player.plex 
       - type: media-control
-        entity: media_player.living_room_un55js6900
+        entity: media_player.xbox_one
+      - type: conditional
+        conditions:
+          - entity: media_player.living_room_u55js6900
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.living_room_un55js6900
       - type: media-control
         entity: media_player.gstreamer
   - icon: mdi:thermostat
@@ -79,6 +85,10 @@ views:
         entities:
           - binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
           - binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+      - type: glance
+        title: Woodpecker Detection
+        entities:
+          - binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
       - type: entity-filter
         entities:
           - zha.zha_sengled_e11_n1ea_00038574
@@ -95,7 +105,8 @@ views:
           - zha.zha_02e2146c
           - zha.zha_02c9fa4a
           - zha.zha_02bfefd9
-          - zha.zha_0003232a           
+          - zha.zha_0003232a
+          - zha.zha_02af6e3c
         state_filter:
           - 'offline'
         card:
@@ -178,3 +189,10 @@ views:
           - sensor.processorload
           - sensor.statusdescriptions
           - sensor.uptime 
+  - icon: mdi:settings
+    title: Settings
+    cards: 
+      - type: entities
+        entities:
+          - sensor.circadian_values
+          - switch.circadian_lighting_circadian_lighting

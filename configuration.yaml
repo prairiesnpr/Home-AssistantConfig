@@ -91,6 +91,9 @@ media_player:
     name: receiver
   - platform: gstreamer
   - platform: plex
+  - platform: xboxone
+    device: FD00472764D4AE81
+    name: Xbox One
     #  - platform: vlc
     # name: vlc
 
@@ -165,3 +168,18 @@ notify:
   - name: pushbullet
     platform: pushbullet
     api_key: !secret pushbullet_api_key 
+
+circadian_lighting:
+
+        #input_boolean:
+        #  enable_circadian:
+        #   name: Enable Circadian Lighting
+        #   initial: on
+        #icon: mdi:weather-sunset
+
+switch:
+  - platform: circadian_lighting
+    lights_xy:
+      - light.bedroom_lights
+    lights_brightness:
+      - light.stairway_lights

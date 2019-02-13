@@ -5,7 +5,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence 
+    entity_id: group.ryan_presence
     state: 'off'
   action:
   - data:
@@ -19,7 +19,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence 
+    entity_id: group.ryan_presence
     state: 'off'
   action:
   - data:
@@ -96,20 +96,20 @@
 - id: Bed_Lght_Morn_On
   alias: Turn on bedroom lights in the morning
   trigger:
-  - at: 06:15:00
+  - at: 05:30:00
     platform: time
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: home
   - condition: state
     entity_id: binary_sensor.workday
     state: 'on'
   action:
-    service: homeassistant.turn_on
-    data:
+  - data:
       entity_id:
       - group.bedroom
+    service: homeassistant.turn_on
 - id: Bed_Lght_Eve_Off
   alias: Turn off bedroom lights at night
   trigger:
@@ -118,97 +118,95 @@
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: home
   action:
-    service: homeassistant.turn_off
-    data:
+  - data:
       entity_id:
       - group.bedroom
+    service: homeassistant.turn_off
 - id: Lights_off_away
   alias: Turn off all lights when away
   trigger:
   - entity_id: group.ryan_presence
-    from: 'off'
     platform: state
-    to: 'on'
+    to: away
   action:
-    service: homeassistant.turn_off
-    data:
+  - data:
       entity_id:
-      - group.bedroom
+      - group.all_lights
+    service: homeassistant.turn_off
 - id: greeting_come_home
   alias: Arrival Greeting
   trigger:
   - entity_id: group.ryan_presence
-    from: 'on'
     platform: state
-    to: 'off'
+    to: home
   action:
-    - service: homeassistant.turn_on
-      entity_id: script.arrival
-- id: Front_Door_Open_Alert 
-  alias: Front Door Opened Alert 
-  trigger: 
+  - entity_id: script.arrival
+    service: homeassistant.turn_on
+- id: Front_Door_Open_Alert
+  alias: Front Door Opened Alert
+  trigger:
   - platform: state
     entity_id: binary_sensor.zha_02e2146c_1_6
     from: 'off'
-    to: 'on' 
+    to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
     state: 'off'
   action:
-    service: notify.pushbullet 
+    service: notify.pushbullet
     data:
-      title: Front Door Opened 
+      title: Front Door Opened
       message: The front door was opened.
-- id: Back_Door_Open_Alert 
-  alias: Back Door Opened Alert 
-  trigger: 
+- id: Back_Door_Open_Alert
+  alias: Back Door Opened Alert
+  trigger:
   - platform: state
     entity_id: binary_sensor.zha_02bfefd9_1_6
     from: 'off'
-    to: 'on' 
+    to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
     state: 'off'
   action:
-    service: notify.pushbullet 
+    service: notify.pushbullet
     data:
-      title: Back Door Opened 
+      title: Back Door Opened
       message: The back door was opened.
-- id: Side_Door_Open_Alert 
-  alias: Kitchen-Garage Door Opened Alert 
-  trigger: 
+- id: Side_Door_Open_Alert
+  alias: Kitchen-Garage Door Opened Alert
+  trigger:
   - platform: state
     entity_id: binary_sensor.zha_02ec0d9e_1_6
     from: 'off'
-    to: 'on' 
+    to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
     state: 'off'
   action:
-    service: notify.pushbullet 
+    service: notify.pushbullet
     data:
-      title: Kitchen-Garage Door Opened 
+      title: Kitchen-Garage Door Opened
       message: The kitchen to garage door was opened.
-- id: Garage_Door_Open_Away_Alert 
-  alias: Garage Door Opened Alert 
-  trigger: 
+- id: Garage_Door_Open_Away_Alert
+  alias: Garage Door Opened Alert
+  trigger:
   - platform: state
     entity_id: binary_sensor.status
     from: 'off'
-    to: 'on' 
+    to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
     state: 'off'
   action:
-    service: notify.pushbullet 
+    service: notify.pushbullet
     data:
-      title: Garage Door Opened 
+      title: Garage Door Opened
       message: The garage door was opened.
 - id: Skip_Door_Alert
   alias: Skip Door Alert
@@ -220,8 +218,10 @@
       seconds: 1
   condition:
   - condition: template
-    value_template: >
-        {{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed)) > 5 }}
+    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed))
+      > 5 }}
+
+      '
   action:
     service: notify.pushbullet
     data:
@@ -238,16 +238,16 @@
     data:
       title: Dishwasher Leak
       message: Water leak deteted at the dishwasher!
-- id: washing_machine_leak_detect                                            
-  alias: Clothes Washer Leak Detected                     
+- id: washing_machine_leak_detect
+  alias: Clothes Washer Leak Detected
   trigger:
-  - platform: state                                                            
-    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280 
-    to: 'on'                                                                   
-  action:                                                                
-    service: notify.pushbullet                                         
-    data:                                                             
-      title: Washing Machine Leak 
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+    to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Washing Machine Leak
       message: Water leak deteted at the clothes washer!
 - id: turn_stair_lights_on_if_door_open_night
   alias: Turn on Stair Lights if Door Opened at Night
@@ -256,9 +256,9 @@
     entity_id: binary_sensor.zha_02e2146c_1_6
     to: 'on'
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: "below_horizon"
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   action:
     service: light.turn_on
     data:
@@ -284,3 +284,25 @@
     service: nest.set_away_mode
     data:
       away_mode: home
+- id: turn_circ_fan_on_when_hvac_on
+  alias: Turn Circulation Fan on With HVAC
+  trigger:
+  - platform: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    from: 'off'
+  action:
+    service: notify.pushbullet
+    data_template:
+      title: HVAC ON
+      message: HVAC is {{ states('sensor.downstairs_thermostat_hvac_state') }}
+- id: woodpecker_alarm
+  alias: Alert on Woodpecker Pecking
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+    to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Woodpecker Detected!
+      message: Woodpecker Activity Detected!

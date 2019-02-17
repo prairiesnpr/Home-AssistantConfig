@@ -89,6 +89,8 @@ views:
         title: Woodpecker Detection
         entities:
           - binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+          - binary_sensor.zha_02b7eb7f_1_1280
+          - binary_sensor.zha_02b7eb7f_1
       - type: entity-filter
         entities:
           - zha.zha_sengled_e11_n1ea_00038574
@@ -107,7 +109,8 @@ views:
           - zha.zha_02bfefd9
           - zha.zha_0003232a
           - zha.zha_02af6e3c
-        state_filter:
+          - zha.zha_lumi_lumi_sensor_motion_aq2_02b7eb7f
+        state_filter: 
           - 'offline'
         card:
           type: glance

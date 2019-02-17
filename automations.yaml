@@ -298,11 +298,28 @@
 - id: woodpecker_alarm
   alias: Alert on Woodpecker Pecking
   trigger:
-  - platform: state
-    entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.zha_02b7eb7f_1_1280
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.zha_02b7eb7f_1
+      to: 'on'
   action:
     service: notify.pushbullet
     data:
       title: Woodpecker Detected!
       message: Woodpecker Activity Detected!
+- id: front_door_bell
+  alias: Front Door Bell Rung
+  trigger:
+    - platform: state
+      entity_id: switch.zha_40c04e54_1_6
+      to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Front Door Alert
+      message: Front Door Bell was Rung

@@ -1,5 +1,5 @@
 binary_sensor.wiebelo_away:
-  device_class: presence
+  device_class: power
 binary_sensor.button:
   hidden: true
 binary_sensor.workday:
@@ -80,3 +80,24 @@ sensor.processorload_3:
   icon: mdi:chip
 sensor.cpu_usage:
   icon: mdi:chip
+switch.zha_40c04e54_1_6:
+  friendly_name: Front Door Bell
+sensor.zha_40c04e54_2_1029:
+  device_class: humidity
+  friendly_name: Stairway
+sensor.zha_40c04e54_2_1026:
+  friendly_name: Stairway
+binary_sensor.zha_02bfe504_1_6:
+  device_class: door
+sensor.zha_02b7eb7f_1_1024:
+  device_class: illuminance
+binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280:
+  device_class: moisture
+binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280:
+  device_class: moisture
+binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280:
+  device_class: smoke
+binary_sensor.zha_02b7eb7f_1_1280:
+  device_class: motion
+light.sz_lamp_01_1baff16c_11:
+  friendly_name: Upstairs HVAC Blower

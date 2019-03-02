@@ -129,7 +129,7 @@
   trigger:
   - entity_id: group.ryan_presence
     platform: state
-    to: away
+    to: not_home
   action:
   - data:
       entity_id:
@@ -147,67 +147,82 @@
 - id: Front_Door_Open_Alert
   alias: Front Door Opened Alert
   trigger:
-  - platform: state
-    entity_id: binary_sensor.zha_02e2146c_1_6
-    from: 'off'
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
     to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: not_home
   action:
-    service: notify.pushbullet
-    data:
-      title: Front Door Opened
+  - data:
       message: The front door was opened.
+      title: Front Door Opened
+    service: notify.pushbullet
+  - entity_id: script.intruder
+    service: homeassistant.turn_on
+- id: Garage_WalkIn_Open_Alert
+  alias: Garage Walk In Door Opened Alert
+  trigger:
+  - entity_id: binary_sensor.zha_02bfe504_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.ryan_presence
+    state: not_home
+  action:
+  - data:
+      message: The garage walk in door was opened.
+      title: Garage Walk-In Opened
+    service: notify.pushbullet
 - id: Back_Door_Open_Alert
   alias: Back Door Opened Alert
   trigger:
-  - platform: state
-    entity_id: binary_sensor.zha_02bfefd9_1_6
-    from: 'off'
+  - entity_id: binary_sensor.zha_02bfefd9_1_6
+    platform: state
     to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: not_home
   action:
-    service: notify.pushbullet
-    data:
-      title: Back Door Opened
+  - data:
       message: The back door was opened.
+      title: Back Door Opened
+    service: notify.pushbullet
 - id: Side_Door_Open_Alert
   alias: Kitchen-Garage Door Opened Alert
   trigger:
-  - platform: state
-    entity_id: binary_sensor.zha_02ec0d9e_1_6
+  - entity_id: binary_sensor.zha_02ec0d9e_1_6
     from: 'off'
+    platform: state
     to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: not_home
   action:
-    service: notify.pushbullet
-    data:
-      title: Kitchen-Garage Door Opened
+  - data:
       message: The kitchen to garage door was opened.
+      title: Kitchen-Garage Door Opened
+    service: notify.pushbullet
 - id: Garage_Door_Open_Away_Alert
   alias: Garage Door Opened Alert
   trigger:
-  - platform: state
-    entity_id: binary_sensor.status
+  - entity_id: binary_sensor.status
     from: 'off'
+    platform: state
     to: 'on'
   condition:
   - condition: state
     entity_id: group.ryan_presence
-    state: 'off'
+    state: not_home
   action:
-    service: notify.pushbullet
-    data:
-      title: Garage Door Opened
+  - data:
       message: The garage door was opened.
+      title: Garage Door Opened
+    service: notify.pushbullet
 - id: Skip_Door_Alert
   alias: Skip Door Alert
   trigger:
@@ -267,13 +282,13 @@
 - id: set_nest_away_when_away
   alias: Set Nest Away When Away
   trigger:
-  - platform: state
-    entity_id: group.ryan_presence
-    to: away
+  - entity_id: group.ryan_presence
+    platform: state
+    to: not_home
   action:
-    service: nest.set_away_mode
-    data:
+  - data:
       away_mode: away
+    service: nest.set_away_mode
 - id: set_nest_home_when_home
   alias: Set Nest to Home When Home
   trigger:
@@ -290,23 +305,45 @@
   - platform: state
     entity_id: sensor.downstairs_thermostat_hvac_state
     from: 'off'
+  - platform: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    from: 'off'
   action:
-    service: notify.pushbullet
-    data_template:
-      title: HVAC ON
-      message: HVAC is {{ states('sensor.downstairs_thermostat_hvac_state') }}
+    service: light.turn_on
+    data:
+      entity_id: light.sz_lamp_01_1baff16c_11
+- id: turn_circ_fan_off_when_hvac_off
+  alias: Turn Circulation Fan off With HVAC
+  trigger:
+  - platform: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    state: 'off'
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.sz_lamp_01_1baff16c_11
 - id: woodpecker_alarm
   alias: Alert on Woodpecker Pecking
   trigger:
-    - platform: state
-      entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.zha_02b7eb7f_1_1280
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.zha_02b7eb7f_1
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.zha_02b7eb7f_1_1280
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.zha_02b7eb7f_1
+    to: 'on'
   action:
     service: notify.pushbullet
     data:
@@ -315,11 +352,23 @@
 - id: front_door_bell
   alias: Front Door Bell Rung
   trigger:
-    - platform: state
-      entity_id: switch.zha_40c04e54_1_6
-      to: 'on'
+  - platform: state
+    entity_id: switch.zha_40c04e54_1_6
+    to: 'on'
   action:
-    service: notify.pushbullet
+    service: notify.pushbullet 
     data:
       title: Front Door Alert
       message: Front Door Bell was Rung
+- id: smoke_alarm_kitchen
+  alias: Smoke Alarm Kitchen
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280 
+    to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Smoke Alarm
+      message: Smoke detected in the Kitchen!
+

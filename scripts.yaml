@@ -1,17 +1,17 @@
 arrival:
   alias: Arrival Music
   sequence:
-    - service: homeassistant.turn_on                                                                     
+    - service: homeassistant.turn_on
       data:
-        entity_id: script.tts_setup  
-    - delay: '00:00:05' 
-    - service: tts.microsoft_say                                                                   
-      data:                                                                                              
-        entity_id: media_player.gstreamer                                                                 
+        entity_id: script.tts_setup
+    - delay: '00:00:10'
+    - service: tts.microsoft_say
+      data:
+        entity_id: media_player.gstreamer
         message: 'New user detected, Welcome home master Ryan'
-    - service: media_player.volume_set                                                                    
-      data:                                                                                      
-        entity_id: media_player.receiver                                                                   
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.receiver
         volume_level: .55
     - service: media_player.play_media
       data:
@@ -22,18 +22,41 @@ arrival:
     - service: media_player.turn_off
       data:
         entity_id: media_player.receiver
-
+intruder:
+  alias: Intruder Alarm
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: script.tts_setup
+    - delay: '00:00:10'
+    - service: tts.microsoft_say
+      data:
+        entity_id: media_player.gstreamer
+        message: 'Unauthorized user detected, Please leave the premises immediately.'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.receiver
+        volume_level: .55
+    - service: media_player.play_media
+      data:
+       entity_id: media_player.gstreamer
+       media_content_type: 'music'
+       media_content_id: 'file:///home/ryan/prairiesnpr/20_seconds_comply.mp3'
+    - delay: '00:00:30'
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.receiver
 tts_setup:
   alias: Prepare reciever for output
   sequence:
-    - service: media_player.turn_on                                                                        
-      data:                                                                                                
-        entity_id: media_player.receiver                                                                   
-    - service: media_player.select_source                                                                  
-      data:                                                                                                
-        entity_id: media_player.receiver                                                                   
+    - service: media_player.turn_on 
+      data:
+        entity_id: media_player.receiver 
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.receiver
         source: strm-box  
     - service: media_player.volume_set
       data:
         entity_id: media_player.receiver
-        volume_level: .7 
+        volume_level: .8 

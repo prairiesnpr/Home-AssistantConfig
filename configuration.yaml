@@ -75,16 +75,16 @@ media_player:
       hdmi-6: 'ha'
       hdmi-5: 'hdmi-5'
       strm-box: 'Strm-Box'
-      dvd_bd_dvd: 'XBOX'
+      bd: 'XBOX'
       bluetooth: 'Bluetooth'
-      usb_usb: 'USB'
-      network_net: 'Network'
+      # usb_usb: 'USB'
+      # network_net: 'Network'
       fm: 'Radio'
       am: 'AM'
       video4: 'Video 4'
       video3: 'Game'
       video2: 'Cable/Sat'
-      'cd_tv/cd': 'CD'
+      #'cd_tv/cd': 'CD'
       tv: 'TV'
       phono: 'Phono'
       aux: 'AUX'
@@ -94,6 +94,8 @@ media_player:
   - platform: xboxone
     device: FD00472764D4AE81
     name: Xbox One
+  - platform: samsungtv
+    host: !secret livingroomtv_ip
     #  - platform: vlc
     # name: vlc
 
@@ -138,6 +140,7 @@ mqtt:
 logger:
   default: error 
   logs: !include zigbee_logging.yaml
+  #media_player.onkyo: debug
 
 system_health:
 
@@ -145,6 +148,7 @@ group: !include groups.yaml
 
 light: !include light_groups.yaml
 
+person:
 
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -171,15 +175,21 @@ notify:
 
 circadian_lighting:
 
-        #input_boolean:
-        #  enable_circadian:
-        #   name: Enable Circadian Lighting
-        #   initial: on
-        #icon: mdi:weather-sunset
-
 switch:
   - platform: circadian_lighting
     lights_xy:
-      - light.bedroom_lights
+     - light.bedroom_lights
     lights_brightness:
       - light.stairway_lights
+fan:
+  - platform: template
+    fans:
+      upstairs_hvac_fan:
+        friendly_name: "Upstairs HVAC Blower"
+        value_template: "{{ states('light.sz_lamp_01_1baff16c_11') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          entity_id: light.sz_lamp_01_1baff16c_11 
+        turn_off:
+          service: homeassistant.turn_off
+          entity_id: light.sz_lamp_01_1baff16c_11 

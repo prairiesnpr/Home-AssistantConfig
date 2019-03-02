@@ -27,6 +27,7 @@ views:
            - binary_sensor.zha_02e2146c_1_6 
            - binary_sensor.zha_02ec0d9e_1_6
            - binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
+           - binary_sensor.zha_02bfe504_1_6
       - type: weather-forecast
         entity: weather.dark_sky
       - type: picture-entity 
@@ -57,6 +58,8 @@ views:
           entity: media_player.living_room_un55js6900
       - type: media-control
         entity: media_player.gstreamer
+      - type: media-control
+        entity: media_player.samsung_tv_remote
   - icon: mdi:thermostat
     title: Climate
     cards:
@@ -64,16 +67,19 @@ views:
         entity: climate.downstairs
       - type: vertical-stack 
         cards:
+          - type: glance
+            entities:
+               - fan.upstairs_hvac_fan 
           - type: history-graph
             entities:
                - sensor.downstairs_thermostat_temperature
                - sensor.lumi_lumi_weather_02c9fa4a_1_1026
-               - sensor.zha_40c04e54_5_1026
+               - sensor.zha_40c04e54_2_1026
           - type: history-graph
             entities:
                - sensor.downstairs_thermostat_humidity
                - sensor.lumi_lumi_weather_02c9fa4a_1_1029
-               - sensor.zha_40c04e54_5_1029
+               - sensor.zha_40c04e54_2_1029
           - type: history-graph
             entities:
                - sensor.lumi_lumi_weather_02c9fa4a_1_1027
@@ -85,6 +91,10 @@ views:
         entities:
           - binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
           - binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+      - type: glance
+        title: Smoke Detection
+        entities:
+          - binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
       - type: glance
         title: Woodpecker Detection
         entities:
@@ -110,21 +120,22 @@ views:
           - zha.zha_0003232a
           - zha.zha_02af6e3c
           - zha.zha_lumi_lumi_sensor_motion_aq2_02b7eb7f
+          - zha.zha_lumi_lumi_sensor_magnet_aq2_02ec0d9e
+          - zha.zha_lumi_lumi_sensor_magnet_aq2_02e2146c
+          - zha.zha_lumi_lumi_sensor_magnet_aq2_02bfefd9
+          - zha.zha_4193fedf
+          - zha.zha_02bfe504
+          - zha.zha_lumi_lumi_sensor_smoke_02cb2ea9
+          - zha.zha_sengled_e11_n1ea_0003232a
+          - zha.lumi_lumi_sensor_magnet_aq2
+          - zha.lumi_lumi_sensor_magnet_aq2_2
+          - zha.zha_lumi_lumi_weather_02c9fa4a  
+          - zha.lumi_lumi_sensor_smoke
         state_filter: 
-          - 'offline'
+          - 'unavailable'
         card:
           type: glance
           title: Offline Devices   
-      - type: glance
-        title: Battery Level
-        entities:
-          - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1
-          - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1
-          - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1
-          - sensor.lumi_lumi_weather_02c9fa4a_1_1
-          - sensor.zha_02bfefd9_1_1
-          - sensor.zha_02e2146c_1_1
-          - sensor.zha_02ec0d9e_1_1
       - type: glance
         title: Device Temperature
         entities:
@@ -134,6 +145,21 @@ views:
           - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1026
           - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1026
           - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1026
+          - sensor.zha_02bfe504_1_1026
+          - sensor.zha_02b7eb7f_1_1026
+          - sensor.zha_02c39915_1_1026
+          - sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1026
+      - type: glance
+        title: Lumination
+        entities:
+          - sensor.zha_02b7eb7f_1_1024
+  - icon: mdi:power-plug
+    title: Power
+    cards:
+      - type: entities
+        entities:
+          - sensor.sengled_e11_n1ea_00038574_1_1794
+          - sensor.sengled_e11_n1ea_0003232a_1_1794
   - icon: mdi:server-network
     title: Server/VMs
     cards:

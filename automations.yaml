@@ -356,10 +356,16 @@
     entity_id: switch.zha_40c04e54_1_6
     to: 'on'
   action:
-    service: notify.pushbullet 
-    data:
-      title: Front Door Alert
-      message: Front Door Bell was Rung
+    - service: camera.snapshot
+      data:
+          entity_id: camera.front_porch
+          filename: '/home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg'
+    - service: notify.pushbullet 
+      data:
+        data:
+          file: '/home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg'
+        title: Front Door Alert
+        message: Front Door Bell was Rung
 - id: smoke_alarm_kitchen
   alias: Smoke Alarm Kitchen
   trigger:

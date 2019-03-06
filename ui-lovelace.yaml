@@ -98,9 +98,9 @@ views:
       - type: glance
         title: Woodpecker Detection
         entities:
-          - binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+          - binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1280
+          - binary_sensor.lumi_lumi_sensor_motion_aq2_02b7eb7f_1_1030
           - binary_sensor.zha_02b7eb7f_1_1280
-          - binary_sensor.zha_02b7eb7f_1
       - type: entity-filter
         entities:
           - zha.zha_sengled_e11_n1ea_00038574
@@ -153,6 +153,49 @@ views:
         title: Lumination
         entities:
           - sensor.zha_02b7eb7f_1_1024
+  - icon: mdi:camera
+    title: Camera
+    cards:
+      - type: picture-elements
+        image: /local/snapshots/testpattern.jpg
+        elements:
+          - type: image
+            entity: camera.front_porch
+            camera_image: camera.front_porch
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              height: 100%
+          - type: state-label
+            entity: sensor.front_porch_events
+            prefix: 'Front Porch - '
+            style:
+              left: 0 
+              bottom: 0
+              background-color: 'rgba(0, 0, 0, 0.3)'
+              color: white
+              width: 100%
+              transform: initial
+              padding: 1vh
+          - type: state-label
+            entity: camera.front_porch
+            style:
+              right: 0
+              bottom: 0
+              background-color: 'rgba(0, 0, 0, 0.3)'
+              color: white
+              transform: initial
+              padding: 1vh
+ 
+              #  - type: picture-entity 
+              #    name: Front Porch
+              #     entity: camera.front_porch
+              #     camera_image: camera.front_porch
+      - type: picture-entity
+        name: Fozzy
+        entity: camera.fozzy
+        camera_image: camera.fozzy
   - icon: mdi:power-plug
     title: Power
     cards:

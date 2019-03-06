@@ -6,6 +6,8 @@ homeassistant:
   unit_system: imperial 
   time_zone: America/New_York
   customize: !include customize.yaml
+  whitelist_external_dirs:
+    - '/home/homeassistant/.homassistant/www/snapshots'
 
 # Enables the frontend
 frontend:
@@ -50,6 +52,7 @@ sensor:
   - platform: ups
     username: !secret ups_uid
     password: !secret ups_pwd
+  - platform: zoneminder
 
 binary_sensor:
   - platform: workday
@@ -138,7 +141,7 @@ mqtt:
     payload: 'offline'
 
 logger:
-  default: error 
+  default: warning # error 
   logs: !include zigbee_logging.yaml
   #media_player.onkyo: debug
 
@@ -178,7 +181,7 @@ circadian_lighting:
 switch:
   - platform: circadian_lighting
     lights_xy:
-     - light.bedroom_lights
+      - light.bedroom_lights
     lights_brightness:
       - light.stairway_lights
 fan:
@@ -193,3 +196,10 @@ fan:
         turn_off:
           service: homeassistant.turn_off
           entity_id: light.sz_lamp_01_1baff16c_11 
+zoneminder:
+ - host: !secret zm_host 
+   username: !secret zm_uid
+   password: !secret zm_pwd 
+camera:
+  - platform: zoneminder
+

@@ -5,8 +5,8 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence
-    state: 'off'
+    entity_id: person.ryan 
+    state: not_home 
   action:
   - data:
       entity_id:
@@ -19,8 +19,8 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence
-    state: 'off'
+    entity_id: person.ryan 
+    state: not_home
   action:
   - data:
       entity_id:
@@ -29,10 +29,9 @@
 - id: coffee_on_home
   alias: Turn on the Coffee Pot when home
   trigger:
-  - entity_id: group.ryan_presence
-    from: 'on'
+  - entity_id: person.ryan 
     platform: state
-    to: 'off'
+    to: not_home
   action:
   - data:
       entity_id:
@@ -41,10 +40,9 @@
 - id: coffee_off_away
   alias: Turn off the Coffee Pot when away
   trigger:
-  - entity_id: group.ryan_presence
-    from: 'off'
+  - entity_id: person.ryan 
     platform: state
-    to: 'on'
+    to: home
   action:
   - data:
       entity_id:
@@ -53,7 +51,7 @@
 - id: '1546826068070'
   alias: Garage Toggle On
   trigger:
-  - entity_id: binary_sensor.button
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
     from: 'off'
     platform: state
     to: 'on'
@@ -61,17 +59,17 @@
     service: switch.turn_on
     data:
       entity_id:
-      - switch.garage_door
+      - switch.xbee_xbee_io_4193fedf_210_6
 - id: '1546826459762'
   alias: Garage Toggle Off
   trigger:
   - platform: state
-    entity_id: binary_sensor.button
+    entity_id: switch.xbee_xbee_io_4193fedf_209_6
     for: 00:00:01
     from: 'on'
     to: 'off'
   - platform: state
-    entity_id: switch.garage_door
+    entity_id: switch.xbee_xbee_io_4193fedf_210_6
     for: 00:00:01
     from: 'off'
     to: 'on'
@@ -79,12 +77,12 @@
     service: switch.turn_off
     data:
       entity_id:
-      - switch.garage_door
+      - switch.xbee_xbee_io_4193fedf_210_6
 - id: Garage_Ope_Alert
   alias: Garage Open Alert
   trigger:
   - platform: state
-    entity_id: binary_sensor.status
+    entity_id: switch.xbee_xbee_io_4193fedf_209_6
     for: 00:05:00
     from: 'off'
     to: 'on'
@@ -100,7 +98,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: home
   - condition: state
     entity_id: binary_sensor.workday
@@ -108,7 +106,7 @@
   action:
   - data:
       entity_id:
-      - group.bedroom
+      - light.bedroom_lights 
     service: homeassistant.turn_on
 - id: Bed_Lght_Eve_Off
   alias: Turn off bedroom lights at night
@@ -117,17 +115,17 @@
     platform: time
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: home
   action:
   - data:
       entity_id:
-      - group.bedroom
+      - light.bedroom_lights
     service: homeassistant.turn_off
 - id: Lights_off_away
   alias: Turn off all lights when away
   trigger:
-  - entity_id: group.ryan_presence
+  - entity_id: person.ryan 
     platform: state
     to: not_home
   action:
@@ -138,7 +136,7 @@
 - id: greeting_come_home
   alias: Arrival Greeting
   trigger:
-  - entity_id: group.ryan_presence
+  - entity_id: person.ryan 
     platform: state
     to: home
   action:
@@ -152,7 +150,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: not_home
   action:
   - data:
@@ -169,7 +167,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: not_home
   action:
   - data:
@@ -184,7 +182,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: not_home
   action:
   - data:
@@ -200,7 +198,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: not_home
   action:
   - data:
@@ -210,13 +208,13 @@
 - id: Garage_Door_Open_Away_Alert
   alias: Garage Door Opened Alert
   trigger:
-  - entity_id: binary_sensor.status
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
     from: 'off'
     platform: state
     to: 'on'
   condition:
   - condition: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     state: not_home
   action:
   - data:
@@ -282,7 +280,7 @@
 - id: set_nest_away_when_away
   alias: Set Nest Away When Away
   trigger:
-  - entity_id: group.ryan_presence
+  - entity_id: person.ryan 
     platform: state
     to: not_home
   action:
@@ -293,7 +291,7 @@
   alias: Set Nest to Home When Home
   trigger:
   - platform: state
-    entity_id: group.ryan_presence
+    entity_id: person.ryan 
     to: home
   action:
     service: nest.set_away_mode

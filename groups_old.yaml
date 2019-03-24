@@ -1,0 +1,287 @@
+default_view:
+  view: true
+  icon: mdi:home
+  entities:
+    - group.garage
+    - group.stairway
+    - group.bedroom
+      #    - group.kitchen
+    - group.doors
+    - binary_sensor.wiebelo_away
+    - sensor.son_of_joel_plex 
+    - sensor.ups
+    - climate.downstairs
+    - sun.sun
+    - weather.dark_sky
+    - media_player.receiver
+    - media_player.plex
+      #    - sensor.iris_alertme_02a1172f_2_2820
+      # - sensor.iris_alertme_025b8357_2_2820
+    - sensor.ups
+    - sensor.downstairs_thermostat_humidity
+    - sensor.iris_alertme_02a1172f_2_1026 
+    - media_player.gstreamer 
+device_health:
+  name: Device Health
+  view: true
+  entities:
+    - group.batteries
+    - group.temp
+    - group.leak_detect
+climate:
+  name: Climate
+  view: true
+  entities:
+    - sensor.downstairs_thermostat_temperature
+    - sensor.zha_40c04e54_5_1026
+    - sensor.zha_40c04e54_5_1029
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1026
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1027
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1029
+    - sensor.downstairs_thermostat_humidity
+stairway:
+  name: Stairway
+  entities:
+    - light.stairway_lights
+bedroom:
+  name: Bedroom
+  entities:
+    - light.bedroom_lights
+av_closet:
+  name: A/V Closet
+  view: false
+  entities:
+    - sensor.iris_alertme_02a1172f_2_1026
+    - switch.iris_alertme_02a1172f_2_238 
+doors:
+  name: Doors
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.zha_02e2146c_1_6
+    - binary_sensor.zha_02bfefd9_1_6
+    - binary_sensor.zha_02ec0d9e_1_6
+    - binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
+batteries:
+  name: Batteries
+  view: false
+  control: hidden
+  entities:
+    - sensor.zha_02bfefd9_1_1
+    - sensor.zha_02e2146c_1_1
+    - sensor.zha_02ec0d9e_1_1
+    - sensor.lumi_lumi_weather_02c9fa4a_1_1
+    - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1
+    - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1
+    - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1
+temp:
+  name: Temperature
+  view: false
+  control: hidden
+  entities:
+    - sensor.zha_02bfefd9_1_1026
+    - sensor.zha_02e2146c_1_1026
+    - sensor.zha_02ec0d9e_1_1026  
+    - sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1026
+    - sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1026
+    - sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1026
+garage:
+  name: Garage
+  view: false 
+  control: hidden
+  entities:
+    - binary_sensor.status
+    - switch.garage_door
+kitchen:
+  name: Kitchen
+  view: false
+  entities:
+    - switch.iris_alertme_025b8357_2_238
+    - sensor.iris_alertme_025b8357_2_1026
+dev_stats:
+  name: Devices
+  view: true
+  entities:
+    - group.printer
+    - group.router
+    - group.amos
+      #    - group.vm_obadiah
+    - group.vm_ezra
+      # - group.vm_nehemiah
+    - group.vm_joel_the_lesser
+    - group.vm_benaiah
+router:
+  name: Router
+  control: hidden
+  entities:
+    - sensor.upnp_router_packets_sec_received_2
+    - sensor.upnp_router_kbyte_sec_sent_2
+    - sensor.upnp_router_packets_received_2
+    - sensor.upnp_router_packets_sent_2
+    - sensor.upnp_router_bytes_received_2
+    - sensor.upnp_router_bytes_sent_2
+    - sensor.upnp_router_packets_sec_sent_2
+    - sensor.upnp_router_kbyte_sec_received_2
+printer:
+  name: Printer
+  control: hidden
+  entities:
+    - sensor.samsung_m262x_282x_series_10_10_1_136_output_tray_0
+    - sensor.samsung_m262x_282x_series_10_10_1_136_tray_1
+#    - sensor.samsung_m262x_282x_series_10_10_1_136
+    - sensor.samsung_m262x_282x_series_10_10_1_136_toner_black
+#hvac:
+#  name: HVAC
+#  control: hidden
+#entities:
+#    - binary_sensor.downstairs_thermostat_is_locked
+#    - binary_sensor.downstairs_thermostat_is_using_emergency_heat
+#    - binary_sensor.downstairs_thermostat_has_leaf
+#    - binary_sensor.downstairs_thermostat_online
+#    - binary_sensor.downstairs_thermostat_fan
+#    - sensor.downstairs_thermostat_hvac_state
+#    - sensor.downstairs_thermostat_operation_mode
+#    - sensor.downstairs_thermostat_temperature
+#    - sensor.downstairs_thermostat_target
+#    - sensor.downstairs_thermostat_humidity
+amos:
+  name: Amos (Server)
+  control: hidden
+  entities:
+    - sensor.cpu_usage 
+    - sensor.virtual_memory
+    - sensor.swap_memory
+vm_nehemiah:
+   name: Nehemiah
+   control: hidden
+   entities:
+     - sensor.elementname 
+     - sensor.healthstate 
+     - sensor.heartbeat
+     - sensor.memoryavailable
+     - sensor.memoryusage 
+     - sensor.notes
+     - sensor.operationalstatus
+     - sensor.processorload
+     - sensor.statusdescriptions
+     - sensor.uptime
+vm_obadiah:
+   name: Obadiah
+   control: hidden
+   entities:
+     - sensor.elementname_3
+     - sensor.healthstate_3
+     - sensor.heartbeat_3
+     - sensor.memoryavailable_3
+     - sensor.memoryusage_3
+     - sensor.notes_3
+     - sensor.operationalstatus_3
+     - sensor.processorload_3
+     - sensor.statusdescriptions_3
+     - sensor.uptime_3
+vm_joel_the_lesser:
+   name: Joel the Lesser
+   control: hidden
+   entities:
+#    - sensor.elementname_5
+#     - sensor.healthstate_5
+#     - sensor.heartbeat_5
+     - sensor.memoryavailable_5
+     - sensor.memoryusage_5
+#     - sensor.notes_5
+#     - sensor.operationalstatus_5
+     - sensor.processorload_5
+     - sensor.statusdescriptions_5
+     - sensor.uptime_5
+vm_ezra:
+   name: Ezra
+   control: hidden
+   entities:
+#     - sensor.elementname_2
+#     - sensor.healthstate_2
+#     - sensor.heartbeat_2
+     - sensor.memoryavailable_2
+     - sensor.memoryusage_2
+#     - sensor.notes_2
+#     - sensor.operationalstatus_2
+     - sensor.processorload_2
+     - sensor.statusdescriptions_2
+     - sensor.uptime_2
+vm_benaiah:
+   name: Benaiah
+   control: hidden
+   entities:
+#     - sensor.elementname_4
+#     - sensor.healthstate_4
+#     - sensor.heartbeat_4
+     - sensor.memoryavailable_4
+     - sensor.memoryusage_4
+#     - sensor.notes_4
+#     - sensor.operationalstatus_4
+     - sensor.processorload_4
+     - sensor.statusdescriptions_4
+     - sensor.uptime_4
+mobile_devices:
+  name: Mobile Devices
+  view: true
+  control: hidden
+  entities:
+    - group.ryan_presence
+    - group.ryan_phone
+    - group.ryan_work_phone
+    - group.ryan_work_ipad
+    - group.ryan_ipad
+    - group.ryan_surface
+    - group.ryan_westrock_macbook
+ryan_presence:
+  name: Ryan
+  control: hidden
+  entities:
+    - device_tracker.balaam
+    - device_tracker.ryans_iphone
+ryan_phone:
+  name: Balaam
+  control: hidden
+  entities:
+    - device_tracker.balaam
+    - device_tracker.balaam_2
+ryan_work_phone:
+  name: Ryan's WestRock iPhone
+  control: hidden
+  entities:
+    - device_tracker.ryans_iphone
+    - device_tracker.ryans_iphone_2
+ryan_work_ipad:
+  name: Ryan's WestRock iPad
+  control: hidden
+  entities:
+    - device_tracker.ryans_westrock_ipad
+    - device_tracker.ryanswerockipad
+ryan_ipad:
+  name: Ryan's iPad
+  control: hidden
+  entities:
+    - device_tracker.ryans_ipad
+    - device_tracker.ryans_ipad_2
+ryan_surface:
+  name: 'Phinehas [Ryan’s Surface]'
+  control: hidden
+  entities:
+    - device_tracker.phinehas
+ryan_westrock_macbook:
+   name: 'Ryan’s WestRock MacBook'
+   control: hidden
+   entities:
+    - device_tracker.cx0gehv2r
+automation_view:
+  name: Automation
+  view: true
+  entities:
+    - group.all_automations
+    - group.all_scripts
+leak_detect:
+  name: Leak Detectors
+  control: hidden
+  entities:
+    - binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+    - binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280

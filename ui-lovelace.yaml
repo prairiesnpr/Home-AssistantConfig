@@ -10,12 +10,12 @@ views:
           - sensor.son_of_joel_plex
       - type: entity-button
         name: Garage Door
-        entity: binary_sensor.status
+        entity: binary_sensor.door
         tap_action:
           action: call-service
           service: switch.turn_on
           service_data:
-            entity_id: switch.garage_door
+            entity_id: switch.xbee_xbee_io_4193fedf_210_6
       - type: light
         entity: light.bedroom_lights
       - type: light
@@ -31,7 +31,7 @@ views:
       - type: weather-forecast
         entity: weather.dark_sky
       - type: picture-entity 
-        entity: group.ryan_presence
+        entity: person.ryan 
         state_image:
           "home": /images/ryan_home.jpg
           "not_home": /images/ryan_away.jpg
@@ -131,6 +131,8 @@ views:
           - zha.lumi_lumi_sensor_magnet_aq2_2
           - zha.zha_lumi_lumi_weather_02c9fa4a  
           - zha.lumi_lumi_sensor_smoke
+          - zha.sz_lamp_01
+          - zha.xbee_xbee_io
         state_filter: 
           - 'unavailable'
         card:
@@ -193,8 +195,8 @@ views:
               #     entity: camera.front_porch
               #     camera_image: camera.front_porch
       - type: picture-entity
-        name: Fozzy
-        entity: camera.fozzy
+        name: Porsche 
+        entity: camera.porsche
         camera_image: camera.fozzy
   - icon: mdi:power-plug
     title: Power

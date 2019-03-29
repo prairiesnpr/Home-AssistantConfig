@@ -5,8 +5,8 @@
     platform: time
   condition:
   - condition: state
-    entity_id: person.ryan 
-    state: not_home 
+    entity_id: person.ryan
+    state: not_home
   action:
   - data:
       entity_id:
@@ -19,7 +19,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -29,7 +29,7 @@
 - id: coffee_on_home
   alias: Turn on the Coffee Pot when home
   trigger:
-  - entity_id: person.ryan 
+  - entity_id: person.ryan
     platform: state
     to: not_home
   action:
@@ -40,7 +40,7 @@
 - id: coffee_off_away
   alias: Turn off the Coffee Pot when away
   trigger:
-  - entity_id: person.ryan 
+  - entity_id: person.ryan
     platform: state
     to: home
   action:
@@ -98,7 +98,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: home
   - condition: state
     entity_id: binary_sensor.workday
@@ -106,7 +106,7 @@
   action:
   - data:
       entity_id:
-      - light.bedroom_lights 
+      - light.bedroom_lights
     service: homeassistant.turn_on
 - id: Bed_Lght_Eve_Off
   alias: Turn off bedroom lights at night
@@ -115,7 +115,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: home
   action:
   - data:
@@ -125,7 +125,7 @@
 - id: Lights_off_away
   alias: Turn off all lights when away
   trigger:
-  - entity_id: person.ryan 
+  - entity_id: person.ryan
     platform: state
     to: not_home
   action:
@@ -136,7 +136,7 @@
 - id: greeting_come_home
   alias: Arrival Greeting
   trigger:
-  - entity_id: person.ryan 
+  - entity_id: person.ryan
     platform: state
     to: home
   action:
@@ -150,7 +150,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -167,7 +167,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -182,7 +182,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -198,7 +198,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -214,7 +214,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     state: not_home
   action:
   - data:
@@ -224,11 +224,11 @@
 - id: Skip_Door_Alert
   alias: Skip Door Alert
   trigger:
-  - platform: state
-    entity_id: binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
-    to: 'off'
+  - entity_id: binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
     for:
       seconds: 1
+    platform: state
+    to: 'off'
   condition:
   - condition: template
     value_template: '{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed))
@@ -236,10 +236,16 @@
 
       '
   action:
-    service: notify.pushbullet
-    data:
-      title: Scipio Alert
+  - data:
+      entity_id: camera.ukn_cam
+      filename: /home/homeassistant/.homeassistant/www/snapshots/ukn_cam.jpg
+    service: camera.snapshot
+  - data:
+      data:
+        file: /home/homeassistant/.homeassistant/www/snapshots/ukn_cam.jpg
       message: Scipio has left or arrived!
+      title: Scipio Alert
+    service: notify.pushbullet
 - id: dishwasher_leak_detect
   alias: Dishwasher Leak Detected
   trigger:
@@ -280,7 +286,7 @@
 - id: set_nest_away_when_away
   alias: Set Nest Away When Away
   trigger:
-  - entity_id: person.ryan 
+  - entity_id: person.ryan
     platform: state
     to: not_home
   action:
@@ -291,7 +297,7 @@
   alias: Set Nest to Home When Home
   trigger:
   - platform: state
-    entity_id: person.ryan 
+    entity_id: person.ryan
     to: home
   action:
     service: nest.set_away_mode
@@ -354,25 +360,24 @@
     entity_id: switch.zha_40c04e54_1_6
     to: 'on'
   action:
-    - service: camera.snapshot
+  - service: camera.snapshot
+    data:
+      entity_id: camera.front_porch
+      filename: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+  - service: notify.pushbullet
+    data:
       data:
-          entity_id: camera.front_porch
-          filename: '/home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg'
-    - service: notify.pushbullet 
-      data:
-        data:
-          file: '/home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg'
-        title: Front Door Alert
-        message: Front Door Bell was Rung
+        file: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+      title: Front Door Alert
+      message: Front Door Bell was Rung
 - id: smoke_alarm_kitchen
   alias: Smoke Alarm Kitchen
   trigger:
   - platform: state
-    entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280 
+    entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
     to: 'on'
   action:
     service: notify.pushbullet
     data:
       title: Smoke Alarm
       message: Smoke detected in the Kitchen!
-

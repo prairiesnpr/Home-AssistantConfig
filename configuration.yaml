@@ -218,8 +218,10 @@ switch:
   - platform: circadian_lighting
     lights_xy:
       - light.bedroom_lights
+      - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
     lights_brightness:
       - light.stairway_lights
+      - light.sunricher_zg9101sac_hp_106770a5_1
 fan:
   - platform: template
     fans:
@@ -242,4 +244,9 @@ camera:
     name: Front Porch (direct)
     still_image_url: !secret fp_cam_still_url
     stream_source: !secret fp_cam_rtsp
+  - platform: generic
+    name: Ukn (direct)
+    still_image_url: !secret uk_cam_still_url
+    stream_source: !secret uk_cam_rtsp
+   
 stream:

@@ -70,3 +70,31 @@ cast_fp_lv_tv:
       data:
         entity_id: camera.front_porch_direct
         media_player: media_player.pioneer_vsx_1131_ee67e7      
+red_alert:
+  alias: Red Alert 
+  sequence:
+    - alias: "Red Alert On"
+      service: light.turn_on
+      data:
+        entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11 
+        profile: red_alert_bright
+    - delay:
+        seconds: 1 
+    - alias: "Red Alert Off" 
+      service: light.turn_on
+      data:
+        entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11 
+        profile: red_alert_dim
+    - alias: loop_red_alert
+      service: script.turn_on
+      data:
+        entity_id: script.red_alert_loop
+red_alert_loop:
+  alias: Red Alert Loop 
+  sequence:
+    - delay:
+        seconds: 0.5
+    - alias: loop_red_alert
+      service: script.turn_on
+      data:
+        entity_id: script.red_alert

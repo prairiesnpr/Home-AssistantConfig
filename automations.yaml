@@ -63,21 +63,19 @@
 - id: '1546826459762'
   alias: Garage Toggle Off
   trigger:
-  - platform: state
-    entity_id: switch.xbee_xbee_io_4193fedf_209_6
-    for: 00:00:01
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
     from: 'on'
+    platform: state
     to: 'off'
-  - platform: state
-    entity_id: switch.xbee_xbee_io_4193fedf_210_6
-    for: 00:00:01
+  - entity_id: switch.xbee_xbee_io_4193fedf_210_6
     from: 'off'
+    platform: state
     to: 'on'
   action:
-    service: switch.turn_off
-    data:
+  - data:
       entity_id:
       - switch.xbee_xbee_io_4193fedf_210_6
+    service: switch.turn_off
 - id: Garage_Ope_Alert
   alias: Garage Open Alert
   trigger:
@@ -381,3 +379,84 @@
     data:
       title: Smoke Alarm
       message: Smoke detected in the Kitchen!
+- id: xbox_set_lights
+  alias: Set Lights on Netflix or Bluray
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Netflix
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Blu-ray Player
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_off
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      profile: movie_red
+    service: light.turn_on
+- id: xbox_return_lights
+  alias: Return Lights to Normal Xbox
+  trigger:
+  - entity_id: sensor.xbox_source
+    from: Netflix
+    platform: state
+  - entity_id: sensor.xbox_source
+    from: Blu-ray Player
+    platform: state
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_on
+- id: water_heater_emerg
+  alias: Water Heater Emergency Heat
+  trigger:
+  - entity_id: sensor.zha_40c04dcb_2_1026
+    below: 45
+    platform: numeric_state
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on
+- id: set_wh_off_when_away
+  alias: Set Water Heater off When Away
+  trigger:
+  - entity_id: person.ryan
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_off
+- id: set_wh_on_when_home
+  alias: Set Water Heater on When Home
+  trigger:
+  - platform: state
+    entity_id: person.ryan
+    to: home
+  condition:
+  - condition: time
+    before: '22:00:00'
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on
+- id: set_wh_off_at_night
+  alias: Set Water Heater off at night
+  trigger:
+  - platform: time 
+    at: '22:00:00' 
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_off
+- id: set_wh_on_in_morn
+  alias: Set Water Heater on in the Morning
+  trigger:
+  - platform: time
+    at: '05:00:00' 
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on

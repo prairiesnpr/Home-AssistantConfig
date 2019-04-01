@@ -56,7 +56,15 @@ sensor:
     username: !secret ups_uid
     password: !secret ups_pwd
   - platform: zoneminder
-
+  - platform: template 
+    sensors:
+      xbox_source: 
+        value_template: '{{ states.media_player.xbox_one.attributes["source"] }}'
+        friendly_name: 'Xbox Source'
+      water_heater_time_to_temp:
+        value_template: "{{((((333.2*(112.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}}"
+        friendly_name: 'Water Heater: Time to Temp'
+        unit_of_measurement: 'Min'
 binary_sensor:
   - platform: workday
     country: US 
@@ -184,6 +192,9 @@ history:
       - sensor.lumi_lumi_weather_02c9fa4a_1_1029
       - sensor.zha_40c04e54_2_1029
       - sensor.lumi_lumi_weather_02c9fa4a_1_1027
+      - sensor.zha_40c04dcb_2_1026
+      - sensor.zha_40c04dcb_3_1026
+      - switch.zha_40c04dcb_1_6
 
 recorder:
   purge_keep_days: 5
@@ -205,7 +216,9 @@ recorder:
       - sensor.lumi_lumi_weather_02c9fa4a_1_1029
       - sensor.zha_40c04e54_2_1029
       - sensor.lumi_lumi_weather_02c9fa4a_1_1027
-
+      - switch.zha_40c04dcb_1_6
+      - sensor.zha_40c04dcb_2_1026
+      - sensor.zha_40c04dcb_3_1026
 
 notify:
   - name: pushbullet

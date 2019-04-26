@@ -15,6 +15,8 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  extra_html_url:
+    - /local/hass-bha-icons.html
 
 # Enables configuration UI
 config:
@@ -44,6 +46,16 @@ sun:
 
 # Sensors
 sensor:
+  - platform: mqtt_room
+    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
+    name: Dumpster
+    state_topic: room_presence
+    away_timeout: 30
+  - platform: mqtt_room
+    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-39839"
+    name: F150
+    state_topic: room_presence
+    away_timeout: 30
   - platform: plex
     host: !secret plex_ip
     name: Son of Joel (Plex)
@@ -62,7 +74,12 @@ sensor:
         value_template: '{{ states.media_player.xbox_one.attributes["source"] }}'
         friendly_name: 'Xbox Source'
       water_heater_time_to_temp:
-        value_template: "{{((((333.2*(112.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}}"
+        value_template: >-
+          {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
+             0
+          {% else %}
+             {{((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}} 
+          {% endif %}
         friendly_name: 'Water Heater: Time to Temp'
         unit_of_measurement: 'Min'
 binary_sensor:
@@ -108,6 +125,8 @@ media_player:
       aux: 'AUX'
     name: receiver
   - platform: gstreamer
+  - platform: samsungtv
+    host: 10.10.1.140
   - platform: plex
   - platform: xboxone
     device: FD00472764D4AE81
@@ -231,7 +250,10 @@ switch:
   - platform: circadian_lighting
     lights_xy:
       - light.bedroom_lights
+      - light.osram_lightify_a19_rgbw_00a434be_3
       - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      - light.osram_lightify_a19_rgbw_00a69e14_3
+      - light.osram_lightify_a19_rgbw_00a5deb3_3
     lights_brightness:
       - light.stairway_lights
       - light.sunricher_zg9101sac_hp_106770a5_1
@@ -259,7 +281,17 @@ camera:
     stream_source: !secret fp_cam_rtsp
   - platform: generic
     name: Ukn (direct)
+    username: !secret zm_uid
+    password: !secret zm_pwd
+    authentication: digest
     still_image_url: !secret uk_cam_still_url
     stream_source: !secret uk_cam_rtsp
    
 stream:
+
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml

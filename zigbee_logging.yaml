@@ -1,6 +1,6 @@
 #homeassistant.components.zha: debug                                         
 #homeassistant.components.switch: debug                                     
-# zigpy_xbee: debug                                                           
+  zigpy_xbee: debug                                                           
   # zigpy_xbee.zigbee.application: debug                                        
   # zigpy_xbee.api: debug                                                       
   #  zigpy_xbee.uart: debug                                                      

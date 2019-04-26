@@ -1,5 +1,5 @@
 binary_sensor.wiebelo_away:
-  device_class: power
+  device_class: occupancy
 binary_sensor.button:
   hidden: true
 binary_sensor.workday:
@@ -97,6 +97,7 @@ binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280:
   device_class: moisture
 binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280:
   device_class: smoke
+  icon: bha:smoke-detector
 binary_sensor.zha_02b7eb7f_1_1280:
   device_class: motion
 light.sz_lamp_01_1baff16c_11:
@@ -110,3 +111,40 @@ sensor.zha_40c04dcb_1_1794:
   friendly_name: Apparent Power
 sensor.water_heater_time_to_temp:
   icon: mdi:camera-timer
+zha.isilentllc_door_1:
+  friendly_name: iSilentLLC Door Control
+switch.isilentllc_door_1_41940020_1_6:
+  icon: mdi:garage
+light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11:
+  icon: bha:led-strip
+light.bedroom_lights:
+  icon: mdi:lamp
+light.sunricher_zg9101sac_hp_106770a5_1:
+  icon: bha:light-string
+zha.ledvance_plug:
+  friendly_name: Coffee Pot
+switch.ledvance_plug_00054922_1:
+  friendly_name: Coffee Pot
+  icon: mdi:coffee
+binary_sensor.10_10_1_129_8084:
+  friendly_name: ZoneMinder Up
+light.stairway_lights:
+  icon: mdi:wall-sconce
+light.osram_lightify_a19_rgbw_00a434be_3:
+  friendly_name: Office Lamp
+  icon: bha:floor-lamp
+sensor.xbox_source:
+  icon: mdi:xbox
+light.master_bedroom_lights:
+  icon: bha:ceiling-lamp-round
+binary_sensor.lumi_lumi_sensor_magnet_aq2_0232b267_1_6:
+  device_class: door
+binary_sensor.zha_02c39915_1_6:
+  device_class: door
+  friendly_name: Mstr Closet
+sensor.son_of_joel_plex:
+  icon: mdi:plex
+sensor.dumpster:
+  icon: mdi:trash-can
+sensor.f150:
+  icon: mdi:car-pickup

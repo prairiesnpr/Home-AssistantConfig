@@ -6,11 +6,11 @@
   condition:
   - condition: state
     entity_id: person.ryan
-    state: not_home
+    state: home
   action:
   - data:
       entity_id:
-      - switch.iris_alertme_025b8357_2_238
+      - switch.ledvance_plug_00054922_1
     service: switch.turn_on
 - id: coffee_off_night
   alias: Turn off the Coffee Pot at night
@@ -20,25 +20,14 @@
   condition:
   - condition: state
     entity_id: person.ryan
-    state: not_home
+    state: home
   action:
   - data:
       entity_id:
-      - switch.iris_alertme_025b8357_2_238
+      - switch.ledvance_plug_00054922_1
     service: switch.turn_off
 - id: coffee_on_home
   alias: Turn on the Coffee Pot when home
-  trigger:
-  - entity_id: person.ryan
-    platform: state
-    to: not_home
-  action:
-  - data:
-      entity_id:
-      - switch.iris_alertme_025b8357_2_238
-    service: switch.turn_on
-- id: coffee_off_away
-  alias: Turn off the Coffee Pot when away
   trigger:
   - entity_id: person.ryan
     platform: state
@@ -46,7 +35,18 @@
   action:
   - data:
       entity_id:
-      - switch.iris_alertme_025b8357_2_238
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_off_away
+  alias: Turn off the Coffee Pot when away
+  trigger:
+  - entity_id: person.ryan
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
     service: switch.turn_off
 - id: '1546826068070'
   alias: Garage Toggle On
@@ -92,14 +92,14 @@
 - id: Bed_Lght_Morn_On
   alias: Turn on bedroom lights in the morning
   trigger:
-  - at: 05:30:00
+  - at: 06:15:00
     platform: time
   condition:
   - condition: state
     entity_id: person.ryan
     state: home
   - condition: state
-    entity_id: binary_sensor.workday
+    entity_id: binary_sensor.workday_sensor
     state: 'on'
   action:
   - data:
@@ -233,6 +233,9 @@
       > 5 }}
 
       '
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
   action:
   - data:
       entity_id: camera.ukn_cam
@@ -388,6 +391,9 @@
   - entity_id: sensor.xbox_source
     platform: state
     to: Blu-ray Player
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Plex For Xbox One
   action:
   - data:
       entity_id: switch.circadian_lighting_circadian_lighting
@@ -404,6 +410,9 @@
     platform: state
   - entity_id: sensor.xbox_source
     from: Blu-ray Player
+    platform: state
+  - entity_id: sensor.xbox_source
+    from: Plex For Xbox One
     platform: state
   action:
   - data:
@@ -445,8 +454,8 @@
 - id: set_wh_off_at_night
   alias: Set Water Heater off at night
   trigger:
-  - platform: time 
-    at: '22:00:00' 
+  - platform: time
+    at: '22:00:00'
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -454,9 +463,77 @@
 - id: set_wh_on_in_morn
   alias: Set Water Heater on in the Morning
   trigger:
-  - platform: time
-    at: '05:00:00' 
+  - at: 05:00:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
     service: switch.turn_on
+- id: closet_on_open
+  alias: Turn On Mstr Bedroom Closet Lights
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zha_02c39915_1_6
+    to: 'on'
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lights
+- id: closet_on_open
+  alias: Turn On Mstr Bedroom Closet Lights
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zha_02c39915_1_6
+    to: 'off'
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lights
+- id: dumpster_inside 
+  alias: Set Dumpster Outside
+  trigger:
+    - platform: time
+      at: '08:00:00'
+    - platform: state
+      entity_id: switch.xbee_xbee_io_4193fedf_209_6
+      to: 'on'
+  condition:
+    - condition: time
+      before: '09:30:00'
+      after: '06:30:00'
+      weekday:
+        - fri
+    - condition: state
+      entity_id: sensor.dumpster
+      state: 'garage'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Take Dumpster Outside
+      message: It's trash day and the dumpster is still inside the garage.
+- id: dumpster_outside 
+  alias: Bring Dumpster In
+  trigger:
+    - platform: time
+      at: '11:00:00'
+    - platform: state
+      entity_id: switch.xbee_xbee_io_4193fedf_209_6
+      to: 'on'
+  condition:
+    - condition: time
+      after: '10:30:00'
+      weekday:
+        - fri
+    - condition: state
+      entity_id: sensor.dumpster
+      state: 'not_home'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Bring Dumpster Inside
+      message: The dumpster is still outside, please bring back in.
+

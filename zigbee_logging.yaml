@@ -13,4 +13,4 @@
 #zigpy.appdb: debug                                                          
 #zigpy.zdo: debug                                                            
 #zigpy.zcl: debug                                                           
-#  zha_quirks: debug  
+  zha_quirks: debug  

@@ -4,9 +4,14 @@
   - at: 06:15:00
     platform: time
   condition:
-  - condition: state
-    entity_id: person.ryan
-    state: home
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: person.ryan
+        state: home
+      - condition: state
+        entity_id: person.jeanette
+        state: home
   action:
   - data:
       entity_id:
@@ -18,9 +23,14 @@
   - at: '20:00:00'
     platform: time
   condition:
-  - condition: state
-    entity_id: person.ryan
-    state: home
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: person.ryan
+        state: home
+      - condition: state
+        entity_id: person.jeanette
+        state: home
   action:
   - data:
       entity_id:
@@ -30,6 +40,9 @@
   alias: Turn on the Coffee Pot when home
   trigger:
   - entity_id: person.ryan
+    platform: state
+    to: home
+  - entity_id: person.jeanette
     platform: state
     to: home
   action:
@@ -43,6 +56,16 @@
   - entity_id: person.ryan
     platform: state
     to: not_home
+  - entity_id: person.jeanette
+    platform: state
+    to: not_home
+  condition:
+    - condition: state
+      entity_id: person.ryan
+      state: not_home
+    - condition: state
+      entity_id: person.jeanette
+      state: not_home
   action:
   - data:
       entity_id:
@@ -95,12 +118,12 @@
   - at: 06:15:00
     platform: time
   condition:
-  - condition: state
-    entity_id: person.ryan
-    state: home
-  - condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: 'on'
+    - condition: state
+      entity_id: person.ryan
+      state: home
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
   action:
   - data:
       entity_id:
@@ -126,6 +149,16 @@
   - entity_id: person.ryan
     platform: state
     to: not_home
+  - entity_id: person.jeanette
+    platform: state
+    to: not_home
+  condition:
+    - condition: state
+      entity_id: person.ryan
+      state: not_home
+    - condition: state
+      entity_id: person.jeanette
+      state: not_home
   action:
   - data:
       entity_id:
@@ -137,6 +170,10 @@
   - entity_id: person.ryan
     platform: state
     to: home
+  condition:
+    - condition: state
+      entity_id: person.jeanette
+      state: not_home
   action:
   - entity_id: script.arrival
     service: homeassistant.turn_on
@@ -150,10 +187,33 @@
   - condition: state
     entity_id: person.ryan
     state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       message: The front door was opened.
       title: Front Door Opened
+    service: notify.pushbullet
+  - entity_id: script.intruder
+    service: homeassistant.turn_on
+- id: Intruder_Alarm
+  alias: Intruder Alarm
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
+  action:
+  - data:
+      message: Alarm activated!
+      title: Alarm Activated
     service: notify.pushbullet
   - entity_id: script.intruder
     service: homeassistant.turn_on
@@ -166,6 +226,9 @@
   condition:
   - condition: state
     entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
     state: not_home
   action:
   - data:
@@ -181,6 +244,9 @@
   condition:
   - condition: state
     entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
     state: not_home
   action:
   - data:
@@ -198,6 +264,9 @@
   - condition: state
     entity_id: person.ryan
     state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       message: The kitchen to garage door was opened.
@@ -213,6 +282,9 @@
   condition:
   - condition: state
     entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
     state: not_home
   action:
   - data:
@@ -235,6 +307,9 @@
       '
   - condition: state
     entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
     state: not_home
   action:
   - data:
@@ -290,6 +365,16 @@
   - entity_id: person.ryan
     platform: state
     to: not_home
+  - entity_id: person.jeanette
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       away_mode: away
@@ -299,6 +384,9 @@
   trigger:
   - platform: state
     entity_id: person.ryan
+    to: home
+  - platform: state
+    entity_id: person.jeanette
     to: home
   action:
     service: nest.set_away_mode
@@ -434,6 +522,16 @@
   - entity_id: person.ryan
     platform: state
     to: not_home
+  - entity_id: person.jeanette
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -443,6 +541,9 @@
   trigger:
   - platform: state
     entity_id: person.ryan
+    to: home
+  - platform: state
+    entity_id: person.jeanette
     to: home
   condition:
   - condition: time
@@ -466,9 +567,14 @@
   - at: 05:00:00
     platform: time
   condition:
-  - condition: state
-    entity_id: person.ryan
-    state: home
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: person.ryan
+        state: home
+      - condition: state
+        entity_id: person.jeanette
+        state: home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -493,47 +599,46 @@
     service: light.turn_off
     data:
       entity_id: light.master_bedroom_lights
-- id: dumpster_inside 
+- id: dumpster_inside
   alias: Set Dumpster Outside
   trigger:
-    - platform: time
-      at: '08:00:00'
-    - platform: state
-      entity_id: switch.xbee_xbee_io_4193fedf_209_6
-      to: 'on'
+  - at: 08:00:00
+    platform: time
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    platform: state
+    to: 'on'
   condition:
-    - condition: time
-      before: '09:30:00'
-      after: '06:30:00'
-      weekday:
-        - fri
-    - condition: state
-      entity_id: sensor.dumpster
-      state: 'garage'
+  - after: 02:30:00
+    before: 09:30:00
+    condition: time
+    weekday:
+    - fri
+  - condition: state
+    entity_id: sensor.dumpster
+    state: garage
   action:
-    service: notify.pushbullet
-    data:
-      title: Take Dumpster Outside
+  - data:
       message: It's trash day and the dumpster is still inside the garage.
-- id: dumpster_outside 
+      title: Take Dumpster Outside
+    service: notify.pushbullet
+- id: dumpster_outside
   alias: Bring Dumpster In
   trigger:
-    - platform: time
-      at: '11:00:00'
-    - platform: state
-      entity_id: switch.xbee_xbee_io_4193fedf_209_6
-      to: 'on'
+  - at: '11:00:00'
+    platform: time
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    platform: state
+    to: 'on'
   condition:
-    - condition: time
-      after: '10:30:00'
-      weekday:
-        - fri
-    - condition: state
-      entity_id: sensor.dumpster
-      state: 'not_home'
+  - after: '10:30:00'
+    condition: time
+    weekday:
+    - fri
+  - condition: state
+    entity_id: sensor.dumpster
+    state: not_home
   action:
-    service: notify.pushbullet
-    data:
+  - data:
+      message: The dumpster is still outside, please bring it back inside.
       title: Bring Dumpster Inside
-      message: The dumpster is still outside, please bring back in.
-
+    service: notify.pushbullet

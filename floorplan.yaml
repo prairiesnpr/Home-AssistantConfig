@@ -23,6 +23,7 @@
         - name: Cars
           entities:
              - sensor.f150
+             - sensor.porsche
           states:
              - state: 'garage'
                class: 'car_home'

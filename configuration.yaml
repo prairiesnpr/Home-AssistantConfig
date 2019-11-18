@@ -21,6 +21,8 @@ frontend:
 # Enables configuration UI
 config:
 
+ios:
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: https://ha.prairiesnpr.com
@@ -56,17 +58,16 @@ sensor:
     name: F150
     state_topic: room_presence
     away_timeout: 30
+  - platform: mqtt_room
+    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-31494"
+    name: Porsche 
+    state_topic: room_presence
+    away_timeout: 30
   - platform: plex
     host: !secret plex_ip
     name: Son of Joel (Plex)
     token: !secret plex_token 
     port: 32400
-    #  - platform: fedex
-    #username: !secret fedex_uid
-    #password: !secret fedex_pwd
-  - platform: ups
-    username: !secret ups_uid
-    password: !secret ups_pwd
   - platform: zoneminder
   - platform: template 
     sensors:
@@ -92,11 +93,6 @@ binary_sensor:
      door:
       device_class: garage_door
       value_template: "{{ is_state('switch.xbee_xbee_io_4193fedf_211_6', 'on') }}"
-    #usps:
-    #username: !secret usps_uid
-    #password: !secret usps_pwd
-    #driver: phantomjs
-   
 tts:
   - platform: microsoft
     api_key: !secret msft_tts_key 
@@ -193,13 +189,13 @@ script: !include scripts.yaml
 
 device_tracker:
   - platform: bluetooth_tracker
-  - platform: unifi
-    host: !secret unifi_host
-    username: !secret unifi_uid
-    password: !secret unifi_pwd
-    verify_ssl: false
-    ssid_filter:
-      - 'PrairieSnpr'
+    #  - platform: unifi
+    #host: !secret unifi_host
+    #username: !secret unifi_uid
+    #password: !secret unifi_pwd
+    #verify_ssl: false
+    #ssid_filter:
+    #  - 'PrairieSnpr'
 
 history:
   include:

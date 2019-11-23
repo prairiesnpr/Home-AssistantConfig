@@ -6,12 +6,12 @@
   condition:
     condition: or
     conditions:
-      - condition: state
-        entity_id: person.ryan
-        state: home
-      - condition: state
-        entity_id: person.jeanette
-        state: home
+    - condition: state
+      entity_id: person.ryan
+      state: home
+    - condition: state
+      entity_id: person.jeanette
+      state: home
   action:
   - data:
       entity_id:
@@ -25,12 +25,12 @@
   condition:
     condition: or
     conditions:
-      - condition: state
-        entity_id: person.ryan
-        state: home
-      - condition: state
-        entity_id: person.jeanette
-        state: home
+    - condition: state
+      entity_id: person.ryan
+      state: home
+    - condition: state
+      entity_id: person.jeanette
+      state: home
   action:
   - data:
       entity_id:
@@ -60,12 +60,12 @@
     platform: state
     to: not_home
   condition:
-    - condition: state
-      entity_id: person.ryan
-      state: not_home
-    - condition: state
-      entity_id: person.jeanette
-      state: not_home
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       entity_id:
@@ -118,12 +118,12 @@
   - at: 06:15:00
     platform: time
   condition:
-    - condition: state
-      entity_id: person.ryan
-      state: home
-    - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'on'
+  - condition: state
+    entity_id: person.ryan
+    state: home
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
   action:
   - data:
       entity_id:
@@ -153,12 +153,12 @@
     platform: state
     to: not_home
   condition:
-    - condition: state
-      entity_id: person.ryan
-      state: not_home
-    - condition: state
-      entity_id: person.jeanette
-      state: not_home
+  - condition: state
+    entity_id: person.ryan
+    state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - data:
       entity_id:
@@ -171,9 +171,9 @@
     platform: state
     to: home
   condition:
-    - condition: state
-      entity_id: person.jeanette
-      state: not_home
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
   action:
   - entity_id: script.arrival
     service: homeassistant.turn_on
@@ -347,18 +347,21 @@
 - id: turn_stair_lights_on_if_door_open_night
   alias: Turn on Stair Lights if Door Opened at Night
   trigger:
-  - platform: state
-    entity_id: binary_sensor.zha_02e2146c_1_6
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
     to: 'on'
   condition:
+  - after: sunset
+    after_offset: 00:45:00
+    condition: sun
   - condition: state
-    entity_id: sun.sun
-    state: below_horizon
+    entity_id: light.stairway_lights
+    state: 'off'
   action:
-    service: light.turn_on
-    data:
-      entity_id: light.stairway_lights
+  - data:
       brightness: 50
+      entity_id: light.stairway_lights
+    service: light.turn_on
 - id: set_nest_away_when_away
   alias: Set Nest Away When Away
   trigger:
@@ -569,12 +572,12 @@
   condition:
     condition: or
     conditions:
-      - condition: state
-        entity_id: person.ryan
-        state: home
-      - condition: state
-        entity_id: person.jeanette
-        state: home
+    - condition: state
+      entity_id: person.ryan
+      state: home
+    - condition: state
+      entity_id: person.jeanette
+      state: home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -642,3 +645,41 @@
       message: The dumpster is still outside, please bring it back inside.
       title: Bring Dumpster Inside
     service: notify.pushbullet
+- id: '1574467185968'
+  alias: Porch Lights on at Dusk
+  description: ''
+  trigger:
+  - event: sunset
+    offset: 00:45:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: light.jasco_products_45856_61d32600_1
+    service: light.turn_on
+- id: '1574467388406'
+  alias: Porch Lights Off
+  description: ''
+  trigger:
+  - at: 00:22:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.jasco_products_45856_61d32600_1
+    service: light.turn_off
+- id: '1574468834273'
+  alias: Porch Light on if Front Door Opened
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - after: sunset
+    after_offset: 00:45:00
+    condition: sun
+  action:
+  - data:
+      entity_id: light.jasco_products_45856_61d32600_1
+    service: homeassistant.turn_on

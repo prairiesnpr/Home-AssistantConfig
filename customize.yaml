@@ -152,3 +152,5 @@ sensor.porsche:
   icon: mdi:car-sports
 switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6:
   icon: mdi:lightbulb
+sensor.sengled_e11_n1ea_00038574_1_1794:
+  unit_of_measurement: kW

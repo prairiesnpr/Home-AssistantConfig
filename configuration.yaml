@@ -285,6 +285,10 @@ camera:
    
 stream:
 
+upnp:
+  sensors: true
+  local_ip: !secret local_ip 
+
 panel_custom:
   - name: floorplan
     sidebar_title: Floorplan

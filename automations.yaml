@@ -1,33 +1,42 @@
-- id: coffee_on_morn
-  alias: Turn on Coffee Pot in the morning
+- id: coffee_on_morn_ryan
+  alias: Turn on Coffee Pot in the morning (Ryan)
   trigger:
   - at: 06:15:00
     platform: time
   condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: person.ryan
-      state: home
-    - condition: state
-      entity_id: person.jeanette
-      state: home
+  - condition: state
+    entity_id: person.ryan
+    state: home
   action:
   - data:
       entity_id:
       - switch.ledvance_plug_00054922_1
     service: switch.turn_on
-- id: coffee_off_night
-  alias: Turn off the Coffee Pot at night
+- id: coffee_on_morn
+  alias: Turn on Coffee Pot in the morning (Jeanette)
   trigger:
-  - at: '20:00:00'
+  - at: 07:30:00
     platform: time
   condition:
-    condition: or
+  - condition: state
+    entity_id: person.jeanette
+    state: home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_off_jeanette_only
+  alias: Turn off the Coffee Pot off if Jeanette is home alone
+  trigger:
+  - at: '14:00:00'
+    platform: time
+  condition:
+    condition: and
     conditions:
     - condition: state
       entity_id: person.ryan
-      state: home
+      state: not_home
     - condition: state
       entity_id: person.jeanette
       state: home
@@ -36,15 +45,46 @@
       entity_id:
       - switch.ledvance_plug_00054922_1
     service: switch.turn_off
-- id: coffee_on_home
-  alias: Turn on the Coffee Pot when home
+- id: coffee_off_night
+  alias: Turn off the Coffee Pot at night
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_off
+- id: coffee_on_home_jeanette
+  alias: Turn on the Coffee Pot when home (Jeanette)
+  trigger:
+  - entity_id: person.jeanette
+    platform: state
+    to: home
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: person.ryan
+      state: not_home
+    - condition: time
+      after: 07:00:00
+      before: '14:00:00'
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_on_home_ryan
+  alias: Turn on the Coffee Pot when home (Ryan)
   trigger:
   - entity_id: person.ryan
     platform: state
     to: home
-  - entity_id: person.jeanette
-    platform: state
-    to: home
+  condition:
+  - condition: time
+    after: 06:15:00
+    before: '20:00:00'
   action:
   - data:
       entity_id:
@@ -53,19 +93,9 @@
 - id: coffee_off_away
   alias: Turn off the Coffee Pot when away
   trigger:
-  - entity_id: person.ryan
+  - entity_id: group.home_owners
     platform: state
     to: not_home
-  - entity_id: person.jeanette
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
-    state: not_home
   action:
   - data:
       entity_id:
@@ -146,19 +176,11 @@
 - id: Lights_off_away
   alias: Turn off all lights when away
   trigger:
-  - entity_id: person.ryan
+  - entity_id: group.home_owners
     platform: state
     to: not_home
-  - entity_id: person.jeanette
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
-    state: not_home
+    for:
+      minutes: 5
   action:
   - data:
       entity_id:
@@ -185,10 +207,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -205,10 +224,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -225,10 +241,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -243,10 +256,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -262,10 +272,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -281,10 +288,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -306,10 +310,7 @@
 
       '
   - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     state: not_home
   action:
   - data:
@@ -365,19 +366,9 @@
 - id: set_nest_away_when_away
   alias: Set Nest Away When Away
   trigger:
-  - entity_id: person.ryan
+  - entity_id: group.home_owners
     platform: state
     to: not_home
-  - entity_id: person.jeanette
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
-    state: not_home
   action:
   - data:
       away_mode: away
@@ -386,10 +377,7 @@
   alias: Set Nest to Home When Home
   trigger:
   - platform: state
-    entity_id: person.ryan
-    to: home
-  - platform: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     to: home
   action:
     service: nest.set_away_mode
@@ -522,19 +510,9 @@
 - id: set_wh_off_when_away
   alias: Set Water Heater off When Away
   trigger:
-  - entity_id: person.ryan
+  - entity_id: group.home_owners
     platform: state
     to: not_home
-  - entity_id: person.jeanette
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: person.ryan
-    state: not_home
-  - condition: state
-    entity_id: person.jeanette
-    state: not_home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -543,14 +521,12 @@
   alias: Set Water Heater on When Home
   trigger:
   - platform: state
-    entity_id: person.ryan
-    to: home
-  - platform: state
-    entity_id: person.jeanette
+    entity_id: group.home_owners
     to: home
   condition:
   - condition: time
     before: '22:00:00'
+    after: 05:00:00
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -570,14 +546,9 @@
   - at: 05:00:00
     platform: time
   condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: person.ryan
-      state: home
-    - condition: state
-      entity_id: person.jeanette
-      state: home
+  - condition: state
+    entity_id: group.home_owners
+    state: home
   action:
   - data:
       entity_id: switch.zha_40c04dcb_1_6
@@ -646,23 +617,27 @@
       title: Bring Dumpster Inside
     service: notify.pushbullet
 - id: '1574467185968'
-  alias: Porch Lights on at Dusk
+  alias: Porch Lights on at Dusk/Dawn
   description: ''
   trigger:
-  - event: sunset
-    offset: 00:45:00
-    platform: sun
-  condition: []
+  - below: '-4'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
   action:
   - data:
       entity_id: light.jasco_products_45856_61d32600_1
     service: light.turn_on
 - id: '1574467388406'
   alias: Porch Lights Off
-  description: ''
+  description: At 2200 or more than 1.5 deg above the horizon
   trigger:
-  - at: 00:22:00
+  - at: '22:00:00'
     platform: time
+  - above: '1.5'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '"{{ state_attr(''sun.sun'', ''elevation'') }}"'
   condition: []
   action:
   - data:
@@ -676,9 +651,10 @@
     platform: state
     to: 'on'
   condition:
-  - after: sunset
-    after_offset: 00:45:00
-    condition: sun
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -4.0
   action:
   - data:
       entity_id: light.jasco_products_45856_61d32600_1

@@ -1,0 +1,5 @@
+home_owners:
+  name: Home Owners
+  entities:
+    - person.ryan
+    - person.jeanette

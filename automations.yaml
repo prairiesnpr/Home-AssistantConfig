@@ -352,9 +352,10 @@
     platform: state
     to: 'on'
   condition:
-  - after: sunset
-    after_offset: 00:45:00
-    condition: sun
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -4.0
   - condition: state
     entity_id: light.stairway_lights
     state: 'off'
@@ -637,7 +638,7 @@
   - above: '1.5'
     entity_id: sun.sun
     platform: numeric_state
-    value_template: '"{{ state_attr(''sun.sun'', ''elevation'') }}"'
+    value_template: '{{ state.attributes.elevation }}'
   condition: []
   action:
   - data:

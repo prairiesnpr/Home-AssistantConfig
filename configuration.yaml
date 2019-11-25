@@ -8,10 +8,10 @@ homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - '/home/homeassistant/.homeassistant/www/snapshots'
-  auth_providers:
-    - type: homeassistant
-    - type: legacy_api_password
-      api_password: !secret http_api_pwd
+      #auth_providers:
+      # - type: homeassistant
+      #- type: legacy_api_password
+      # api_password: !secret http_api_pwd
 
 # Enables the frontend
 frontend:

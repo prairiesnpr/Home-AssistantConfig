@@ -263,13 +263,13 @@ fan:
     fans:
       upstairs_hvac_fan:
         friendly_name: "Upstairs HVAC Blower"
-        value_template: "{{ states('light.sz_lamp_01_1baff16c_11') }}"
+        value_template: "{{ states('light.jasco_products_45856_00db2500_1') }}"
         turn_on:
           service: homeassistant.turn_on
-          entity_id: light.sz_lamp_01_1baff16c_11 
+          entity_id: light.jasco_products_45856_00db2500_1 
         turn_off:
           service: homeassistant.turn_off
-          entity_id: light.sz_lamp_01_1baff16c_11 
+          entity_id: light.jasco_products_45856_00db2500_1
 zoneminder:
  - host: !secret zm_host 
    username: !secret zm_uid

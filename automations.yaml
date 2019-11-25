@@ -396,7 +396,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.sz_lamp_01_1baff16c_11
+      entity_id: light.jasco_products_45856_00db2500_1
 - id: turn_circ_fan_off_when_hvac_off
   alias: Turn Circulation Fan off With HVAC
   trigger:
@@ -416,7 +416,7 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.sz_lamp_01_1baff16c_11
+      entity_id: light.jasco_products_45856_00db2500_1
 - id: woodpecker_alarm
   alias: Alert on Woodpecker Pecking
   trigger:
@@ -621,11 +621,13 @@
   alias: Porch Lights on at Dusk/Dawn
   description: ''
   trigger:
-  - below: '-4'
+  - above: '-65'
+    below: '-4'
     entity_id: sun.sun
     platform: numeric_state
     value_template: '{{ state.attributes.elevation }}'
   - above: '-12'
+    below: '-4'
     entity_id: sun.sun
     platform: numeric_state
     value_template: '{{ state.attributes.elevation }}'

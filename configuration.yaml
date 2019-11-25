@@ -210,6 +210,9 @@ history:
       - sensor.zha_40c04dcb_2_1026
       - sensor.zha_40c04dcb_3_1026
       - switch.zha_40c04dcb_1_6
+      - person.ryan
+      - person.jeanette
+      - switch.ledvance_plug_00054922_1
 
 recorder:
   purge_keep_days: 5
@@ -234,7 +237,9 @@ recorder:
       - switch.zha_40c04dcb_1_6
       - sensor.zha_40c04dcb_2_1026
       - sensor.zha_40c04dcb_3_1026
-
+      - person.ryan
+      - person.jeanette
+      - switch.ledvance_plug_00054922_1
 notify:
   - name: pushbullet
     platform: pushbullet

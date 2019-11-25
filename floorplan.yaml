@@ -32,8 +32,8 @@
         - name: Lights
           entities:
              - light.osram_lightify_a19_rgbw_00a434be_3
-             - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
              - light.stairway_lights
+             - light.jasco_products_45856_61d32600_1
           states:
              - state: 'on'
                class: 'light-on'
@@ -71,9 +71,7 @@
         - name: Doors Open CntrClockwise
           entities:
             - binary_sensor.zha_02ec0d9e_1_6
-            #- binary_sensor.zha_02bfefd9_1_6
             - binary_sensor.zha_02bfe504_1_6 
-              #- switch.xbee_xbee_io_4193fedf_211_6
           states:
             - state: 'off'
               class: 'door_closed_cc'

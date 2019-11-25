@@ -625,6 +625,14 @@
     entity_id: sun.sun
     platform: numeric_state
     value_template: '{{ state.attributes.elevation }}'
+  - above: '-12'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition:
+  - condition: state
+    entity_id: light.jasco_products_45856_61d32600_1
+    state: 'off'
   action:
   - data:
       entity_id: light.jasco_products_45856_61d32600_1

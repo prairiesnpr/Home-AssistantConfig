@@ -154,3 +154,5 @@ switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6:
   icon: mdi:lightbulb
 sensor.sengled_e11_n1ea_00038574_1_1794:
   unit_of_measurement: kW
+binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6:
+  device_class: door

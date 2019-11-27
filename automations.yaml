@@ -298,7 +298,7 @@
 - id: Skip_Door_Alert
   alias: Skip Door Alert
   trigger:
-  - entity_id: binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1
+  - entity_id: binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6
     for:
       seconds: 1
     platform: state

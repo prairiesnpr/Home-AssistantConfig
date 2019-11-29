@@ -1,100 +1,100 @@
 arrival:
   alias: Arrival Music
   sequence:
-    - service: homeassistant.turn_on
-      data:
-        entity_id: script.tts_setup
-    - delay: '00:00:10'
-    - service: tts.microsoft_say
-      data:
-        entity_id: media_player.gstreamer
-        message: 'New user detected, Welcome home master Ryan'
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.receiver
-        volume_level: .55
-    - service: media_player.play_media
-      data:
-       entity_id: media_player.gstreamer
-       media_content_type: 'music'
-       media_content_id: 'file:///home/ryan/prairiesnpr/arrival_music.mp3'
-    - delay: '00:02:00'
-    - service: media_player.turn_off
-      data:
-        entity_id: media_player.receiver
+  - data:
+      entity_id: script.tts_setup
+    service: homeassistant.turn_on
+  - delay: 00:00:10
+  - data:
+      entity_id: media_player.gstreamer
+      message: New user detected, Welcome home master Ryan
+    service: tts.microsoft_say
+  - data:
+      entity_id: media_player.receiver
+      volume_level: 0.55
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.gstreamer
+      media_content_id: file:///home/prairiesnpr/arrival_music.mp3
+      media_content_type: music
+    service: media_player.play_media
+  - delay: 00:02:00
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.turn_off
 intruder:
   alias: Intruder Alarm
   sequence:
-    - service: homeassistant.turn_on
-      data:
-        entity_id: script.tts_setup
-    - delay: '00:00:10'
-    - service: tts.microsoft_say
-      data:
-        entity_id: media_player.gstreamer
-        message: 'Unauthorized user detected, Please leave the premises immediately.'
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.receiver
-        volume_level: .55
-    - service: media_player.play_media
-      data:
-       entity_id: media_player.gstreamer
-       media_content_type: 'music'
-       media_content_id: 'file:///home/ryan/prairiesnpr/20_seconds_comply.mp3'
-    - delay: '00:00:30'
-    - service: media_player.turn_off
-      data:
-        entity_id: media_player.receiver
+  - service: homeassistant.turn_on
+    data:
+      entity_id: script.tts_setup
+  - delay: 00:00:10
+  - service: tts.microsoft_say
+    data:
+      entity_id: media_player.gstreamer
+      message: Unauthorized user detected, Please leave the premises immediately.
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.receiver
+      volume_level: 0.55
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.gstreamer
+      media_content_type: music
+      media_content_id: file:///home/ryan/prairiesnpr/20_seconds_comply.mp3
+  - delay: 00:00:30
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.receiver
 tts_setup:
   alias: Prepare reciever for output
   sequence:
-    - service: media_player.turn_on 
-      data:
-        entity_id: media_player.receiver 
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.receiver
-        source: strm-box  
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.receiver
-        volume_level: .8 
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.receiver
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.receiver
+      source: strm-box
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.receiver
+      volume_level: 0.8
 cast_fp_lv_tv:
   alias: Cast Front Porch Camera to Living Room TV
   sequence:
-    - service: media_player.turn_on
-      data:
-        entity_id: media_player.receiver
-    - service: camera.play_stream
-      data:
-        entity_id: camera.front_porch_direct
-        media_player: media_player.pioneer_vsx_1131_ee67e7      
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.receiver
+  - service: camera.play_stream
+    data:
+      entity_id: camera.front_porch_direct
+      media_player: media_player.pioneer_vsx_1131_ee67e7
 red_alert:
-  alias: Red Alert 
+  alias: Red Alert
   sequence:
-    - alias: "Red Alert On"
-      service: light.turn_on
-      data:
-        entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11 
-        profile: red_alert_bright
-    - delay:
-        seconds: 1 
-    - alias: "Red Alert Off" 
-      service: light.turn_on
-      data:
-        entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11 
-        profile: red_alert_dim
-    - alias: loop_red_alert
-      service: script.turn_on
-      data:
-        entity_id: script.red_alert_loop
+  - alias: Red Alert On
+    service: light.turn_on
+    data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      profile: red_alert_bright
+  - delay:
+      seconds: 1
+  - alias: Red Alert Off
+    service: light.turn_on
+    data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      profile: red_alert_dim
+  - alias: loop_red_alert
+    service: script.turn_on
+    data:
+      entity_id: script.red_alert_loop
 red_alert_loop:
-  alias: Red Alert Loop 
+  alias: Red Alert Loop
   sequence:
-    - delay:
-        seconds: 0.5
-    - alias: loop_red_alert
-      service: script.turn_on
-      data:
-        entity_id: script.red_alert
+  - delay:
+      seconds: 0.5
+  - alias: loop_red_alert
+    service: script.turn_on
+    data:
+      entity_id: script.red_alert

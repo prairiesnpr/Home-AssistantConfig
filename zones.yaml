@@ -1,0 +1,20 @@
+ - name: Home
+   latitude: !secret home_lat
+   longitude: !secret home_long
+   radius: 100
+   icon: mdi:account-multiple
+ - name: Plant
+   latitude: 35.970733
+   longitude: -83.990924
+   radius: 300
+   icon: mdi:factory
+ - name: Yoga 
+   latitude: 35.9463805
+   longitude: -83.9822491
+   radius: 150
+   icon: mdi:yoga
+ - name: Barre 
+   latitude: 35.9413684
+   longitude: -83.9776078
+   radius: 150
+   icon: mdi:karate

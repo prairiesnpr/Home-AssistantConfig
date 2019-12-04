@@ -115,7 +115,7 @@ zha.isilentllc_door_1:
   friendly_name: iSilentLLC Door Control
 switch.isilentllc_door_1_41940020_1_6:
   icon: mdi:garage
-light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11:
+light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off:
   icon: bha:led-strip
 light.bedroom_lights:
   icon: mdi:lamp
@@ -152,7 +152,14 @@ sensor.porsche:
   icon: mdi:car-sports
 switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6:
   icon: mdi:lightbulb
+switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off:
+  icon: mdi:lightbulb
 sensor.sengled_e11_n1ea_00038574_1_1794:
   unit_of_measurement: kW
 binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6:
   device_class: door
+zone.home:
+  beacon:
+    uuid: B5B182C7-EAB1-4988-AA99-B5C1517008D9
+    major: 1
+    minor: 62564

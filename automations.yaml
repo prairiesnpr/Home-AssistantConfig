@@ -462,7 +462,18 @@
     data:
       title: Smoke Alarm
       message: Smoke detected in the Kitchen!
-- id: xbox_set_lights
+- id: xbox_set_lights_home_
+  alias: Set Lights on Home Screen
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Home
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: xbox_green
+    service: light.turn_on
+- id: xbox_set_lights_movie
   alias: Set Lights on Netflix or Bluray
   trigger:
   - entity_id: sensor.xbox_source
@@ -474,30 +485,36 @@
   - entity_id: sensor.xbox_source
     platform: state
     to: Plex For Xbox One
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Amazon Prime Video US
   action:
   - data:
-      entity_id: switch.circadian_lighting_circadian_lighting
-    service: switch.turn_off
-  - data:
-      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
       profile: movie_red
+    service: light.turn_on
+- id: xbox_set_lights_skyrim
+  alias: Set Lights on Skyrim
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: 'The Elder Scrolls V: Skyrim Special Edition'
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: skyrim_blue
     service: light.turn_on
 - id: xbox_return_lights
   alias: Return Lights to Normal Xbox
   trigger:
   - entity_id: sensor.xbox_source
-    from: Netflix
     platform: state
-  - entity_id: sensor.xbox_source
-    from: Blu-ray Player
-    platform: state
-  - entity_id: sensor.xbox_source
-    from: Plex For Xbox One
-    platform: state
+    to: ‘’
   action:
   - data:
-      entity_id: switch.circadian_lighting_circadian_lighting
-    service: switch.turn_on
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: warm_white
+    service: light.turn_on
 - id: water_heater_emerg
   alias: Water Heater Emergency Heat
   trigger:

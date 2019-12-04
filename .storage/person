@@ -1,0 +1,27 @@
+{
+    "data": {
+        "persons": [
+            {
+                "device_trackers": [
+                    "device_tracker.balaam",
+                    "device_tracker.balaam_2",
+                    "device_tracker.balaam_3"
+                ],
+                "id": "72b9c204f62b4f82b0ace8fec1f79be6",
+                "name": "Ryan",
+                "user_id": "af985ab56a9e4d00998711c0fe6586bd"
+            },
+            {
+                "device_trackers": [
+                    "device_tracker.jeanettesiphone_2",
+                    "device_tracker.jeanette_s_iphone"
+                ],
+                "id": "cd6bb9c4b5b847ff8e138fc3fd1be84d",
+                "name": "Jeanette",
+                "user_id": "79d341406a424302a004185560e9b35f"
+            }
+        ]
+    },
+    "key": "person",
+    "version": 1
+}

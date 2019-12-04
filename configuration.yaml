@@ -8,10 +8,6 @@ homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - '/home/homeassistant/.homeassistant/www/snapshots'
-      #auth_providers:
-      # - type: homeassistant
-      #- type: legacy_api_password
-      # api_password: !secret http_api_pwd
 
 # Enables the frontend
 frontend:
@@ -21,10 +17,7 @@ frontend:
 # Enables configuration UI
 config:
 
-ios:
-
 mobile_app:
-
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
@@ -126,17 +119,11 @@ media_player:
     receiver_max_volume: 200 
   - platform: gstreamer
   - platform: samsungtv
-    host: 10.10.1.140
+    host: !secret livingroomtv_ip
   - platform: plex
   - platform: xboxone
     device: FD00472764D4AE81
     name: Xbox One
-    # - platform: samsungtv
-    #host: !secret livingroomtv_ip
-    # method: websocket
-    #  - platform: vlc
-    # name: vlc
-
 
 nest:
   client_id: !secret nest_client_id 
@@ -179,6 +166,8 @@ logger:
   default: warning # error 
   logs: !include zigbee_logging.yaml
   #media_player.onkyo: debug
+
+zone: !include zones.yaml
 
 system_health:
 
@@ -279,6 +268,7 @@ zoneminder:
    username: !secret zm_uid
    password: !secret zm_pwd 
 camera:
+  - platform: ha_skyfield
   - platform: zoneminder
   - platform: generic
     name: Front Porch (direct)

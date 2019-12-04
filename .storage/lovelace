@@ -1,0 +1,1031 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "js",
+                    "url": "/local/custom_ui/weasley-card.js?v=1.5"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/floorplan/floorplan-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/custom_ui/card-mod.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/local/custom_ui/fan-card.js"
+                }
+            ],
+            "title": "Wiebelo Villa",
+            "views": [
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.wiebelo_away"
+                                },
+                                {
+                                    "entity": "sensor.plex_son_of_joel_2"
+                                },
+                                {
+                                    "entity": "sensor.f150"
+                                },
+                                {
+                                    "entity": "sensor.porsche"
+                                },
+                                {
+                                    "entity": "sensor.dumpster"
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.zha_02bfefd9_1_6"
+                                },
+                                {
+                                    "entity": "binary_sensor.zha_02e2146c_1_6"
+                                },
+                                {
+                                    "entity": "binary_sensor.zha_02ec0d9e_1_6"
+                                },
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6"
+                                },
+                                {
+                                    "entity": "binary_sensor.zha_02bfe504_1_6"
+                                }
+                            ],
+                            "show_name": true,
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entity": "weather.dark_sky",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "entity": "binary_sensor.door",
+                            "hold_action": {
+                                "action": "none"
+                            },
+                            "name": "Garage Door",
+                            "show_name": false,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "switch.turn_on",
+                                "service_data": {
+                                    "entity_id": "switch.xbee_xbee_io_4193fedf_210_6"
+                                }
+                            },
+                            "type": "entity-button"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "light.stairway_lights",
+                                    "type": "light"
+                                },
+                                {
+                                    "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
+                                    "name": "Counter",
+                                    "type": "light"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "light.bedroom_lights",
+                                    "type": "light"
+                                },
+                                {
+                                    "entity": "light.sunricher_zg9101sac_hp_106770a5_1",
+                                    "name": "Master Bath",
+                                    "type": "light"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6",
+                                    "name": "Ceiling Light"
+                                },
+                                {
+                                    "entity": "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
+                                    "name": "Ceiling Fan",
+                                    "type": "custom:custom-fan-card"
+                                },
+                                {
+                                    "entity": "light.master_bedroom_lights",
+                                    "name": "Walk-In Closet"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Master Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.osram_lightify_a19_rgbw_00a434be_3"
+                                },
+                                {
+                                    "entity": "switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off",
+                                    "name": "Ceiling Light"
+                                },
+                                {
+                                    "entity": "fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan",
+                                    "name": "Ceiling Fan",
+                                    "type": "custom:custom-fan-card"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Office",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jasco_products_45856_61d32600_1",
+                                    "name": "Front Porch"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "person.ryan",
+                                    "image": "/images/ryan_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/ryan_home.jpg",
+                                        "not_home": "/images/ryan_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "person.jeanette",
+                                    "image": "/images/jeanette_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/jeanette_home.jpg",
+                                        "not_home": "/images/jeanette_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "entity": "camera.skyfield",
+                            "show_name": false,
+                            "show_state": false,
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entity": "automation.turn_on_bedroom_lights_in_the_morning",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon": "mdi:alarm",
+                            "name": "Alarm",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "automation.toggle",
+                                "service_data": {
+                                    "entity_id": "automation.turn_on_bedroom_lights_in_the_morning"
+                                }
+                            },
+                            "type": "entity-button"
+                        }
+                    ],
+                    "icon": "mdi:home-assistant",
+                    "title": "Home"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "media_player.receiver",
+                            "type": "media-control"
+                        },
+                        {
+                            "card": {
+                                "entity": "media_player.plex",
+                                "type": "media-control"
+                            },
+                            "conditions": [
+                                {
+                                    "entity": "media_player.plex",
+                                    "state_not": "unavailable"
+                                }
+                            ],
+                            "type": "conditional"
+                        },
+                        {
+                            "entity": "media_player.xbox_one",
+                            "type": "media-control"
+                        },
+                        {
+                            "card": {
+                                "entity": "media_player.living_room_un55js6900",
+                                "type": "media-control"
+                            },
+                            "conditions": [
+                                {
+                                    "entity": "media_player.living_room_u55js6900",
+                                    "state_not": "unavailable"
+                                }
+                            ],
+                            "type": "conditional"
+                        },
+                        {
+                            "entity": "media_player.gstreamer",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.samsung_tv_remote",
+                            "type": "media-control"
+                        }
+                    ],
+                    "icon": "mdi:play-network",
+                    "title": "Media"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "climate.downstairs",
+                            "type": "thermostat"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        "fan.upstairs_hvac_fan"
+                                    ],
+                                    "type": "glance"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.downstairs_thermostat_temperature",
+                                        "sensor.lumi_lumi_weather_02c9fa4a_1_1026",
+                                        "sensor.zha_40c04e54_2_1026"
+                                    ],
+                                    "type": "history-graph"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.downstairs_thermostat_humidity",
+                                        "sensor.lumi_lumi_weather_02c9fa4a_1_1029",
+                                        "sensor.zha_40c04e54_2_1029"
+                                    ],
+                                    "type": "history-graph"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.lumi_lumi_weather_02c9fa4a_1_1027"
+                                    ],
+                                    "type": "history-graph"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        }
+                    ],
+                    "icon": "mdi:thermostat",
+                    "title": "Climate"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1280",
+                                "binary_sensor.lumi_lumi_sensor_motion_aq2_02b7eb7f_1_1030",
+                                "binary_sensor.zha_02b7eb7f_1_1280"
+                            ],
+                            "show_state": false,
+                            "title": "Woodpecker Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "card": {
+                                "title": "Offline Devices",
+                                "type": "glance"
+                            },
+                            "entities": [
+                                "zha.feibit_inc_co_fzb56_zcw27lx1_0",
+                                "zha.isilentllc_water_heater",
+                                "zha.ledvance_plug",
+                                "zha.lumi_lumi_sensor_magnet_aq2",
+                                "zha.lumi_lumi_sensor_magnet_aq2_2",
+                                "zha.osram_lightify_a19_rgbw",
+                                "zha.osram_lightify_a19_rgbw_2",
+                                "zha.osram_lightify_a19_rgbw_3",
+                                "zha.sunricher_zg9101sac_hp",
+                                "zha.sz_lamp_01",
+                                "zha.xbee_xbee_io",
+                                "zha.zha_40c04e54",
+                                "zha.zha_ge_appliances_zll_light_000230a7",
+                                "zha.zha_ge_appliances_zll_light_0006c093",
+                                "zha.zha_lumi_lumi_sensor_magnet_01e1363b",
+                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02bfefd9",
+                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02e2146c",
+                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02ec0d9e",
+                                "zha.zha_lumi_lumi_sensor_motion_aq2_02b7eb7f",
+                                "zha.zha_lumi_lumi_sensor_smoke_02cb2ea9",
+                                "zha.zha_lumi_lumi_sensor_wleak_aq1_0279bc76",
+                                "zha.zha_lumi_lumi_sensor_wleak_aq1_027b09f4",
+                                "zha.zha_lumi_lumi_vibration_aq1_02af6e3c",
+                                "zha.zha_lumi_lumi_weather_02c9fa4a",
+                                "zha.zha_sengled_e11_n1ea_0003232a",
+                                "zha.zha_sengled_e11_n1ea_00038574"
+                            ],
+                            "state_filter": [
+                                "unavailable"
+                            ],
+                            "type": "entity-filter"
+                        },
+                        {
+                            "entities": [
+                                "sensor.zha_02b7eb7f_1_1024"
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.zha_02c39915_1_6"
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        }
+                    ],
+                    "icon": "mdi:heart-broken",
+                    "title": "Device Health"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
+                                    "name": "Master Bedroom Left Lamp"
+                                },
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
+                                    "name": "Master Bedroom Right Lamp"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_61d32600_1_1794",
+                                    "name": "Front Porch Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_00db2500_1_1794",
+                                    "name": "HVAC Booster Fan"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.water_heater_time_to_temp",
+                                    "name": "Time to Temp"
+                                },
+                                {
+                                    "entity": "sensor.zha_40c04dcb_1_1794"
+                                },
+                                {
+                                    "entity": "sensor.zha_40c04dcb_2_1026"
+                                },
+                                {
+                                    "entity": "sensor.zha_40c04dcb_3_1026"
+                                },
+                                {
+                                    "entity": "switch.zha_40c04dcb_1_6"
+                                }
+                            ],
+                            "title": "Water Heater",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.ledvance_plug_00054922_1"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:power-plug",
+                    "title": "Power"
+                },
+                {
+                    "cards": [
+                        {
+                            "elements": [
+                                {
+                                    "camera_image": "camera.front_porch",
+                                    "entity": "camera.front_porch",
+                                    "style": {
+                                        "height": "100%",
+                                        "left": "50%",
+                                        "top": "50%",
+                                        "width": "100%"
+                                    },
+                                    "type": "image"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_events",
+                                    "prefix": "Front Porch - ",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "left": 0,
+                                        "padding": "1vh",
+                                        "transform": "initial",
+                                        "width": "100%"
+                                    },
+                                    "type": "state-label"
+                                },
+                                {
+                                    "entity": "camera.front_porch",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "padding": "1vh",
+                                        "right": 0,
+                                        "transform": "initial"
+                                    },
+                                    "type": "state-label"
+                                }
+                            ],
+                            "image": "/local/snapshots/testpattern.jpg",
+                            "type": "picture-elements"
+                        },
+                        {
+                            "camera_image": "camera.fozzy",
+                            "entity": "camera.porsche",
+                            "name": "Porsche",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "elements": [
+                                {
+                                    "camera_image": "camera.ukn_cam",
+                                    "entity": "camera.ukn_cam",
+                                    "style": {
+                                        "height": "100%",
+                                        "left": "50%",
+                                        "top": "50%",
+                                        "width": "100%"
+                                    },
+                                    "type": "image"
+                                },
+                                {
+                                    "entity": "sensor.ukn_cam_events",
+                                    "prefix": "Kitchen - ",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "left": 0,
+                                        "padding": "1vh",
+                                        "transform": "initial",
+                                        "width": "100%"
+                                    },
+                                    "type": "state-label"
+                                },
+                                {
+                                    "entity": "camera.ukn_cam",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "padding": "1vh",
+                                        "right": 0,
+                                        "transform": "initial"
+                                    },
+                                    "type": "state-label"
+                                }
+                            ],
+                            "image": "/local/snapshots/testpattern.jpg",
+                            "type": "picture-elements"
+                        }
+                    ],
+                    "icon": "mdi:camera",
+                    "title": "Camera"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "config": {
+                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=1.98",
+                                        "rules": [
+                                            {
+                                                "entities": [
+                                                    "binary_sensor.zha_02bfefd9_1_6",
+                                                    "binary_sensor.zha_02e2146c_1_6"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "door_closed_c",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "door_open_c",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "binary_sensor.zha_02ec0d9e_1_6",
+                                                    "binary_sensor.zha_02bfe504_1_6"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "door_closed_cc",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "door_open_cc",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "light.jasco_products_45856_61d32600_1",
+                                                    "light.osram_lightify_a19_rgbw_00a434be_3",
+                                                    "light.stairway_lights",
+                                                    "switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off",
+                                                    "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "light-off",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "light-on",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "switch.zha_40c04dcb_1_6",
+                                                    "switch.ledvance_plug_00054922_1"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "waterheater-off",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "waterheater-on",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "binary_sensor.door"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "garage_closed",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "garage_open",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "sensor.porsche",
+                                                    "sensor.f150"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "car_home",
+                                                        "state": "garage"
+                                                    },
+                                                    {
+                                                        "class": "car_away",
+                                                        "state": "away"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "sensor.dumpster"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "dumpster_inside",
+                                                        "state": "garage"
+                                                    },
+                                                    {
+                                                        "class": "dumpster_outside",
+                                                        "state": "away"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "spinning_cfan",
+                                                        "state": "on"
+                                                    },
+                                                    {
+                                                        "class": "none",
+                                                        "state": "off"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
+                                    },
+                                    "title": "Main Floor",
+                                    "type": "custom:floorplan-card"
+                                },
+                                {
+                                    "config": {
+                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=1.95",
+                                        "rules": [
+                                            {
+                                                "entities": [
+                                                    "binary_sensor.zha_02c39915_1_6"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "door_closed_cc",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "door_open_cc",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "light.sunricher_zg9101sac_hp_106770a5_1",
+                                                    "light.sengled_e11_n1ea_00038574_1",
+                                                    "light.sengled_e11_n1ea_0003232a_1",
+                                                    "switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6",
+                                                    "light.master_bedroom_lights"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "light-off",
+                                                        "state": "off"
+                                                    },
+                                                    {
+                                                        "class": "light-on",
+                                                        "state": "on"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "entities": [
+                                                    "fan.upstairs_hvac_fan",
+                                                    "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514"
+                                                ],
+                                                "states": [
+                                                    {
+                                                        "class": "spinning_cfan",
+                                                        "state": "on"
+                                                    },
+                                                    {
+                                                        "class": "none",
+                                                        "state": "off"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
+                                    },
+                                    "title": "Top Floor",
+                                    "type": "custom:floorplan-card"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        }
+                    ],
+                    "icon": "mdi:floor-plan",
+                    "panel": true,
+                    "path": "f",
+                    "title": "test"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "fontface": "font-family: itcblkad_font;    src: local(itcblkad_font), url('/local/custom_ui/ITCBLKAD.TTF') format('opentype');",
+                            "fontname": "itcblkad_font",
+                            "locations": [
+                                "Home",
+                                "Plant",
+                                "Yoga",
+                                "Barre"
+                            ],
+                            "lost": "Mortal Peril",
+                            "shaft_colour": "#000",
+                            "travelling": "Travelling",
+                            "type": "custom:weasley-card",
+                            "wizards": [
+                                {
+                                    "colour": "#7E5FC0",
+                                    "entity": "person.jeanette",
+                                    "name": "Jeanette",
+                                    "textcolour": "#FFF"
+                                },
+                                {
+                                    "colour": "#b29d69",
+                                    "entity": "person.ryan",
+                                    "name": "Ryan",
+                                    "textcolour": "#000"
+                                }
+                            ]
+                        }
+                    ],
+                    "icon": "mdi:clock",
+                    "title": "Wizard Clock"
+                },
+                {
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.cpu_usage",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "CPU",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 75,
+                                                "yellow": 50
+                                            },
+                                            "theme": "default",
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.virtual_memory",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Virtual Memory",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 75,
+                                                "yellow": 50
+                                            },
+                                            "theme": "default",
+                                            "type": "gauge"
+                                        },
+                                        {
+                                            "entity": "sensor.swap_memory",
+                                            "max": 100,
+                                            "min": 0,
+                                            "name": "Swap Memory",
+                                            "severity": {
+                                                "green": 0,
+                                                "red": 75,
+                                                "yellow": 50
+                                            },
+                                            "theme": "default",
+                                            "type": "gauge"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.samsung_m262x_282x_series_10_10_1_136_output_tray_0",
+                                        "sensor.samsung_m262x_282x_series_10_10_1_136_tray_1",
+                                        "sensor.samsung_m262x_282x_series_10_10_1_136_toner_black"
+                                    ],
+                                    "title": "Printer",
+                                    "type": "glance"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.memoryavailable_2",
+                                        "sensor.memoryusage_2",
+                                        "sensor.processorload_2",
+                                        "sensor.statusdescriptions_2",
+                                        "sensor.uptime_2"
+                                    ],
+                                    "title": "Ezra (Pihole)",
+                                    "type": "glance"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.memoryavailable_5",
+                                        "sensor.memoryusage_5",
+                                        "sensor.processorload_5",
+                                        "sensor.statusdescriptions_5",
+                                        "sensor.uptime_5"
+                                    ],
+                                    "title": "Joel the Lesser (Plex)",
+                                    "type": "glance"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.memoryavailable_4",
+                                        "sensor.memoryusage_4",
+                                        "sensor.processorload_4",
+                                        "sensor.statusdescriptions_4",
+                                        "sensor.uptime_4"
+                                    ],
+                                    "title": "Benaiah (Webserver/Docker)",
+                                    "type": "glance"
+                                },
+                                {
+                                    "entities": [
+                                        "sensor.memoryavailable",
+                                        "sensor.memoryusage",
+                                        "sensor.processorload",
+                                        "sensor.statusdescriptions",
+                                        "sensor.uptime"
+                                    ],
+                                    "title": "Nehemiah (Dad's VM)",
+                                    "type": "glance"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        }
+                    ],
+                    "icon": "mdi:server-network",
+                    "title": "Server/VMs"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.circadian_values",
+                                "switch.circadian_lighting_circadian_lighting"
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.xbox_source"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:settings",
+                    "title": "Settings"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.activity"
+                                },
+                                {
+                                    "entity": "sensor.average_active_pace"
+                                },
+                                {
+                                    "entity": "sensor.bssid"
+                                },
+                                {
+                                    "entity": "sensor.battery_level"
+                                },
+                                {
+                                    "entity": "sensor.battery_state"
+                                },
+                                {
+                                    "entity": "sensor.connection_type"
+                                },
+                                {
+                                    "entity": "sensor.distance"
+                                },
+                                {
+                                    "entity": "sensor.floors_ascended"
+                                },
+                                {
+                                    "entity": "sensor.floors_descended"
+                                },
+                                {
+                                    "entity": "sensor.geocoded_location"
+                                },
+                                {
+                                    "entity": "sensor.last_update_trigger"
+                                },
+                                {
+                                    "entity": "sensor.sim_1"
+                                },
+                                {
+                                    "entity": "sensor.ssid"
+                                },
+                                {
+                                    "entity": "sensor.steps"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Jeanette's iPhone",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:cellphone-android",
+                    "title": "Devices"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_208_6",
+                                    "name": "Zone 1"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_209_6",
+                                    "name": "Zone 2"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
+                                    "name": "Zone 3"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
+                                    "name": "Zone 4"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_212_6",
+                                    "name": "Zone 5"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_213_6",
+                                    "name": "Zone 6"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_216_6",
+                                    "name": "Zone 7"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_220_6",
+                                    "name": "Zone 8"
+                                }
+                            ],
+                            "title": "Irrigation",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:sprout",
+                    "path": "plants",
+                    "title": "Plants"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

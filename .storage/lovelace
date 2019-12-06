@@ -972,6 +972,15 @@
                             "show_header_toggle": false,
                             "title": "Jeanette's iPhone",
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.sm_g950u_2"
+                                }
+                            ],
+                            "title": "Ryan\u2019s S8",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:cellphone-android",

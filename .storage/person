@@ -4,8 +4,8 @@
             {
                 "device_trackers": [
                     "device_tracker.balaam",
-                    "device_tracker.balaam_2",
-                    "device_tracker.balaam_3"
+                    "device_tracker.balaam_3",
+                    "device_tracker.sm_g950u_2"
                 ],
                 "id": "72b9c204f62b4f82b0ace8fec1f79be6",
                 "name": "Ryan",

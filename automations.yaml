@@ -138,7 +138,11 @@
     from: 'off'
     to: 'on'
   action:
-    service: notify.pushbullet
+  - service: notify.all_ios_devices
+    data:
+      title: Garage Door Left Open Alert
+      message: The garage door has been open for more than five minutes.
+  - service: notify.pushbullet
     data:
       title: Garage Door Left Open Alert
       message: The garage door has been open for more than five minutes.
@@ -214,6 +218,10 @@
       message: The front door was opened.
       title: Front Door Opened
     service: notify.pushbullet
+  - data:
+      message: The front door was opened.
+      title: Front Door Opened
+    service: notify.all_ios_devices
   - entity_id: script.intruder
     service: homeassistant.turn_on
 - id: Intruder_Alarm
@@ -231,6 +239,10 @@
       message: Alarm activated!
       title: Alarm Activated
     service: notify.pushbullet
+  - data:
+      message: Alarm activated!
+      title: Alarm Activated
+    service: notify.all_ios_devices
   - entity_id: script.intruder
     service: homeassistant.turn_on
 - id: Garage_WalkIn_Open_Alert
@@ -248,6 +260,10 @@
       message: The garage walk in door was opened.
       title: Garage Walk-In Opened
     service: notify.pushbullet
+  - data:
+      message: The garage walk in door was opened.
+      title: Garage Walk-In Opened
+    service: notify.all_ios_devices
 - id: Back_Door_Open_Alert
   alias: Back Door Opened Alert
   trigger:
@@ -263,6 +279,10 @@
       message: The back door was opened.
       title: Back Door Opened
     service: notify.pushbullet
+  - data:
+      message: The back door was opened.
+      title: Back Door Opened
+    service: notify.all_ios_devices
 - id: Side_Door_Open_Alert
   alias: Kitchen-Garage Door Opened Alert
   trigger:
@@ -279,6 +299,10 @@
       message: The kitchen to garage door was opened.
       title: Kitchen-Garage Door Opened
     service: notify.pushbullet
+  - data:
+      message: The kitchen to garage door was opened.
+      title: Kitchen-Garage Door Opened
+    service: notify.all_ios_devices
 - id: Garage_Door_Open_Away_Alert
   alias: Garage Door Opened Alert
   trigger:
@@ -295,6 +319,10 @@
       message: The garage door was opened.
       title: Garage Door Opened
     service: notify.pushbullet
+  - data:
+      message: The garage door was opened.
+      title: Garage Door Opened
+    service: notify.all_ios_devices
 - id: Skip_Door_Alert
   alias: Skip Door Alert
   trigger:
@@ -306,9 +334,7 @@
   condition:
   - condition: template
     value_template: '{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed))
-      > 5 }}
-
-      '
+      > 5 }}'
   - condition: state
     entity_id: group.home_owners
     state: not_home
@@ -326,25 +352,33 @@
 - id: dishwasher_leak_detect
   alias: Dishwasher Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+  - entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+    platform: state
     to: 'on'
   action:
-    service: notify.pushbullet
-    data:
-      title: Dishwasher Leak
+  - data:
       message: Water leak deteted at the dishwasher!
+      title: Dishwasher Leak
+    service: notify.all_ios_devices
+  - data:
+      message: Water leak deteted at the dishwasher!
+      title: Dishwasher Leak
+    service: notify.pushbullet
 - id: washing_machine_leak_detect
   alias: Clothes Washer Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+  - entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+    platform: state
     to: 'on'
   action:
-    service: notify.pushbullet
-    data:
-      title: Washing Machine Leak
+  - data:
       message: Water leak deteted at the clothes washer!
+      title: Washing Machine Leak
+    service: notify.all_ios_devices
+  - data:
+      message: Water leak deteted at the clothes washer!
+      title: Washing Machine Leak
+    service: notify.pushbullet
 - id: turn_stair_lights_on_if_door_open_night
   alias: Turn on Stair Lights if Door Opened at Night
   trigger:
@@ -441,9 +475,19 @@
     entity_id: switch.zha_40c04e54_1_6
     to: 'on'
   action:
+  - service: notify.all_ios_devices
+    data:
+      title: Door Bell Alert
+      message: Front Door Bell Was Rung!
+      data:
+        attachment:
+          content-type: jpeg
+        push:
+          category: camera
+        entity_id: camera.front_porch_direct
   - service: camera.snapshot
     data:
-      entity_id: camera.front_porch
+      entity_id: camera.front_porch_direct
       filename: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
   - service: notify.pushbullet
     data:
@@ -454,14 +498,18 @@
 - id: smoke_alarm_kitchen
   alias: Smoke Alarm Kitchen
   trigger:
-  - platform: state
-    entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
+  - entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
+    platform: state
     to: 'on'
   action:
-    service: notify.pushbullet
-    data:
-      title: Smoke Alarm
+  - data:
       message: Smoke detected in the Kitchen!
+      title: Smoke Alarm
+    service: notify.all_ios_devices
+  - data:
+      message: Smoke detected in the Kitchen!
+      title: Smoke Alarm
+    service: notify.pushbullet
 - id: xbox_set_lights_home_
   alias: Set Lights on Home Screen
   trigger:

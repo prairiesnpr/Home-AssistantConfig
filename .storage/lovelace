@@ -385,6 +385,42 @@
                             ],
                             "show_state": false,
                             "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy",
+                                    "name": "Occupied"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_4cd42104_illuminance",
+                                    "name": "Illumination"
+                                },
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_ias_zone",
+                                    "name": "Motion"
+                                }
+                            ],
+                            "title": "Master Bath",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy",
+                                    "name": "Occupied"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_illuminance",
+                                    "name": "Illumination"
+                                },
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_ias_zone",
+                                    "name": "Motion"
+                                }
+                            ],
+                            "title": "Office",
+                            "type": "glance"
                         }
                     ],
                     "icon": "mdi:heart-broken",
@@ -441,6 +477,19 @@
                                     "entity": "switch.ledvance_plug_00054922_1"
                                 }
                             ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.sengled_e1c_nb6_f32d0400_on_off",
+                                    "name": "Christmas Tree"
+                                },
+                                {
+                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off"
+                                }
+                            ],
+                            "title": "Christmas! \ud83c\udf84\ud83d\udd6f \ud83c\udf81\ud83c\udf1f",
                             "type": "entities"
                         }
                     ],

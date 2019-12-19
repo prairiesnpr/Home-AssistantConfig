@@ -163,3 +163,5 @@ zone.home:
     uuid: B5B182C7-EAB1-4988-AA99-B5C1517008D9
     major: 1
     minor: 62564
+switch.sengled_e1c_nb6_f32d0400_on_off:
+  icon: mdi:pine-tree

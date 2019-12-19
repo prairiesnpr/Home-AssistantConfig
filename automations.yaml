@@ -735,3 +735,128 @@
   - data:
       entity_id: light.jasco_products_45856_61d32600_1
     service: homeassistant.turn_on
+- id: '1576441902724'
+  alias: Christmas Tree On
+  description: ''
+  trigger:
+  - at: 06:00:00
+    platform: time
+  condition: []
+  action:
+  - device_id: c5c667fcf38349bc804000480f5fab16
+    domain: switch
+    entity_id: switch.sengled_e1c_nb6_f32d0400_on_off
+    type: turn_on
+- id: '1576441956178'
+  alias: Christmas Tree Off
+  description: ''
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - device_id: c5c667fcf38349bc804000480f5fab16
+    domain: switch
+    entity_id: switch.sengled_e1c_nb6_f32d0400_on_off
+    type: turn_off
+- id: '1576462082204'
+  alias: Master Bathroom Occupied
+  description: ''
+  trigger:
+  - device_id: 3c59aad704c6450ea1f2090902fbe970
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+    platform: device
+    type: occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.sunricher_zg9101sac_hp_106770a5_1
+    service: light.turn_on
+- id: '1576462203739'
+  alias: Master Bathroom Not Occupied
+  description: ''
+  trigger:
+  - device_id: 3c59aad704c6450ea1f2090902fbe970
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+    platform: device
+    type: not_occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.sunricher_zg9101sac_hp_106770a5_1
+    service: light.turn_off
+- id: Office_Occupied
+  alias: Office Occupied
+  description: ''
+  trigger:
+  - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy
+    platform: device
+    type: occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.osram_lightify_a19_rgbw_00a434be_3
+    service: light.turn_on
+  - data:
+      entity_id:
+      - switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off
+    service: switch.turn_on
+  - data:
+      entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
+      speed: low
+    service: fan.set_speed
+- id: Office_Not_Occupied
+  alias: Office Not Occupied
+  description: ''
+  trigger:
+  - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy
+    platform: device
+    type: not_occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.osram_lightify_a19_rgbw_00a434be_3
+    service: light.turn_off
+  - data:
+      entity_id:
+      - switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off
+    service: switch.turn_off
+  - data:
+      entity_id:
+      - fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
+    service: fan.turn_off
+- id: 'Outdoor_Christmas_on'
+  alias: Christmas Outdoor Lights On
+  description: ''
+  trigger:
+  - below: -4.0 
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off 
+    service: homeassistant.turn_on
+- id: 'Outdoor_Christmas_Off'
+  alias: Christmas Outdoor Lights Off
+  description: ''
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off 
+    service: homeassistant.turn_off
+

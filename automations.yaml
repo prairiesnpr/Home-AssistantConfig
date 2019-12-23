@@ -806,8 +806,8 @@
     service: light.turn_on
   - data:
       entity_id:
-      - switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off
-    service: switch.turn_on
+      - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
+    service: light.turn_on
   - data:
       entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
       speed: low
@@ -829,26 +829,26 @@
     service: light.turn_off
   - data:
       entity_id:
-      - switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off
-    service: switch.turn_off
+      - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
+    service: light.turn_off
   - data:
       entity_id:
       - fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
     service: fan.turn_off
-- id: 'Outdoor_Christmas_on'
+- id: Outdoor_Christmas_on
   alias: Christmas Outdoor Lights On
   description: ''
   trigger:
-  - below: -4.0 
+  - below: -4.0
     entity_id: sun.sun
     platform: numeric_state
     value_template: '{{ state.attributes.elevation }}'
   condition: []
   action:
   - data:
-      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off 
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
     service: homeassistant.turn_on
-- id: 'Outdoor_Christmas_Off'
+- id: Outdoor_Christmas_Off
   alias: Christmas Outdoor Lights Off
   description: ''
   trigger:
@@ -857,6 +857,5 @@
   condition: []
   action:
   - data:
-      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off 
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
     service: homeassistant.turn_off
-

@@ -165,3 +165,7 @@ zone.home:
     minor: 62564
 switch.sengled_e1c_nb6_f32d0400_on_off:
   icon: mdi:pine-tree
+switch.sengled_e1c_nb6_6d0b0400_on_off:
+  icon: mdi:led-strip
+light.jasco_products_45856_61d32600_1:
+  icon: mdi:coach-lamp

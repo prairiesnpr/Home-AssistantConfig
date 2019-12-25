@@ -59,11 +59,6 @@ sensor:
     name: Porsche 
     state_topic: room_presence
     away_timeout: 30
-  - platform: plex
-    host: !secret plex_ip
-    name: Son of Joel (Plex)
-    token: !secret plex_token 
-    port: 32400
   - platform: zoneminder
   - platform: template 
     sensors:
@@ -120,7 +115,6 @@ media_player:
   - platform: gstreamer
   - platform: samsungtv
     host: !secret livingroomtv_ip
-  - platform: plex
   - platform: xboxone
     device: FD00472764D4AE81
     name: Xbox One

@@ -17,6 +17,10 @@
                 {
                     "type": "module",
                     "url": "/local/custom_ui/fan-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/zha-network-card/zha-network-card.js"
                 }
             ],
             "title": "Wiebelo Villa",
@@ -29,7 +33,7 @@
                                     "entity": "binary_sensor.wiebelo_away"
                                 },
                                 {
-                                    "entity": "sensor.plex_son_of_joel_2"
+                                    "entity": "sensor.plex_son_of_joel"
                                 },
                                 {
                                     "entity": "sensor.f150"
@@ -158,6 +162,10 @@
                                 {
                                     "entity": "light.jasco_products_45856_61d32600_1",
                                     "name": "Front Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                    "name": "Back Porch"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -257,6 +265,10 @@
                         },
                         {
                             "entity": "media_player.samsung_tv_remote",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.plex_xboxone",
                             "type": "media-control"
                         }
                     ],
@@ -1080,6 +1092,66 @@
                     "icon": "mdi:sprout",
                     "path": "plants",
                     "title": "Plants"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "clickable": true,
+                            "columns": [
+                                {
+                                    "name": "Name",
+                                    "prop": "name"
+                                },
+                                {
+                                    "attr": "available",
+                                    "id": "available",
+                                    "modify": "x || \"false\"",
+                                    "name": "Online"
+                                },
+                                {
+                                    "attr": "manufacturer",
+                                    "name": "Manufacturer"
+                                },
+                                {
+                                    "attr": "model",
+                                    "name": "Model"
+                                },
+                                {
+                                    "attr": "ieee",
+                                    "name": "IEEE"
+                                },
+                                {
+                                    "name": "NWK",
+                                    "prop": "nwk"
+                                },
+                                {
+                                    "attr": "rssi",
+                                    "name": "RSSI"
+                                },
+                                {
+                                    "attr": "lqi",
+                                    "name": "LQI"
+                                },
+                                {
+                                    "attr": "last_seen",
+                                    "name": "Last Seen"
+                                },
+                                {
+                                    "attr": "power_source",
+                                    "name": "Power Source"
+                                },
+                                {
+                                    "attr": "quirk_class",
+                                    "name": "Quirk"
+                                }
+                            ],
+                            "sort_by": "available",
+                            "type": "custom:zha-network-card"
+                        }
+                    ],
+                    "icon": "mdi:access-point-network",
+                    "panel": true
                 }
             ]
         }

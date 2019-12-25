@@ -7,7 +7,7 @@ homeassistant:
   time_zone: America/New_York
   customize: !include customize.yaml
   whitelist_external_dirs:
-    - '/home/homeassistant/.homeassistant/www/snapshots'
+    - !secret snapshot_dir
 
 # Enables the frontend
 frontend:

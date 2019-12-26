@@ -75,20 +75,37 @@
                             "type": "weather-forecast"
                         },
                         {
-                            "entity": "binary_sensor.door",
-                            "hold_action": {
-                                "action": "none"
-                            },
-                            "name": "Garage Door",
-                            "show_name": false,
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "switch.turn_on",
-                                "service_data": {
-                                    "entity_id": "switch.xbee_xbee_io_4193fedf_210_6"
+                            "cards": [
+                                {
+                                    "entity": "binary_sensor.door",
+                                    "hold_action": {
+                                        "action": "none"
+                                    },
+                                    "name": "Garage Door",
+                                    "show_name": false,
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.turn_on",
+                                        "service_data": {
+                                            "entity_id": "switch.xbee_xbee_io_4193fedf_210_6"
+                                        }
+                                    },
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "lock.yale_yrd256_tsdb_7b1f1911_door_lock",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "show_icon": true,
+                                    "show_name": false,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
                                 }
-                            },
-                            "type": "entity-button"
+                            ],
+                            "type": "horizontal-stack"
                         },
                         {
                             "cards": [

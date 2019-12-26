@@ -6,15 +6,8 @@ before_install:
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev
   - sudo apt-get install -y libavutil-dev libswscale-dev libswresample-dev libavfilter-dev
   - sudo apt-get install -y libbluetooth-dev 
-  - sudo apt-get install \
-    python-gi python3-gi \
-    gstreamer1.0-tools \
-    gir1.2-gstreamer-1.0 \
-    gir1.2-gst-plugins-base-1.0 \
-    gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-ugly \
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-libav
+  - sudo apt-get install -y python-gi python3-gi gstreamer1.0-tools gir1.2-gstreamer-1.0 gir1.2-gst-plugins-base-1.0 
+  - sudo apt-get install -y gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-libav
   - mv travis_secrets.yaml secrets.yaml
   - sudo apt-get install libgirepository1.0-dev
   - pip3 install vext vext.gi PyGObject

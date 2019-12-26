@@ -41,6 +41,6 @@
  - name: Range
    latitude: 35.988218 
    longitude: -84.322082
-   radius 600
+   radius: 600
    icon: mdi:pistol 
    

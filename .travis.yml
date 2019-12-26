@@ -2,8 +2,9 @@ language: python
 python:
   - "3.8"
 before_install:
-  - sudo apt-get install libavformat-dev libavfilter-dev libavdevice-dev ffmpeg
+  - sudo apt-get install libbluetooth-dev libavformat-dev libavfilter-dev libavdevice-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
+  - pip3 install vext vext.gi python-gi
 install:
   - pip3 install homeassistant
 script:

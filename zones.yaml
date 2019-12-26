@@ -38,3 +38,9 @@
    longitude: -83.990738 
    radius: 300
    icon: mdi:airport 
+ - name: Range
+   latitude: 35.988218 
+   longitude: -84.322082
+   radius 600
+   icon: mdi:pistol 
+   

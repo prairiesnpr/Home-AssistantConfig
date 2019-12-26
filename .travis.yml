@@ -4,7 +4,7 @@ python:
 before_install:
   - sudo apt-get install libbluetooth-dev libavformat-dev libavfilter-dev libavdevice-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
-  - sudo apt-get install python3-gi
+  - sudo apt-get install libgirepository1.0-dev python3-gi
   - pip3 install vext vext.gi PyGObject
 install:
   - pip3 install homeassistant

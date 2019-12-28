@@ -23,7 +23,7 @@ mobile_app:
 http:
   base_url: https://ha.prairiesnpr.com
   use_x_forwarded_for: true
-  trusted_proxies: 0.0.0.0
+  trusted_proxies: 10.10.1.129
 
 updater:
 
@@ -200,6 +200,7 @@ history:
       - person.ryan
       - person.jeanette
       - switch.ledvance_plug_00054922_1
+      - lock.yale_yrd256_tsdb_7b1f1911_door_lock
 
 recorder:
   purge_keep_days: 5
@@ -227,6 +228,8 @@ recorder:
       - person.ryan
       - person.jeanette
       - switch.ledvance_plug_00054922_1
+      - lock.yale_yrd256_tsdb_7b1f1911_door_lock
+
 notify:
   - name: pushbullet
     platform: pushbullet

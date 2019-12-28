@@ -134,3 +134,15 @@ red_alert_loop:
       manufacturer: 4447
       value: 67305472
     service: zha.set_zigbee_cluster_attribute
+'1577500084226':
+  alias: Lock Front Door
+  sequence:
+  - data: {}
+    entity_id: lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    service: lock.lock
+'1577500116793':
+  alias: Unlock Front Door
+  sequence:
+  - data: {}
+    entity_id: lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    service: lock.unlock

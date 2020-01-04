@@ -173,3 +173,5 @@ light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
   icon: mdi:coach-lamp
 light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off:
   icon: mdi:coach-lamp
+switch.christmas_lights_switch:
+  icon: mdi:pine-tree

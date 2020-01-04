@@ -44,6 +44,13 @@ sun:
 
 # Sensors
 sensor:
+  - platform: miflora
+    mac: '80:EA:CA:88:E3:EB'
+    name: Poinsettia
+  - platform: mqtt
+    name: "Christmas Lights"
+    state_topic: "christmas/sensor0"
+    value_template: "{{ value_json.status }}"
   - platform: mqtt_room
     device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
     name: Dumpster
@@ -242,15 +249,29 @@ notify:
 circadian_lighting:
 
 switch:
+  - platform: mqtt
+    name: "Christmas Lights Switch"
+    state_topic: "christmas/switch0"
+    command_topic: "christmas/switch0/set"
+    availability_topic: "christmas/switch0/available"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false 
   - platform: circadian_lighting
     lights_xy:
-      - light.bedroom_lights
-      - light.osram_lightify_a19_rgbw_00a434be_3
-      - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
-      - light.osram_lightify_a19_rgbw_00a69e14_3
-      - light.osram_lightify_a19_rgbw_00a5deb3_3
-    lights_brightness:
       - light.stairway_lights
+      - light.bedroom_lights
+      # Counter light - Living Room
+      - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+      # Desk lamp - Office
+      - light.osram_lightify_a19_rgbw_00a434be_3
+    lights_brightness:
+      # Master bedroom closet lights
+      - light.master_bedroom_lights
       - light.sunricher_zg9101sac_hp_106770a5_1
 fan:
   - platform: template

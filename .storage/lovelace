@@ -21,6 +21,10 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/zha-network-card/zha-network-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/miflora-card/miflora-card.js"
                 }
             ],
             "title": "Wiebelo Villa",
@@ -633,7 +637,7 @@
                             "cards": [
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=1.98",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.00",
                                         "rules": [
                                             {
                                                 "entities": [
@@ -672,6 +676,8 @@
                                                     "light.jasco_products_45856_61d32600_1",
                                                     "light.osram_lightify_a19_rgbw_00a434be_3",
                                                     "light.stairway_lights",
+                                                    "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                                    "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off",
                                                     "light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off",
                                                     "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off"
                                                 ],
@@ -771,7 +777,7 @@
                                 },
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=1.95",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=1.97",
                                         "rules": [
                                             {
                                                 "entities": [
@@ -1072,6 +1078,22 @@
                     "cards": [
                         {
                             "entities": [
+                                "moisture:sensor.poinsettia_moisture",
+                                "intensity:sensor.poinsettia_light_intensity",
+                                "temperature:sensor.poinsettia_temperature",
+                                "conductivity:sensor.poinsettia_conductivity",
+                                "battery:sensor.poinsettia_battery"
+                            ],
+                            "image": "flower_power/poinsettia_600.jpg",
+                            "max_moisture": 60,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "Poinsettia",
+                            "type": "custom:miflora-card"
+                        },
+                        {
+                            "entities": [
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_208_6",
                                     "name": "Zone 1"
@@ -1172,6 +1194,20 @@
                     ],
                     "icon": "mdi:access-point-network",
                     "panel": true
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.christmas_lights",
+                                "switch.christmas_lights_switch"
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "test",
+                    "title": "test"
                 }
             ]
         }

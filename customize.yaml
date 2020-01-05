@@ -155,7 +155,7 @@ switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6:
 switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off:
   icon: mdi:lightbulb
 sensor.sengled_e11_n1ea_00038574_1_1794:
-  unit_of_measurement: kW
+  unit_of_measurement: W
 binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6:
   device_class: door
 zone.home:
@@ -179,3 +179,9 @@ light.jasco_products_45857_242c2500_level_on_off:
   icon: mdi:wall-sconce-flat
 light.jasco_products_45857_8a1e2500_level_on_off:
   icon: mdi:wall-sconce-flat
+sensor.sengled_e11_n1ea_0003232a_1_1794:
+  unit_of_measurement: W
+sensor.jasco_products_45856_00db2500_1_1794: {}
+sensor.jasco_products_45856_61d32600_1_1794: {}
+sensor.jasco_products_45857_242c2500_smartenergy_metering: {}
+sensor.jasco_products_45857_8a1e2500_smartenergy_metering: {}

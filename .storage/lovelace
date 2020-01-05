@@ -496,6 +496,14 @@
                                 {
                                     "entity": "sensor.jasco_products_45856_00db2500_1_1794",
                                     "name": "HVAC Booster Fan"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
+                                    "name": "Kitchen Can Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
+                                    "name": "Living Room Can Lights"
                                 }
                             ],
                             "type": "entities"

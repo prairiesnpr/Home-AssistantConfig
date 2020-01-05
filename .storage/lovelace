@@ -140,6 +140,21 @@
                             "type": "horizontal-stack"
                         },
                         {
+                            "cards": [
+                                {
+                                    "entity": "light.jasco_products_45857_242c2500_level_on_off",
+                                    "name": "Living Room",
+                                    "type": "light"
+                                },
+                                {
+                                    "entity": "light.jasco_products_45857_8a1e2500_level_on_off",
+                                    "name": "Kitchen",
+                                    "type": "light"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",

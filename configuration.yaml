@@ -273,6 +273,10 @@ switch:
       # Master bedroom closet lights
       - light.master_bedroom_lights
       - light.sunricher_zg9101sac_hp_106770a5_1
+      #Living room cans
+      - light.jasco_products_45857_242c2500_level_on_off
+      #Kitchen Cans
+      - light.jasco_products_45857_8a1e2500_level_on_off
 fan:
   - platform: template
     fans:

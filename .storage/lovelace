@@ -564,6 +564,10 @@
                                 {
                                     "entity": "sensor.lumi_lumi_relay_c2acn01_08ec4404_electrical_measurement",
                                     "name": "Downstairs Bathroom Fan"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_relay_c2acn01_b4012704_electrical_measurement",
+                                    "name": "Master Bathroom Fan"
                                 }
                             ],
                             "type": "entities"
@@ -1054,6 +1058,20 @@
                                 {
                                     "entity": "sensor.xbox_source"
                                 }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.pi_hole_ads_blocked_today",
+                                "sensor.pi_hole_ads_percentage_blocked_today",
+                                "sensor.pi_hole_seen_clients",
+                                "sensor.pi_hole_domains_blocked",
+                                "sensor.pi_hole_dns_unique_domains",
+                                "sensor.pi_hole_dns_unique_clients",
+                                "sensor.pi_hole_dns_queries_today",
+                                "sensor.pi_hole_dns_queries_forwarded",
+                                "sensor.pi_hole_dns_queries_cached"
                             ],
                             "type": "entities"
                         }

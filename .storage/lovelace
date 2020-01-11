@@ -257,6 +257,32 @@
                                 }
                             },
                             "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.downstairs_bath_fan"
+                                }
+                            ],
+                            "title": "Downstairs Bathroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.master_bath_fan"
+                                }
+                            ],
+                            "title": "Master Bathroom",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -482,35 +508,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
-                                    "name": "Master Bedroom Left Lamp"
-                                },
-                                {
-                                    "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
-                                    "name": "Master Bedroom Right Lamp"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45856_61d32600_1_1794",
-                                    "name": "Front Porch Lights"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45856_00db2500_1_1794",
-                                    "name": "HVAC Booster Fan"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
-                                    "name": "Kitchen Can Lights"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
-                                    "name": "Living Room Can Lights"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "sensor.water_heater_time_to_temp",
                                     "name": "Time to Temp"
                                 },
@@ -534,6 +531,39 @@
                             "entities": [
                                 {
                                     "entity": "switch.ledvance_plug_00054922_1"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
+                                    "name": "Master Bedroom Left Lamp"
+                                },
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
+                                    "name": "Master Bedroom Right Lamp"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_61d32600_1_1794",
+                                    "name": "Front Porch Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_00db2500_1_1794",
+                                    "name": "HVAC Booster Fan"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
+                                    "name": "Kitchen Can Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
+                                    "name": "Living Room Can Lights"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_relay_c2acn01_08ec4404_electrical_measurement",
+                                    "name": "Downstairs Bathroom Fan"
                                 }
                             ],
                             "type": "entities"

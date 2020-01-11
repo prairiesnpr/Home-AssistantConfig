@@ -43,4 +43,13 @@
    longitude: -84.322082
    radius: 600
    icon: mdi:pistol 
-   
+ - name: J's Parents
+   latitude: 34.87569419327225
+   longitude: -76.9277051186762
+   radius: 100
+   icon: mdi:account-child-outline
+ - name: Seestar's
+   latitude: 35.07984159121243 
+   longitude: -77.05161098186107 
+   radius: 100
+   icon: mdi:account-child-outline

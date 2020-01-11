@@ -289,6 +289,26 @@ fan:
         turn_off:
           service: homeassistant.turn_off
           entity_id: light.jasco_products_45856_00db2500_1
+      downstairs_bath_fan:
+        friendly_name: "Downstairs Bathroom Fan"
+        value_template: "{{ states('light.lumi_lumi_relay_c2acn01_08ec4404_on_off') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
+        turn_off:
+          service: homeassistant.turn_off
+          entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
+      master_bath_fan:
+        friendly_name: "Master Bathroom Fan"
+        value_template: "{{ states('light.lumi_lumi_relay_c2acn01_b4012704_on_off_2') }}"
+        turn_on:
+          service: homeassistant.turn_on
+          entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
+        turn_off:
+          service: homeassistant.turn_off
+          entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
+pi_hole:
+  api_key: !secret pi_hole_api_key
 zoneminder:
  - host: !secret zm_host 
    username: !secret zm_uid

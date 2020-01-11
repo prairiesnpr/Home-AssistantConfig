@@ -83,3 +83,8 @@
    longitude: -104.837601
    radius: 500
    icon: mdi:local_hospital
+ - name: R's Parents
+   latitude: 42.103205
+   longitude: -102.867023
+   radius: 100
+   icon: mdi:account-child-outline

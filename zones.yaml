@@ -53,3 +53,33 @@
    longitude: -77.05161098186107 
    radius: 100
    icon: mdi:account-child-outline
+ - name: Alliance Rec Ctr                                                                                         
+   latitude: 42.104940                                                                                  
+   longitude: -102.854400                                                                                 
+   radius: 200                                                                                             
+   icon: mdi:yoga
+ - name: BBC Atty                                                                                         
+   latitude: 42.100194                                                                                  
+   longitude: -102.871192                                                                                 
+   radius: 100                                                                                             
+   icon: mdi:briefcase
+ - name: Shleter Ins                                                                                          
+   latitude: 42.099114                                                                                  
+   longitude: -102.869790                                                                                 
+   radius: 100                                                                                             
+   icon: mdi:store 
+ - name: Com Church                                                                                          
+   latitude: 42.973459                                                                                   
+   longitude: -102.567607                                                                                 
+   radius: 200                                                                                             
+   icon: mdi:church
+ - name: Grandparents
+   latitude: 41.128228
+   longitude: -100.992395
+   radius: 300
+   icon: mdi:face
+ - name: UC Hospital
+   latitude: 39.741760
+   longitude: -104.837601
+   radius: 500
+   icon: mdi:local_hospital

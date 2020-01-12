@@ -994,12 +994,8 @@
   alias: Master Bathroom Fan on humidity
   description: Turn on bathroom fan when humidity is above setpoint 
   trigger:
-  - above: "{{ states('input_number.bath_fan_on') | int }}" 
-    device_id: 0046fe421a25476884ccd08ac7bbdce6
-    domain: sensor
-    entity_id: sensor.lumi_lumi_weather_02c9fa4a_1_1029
-    platform: device
-    type: humidity
+    platform: template
+    value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state > states.input_number.bath_fan_on.state }}' 
   condition: []
   action:
   - data:
@@ -1010,18 +1006,14 @@
   alias: Master Bathroom Fan Off humidity
   description: Turn off bathroom fan when humidity is below setpoint 
   trigger:
-  - below: "{{ states('input_number.bath_fan_off') | int }}"
-    device_id: 0046fe421a25476884ccd08ac7bbdce6
-    domain: sensor
-    entity_id: sensor.lumi_lumi_weather_02c9fa4a_1_1029
+    platform: template
+    value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state < states.input_number.bath_fan_off.state }}' 
     for:
       hours: 0
       minutes: 2
       seconds: 0
-    platform: device
-    type: humidity
   condition:
-  - condition: state
+    condition: state
     entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
     state: clear
   action:

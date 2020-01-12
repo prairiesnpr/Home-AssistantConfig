@@ -56,3 +56,22 @@ I utilize the native ZHA integration.
       * [1] Xiaomi Opple 1 button switch (These are crazy, they broadcast so everything on the network turns on or off, have to be paired directly.)
       
       
+## Floorplan
+
+Created drawing with [designspark mechanical](https://www.rs-online.com/designspark/mechanical-software) and then converted to svg and edited with [Inkscape](https://inkscape.org/).  Fans, dumpster and vehicles are animated.
+
+### Top Floor
+![Top Floor](https://github.com/prairiesnpr/Home-AssistantConfig/blob/master/www/floorplan/wiebelo/wiebelo_top_floor.svg)
+### Bottom Floor
+![Bottom Floor](https://github.com/prairiesnpr/Home-AssistantConfig/blob/master/www/floorplan/wiebelo/wiebelo_bottom_floor.svg) 
+
+## Cameras
+* DVR
+  * Zoneminder in Docker
+* Cameras
+  * [2] Hikvision DS-2CD2385FWD-I
+  * [1] Foscam FI8918W
+  
+## HVAC
+* Thermostat
+  * Nest 3rd Generation Thermostat Pro T3008US

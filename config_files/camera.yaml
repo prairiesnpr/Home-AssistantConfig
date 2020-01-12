@@ -1,0 +1,13 @@
+- platform: ha_skyfield
+- platform: zoneminder
+- platform: generic
+  name: Front Porch (direct)
+  still_image_url: !secret fp_cam_still_url
+  stream_source: !secret fp_cam_rtsp
+- platform: generic
+  name: Ukn (direct)
+  username: !secret zm_uid
+  password: !secret zm_pwd
+  authentication: digest
+  still_image_url: !secret uk_cam_still_url
+  stream_source: !secret uk_cam_rtsp

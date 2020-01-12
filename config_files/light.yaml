@@ -1,0 +1,15 @@
+- platform: group
+  name: Master Bedroom Lights
+  entities:
+    - light.ge_appliances_zll_light_000230a7_1
+    - light.ge_appliances_zll_light_0006c093_1
+- platform: group
+  name: Bedroom Lights
+  entities:
+    - light.sengled_e11_n1ea_00038574_1
+    - light.sengled_e11_n1ea_0003232a_1
+- platform: group
+  name: Stairway Lights
+  entities:
+    - light.osram_lightify_a19_rgbw_00a5deb3_3
+    - light.osram_lightify_a19_rgbw_00a69e14_3

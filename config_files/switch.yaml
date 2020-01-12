@@ -1,0 +1,28 @@
+- platform: mqtt
+  name: "Christmas Lights Switch"
+  state_topic: "christmas/switch0"
+  command_topic: "christmas/switch0/set"
+  availability_topic: "christmas/switch0/available"
+  payload_on: "ON"
+  payload_off: "OFF"
+  state_on: "ON"
+  state_off: "OFF"
+  optimistic: false
+  qos: 0
+  retain: false 
+- platform: circadian_lighting
+  lights_xy:
+    - light.stairway_lights
+    - light.bedroom_lights
+    # Counter light - Living Room
+    - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
+    # Desk lamp - Office
+    - light.osram_lightify_a19_rgbw_00a434be_3
+  lights_brightness:
+    # Master bedroom closet lights
+    - light.master_bedroom_lights
+    - light.sunricher_zg9101sac_hp_106770a5_1
+    #Living room cans
+    - light.jasco_products_45857_242c2500_level_on_off
+    #Kitchen Cans
+    - light.jasco_products_45857_8a1e2500_level_on_off

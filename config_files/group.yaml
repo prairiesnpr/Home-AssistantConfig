@@ -1,0 +1,20 @@
+home_owners:
+  name: Home Owners
+  entities:
+    - person.ryan
+    - person.jeanette
+jeanette_watch:
+  name: Jeanette Watch
+  entities:
+    #Unlock
+    - script.1577500116793
+    #Lock
+    - script.1577500084226
+    - light.stairway_lights
+    #Master Bathroom Light
+    - light.sunricher_zg9101sac_hp_106770a5_1
+    - light.bedroom_lights
+    #Front Porch Lights
+    - light.jasco_products_45856_61d32600_1
+    #Garage Door
+    - switch.xbee_xbee_io_4193fedf_210_6

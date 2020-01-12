@@ -1,0 +1,8 @@
+- name: pushbullet
+  platform: pushbullet
+  api_key: !secret pushbullet_api_key 
+- platform: group
+  name: all_ios_devices
+  services:
+    - service: mobile_app_jeanette_s_iphone
+    - service: mobile_app_ryans_ipad 

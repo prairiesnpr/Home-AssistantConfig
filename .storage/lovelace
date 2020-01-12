@@ -234,6 +234,32 @@
                             "type": "horizontal-stack"
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.master_bath_fan"
+                                }
+                            ],
+                            "title": "Master Bathroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.downstairs_bath_fan"
+                                }
+                            ],
+                            "title": "Downstairs Bathroom",
+                            "type": "entities"
+                        },
+                        {
                             "aspect_ratio": "100%",
                             "entity": "camera.skyfield",
                             "show_name": false,
@@ -257,32 +283,6 @@
                                 }
                             },
                             "type": "entity-button"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
-                                    "name": "Fan Light"
-                                },
-                                {
-                                    "entity": "fan.downstairs_bath_fan"
-                                }
-                            ],
-                            "title": "Downstairs Bathroom",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
-                                    "name": "Fan Light"
-                                },
-                                {
-                                    "entity": "fan.master_bath_fan"
-                                }
-                            ],
-                            "title": "Master Bathroom",
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -1084,71 +1084,6 @@
                     "cards": [
                         {
                             "entities": [
-                                {
-                                    "entity": "sensor.activity"
-                                },
-                                {
-                                    "entity": "sensor.average_active_pace"
-                                },
-                                {
-                                    "entity": "sensor.bssid"
-                                },
-                                {
-                                    "entity": "sensor.battery_level"
-                                },
-                                {
-                                    "entity": "sensor.battery_state"
-                                },
-                                {
-                                    "entity": "sensor.connection_type"
-                                },
-                                {
-                                    "entity": "sensor.distance"
-                                },
-                                {
-                                    "entity": "sensor.floors_ascended"
-                                },
-                                {
-                                    "entity": "sensor.floors_descended"
-                                },
-                                {
-                                    "entity": "sensor.geocoded_location"
-                                },
-                                {
-                                    "entity": "sensor.last_update_trigger"
-                                },
-                                {
-                                    "entity": "sensor.sim_1"
-                                },
-                                {
-                                    "entity": "sensor.ssid"
-                                },
-                                {
-                                    "entity": "sensor.steps"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Jeanette's iPhone",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.sm_g950u"
-                                }
-                            ],
-                            "title": "Ryan\u2019s S8",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:cellphone-android",
-                    "title": "Devices"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
                                 "moisture:sensor.poinsettia_moisture",
                                 "intensity:sensor.poinsettia_light_intensity",
                                 "temperature:sensor.poinsettia_temperature",
@@ -1265,6 +1200,71 @@
                     ],
                     "icon": "mdi:access-point-network",
                     "panel": true
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.activity"
+                                },
+                                {
+                                    "entity": "sensor.average_active_pace"
+                                },
+                                {
+                                    "entity": "sensor.bssid"
+                                },
+                                {
+                                    "entity": "sensor.battery_level"
+                                },
+                                {
+                                    "entity": "sensor.battery_state"
+                                },
+                                {
+                                    "entity": "sensor.connection_type"
+                                },
+                                {
+                                    "entity": "sensor.distance"
+                                },
+                                {
+                                    "entity": "sensor.floors_ascended"
+                                },
+                                {
+                                    "entity": "sensor.floors_descended"
+                                },
+                                {
+                                    "entity": "sensor.geocoded_location"
+                                },
+                                {
+                                    "entity": "sensor.last_update_trigger"
+                                },
+                                {
+                                    "entity": "sensor.sim_1"
+                                },
+                                {
+                                    "entity": "sensor.ssid"
+                                },
+                                {
+                                    "entity": "sensor.steps"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Jeanette's iPhone",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.sm_g950u"
+                                }
+                            ],
+                            "title": "Ryan\u2019s S8",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:cellphone-android",
+                    "title": "Devices"
                 },
                 {
                     "badges": [],

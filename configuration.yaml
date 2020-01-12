@@ -132,15 +132,15 @@ input_number:
     min: 30
     max: 90
     step: 1
-    unit_of_measurement: %
+    unit_of_measurement: '%'
     icon: mdi:water-percent
-  bath_fan_off:
+  bath_fan_on:
     name: Slider
     initial: 63
     min: 30
     max: 90
     step: 1
-    unit_of_measurement: %
+    unit_of_measurement: '%'
     icon: mdi:water-percent
 nest:
   client_id: !secret nest_client_id 

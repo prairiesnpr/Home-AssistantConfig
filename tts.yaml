@@ -1,0 +1,5 @@
+- platform: microsoft
+  api_key: !secret msft_tts_key 
+  language: en-gb
+  gender: Female
+  type: Susan, Apollo

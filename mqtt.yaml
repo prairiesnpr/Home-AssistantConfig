@@ -1,0 +1,9 @@
+broker: !secret mqtt_path 
+discovery: true
+discovery_prefix: !secret mqtt_prefix 
+birth_message:
+  topic: !secret mqtt_status
+  payload: 'online'
+will_message:
+  topic: !secret mqtt_status
+  payload: 'offline'

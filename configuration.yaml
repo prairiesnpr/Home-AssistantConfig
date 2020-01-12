@@ -1,352 +1,67 @@
-homeassistant:
-  name: !secret ha_name 
-  latitude: !secret home_lat 
-  longitude: !secret home_long 
-  elevation: 727
-  unit_system: imperial 
-  time_zone: America/New_York
-  customize: !include customize.yaml
-  whitelist_external_dirs:
-    - !secret snapshot_dir
-
-# Enables the frontend
 frontend:
   extra_html_url:
     - /local/hass-bha-icons.html
 
-# Enables configuration UI
-config:
-
-mobile_app:
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: !secret ha_url
   use_x_forwarded_for: true
   trusted_proxies: !secret ha_ip
 
-updater:
-
-# Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
-# Sensors
-sensor:
-  - platform: miflora
-    mac: '80:EA:CA:88:E3:EB'
-    name: Poinsettia
-  - platform: mqtt
-    name: "Christmas Lights"
-    state_topic: "christmas/sensor0"
-    value_template: "{{ value_json.status }}"
-  - platform: mqtt_room
-    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
-    name: Dumpster
-    state_topic: room_presence
-    away_timeout: 30
-  - platform: mqtt_room
-    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-39839"
-    name: F150
-    state_topic: room_presence
-    away_timeout: 30
-  - platform: mqtt_room
-    device_id: "b5b182c7eab14988aa99b5c1517008d9-1-31494"
-    name: Porsche 
-    state_topic: room_presence
-    away_timeout: 30
-  - platform: zoneminder
-  - platform: template 
-    sensors:
-      xbox_source: 
-        value_template: '{{ states.media_player.xbox_one.attributes["source"] }}'
-        friendly_name: 'Xbox Source'
-      water_heater_time_to_temp:
-        value_template: >-
-          {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
-             0
-          {% else %}
-             {{((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}} 
-          {% endif %}
-        friendly_name: 'Water Heater: Time to Temp'
-        unit_of_measurement: 'Min'
-binary_sensor:
-  - platform: workday
-    country: US 
-    province: TN
-    workdays: [mon, tue, wed, thu, fri]
-  - platform: template
-    sensors:
-     door:
-      device_class: garage_door
-      value_template: "{{ is_state('switch.xbee_xbee_io_4193fedf_211_6', 'on') }}"
-tts:
-  - platform: microsoft
-    api_key: !secret msft_tts_key 
-    language: en-gb
-    gender: Female
-    type: Susan, Apollo
-media_player:
-  - platform: onkyo
-    host: !secret avr_ip 
-    sources:
-      hdmi-6: 'ha'
-      hdmi-5: 'hdmi-5'
-      strm-box: 'Strm-Box'
-      bd: 'XBOX'
-      bluetooth: 'Bluetooth'
-      # usb_usb: 'USB'
-      network_net: 'Network'
-      fm: 'Radio'
-      am: 'AM'
-      video4: 'Video 4'
-      video3: 'Game'
-      video2: 'Cable/Sat'
-      #'cd_tv/cd': 'CD'
-      tv: 'TV'
-      phono: 'Phono'
-      aux: 'AUX'
-    name: receiver
-    receiver_max_volume: 200 
-  - platform: gstreamer
-  - platform: samsungtv
-    host: !secret livingroomtv_ip
-  - platform: xboxone
-    device: FD00472764D4AE81
-    name: Xbox One
-input_number:
-  bath_fan_off:
-    name: Bathroom Fan On
-    initial: 63
-    min: 30
-    max: 90
-    step: 1
-    unit_of_measurement: '%'
-    icon: mdi:water-percent
-  bath_fan_on:
-    name: Bathroom Fan Off 
-    initial: 63
-    min: 30
-    max: 90
-    step: 1
-    unit_of_measurement: '%'
-    icon: mdi:water-percent
-nest:
-  client_id: !secret nest_client_id 
-  client_secret: !secret nest_client_secret 
-  sensors:
-    monitored_conditions:
-      - temperature
-      - target
-      - humidity
-      - operation_mode
-      - hvac_state
-
 weather:
   - platform: darksky
     api_key: !secret darksky_api_key
 
-cloud:
-
-lovelace:
-        #  mode: yaml
-
-zha:
-  radio_type: xbee
-  usb_path: /dev/ttyUSB0
-  database_path: /home/homeassistant/.homeassistant/zigbee.db 
-  baudrate: 115200 
-
-mqtt:
-  broker: !secret mqtt_path 
-  discovery: true
-  discovery_prefix: !secret mqtt_prefix 
-  birth_message:
-    topic: !secret mqtt_status
-    payload: 'online'
-  will_message:
-    topic: !secret mqtt_status
-    payload: 'offline'
-
 logger:
-  default: warning # error 
+  default: warning
   logs: !include zigbee_logging.yaml
-  #media_player.onkyo: debug
-
-zone: !include zones.yaml
-
-system_health:
-
-group: !include groups.yaml
-
-light: !include light_groups.yaml
-person:
-
-automation: !include automations.yaml
-script: !include scripts.yaml
-
 
 device_tracker:
   - platform: bluetooth_tracker
-    #  - platform: unifi
-    #host: !secret unifi_host
-    #username: !secret unifi_uid
-    #password: !secret unifi_pwd
-    #verify_ssl: false
-    #ssid_filter:
-    #  - 'PrairieSnpr'
 
-history:
-  include:
-    entities:
-      - sensor.downstairs_thermostat_temperature
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1026
-      - sensor.zha_40c04e54_2_1026
-      - sensor.downstairs_thermostat_humidity
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1029
-      - sensor.zha_40c04e54_2_1029
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1027
-      - sensor.zha_40c04dcb_2_1026
-      - sensor.zha_40c04dcb_3_1026
-      - switch.zha_40c04dcb_1_6
-      - person.ryan
-      - person.jeanette
-      - switch.ledvance_plug_00054922_1
-      - lock.yale_yrd256_tsdb_7b1f1911_door_lock
-
-recorder:
-  purge_keep_days: 5
-  db_url: !secret recorder_url 
-  include:
-    entities:
-      - binary_sensor.zha_02bfefd9_1_6 #Back Door
-      - binary_sensor.zha_02e2146c_1_6 #Front Door
-      - binary_sensor.zha_02ec0d9e_1_6 #Kitchen - Garage Door
-      - automation.skip_door_alert #Dog Door 
-      - binary_sensor.zha_02bfe504_1_6 # Garage Walk in door
-      - switch.xbee_xbee_io_4193fedf_211_6 #Garage Rollup Door
-      - switch.xbee_xbee_io_4193fedf_209_6 #Garage Rollup Door Push Button
-      - fan.upstairs_hvac_fan
-      - sensor.downstairs_thermostat_temperature
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1026
-      - sensor.zha_40c04e54_2_1026
-      - sensor.downstairs_thermostat_humidity
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1029
-      - sensor.zha_40c04e54_2_1029
-      - sensor.lumi_lumi_weather_02c9fa4a_1_1027
-      - switch.zha_40c04dcb_1_6
-      - sensor.zha_40c04dcb_2_1026
-      - sensor.zha_40c04dcb_3_1026
-      - person.ryan
-      - person.jeanette
-      - switch.ledvance_plug_00054922_1
-      - lock.yale_yrd256_tsdb_7b1f1911_door_lock
-
-notify:
-  - name: pushbullet
-    platform: pushbullet
-    api_key: !secret pushbullet_api_key 
-  - platform: group
-    name: all_ios_devices
-    services:
-      - service: mobile_app_jeanette_s_iphone
-      - service: mobile_app_ryans_ipad 
-circadian_lighting:
-
-switch:
-  - platform: mqtt
-    name: "Christmas Lights Switch"
-    state_topic: "christmas/switch0"
-    command_topic: "christmas/switch0/set"
-    availability_topic: "christmas/switch0/available"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    optimistic: false
-    qos: 0
-    retain: false 
-  - platform: circadian_lighting
-    lights_xy:
-      - light.stairway_lights
-      - light.bedroom_lights
-      # Counter light - Living Room
-      - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
-      # Desk lamp - Office
-      - light.osram_lightify_a19_rgbw_00a434be_3
-    lights_brightness:
-      # Master bedroom closet lights
-      - light.master_bedroom_lights
-      - light.sunricher_zg9101sac_hp_106770a5_1
-      #Living room cans
-      - light.jasco_products_45857_242c2500_level_on_off
-      #Kitchen Cans
-      - light.jasco_products_45857_8a1e2500_level_on_off
-fan:
-  - platform: template
-    fans:
-      upstairs_hvac_fan:
-        friendly_name: "Upstairs HVAC Blower"
-        value_template: "{{ states('light.jasco_products_45856_00db2500_1') }}"
-        turn_on:
-          service: homeassistant.turn_on
-          entity_id: light.jasco_products_45856_00db2500_1 
-        turn_off:
-          service: homeassistant.turn_off
-          entity_id: light.jasco_products_45856_00db2500_1
-      downstairs_bath_fan:
-        friendly_name: "Downstairs Bathroom Fan"
-        value_template: "{{ states('light.lumi_lumi_relay_c2acn01_08ec4404_on_off') }}"
-        turn_on:
-          service: homeassistant.turn_on
-          entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
-        turn_off:
-          service: homeassistant.turn_off
-          entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
-      master_bath_fan:
-        friendly_name: "Master Bathroom Fan"
-        value_template: "{{ states('light.lumi_lumi_relay_c2acn01_b4012704_on_off_2') }}"
-        turn_on:
-          service: homeassistant.turn_on
-          entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
-        turn_off:
-          service: homeassistant.turn_off
-          entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
 pi_hole:
   api_key: !secret pi_hole_api_key
+
 zoneminder:
  - host: !secret zm_host 
    username: !secret zm_uid
    password: !secret zm_pwd 
-camera:
-  - platform: ha_skyfield
-  - platform: zoneminder
-  - platform: generic
-    name: Front Porch (direct)
-    still_image_url: !secret fp_cam_still_url
-    stream_source: !secret fp_cam_rtsp
-  - platform: generic
-    name: Ukn (direct)
-    username: !secret zm_uid
-    password: !secret zm_pwd
-    authentication: digest
-    still_image_url: !secret uk_cam_still_url
-    stream_source: !secret uk_cam_rtsp
-   
-stream:
 
 upnp:
   sensors: true
   local_ip: !secret local_ip 
 
+stream:
+circadian_lighting:
+system_health:
+person:
+cloud:
+lovelace:
+config:
+mobile_app:
+updater:
+discovery:
+conversation:
+logbook:
+map:
+sun:
+
+homeassistant: !inlcude homeassistant.yaml
+zha: !inlcude zha.yaml
+tts: !inlcude tts.yaml
+media_player: !inlcude media_player.yaml  
+input_number: !include input_number.yaml
+sensor: !inlcude sensor.yaml
+binary_sensor: !include binary_sensor.yaml
+mqtt: !include mqtt.yaml
+zone: !include zones.yaml
+group: !include groups.yaml
+light: !include light_groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+history: !inlcude history.yaml
+recorder: !inlcude recorder.yaml
+notify: !inlcude notify.yaml
+switch: !inlcude switch.yaml
+fan: !include fan.yaml
+camera: !inlcude camera.yaml
+nest: !inlcude nest.yaml

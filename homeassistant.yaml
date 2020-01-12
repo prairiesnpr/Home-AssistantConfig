@@ -1,0 +1,9 @@
+name: !secret ha_name 
+latitude: !secret home_lat 
+longitude: !secret home_long 
+elevation: 727
+unit_system: imperial 
+time_zone: America/New_York
+customize: !include customize.yaml
+whitelist_external_dirs:
+  - !secret snapshot_dir

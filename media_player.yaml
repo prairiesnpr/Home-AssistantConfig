@@ -1,0 +1,27 @@
+- platform: onkyo
+  host: !secret avr_ip 
+  sources:
+    hdmi-6: 'ha'
+    hdmi-5: 'hdmi-5'
+    strm-box: 'Strm-Box'
+    bd: 'XBOX'
+    bluetooth: 'Bluetooth'
+    # usb_usb: 'USB'
+    network_net: 'Network'
+    fm: 'Radio'
+    am: 'AM'
+    video4: 'Video 4'
+    video3: 'Game'
+    video2: 'Cable/Sat'
+    #'cd_tv/cd': 'CD'
+    tv: 'TV'
+    phono: 'Phono'
+    aux: 'AUX'
+  name: receiver
+  receiver_max_volume: 200 
+- platform: gstreamer
+- platform: samsungtv
+  host: !secret livingroomtv_ip
+- platform: xboxone
+  device: FD00472764D4AE81
+  name: Xbox One

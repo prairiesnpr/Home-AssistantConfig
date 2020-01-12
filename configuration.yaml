@@ -125,7 +125,23 @@ media_player:
   - platform: xboxone
     device: FD00472764D4AE81
     name: Xbox One
-
+input_number:
+  bath_fan_off:
+    name: Bathroom Fan On
+    initial: 63
+    min: 30
+    max: 90
+    step: 1
+    unit_of_measurement: %
+    icon: mdi:water-percent
+  bath_fan_off:
+    name: Slider
+    initial: 63
+    min: 30
+    max: 90
+    step: 1
+    unit_of_measurement: %
+    icon: mdi:water-percent
 nest:
   client_id: !secret nest_client_id 
   client_secret: !secret nest_client_secret 

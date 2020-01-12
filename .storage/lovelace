@@ -260,6 +260,22 @@
                             "type": "entities"
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
+                                    "name": "Ceiling Light"
+                                },
+                                {
+                                    "entity": "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
+                                    "name": "Ceiling Fan",
+                                    "type": "custom:custom-fan-card"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Guest Bedroom",
+                            "type": "entities"
+                        },
+                        {
                             "aspect_ratio": "100%",
                             "entity": "camera.skyfield",
                             "show_name": false,
@@ -283,22 +299,6 @@
                                 }
                             },
                             "type": "entity-button"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
-                                    "name": "Ceiling Light"
-                                },
-                                {
-                                    "entity": "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
-                                    "name": "Ceiling Fan",
-                                    "type": "custom:custom-fan-card"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Guest Bedroom",
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -710,7 +710,7 @@
                             "cards": [
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.02",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.03",
                                         "rules": [
                                             {
                                                 "entities": [
@@ -854,7 +854,7 @@
                                 },
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.02",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.03",
                                         "rules": [
                                             {
                                                 "entities": [

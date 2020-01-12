@@ -1,0 +1,398 @@
+/* SVG shapes */
+
+svg, svg * {
+  vector-effect: non-scaling-stroke !important;
+  pointer-events: all !important;
+}
+
+/* Hover over */
+
+.entity:hover {
+  stroke: #03A9F4 !important;
+  stroke-width: 1px !important;
+  stroke-opacity: 1 !important;
+}
+
+/* Bootstrap succsss */
+
+.success-text {
+  fill: #3c763d !important;
+}
+
+.success-background, .success-text-background {
+  fill: #dff0d8 !important;
+  fill-opacity: 1 !important;
+  stroke: #d6e9c6 !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap info */
+
+.info-text {
+  fill: #31708f !important;
+}
+
+.info-background, .info-text-background {
+  fill: #d9edf7 !important;
+  fill-opacity: 1 !important;
+  stroke: #bce8f1 !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap warning */
+
+.warning-text {
+  fill: #8a6d3b !important;
+}
+
+.warning-background, .warning-text-background  {
+  fill: #fcf8e3 !important;
+  fill-opacity: 1 !important;
+  stroke: #faebcc !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap danger */
+
+.danger-text {
+  fill: #a94442 !important;
+}
+
+.danger-background, .danger-text-background {
+  fill: #f2dede !important;
+  fill-opacity: 1 !important;
+  stroke: #ebccd1 !important;
+  stroke-width: 1px !important;
+}
+
+/* Last motion entity */
+
+.last-motion {
+  stroke: #808080 !important;
+  stroke-width: 1px !important;
+  stroke-opacity: 1 !important;
+}
+
+/* Alarm Panel */
+
+.alarm-disarmed {
+  fill: #3c763d !important;
+}
+
+.alarm-armed {
+  fill: #8a6d3b !important;
+}
+
+/* Camera */
+
+.camera-idle {
+/*  fill: #B9CEF7 !important; */
+  fill: #6FAECE !important;
+}
+
+/* Light */
+
+.light-off {
+  fill: #C3B7F4 !important;
+}
+
+.light-on {
+  fill: rgb(252, 248, 4) !important;
+}
+
+/* water heater */
+.waterheater-off {
+  fill: #001577 !important;
+}
+
+.waterheater-on {
+  fill: #f40707 !important;
+}
+
+
+/* Doorbell */
+
+.doorbell-off {
+  fill: #c3b7f4 !important;
+}
+
+.doorbell-on {
+  fill: #f8d2b9 !important;
+}
+
+/* Temperature sensor */
+
+.temp-very-low-background {
+  fill: #d9edf7 !important;
+  fill-opacity: 1 !important;
+}
+
+.temp-below-average-background {
+  fill: #dcefe8 !important;
+  fill-opacity: 1 !important;
+}
+
+.temp-average-background {
+  fill: #dff0d8 !important;
+  fill-opacity: 1 !important;
+}
+
+.temp-very-high-background {
+  fill: #f2dede !important;
+  fill-opacity: 1 !important;
+}
+
+/* Media player */
+
+.squeezebox-off {
+  fill: #8AA8A7 !important;
+}
+
+.squeezebox-on {
+  fill: #2baaa6 !important;
+}
+
+/* Animation */
+
+.spinning {
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinning_cfan {
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 50% 54%;
+    transform-box: fill-box;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+/*Slide translation for dumpster*/
+@keyframes dumpster-slide-in {
+  0% {
+      transform: translateY(100px) translateX(0);
+    }
+  50% {
+      transform: translateY(50px) translateX(50px);
+    }
+
+100% {
+
+     transform: translateY(0) translateX(0);
+}
+
+
+}
+@keyframes dumpster-slide-out {
+ 25% { 
+      trasnform: translateY(0) translateX(50px);
+      }
+ 50% {
+      transform: translateY(50px) translateX(50px);
+ }
+
+ 100% {
+     transform: translateY(100px) translateX(0);
+ }
+  
+}
+/*Slide translation for vehicles*/
+@keyframes car-slide-in {
+  0% {
+      -webkit-transform: translateY(400px) translateX(0);
+      transform: translateY(400px) translateX(0);
+    }
+  100% {
+
+     -webkit-transform: translateY(0) translateX(0);
+     transform: translateY(0) translateX(0);
+ 
+}
+}
+@keyframes car-slide-out {
+  100% {
+     -webkit-transform: translateY(400px) translateX(0);
+     transform: translateY(400px) translateX(0);
+ }
+}
+
+
+@keyframes rotate-90 {
+	100% {
+		transform: rotate(-90deg);
+	}	
+}
+
+@keyframes rotateReset-90 {
+	0% {
+		transform: rotate(-90deg);
+	}
+	100% {
+		transform: none;
+	}
+}
+@keyframes rotate90 {
+	100% {
+		transform: rotate(90deg);
+	}	
+}
+
+@keyframes rotateReset90 {
+	0% {
+		transform: rotate(90deg);
+	}
+	100% {
+		transform: none;
+	}
+}
+@keyframes garage-open{
+  0% {
+	  transform: rotateX(82deg);
+          transform-origin: top;
+  }
+
+  100% {
+	  transform: rotateX(0deg);
+          transform-origin: top;
+  }
+}
+
+
+
+@keyframes garage-closed {
+  0% {
+	  transform: rotateX(0deg);
+          transform-origin: top;
+  }
+
+  100% {
+	  transform: rotateX(82deg);
+          transform-origin: top;
+  }
+}
+
+
+
+
+
+
+/* Doors that hinge on the top left */
+#binary_sensor\.zha_02ec0d9e_1_6, /*Kitchen-Garage*/
+#binary_sensor\.zha_02c39915_1_6, /*Master Bedroom Closet*/
+#binary_sensor\.zha_02e2146c_1_6 /*Front*/
+
+{
+	transform-origin: top left;
+}
+/*Doors that hinge on the top right */
+
+
+/*Doors that hinge on the bottom right */
+#binary_sensor\.zha_02bfefd9_1_6 /*Back Door*/
+{
+	transform-origin: bottom right;
+}
+/*Doors that hinge on the bottom left*/
+#binary_sensor\.zha_02bfe504_1_6 /*Garage Walk in*/
+{
+	transform-origin: bottom left;
+}
+
+/* Garage doors */
+#switch\.xbee_xbee_io_4193fedf_211_6-8
+{
+/*	transform-origin: bottom;*/ 
+}
+.door_closed_cc {
+  fill: #00ccff !important;
+  fill-opacity: 1;
+  animation-duration: 2s;
+  animation-name: rotateReset90;
+  transform-box: fill-box;
+}
+
+.door_open_cc {
+  fill: rgb(185, 142, 134) !important;
+  fill-opacity: 1;
+  animation-duration: 2s;
+  animation-name: rotate90;
+  animation-fill-mode: forwards;
+  transform-box: fill-box;
+}
+.door_closed_c {
+  fill: #00ccff !important;
+  fill-opacity: 1;
+  animation-duration: 2s;
+  animation-name: rotateReset-90;
+  transform-box: fill-box;
+}
+
+.door_open_c {
+  fill: rgb(185, 142, 134) !important;
+  fill-opacity: 1;
+  animation-duration: 2s;
+  animation-name: rotate-90;
+  animation-fill-mode: forwards;
+  transform-box: fill-box;
+}
+.dumpster_inside {
+  animation-duration: 2s;
+  animation-name: dumpster-slide-in;
+  animation-fill-mode: forwards;
+}
+.dumpster_outside{
+  animation-duration: 2s;
+  animation-name: dumpster-slide-out;
+  animation-fill-mode: forwards;
+}
+.car_home {
+  animation-duration: 4s;
+  animation-name: car-slide-in;
+  animation-fill-mode: forwards;
+}
+.car_away{
+  animation-duration: 4s;
+  animation-name: car-slide-out;
+  animation-fill-mode: forwards;
+}
+.garage_closed {
+	
+  animation-duration: 2s;
+  animation-name: garage-closed;
+  animation-fill-mode: forwards;
+  transform-box: fill-box;
+  animation: garage-closed 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.garage_open {
+  animation-duration: 2s;
+  animation-name: garage-open;
+  animation-fill-mode: forwards;
+  transform-box: fill-box;
+  animation: garage-open 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+

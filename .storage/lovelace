@@ -710,7 +710,7 @@
                             "cards": [
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.01",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.02",
                                         "rules": [
                                             {
                                                 "entities": [
@@ -854,7 +854,7 @@
                                 },
                                 {
                                     "config": {
-                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.01",
+                                        "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.02",
                                         "rules": [
                                             {
                                                 "entities": [
@@ -877,7 +877,9 @@
                                                     "light.sengled_e11_n1ea_00038574_1",
                                                     "light.sengled_e11_n1ea_0003232a_1",
                                                     "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
-                                                    "light.master_bedroom_lights"
+                                                    "light.master_bedroom_lights",
+                                                    "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
+                                                    "light.lumi_lumi_relay_c2acn01_b4012704_on_off"
                                                 ],
                                                 "states": [
                                                     {
@@ -893,7 +895,9 @@
                                             {
                                                 "entities": [
                                                     "fan.upstairs_hvac_fan",
-                                                    "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514"
+                                                    "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
+                                                    "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
+                                                    "fan.master_bath_fan"
                                                 ],
                                                 "states": [
                                                     {

@@ -25,6 +25,10 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/miflora-card/miflora-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/button-entity-row/button-entity-row.js"
                 }
             ],
             "title": "Wiebelo Villa",
@@ -34,23 +38,40 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.wiebelo_away"
-                                },
-                                {
-                                    "entity": "sensor.plex_son_of_joel"
-                                },
-                                {
-                                    "entity": "sensor.f150"
-                                },
-                                {
-                                    "entity": "sensor.porsche"
-                                },
-                                {
-                                    "entity": "sensor.dumpster"
+                                    "buttons": [
+                                        {
+                                            "entity": "binary_sensor.wiebelo_away",
+                                            "icon": "mdi:home"
+                                        },
+                                        {
+                                            "entity": "sensor.plex_son_of_joel",
+                                            "state_icons": {
+                                                "0": "mdi:numeric-0-circle-outline",
+                                                "1": "mdi:numeric-1-circle-outline",
+                                                "2": "mdi:numeric-2-circle-outline",
+                                                "3": "mdi:numeric-3-circle-outline",
+                                                "4": "mdi:numeric-4-circle-outline",
+                                                "5": "mdi:numeric-5-circle-outline",
+                                                "6": "mdi:numeric-6-circle-outline",
+                                                "7": "mdi:numeric-7-circle-outline",
+                                                "8": "mdi:numeric-8-circle-outline",
+                                                "9": "mdi:numeric-9-circle-outline"
+                                            }
+                                        },
+                                        {
+                                            "entity": "sensor.f150"
+                                        },
+                                        {
+                                            "entity": "sensor.porsche"
+                                        },
+                                        {
+                                            "entity": "sensor.dumpster"
+                                        }
+                                    ],
+                                    "type": "custom:button-entity-row"
                                 }
                             ],
-                            "show_state": false,
-                            "type": "glance"
+                            "type": "entities"
                         },
                         {
                             "entities": [

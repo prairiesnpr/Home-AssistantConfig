@@ -65,7 +65,5 @@ tts: !include config_files/tts.yaml
 zha: !include config_files/zha.yaml
 zone: !include config_files/zones.yaml
 
-
-
-automation: !include_dir_list automations/
-#!include automations.yaml
+automation: !include automations.yaml
+automation old: !include_dir_list automations/

@@ -45,12 +45,12 @@ logbook:
 map:
 sun:
 
-homeassistant: !inlcude homeassistant.yaml
-zha: !inlcude zha.yaml
-tts: !inlcude tts.yaml
-media_player: !inlcude media_player.yaml  
+homeassistant: !include homeassistant.yaml
+zha: !include zha.yaml
+tts: !include tts.yaml
+media_player: !include media_player.yaml  
 input_number: !include input_number.yaml
-sensor: !inlcude sensor.yaml
+sensor: !include sensor.yaml
 binary_sensor: !include binary_sensor.yaml
 mqtt: !include mqtt.yaml
 zone: !include zones.yaml
@@ -58,10 +58,10 @@ group: !include groups.yaml
 light: !include light_groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-history: !inlcude history.yaml
-recorder: !inlcude recorder.yaml
-notify: !inlcude notify.yaml
-switch: !inlcude switch.yaml
+history: !include history.yaml
+recorder: !include recorder.yaml
+notify: !include notify.yaml
+switch: !include switch.yaml
 fan: !include fan.yaml
 camera: !inlcude camera.yaml
 nest: !inlcude nest.yaml

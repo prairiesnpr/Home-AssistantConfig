@@ -11,12 +11,12 @@ I utilize the native ZHA integration.
 * Routers (Mains Powered Devices)
   * Switches
     * Jasco/GE
-      * [2] Add on switches AS2005 https://byjasco.com/ge-enbrighten-add-switch-quickfit-and-simplewire (Used for 3 way switching)
-      * [2] Relay switches 45856 https://byjasco.com/products/ge-zigbee-wall-smart-switch
+      * [2] Add on switches [AS2005](https://byjasco.com/ge-enbrighten-add-switch-quickfit-and-simplewire) (Used for 3 way switching)
+      * [2] Relay switches [45856](https://byjasco.com/products/ge-zigbee-wall-smart-switch)
       * [2] Dimming switches 45857 (Link removed from Jasco site, looks like they are releasing Zigbee 3.0 models)
     * Smart Plugs
-      * [2] Sengled E11-N1EA https://us.sengled.com/products/sengled-smart-plug
-      * [1] Sylvania Smart+ 72922-A https://consumer.sylvania.com/our-products/smart/product-info/zigbee/sylvania-smart-zigbee-indoor-smart-plug/index.jsp
+      * [2] Sengled [E11-N1EA](https://us.sengled.com/products/sengled-smart-plug)
+      * [1] Sylvania Smart+ [72922-A](https://consumer.sylvania.com/our-products/smart/product-info/zigbee/sylvania-smart-zigbee-indoor-smart-plug/index.jsp)
     * Relays
       * [2] Aqara Relays Lumi LLKZMK11LM (I use these to control bathroom fans)
     * Ceiling Fan Controllers

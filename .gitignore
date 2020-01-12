@@ -5,8 +5,12 @@
 !*.md
 !*.yml
 
-!automations/
-!config_files/
+
+
+!*/
+!/config_files/**
+!/maintenance_scripts/**
+!/automations/**
 
 .storage
 .cloud

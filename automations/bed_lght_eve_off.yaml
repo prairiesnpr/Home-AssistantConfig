@@ -1,0 +1,13 @@
+action:
+- data:
+    entity_id:
+    - light.bedroom_lights
+  service: homeassistant.turn_off
+alias: Turn off bedroom lights at night
+condition:
+- condition: state
+  entity_id: person.ryan
+  state: home
+trigger:
+- at: '22:00:00'
+  platform: time

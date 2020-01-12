@@ -1,0 +1,9 @@
+action:
+- data:
+    entity_id:
+    - switch.ledvance_plug_00054922_1
+  service: switch.turn_off
+alias: Turn off the Coffee Pot at night
+trigger:
+- at: '20:00:00'
+  platform: time

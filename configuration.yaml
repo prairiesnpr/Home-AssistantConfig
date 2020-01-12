@@ -67,10 +67,5 @@ zone: !include config_files/zones.yaml
 
 
 
-
-
-
-
-
-
-automation: !include automations.yaml
+automation: !include_dir_list automation/presence/
+#!include automations.yaml

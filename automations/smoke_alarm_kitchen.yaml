@@ -1,0 +1,14 @@
+action:
+- data:
+    message: Smoke detected in the Kitchen!
+    title: Smoke Alarm
+  service: notify.all_ios_devices
+- data:
+    message: Smoke detected in the Kitchen!
+    title: Smoke Alarm
+  service: notify.pushbullet
+alias: Smoke Alarm Kitchen
+trigger:
+- entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
+  platform: state
+  to: 'on'

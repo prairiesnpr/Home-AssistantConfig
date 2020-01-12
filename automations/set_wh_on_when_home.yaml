@@ -1,0 +1,13 @@
+action:
+- data:
+    entity_id: switch.zha_40c04dcb_1_6
+  service: switch.turn_on
+alias: Set Water Heater on When Home
+condition:
+- after: 05:00:00
+  before: '22:00:00'
+  condition: time
+trigger:
+- entity_id: group.home_owners
+  platform: state
+  to: home

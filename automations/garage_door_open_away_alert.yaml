@@ -1,0 +1,19 @@
+action:
+- data:
+    message: The garage door was opened.
+    title: Garage Door Opened
+  service: notify.pushbullet
+- data:
+    message: The garage door was opened.
+    title: Garage Door Opened
+  service: notify.all_ios_devices
+alias: Garage Door Opened Alert
+condition:
+- condition: state
+  entity_id: group.home_owners
+  state: not_home
+trigger:
+- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+  from: 'off'
+  platform: state
+  to: 'on'

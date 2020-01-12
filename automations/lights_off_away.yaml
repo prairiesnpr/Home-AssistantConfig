@@ -1,0 +1,12 @@
+action:
+- data:
+    entity_id:
+    - group.all_lights
+  service: homeassistant.turn_off
+alias: Turn off all lights when away
+trigger:
+- entity_id: group.home_owners
+  for:
+    minutes: 5
+  platform: state
+  to: not_home

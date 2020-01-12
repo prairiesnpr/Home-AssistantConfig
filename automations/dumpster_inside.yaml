@@ -1,0 +1,21 @@
+action:
+- data:
+    message: It's trash day and the dumpster is still inside the garage.
+    title: Take Dumpster Outside
+  service: notify.pushbullet
+alias: Set Dumpster Outside
+condition:
+- after: 02:30:00
+  before: 09:30:00
+  condition: time
+  weekday:
+  - fri
+- condition: state
+  entity_id: sensor.dumpster
+  state: garage
+trigger:
+- at: 08:00:00
+  platform: time
+- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+  platform: state
+  to: 'on'

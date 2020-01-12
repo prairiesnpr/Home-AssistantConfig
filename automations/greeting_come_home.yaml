@@ -1,0 +1,12 @@
+action:
+- entity_id: script.arrival
+  service: homeassistant.turn_on
+alias: Arrival Greeting
+condition:
+- condition: state
+  entity_id: person.jeanette
+  state: not_home
+trigger:
+- entity_id: person.ryan
+  platform: state
+  to: home

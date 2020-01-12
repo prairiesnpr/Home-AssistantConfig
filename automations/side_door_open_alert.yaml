@@ -1,0 +1,19 @@
+action:
+- data:
+    message: The kitchen to garage door was opened.
+    title: Kitchen-Garage Door Opened
+  service: notify.pushbullet
+- data:
+    message: The kitchen to garage door was opened.
+    title: Kitchen-Garage Door Opened
+  service: notify.all_ios_devices
+alias: Kitchen-Garage Door Opened Alert
+condition:
+- condition: state
+  entity_id: group.home_owners
+  state: not_home
+trigger:
+- entity_id: binary_sensor.zha_02ec0d9e_1_6
+  from: 'off'
+  platform: state
+  to: 'on'

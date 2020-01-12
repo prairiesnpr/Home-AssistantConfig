@@ -1,0 +1,26 @@
+action:
+- data:
+    data:
+      attachment:
+        content-type: jpeg
+      entity_id: camera.front_porch_direct
+      push:
+        category: camera
+    message: Front Door Bell Was Rung!
+    title: Door Bell Alert
+  service: notify.all_ios_devices
+- data:
+    entity_id: camera.front_porch_direct
+    filename: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+  service: camera.snapshot
+- data:
+    data:
+      file: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+    message: Front Door Bell was Rung
+    title: Front Door Alert
+  service: notify.pushbullet
+alias: Front Door Bell Rung
+trigger:
+- entity_id: switch.zha_40c04e54_1_6
+  platform: state
+  to: 'on'

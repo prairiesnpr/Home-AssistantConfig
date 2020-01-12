@@ -1,0 +1,16 @@
+action:
+- data:
+    entity_id:
+    - light.bedroom_lights
+  service: homeassistant.turn_on
+alias: Turn on bedroom lights in the morning
+condition:
+- condition: state
+  entity_id: person.ryan
+  state: home
+- condition: state
+  entity_id: binary_sensor.workday_sensor
+  state: 'on'
+trigger:
+- at: 06:15:00
+  platform: time

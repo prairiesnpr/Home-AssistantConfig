@@ -1,0 +1,8 @@
+action:
+- data:
+    entity_id: switch.zha_40c04dcb_1_6
+  service: switch.turn_off
+alias: Set Water Heater off at night
+trigger:
+- at: '22:00:00'
+  platform: time

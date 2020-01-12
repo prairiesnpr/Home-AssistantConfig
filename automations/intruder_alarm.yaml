@@ -1,0 +1,20 @@
+action:
+- data:
+    message: Alarm activated!
+    title: Alarm Activated
+  service: notify.pushbullet
+- data:
+    message: Alarm activated!
+    title: Alarm Activated
+  service: notify.all_ios_devices
+- entity_id: script.intruder
+  service: homeassistant.turn_on
+alias: Intruder Alarm
+condition:
+- condition: state
+  entity_id: group.home_owners
+  state: not_home
+trigger:
+- entity_id: binary_sensor.zha_02e2146c_1_6
+  platform: state
+  to: 'on'

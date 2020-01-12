@@ -1,0 +1,10 @@
+action:
+- data:
+    entity_id:
+    - switch.ledvance_plug_00054922_1
+  service: switch.turn_off
+alias: Turn off the Coffee Pot when away
+trigger:
+- entity_id: group.home_owners
+  platform: state
+  to: not_home

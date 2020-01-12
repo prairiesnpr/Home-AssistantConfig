@@ -1,0 +1,12 @@
+action:
+- data:
+    entity_id:
+    - fan.master_bath_fan
+  service: fan.turn_on
+alias: Master Bathroom Fan on humidity
+condition: []
+description: Turn on bathroom fan when humidity is above setpoint
+trigger:
+  platform: template
+  value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state > states.input_number.bath_fan_on.state
+    }}'

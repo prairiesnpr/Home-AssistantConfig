@@ -1,0 +1,11 @@
+action:
+  data:
+    entity_id:
+    - switch.xbee_xbee_io_4193fedf_210_6
+  service: switch.turn_on
+alias: Garage Toggle On
+trigger:
+- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+  from: 'off'
+  platform: state
+  to: 'on'

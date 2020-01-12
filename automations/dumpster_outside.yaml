@@ -1,0 +1,20 @@
+action:
+- data:
+    message: The dumpster is still outside, please bring it back inside.
+    title: Bring Dumpster Inside
+  service: notify.pushbullet
+alias: Bring Dumpster In
+condition:
+- after: '10:30:00'
+  condition: time
+  weekday:
+  - fri
+- condition: state
+  entity_id: sensor.dumpster
+  state: not_home
+trigger:
+- at: '11:00:00'
+  platform: time
+- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+  platform: state
+  to: 'on'

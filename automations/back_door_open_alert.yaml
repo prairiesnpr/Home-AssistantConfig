@@ -1,0 +1,18 @@
+action:
+- data:
+    message: The back door was opened.
+    title: Back Door Opened
+  service: notify.pushbullet
+- data:
+    message: The back door was opened.
+    title: Back Door Opened
+  service: notify.all_ios_devices
+alias: Back Door Opened Alert
+condition:
+- condition: state
+  entity_id: group.home_owners
+  state: not_home
+trigger:
+- entity_id: binary_sensor.zha_02bfefd9_1_6
+  platform: state
+  to: 'on'

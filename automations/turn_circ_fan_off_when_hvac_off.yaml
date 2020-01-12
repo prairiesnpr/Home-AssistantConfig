@@ -1,0 +1,19 @@
+action:
+  data:
+    entity_id: light.jasco_products_45856_00db2500_1
+  service: light.turn_off
+alias: Turn Circulation Fan off With HVAC
+condition:
+- condition: state
+  entity_id: sensor.downstairs_thermostat_hvac_state
+  state: 'off'
+- condition: state
+  entity_id: binary_sensor.downstairs_thermostat_fan
+  state: 'off'
+trigger:
+- entity_id: sensor.downstairs_thermostat_hvac_state
+  platform: state
+  to: 'off'
+- entity_id: binary_sensor.downstairs_thermostat_fan
+  platform: state
+  to: 'off'

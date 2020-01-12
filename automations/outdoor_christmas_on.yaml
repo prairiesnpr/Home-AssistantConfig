@@ -1,0 +1,12 @@
+action:
+- data:
+    entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
+  service: homeassistant.turn_on
+alias: Christmas Outdoor Lights On
+condition: []
+description: ''
+trigger:
+- below: -4.0
+  entity_id: sun.sun
+  platform: numeric_state
+  value_template: '{{ state.attributes.elevation }}'

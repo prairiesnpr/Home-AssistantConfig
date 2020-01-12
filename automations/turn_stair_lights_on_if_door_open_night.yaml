@@ -1,0 +1,18 @@
+action:
+- data:
+    brightness: 50
+    entity_id: light.stairway_lights
+  service: light.turn_on
+alias: Turn on Stair Lights if Door Opened at Night
+condition:
+- below: -4.0
+  condition: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+- condition: state
+  entity_id: light.stairway_lights
+  state: 'off'
+trigger:
+- entity_id: binary_sensor.zha_02e2146c_1_6
+  platform: state
+  to: 'on'

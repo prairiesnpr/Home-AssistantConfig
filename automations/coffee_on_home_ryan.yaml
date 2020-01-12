@@ -1,0 +1,14 @@
+action:
+- data:
+    entity_id:
+    - switch.ledvance_plug_00054922_1
+  service: switch.turn_on
+alias: Turn on the Coffee Pot when home (Ryan)
+condition:
+- after: 06:15:00
+  before: '20:00:00'
+  condition: time
+trigger:
+- entity_id: person.ryan
+  platform: state
+  to: home

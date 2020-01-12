@@ -1,0 +1,9 @@
+action:
+- data:
+    away_mode: away
+  service: nest.set_away_mode
+alias: Set Nest Away When Away
+trigger:
+- entity_id: group.home_owners
+  platform: state
+  to: not_home

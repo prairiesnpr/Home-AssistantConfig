@@ -1,0 +1,19 @@
+action:
+- data:
+    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+    profile: movie_red
+  service: light.turn_on
+alias: Set Lights on Netflix or Bluray
+trigger:
+- entity_id: sensor.xbox_source
+  platform: state
+  to: Netflix
+- entity_id: sensor.xbox_source
+  platform: state
+  to: Blu-ray Player
+- entity_id: sensor.xbox_source
+  platform: state
+  to: Plex For Xbox One
+- entity_id: sensor.xbox_source
+  platform: state
+  to: Amazon Prime Video US

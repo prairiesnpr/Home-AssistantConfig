@@ -1,0 +1,15 @@
+action:
+- data:
+    entity_id: light.jasco_products_45856_61d32600_1
+  service: homeassistant.turn_on
+alias: Porch Light on if Front Door Opened
+condition:
+- below: -4.0
+  condition: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+description: ''
+trigger:
+- entity_id: binary_sensor.zha_02e2146c_1_6
+  platform: state
+  to: 'on'

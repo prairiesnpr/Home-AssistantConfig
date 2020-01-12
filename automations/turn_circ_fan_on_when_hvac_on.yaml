@@ -1,0 +1,12 @@
+action:
+  data:
+    entity_id: light.jasco_products_45856_00db2500_1
+  service: light.turn_on
+alias: Turn Circulation Fan on With HVAC
+trigger:
+- entity_id: sensor.downstairs_thermostat_hvac_state
+  from: 'off'
+  platform: state
+- entity_id: binary_sensor.downstairs_thermostat_fan
+  from: 'off'
+  platform: state

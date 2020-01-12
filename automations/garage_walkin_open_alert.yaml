@@ -1,0 +1,18 @@
+action:
+- data:
+    message: The garage walk in door was opened.
+    title: Garage Walk-In Opened
+  service: notify.pushbullet
+- data:
+    message: The garage walk in door was opened.
+    title: Garage Walk-In Opened
+  service: notify.all_ios_devices
+alias: Garage Walk In Door Opened Alert
+condition:
+- condition: state
+  entity_id: group.home_owners
+  state: not_home
+trigger:
+- entity_id: binary_sensor.zha_02bfe504_1_6
+  platform: state
+  to: 'on'

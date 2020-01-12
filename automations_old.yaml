@@ -1,0 +1,1023 @@
+- id: coffee_on_morn_ryan
+  alias: Turn on Coffee Pot in the morning (Ryan)
+  trigger:
+  - at: 06:15:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_on_morn
+  alias: Turn on Coffee Pot in the morning (Jeanette)
+  trigger:
+  - at: 07:30:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: person.jeanette
+    state: home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_off_jeanette_only
+  alias: Turn off the Coffee Pot off if Jeanette is home alone
+  trigger:
+  - at: '14:00:00'
+    platform: time
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: person.ryan
+      state: not_home
+    - condition: state
+      entity_id: person.jeanette
+      state: home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_off
+- id: coffee_off_night
+  alias: Turn off the Coffee Pot at night
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_off
+- id: coffee_on_home_jeanette
+  alias: Turn on the Coffee Pot when home (Jeanette)
+  trigger:
+  - entity_id: person.jeanette
+    platform: state
+    to: home
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: person.ryan
+      state: not_home
+    - condition: time
+      after: 07:00:00
+      before: '14:00:00'
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_on_home_ryan
+  alias: Turn on the Coffee Pot when home (Ryan)
+  trigger:
+  - entity_id: person.ryan
+    platform: state
+    to: home
+  condition:
+  - condition: time
+    after: 06:15:00
+    before: '20:00:00'
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_on
+- id: coffee_off_away
+  alias: Turn off the Coffee Pot when away
+  trigger:
+  - entity_id: group.home_owners
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id:
+      - switch.ledvance_plug_00054922_1
+    service: switch.turn_off
+- id: '1546826068070'
+  alias: Garage Toggle On
+  trigger:
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+    service: switch.turn_on
+    data:
+      entity_id:
+      - switch.xbee_xbee_io_4193fedf_210_6
+- id: '1546826459762'
+  alias: Garage Toggle Off
+  trigger:
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: switch.xbee_xbee_io_4193fedf_210_6
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id:
+      - switch.xbee_xbee_io_4193fedf_210_6
+    service: switch.turn_off
+- id: Garage_Ope_Alert
+  alias: Garage Open Alert
+  trigger:
+  - platform: state
+    entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    for: 00:05:00
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.all_ios_devices
+    data:
+      title: Garage Door Left Open Alert
+      message: The garage door has been open for more than five minutes.
+  - service: notify.pushbullet
+    data:
+      title: Garage Door Left Open Alert
+      message: The garage door has been open for more than five minutes.
+- id: Bed_Lght_Morn_On
+  alias: Turn on bedroom lights in the morning
+  trigger:
+  - at: 06:15:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: home
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - data:
+      entity_id:
+      - light.bedroom_lights
+    service: homeassistant.turn_on
+- id: Bed_Lght_Eve_Off
+  alias: Turn off bedroom lights at night
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: person.ryan
+    state: home
+  action:
+  - data:
+      entity_id:
+      - light.bedroom_lights
+    service: homeassistant.turn_off
+- id: Lights_off_away
+  alias: Turn off all lights when away
+  trigger:
+  - entity_id: group.home_owners
+    platform: state
+    to: not_home
+    for:
+      minutes: 5
+  action:
+  - data:
+      entity_id:
+      - group.all_lights
+    service: homeassistant.turn_off
+- id: greeting_come_home
+  alias: Arrival Greeting
+  trigger:
+  - entity_id: person.ryan
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: person.jeanette
+    state: not_home
+  action:
+  - entity_id: script.arrival
+    service: homeassistant.turn_on
+- id: Front_Door_Open_Alert
+  alias: Front Door Opened Alert
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: The front door was opened.
+      title: Front Door Opened
+    service: notify.pushbullet
+  - data:
+      message: The front door was opened.
+      title: Front Door Opened
+    service: notify.all_ios_devices
+  - entity_id: script.intruder
+    service: homeassistant.turn_on
+- id: Intruder_Alarm
+  alias: Intruder Alarm
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: Alarm activated!
+      title: Alarm Activated
+    service: notify.pushbullet
+  - data:
+      message: Alarm activated!
+      title: Alarm Activated
+    service: notify.all_ios_devices
+  - entity_id: script.intruder
+    service: homeassistant.turn_on
+- id: Garage_WalkIn_Open_Alert
+  alias: Garage Walk In Door Opened Alert
+  trigger:
+  - entity_id: binary_sensor.zha_02bfe504_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: The garage walk in door was opened.
+      title: Garage Walk-In Opened
+    service: notify.pushbullet
+  - data:
+      message: The garage walk in door was opened.
+      title: Garage Walk-In Opened
+    service: notify.all_ios_devices
+- id: Back_Door_Open_Alert
+  alias: Back Door Opened Alert
+  trigger:
+  - entity_id: binary_sensor.zha_02bfefd9_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: The back door was opened.
+      title: Back Door Opened
+    service: notify.pushbullet
+  - data:
+      message: The back door was opened.
+      title: Back Door Opened
+    service: notify.all_ios_devices
+- id: Side_Door_Open_Alert
+  alias: Kitchen-Garage Door Opened Alert
+  trigger:
+  - entity_id: binary_sensor.zha_02ec0d9e_1_6
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: The kitchen to garage door was opened.
+      title: Kitchen-Garage Door Opened
+    service: notify.pushbullet
+  - data:
+      message: The kitchen to garage door was opened.
+      title: Kitchen-Garage Door Opened
+    service: notify.all_ios_devices
+- id: Garage_Door_Open_Away_Alert
+  alias: Garage Door Opened Alert
+  trigger:
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      message: The garage door was opened.
+      title: Garage Door Opened
+    service: notify.pushbullet
+  - data:
+      message: The garage door was opened.
+      title: Garage Door Opened
+    service: notify.all_ios_devices
+- id: Skip_Door_Alert
+  alias: Skip Door Alert
+  trigger:
+  - entity_id: binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6
+    for:
+      seconds: 1
+    platform: state
+    to: 'off'
+  condition:
+  - condition: template
+    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.zha_02ec0d9e_1_6.last_changed))
+      > 5 }}'
+  - condition: state
+    entity_id: group.home_owners
+    state: not_home
+  action:
+  - data:
+      entity_id: camera.ukn_cam
+      filename: /home/homeassistant/.homeassistant/www/snapshots/ukn_cam.jpg
+    service: camera.snapshot
+  - data:
+      data:
+        file: /home/homeassistant/.homeassistant/www/snapshots/ukn_cam.jpg
+      message: Scipio has left or arrived!
+      title: Scipio Alert
+    service: notify.pushbullet
+- id: dishwasher_leak_detect
+  alias: Dishwasher Leak Detected
+  trigger:
+  - entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      message: Water leak deteted at the dishwasher!
+      title: Dishwasher Leak
+    service: notify.all_ios_devices
+  - data:
+      message: Water leak deteted at the dishwasher!
+      title: Dishwasher Leak
+    service: notify.pushbullet
+- id: washing_machine_leak_detect
+  alias: Clothes Washer Leak Detected
+  trigger:
+  - entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      message: Water leak deteted at the clothes washer!
+      title: Washing Machine Leak
+    service: notify.all_ios_devices
+  - data:
+      message: Water leak deteted at the clothes washer!
+      title: Washing Machine Leak
+    service: notify.pushbullet
+- id: turn_stair_lights_on_if_door_open_night
+  alias: Turn on Stair Lights if Door Opened at Night
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -4.0
+  - condition: state
+    entity_id: light.stairway_lights
+    state: 'off'
+  action:
+  - data:
+      brightness: 50
+      entity_id: light.stairway_lights
+    service: light.turn_on
+- id: set_nest_away_when_away
+  alias: Set Nest Away When Away
+  trigger:
+  - entity_id: group.home_owners
+    platform: state
+    to: not_home
+  action:
+  - data:
+      away_mode: away
+    service: nest.set_away_mode
+- id: set_nest_home_when_home
+  alias: Set Nest to Home When Home
+  trigger:
+  - platform: state
+    entity_id: group.home_owners
+    to: home
+  action:
+    service: nest.set_away_mode
+    data:
+      away_mode: home
+- id: turn_circ_fan_on_when_hvac_on
+  alias: Turn Circulation Fan on With HVAC
+  trigger:
+  - platform: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    from: 'off'
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.jasco_products_45856_00db2500_1
+- id: turn_circ_fan_off_when_hvac_off
+  alias: Turn Circulation Fan off With HVAC
+  trigger:
+  - platform: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.downstairs_thermostat_hvac_state
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.downstairs_thermostat_fan
+    state: 'off'
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.jasco_products_45856_00db2500_1
+- id: woodpecker_alarm
+  alias: Alert on Woodpecker Pecking
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.zha_02b7eb7f_1_1280
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.zha_02b7eb7f_1
+    to: 'on'
+  action:
+    service: notify.pushbullet
+    data:
+      title: Woodpecker Detected!
+      message: Woodpecker Activity Detected!
+- id: front_door_bell
+  alias: Front Door Bell Rung
+  trigger:
+  - platform: state
+    entity_id: switch.zha_40c04e54_1_6
+    to: 'on'
+  action:
+  - service: notify.all_ios_devices
+    data:
+      title: Door Bell Alert
+      message: Front Door Bell Was Rung!
+      data:
+        attachment:
+          content-type: jpeg
+        push:
+          category: camera
+        entity_id: camera.front_porch_direct
+  - service: camera.snapshot
+    data:
+      entity_id: camera.front_porch_direct
+      filename: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+  - service: notify.pushbullet
+    data:
+      data:
+        file: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
+      title: Front Door Alert
+      message: Front Door Bell was Rung
+- id: smoke_alarm_kitchen
+  alias: Smoke Alarm Kitchen
+  trigger:
+  - entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      message: Smoke detected in the Kitchen!
+      title: Smoke Alarm
+    service: notify.all_ios_devices
+  - data:
+      message: Smoke detected in the Kitchen!
+      title: Smoke Alarm
+    service: notify.pushbullet
+- id: xbox_set_lights_home_
+  alias: Set Lights on Home Screen
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Home
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: xbox_green
+    service: light.turn_on
+- id: xbox_set_lights_movie
+  alias: Set Lights on Netflix or Bluray
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Netflix
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Blu-ray Player
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Plex For Xbox One
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: Amazon Prime Video US
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: movie_red
+    service: light.turn_on
+- id: xbox_set_lights_skyrim
+  alias: Set Lights on Skyrim
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: 'The Elder Scrolls V: Skyrim Special Edition'
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: skyrim_blue
+    service: light.turn_on
+- id: xbox_return_lights
+  alias: Return Lights to Normal Xbox
+  trigger:
+  - entity_id: sensor.xbox_source
+    platform: state
+    to: ‘’
+  action:
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      profile: warm_white
+    service: light.turn_on
+- id: water_heater_emerg
+  alias: Water Heater Emergency Heat
+  trigger:
+  - entity_id: sensor.zha_40c04dcb_2_1026
+    below: 45
+    platform: numeric_state
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on
+- id: set_wh_off_when_away
+  alias: Set Water Heater off When Away
+  trigger:
+  - entity_id: group.home_owners
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_off
+- id: set_wh_on_when_home
+  alias: Set Water Heater on When Home
+  trigger:
+  - platform: state
+    entity_id: group.home_owners
+    to: home
+  condition:
+  - condition: time
+    before: '22:00:00'
+    after: 05:00:00
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on
+- id: set_wh_off_at_night
+  alias: Set Water Heater off at night
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_off
+- id: set_wh_on_in_morn
+  alias: Set Water Heater on in the Morning
+  trigger:
+  - at: 05:00:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: group.home_owners
+    state: home
+  action:
+  - data:
+      entity_id: switch.zha_40c04dcb_1_6
+    service: switch.turn_on
+- id: closet_on_open
+  alias: Turn On Mstr Bedroom Closet Lights
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zha_02c39915_1_6
+    to: 'on'
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lights
+- id: closet_on_open
+  alias: Turn On Mstr Bedroom Closet Lights
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zha_02c39915_1_6
+    to: 'off'
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lights
+- id: dumpster_inside
+  alias: Set Dumpster Outside
+  trigger:
+  - at: 08:00:00
+    platform: time
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    platform: state
+    to: 'on'
+  condition:
+  - after: 02:30:00
+    before: 09:30:00
+    condition: time
+    weekday:
+    - fri
+  - condition: state
+    entity_id: sensor.dumpster
+    state: garage
+  action:
+  - data:
+      message: It's trash day and the dumpster is still inside the garage.
+      title: Take Dumpster Outside
+    service: notify.pushbullet
+- id: dumpster_outside
+  alias: Bring Dumpster In
+  trigger:
+  - at: '11:00:00'
+    platform: time
+  - entity_id: switch.xbee_xbee_io_4193fedf_209_6
+    platform: state
+    to: 'on'
+  condition:
+  - after: '10:30:00'
+    condition: time
+    weekday:
+    - fri
+  - condition: state
+    entity_id: sensor.dumpster
+    state: not_home
+  action:
+  - data:
+      message: The dumpster is still outside, please bring it back inside.
+      title: Bring Dumpster Inside
+    service: notify.pushbullet
+- id: '1574467185968'
+  alias: Porch Lights on at Dusk/Dawn
+  description: ''
+  trigger:
+  - above: '-65'
+    below: '-4'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  - above: '-12'
+    below: '-4'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.jasco_products_45856_61d32600_1
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    service: light.turn_on
+- id: '1574467388406'
+  alias: Porch Lights Off
+  description: At 2200 or more than 1.5 deg above the horizon
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  - above: '1.5'
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.jasco_products_45856_61d32600_1
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    service: light.turn_off
+- id: '1574468834273'
+  alias: Porch Light on if Front Door Opened
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.zha_02e2146c_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -4.0
+  action:
+  - data:
+      entity_id: light.jasco_products_45856_61d32600_1
+    service: homeassistant.turn_on
+- id: Bk_porch_lights_on_if_door
+  alias: Back Porch Light on if Back Door Opened
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.zha_02bfefd9_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - below: '-4'
+    condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+  action:
+  - data:
+      entity_id:
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    service: homeassistant.turn_on
+- id: Grg_walk_lights_on_if_door
+  alias: Garage walk-in Light on if Door Opened
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.zha_02bfe504_1_6
+    platform: state
+    to: 'on'
+  condition:
+  - below: '-4'
+    condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+  action:
+  - data:
+      entity_id:
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    service: homeassistant.turn_on
+- id: '1576441902724'
+  alias: Christmas Tree On
+  description: ''
+  trigger:
+  - at: 06:00:00
+    platform: time
+  condition: []
+  action:
+  - device_id: c5c667fcf38349bc804000480f5fab16
+    domain: switch
+    entity_id: switch.sengled_e1c_nb6_f32d0400_on_off
+    type: turn_on
+- id: '1576441956178'
+  alias: Christmas Tree Off
+  description: ''
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - device_id: c5c667fcf38349bc804000480f5fab16
+    domain: switch
+    entity_id: switch.sengled_e1c_nb6_f32d0400_on_off
+    type: turn_off
+- id: '1576462082204'
+  alias: Master Bathroom Occupied
+  description: ''
+  trigger:
+  - device_id: 3c59aad704c6450ea1f2090902fbe970
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+    platform: device
+    type: occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.sunricher_zg9101sac_hp_106770a5_1
+    service: light.turn_on
+- id: '1576462203739'
+  alias: Master Bathroom Not Occupied
+  description: ''
+  trigger:
+  - device_id: 3c59aad704c6450ea1f2090902fbe970
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+    platform: device
+    type: not_occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.sunricher_zg9101sac_hp_106770a5_1
+    service: light.turn_off
+- id: Office_Occupied
+  alias: Office Occupied
+  description: ''
+  trigger:
+  - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy
+    platform: device
+    type: occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.osram_lightify_a19_rgbw_00a434be_3
+    service: light.turn_on
+  - data:
+      entity_id:
+      - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
+    service: light.turn_on
+  - data:
+      entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
+      speed: low
+    service: fan.set_speed
+- id: Office_Not_Occupied
+  alias: Office Not Occupied
+  description: ''
+  trigger:
+  - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
+    domain: binary_sensor
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy
+    platform: device
+    type: not_occupied
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.osram_lightify_a19_rgbw_00a434be_3
+    service: light.turn_off
+  - data:
+      entity_id:
+      - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
+    service: light.turn_off
+  - data:
+      entity_id:
+      - fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
+    service: fan.turn_off
+- id: Outdoor_Christmas_on
+  alias: Christmas Outdoor Lights On
+  description: ''
+  trigger:
+  - below: -4.0
+    entity_id: sun.sun
+    platform: numeric_state
+    value_template: '{{ state.attributes.elevation }}'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
+    service: homeassistant.turn_on
+- id: Outdoor_Christmas_Off
+  alias: Christmas Outdoor Lights Off
+  description: ''
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
+    service: homeassistant.turn_off
+- id: '1577210759937'
+  alias: Remote Press - Stair Lights Off
+  description: ''
+  trigger:
+  - event_data:
+      command: 'off'
+      device_ieee: 14:b4:57:ff:fe:81:56:33
+    event_type: zha_event
+    platform: event
+  condition: []
+  action:
+  - entity_id: light.stairway_lights
+    service: light.turn_off
+- id: 1577210759937on
+  alias: Remote Press - Stair Lights On
+  description: ''
+  trigger:
+  - event_data:
+      command: 'on'
+      device_ieee: 14:b4:57:ff:fe:81:56:33
+    event_type: zha_event
+    platform: event
+  condition: []
+  action:
+  - entity_id: light.stairway_lights
+    service: light.turn_on
+- id: 1577210759937n
+  alias: Remote Press - All Lights Off
+  description: ''
+  trigger:
+  - event_data:
+      command: move_to_color_temp
+      device_ieee: 14:b4:57:ff:fe:81:56:33
+    event_type: zha_event
+    platform: event
+  condition: []
+  action:
+  - entity_id: group.all_lights
+    service: homeassistant.turn_off
+- id: outside_lights_on_arrive_dusk
+  alias: Turn on the outside lights if arriving after dusk
+  trigger:
+  - entity_id: group.home_owners
+    platform: state
+    to: home
+  condition:
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -4.0
+  action:
+  - data:
+      entity_id:
+      - light.jasco_products_45856_61d32600_1
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+    service: light.turn_on
+- id: '1577389356075'
+  alias: Remote Press - Garage Toggle
+  description: ''
+  trigger:
+  - event_data:
+      command: 'on'
+      device_ieee: 14:b4:57:ff:fe:82:bf:5a
+    event_type: zha_event
+    platform: event
+  - event_data:
+      command: 'off'
+      device_ieee: 14:b4:57:ff:fe:82:bf:5a
+    event_type: zha_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.xbee_xbee_io_4193fedf_210_6
+    service: switch.turn_on
+- id: '1577389678847'
+  alias: Remote Press - Toggle Backyard Lights
+  description: Toggle the back porch and garage walk-in lights
+  trigger:
+  - event_data:
+      command: move_to_level
+      device_iee: 14:b4:57:ff:fe:82:bf:5a
+    event_type: zha_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+      - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    service: light.toggle
+- id: '1578767674232'
+  alias: Master Bathroom Fan on humidity
+  description: Turn on bathroom fan when humidity is above setpoint 
+  trigger:
+    platform: template
+    value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state > states.input_number.bath_fan_on.state }}' 
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - fan.master_bath_fan 
+    service: fan.turn_on 
+- id: '15787676742320'
+  alias: Master Bathroom Fan Off humidity
+  description: Turn off bathroom fan when humidity is below setpoint 
+  trigger:
+    platform: template
+    value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state < states.input_number.bath_fan_off.state }}' 
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition:
+    condition: state
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+    state: clear
+  action:
+  - data:
+      entity_id:
+      - fan.master_bath_fan 
+    service: fan.turn_off

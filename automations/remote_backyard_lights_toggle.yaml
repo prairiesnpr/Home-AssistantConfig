@@ -1,0 +1,15 @@
+action:
+- data:
+    entity_id:
+    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+  service: light.toggle
+alias: Remote Press - Toggle Backyard Lights
+condition: []
+description: Toggle the back porch and garage walk-in lights
+trigger:
+- event_data:
+    command: move_to_level
+    device_iee: 14:b4:57:ff:fe:82:bf:5a
+  event_type: zha_event
+  platform: event

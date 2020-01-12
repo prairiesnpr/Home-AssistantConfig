@@ -1,0 +1,13 @@
+action:
+- data:
+    entity_id:
+    - switch.ledvance_plug_00054922_1
+  service: switch.turn_on
+alias: Turn on Coffee Pot in the morning (Jeanette)
+condition:
+- condition: state
+  entity_id: person.jeanette
+  state: home
+trigger:
+- at: 07:30:00
+  platform: time

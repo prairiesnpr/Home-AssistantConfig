@@ -1,0 +1,9 @@
+action:
+- data:
+    entity_id: switch.zha_40c04dcb_1_6
+  service: switch.turn_off
+alias: Set Water Heater off When Away
+trigger:
+- entity_id: group.home_owners
+  platform: state
+  to: not_home

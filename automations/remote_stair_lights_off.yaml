@@ -1,0 +1,12 @@
+action:
+- entity_id: light.stairway_lights
+  service: light.turn_off
+alias: Remote Press - Stair Lights Off
+condition: []
+description: ''
+trigger:
+- event_data:
+    command: 'off'
+    device_ieee: 14:b4:57:ff:fe:81:56:33
+  event_type: zha_event
+  platform: event

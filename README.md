@@ -58,7 +58,7 @@ I utilize the native ZHA integration.
       
 ## Floorplan
 
-Created drawing with [designspark mechanical](https://www.rs-online.com/designspark/mechanical-software) and then converted to svg and edited with [Inkscape](https://inkscape.org/).  Fans, dumpster and vehicles are animated.
+Created drawing with [designspark mechanical](https://www.rs-online.com/designspark/mechanical-software) and then converted to svg and edited with [Inkscape](https://inkscape.org/).  Fans, dumpster, doors and vehicles are animated.
 
 ### Top Floor
 ![Top Floor](https://github.com/prairiesnpr/Home-AssistantConfig/blob/master/www/floorplan/wiebelo/wiebelo_top_floor.svg)

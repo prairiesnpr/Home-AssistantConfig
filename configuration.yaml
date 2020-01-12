@@ -63,5 +63,5 @@ recorder: !include recorder.yaml
 notify: !include notify.yaml
 switch: !include switch.yaml
 fan: !include fan.yaml
-camera: !inlcude camera.yaml
-nest: !inlcude nest.yaml
+camera: !include camera.yaml
+nest: !include nest.yaml

@@ -1074,6 +1074,21 @@
                                 "sensor.pi_hole_dns_queries_cached"
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.bath_fan_on",
+                                    "name": "Fan On"
+                                },
+                                {
+                                    "entity": "input_number.bath_fan_off",
+                                    "name": "Fan Off"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Bathroom Exhaust Fans",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:settings",

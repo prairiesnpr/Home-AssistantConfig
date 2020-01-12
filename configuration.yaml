@@ -135,7 +135,7 @@ input_number:
     unit_of_measurement: '%'
     icon: mdi:water-percent
   bath_fan_on:
-    name: Slider
+    name: Bathroom Fan Off 
     initial: 63
     min: 30
     max: 90

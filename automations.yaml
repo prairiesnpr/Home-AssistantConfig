@@ -992,9 +992,9 @@
     service: light.toggle
 - id: '1578767674232'
   alias: Master Bathroom Fan on humidity
-  description: Turn on bathroom fan when humidity is above 63
+  description: Turn on bathroom fan when humidity is above setpoint 
   trigger:
-  - above: 63
+  - above: "{{ states('input_number.bath_fan_on') | int }}" 
     device_id: 0046fe421a25476884ccd08ac7bbdce6
     domain: sensor
     entity_id: sensor.lumi_lumi_weather_02c9fa4a_1_1029
@@ -1008,9 +1008,9 @@
     service: fan.turn_on 
 - id: '15787676742320'
   alias: Master Bathroom Fan Off humidity
-  description: Turn off bathroom fan when humidity is below 63
+  description: Turn off bathroom fan when humidity is below setpoint 
   trigger:
-  - below: 63
+  - below: "{{ states('input_number.bath_fan_off') | int }}"
     device_id: 0046fe421a25476884ccd08ac7bbdce6
     domain: sensor
     entity_id: sensor.lumi_lumi_weather_02c9fa4a_1_1029

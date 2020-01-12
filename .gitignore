@@ -5,6 +5,9 @@
 !*.md
 !*.yml
 
+!automations/
+!config_files/
+
 .storage
 .cloud
 .google.token

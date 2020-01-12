@@ -45,28 +45,25 @@ logbook:
 map:
 sun:
 
-!include_dir_named config_files/
-
-
-# binary_sensor: !include binary_sensor.yaml
-# camera: !include camera.yaml
-# fan: !include fan.yaml
-# group: !include groups.yaml
-# history: !include history.yaml
-# homeassistant: !include homeassistant.yaml
-# input_number: !include input_number.yaml
-# light: !include light.yaml
-# media_player: !include media_player.yaml  
-# mqtt: !include mqtt.yaml
-# nest: !include nest.yaml
-# notify: !include notify.yaml
-# recorder: !include recorder.yaml
-# script: !include script.yaml
-# sensor: !include sensor.yaml
-# switch: !include switch.yaml
-# tts: !include tts.yaml
-# zha: !include zha.yaml
-# zone: !include zones.yaml
+binary_sensor: !include config_files/binary_sensor.yaml
+camera: !include config_files/camera.yaml
+fan: !include config_files/fan.yaml
+group: !include config_files/groups.yaml
+history: !include config_files/history.yaml
+homeassistant: !include config_files/homeassistant.yaml
+input_number: !include config_files/input_number.yaml
+light: !include config_files/light_groups.yaml
+media_player: !include config_files/media_player.yaml  
+mqtt: !include config_files/mqtt.yaml
+nest: !include config_files/nest.yaml
+notify: !include config_files/notify.yaml
+recorder: !include config_files/recorder.yaml
+script: !include config_files/scripts.yaml
+sensor: !include config_files/sensor.yaml
+switch: !include config_files/switch.yaml
+tts: !include config_files/tts.yaml
+zha: !include config_files/zha.yaml
+zone: !include config_files/zones.yaml
 
 
 

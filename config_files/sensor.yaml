@@ -35,3 +35,5 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
+- platform: rpi_power
+  text_state: true

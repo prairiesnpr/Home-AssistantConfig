@@ -1,9 +1,9 @@
 action:
   data:
     entity_id: light.master_bedroom_lights
-  service: light.turn_on
-alias: Mstr Bedroom Closet Lights - On When Opened 
+  service: light.turn_off
+alias: Mstr Bedroom Closet Lights - Off When Closed
 trigger:
 - entity_id: binary_sensor.zha_02c39915_1_6
   platform: state
-  to: 'on'
+  to: 'off'

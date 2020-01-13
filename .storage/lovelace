@@ -1031,6 +1031,10 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "content": "Total Automations: {{ states.automation | count }}",
+                            "type": "markdown"
                         }
                     ],
                     "icon": "mdi:settings",

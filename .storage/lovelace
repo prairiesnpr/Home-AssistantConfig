@@ -1023,6 +1023,14 @@
                                 "sensor.pi_hole_dns_queries_cached"
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.rpi_power_status"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:settings",

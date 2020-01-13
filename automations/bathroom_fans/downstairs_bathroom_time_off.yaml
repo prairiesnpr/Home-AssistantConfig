@@ -1,0 +1,14 @@
+action:
+- data:
+    entity_id:
+    - fan.downstairs_bath_fan  
+  service: fan.turn_off
+alias: Downstairs Bathroom Fan Off Time 
+description: Turn off donwstairs bathroom fan after 10 min. 
+condition: []
+trigger:
+  for:
+    minutes: 10 
+  platform: state 
+  entity_id: fan.downstairs_bath_fan 
+  to: 'on'

@@ -75,3 +75,12 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 ## HVAC
 * Thermostat
   * Nest 3rd Generation Thermostat Pro T3008US
+
+## BLE Tracking
+* Hardware
+  * [Pi Zero W](https://www.sparkfun.com/products/14277)
+  * [4] [BLE Beacons](https://www.aliexpress.com/item/2PCS-Save-Energy-Beacon-EEK-Support-Eddystone-and-Ibeacon/32967422564.html)
+* Software
+  * [Room Assistant](https://github.com/mKeRix/room-assistant)
+  * [Setup Script](https://gist.github.com/prairiesnpr/dd0a81fc1acf3a26ab43d29ffff114cb)
+

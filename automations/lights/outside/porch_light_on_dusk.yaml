@@ -14,7 +14,7 @@ trigger:
   entity_id: sun.sun
   platform: numeric_state
   value_template: '{{ state.attributes.elevation }}'
-- above: '-12'
+- above: '-10'
   below: '-4'
   entity_id: sun.sun
   platform: numeric_state

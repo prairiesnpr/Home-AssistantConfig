@@ -448,44 +448,6 @@
                             "type": "glance"
                         },
                         {
-                            "card": {
-                                "title": "Offline Devices",
-                                "type": "glance"
-                            },
-                            "entities": [
-                                "zha.feibit_inc_co_fzb56_zcw27lx1_0",
-                                "zha.isilentllc_water_heater",
-                                "zha.ledvance_plug",
-                                "zha.lumi_lumi_sensor_magnet_aq2",
-                                "zha.lumi_lumi_sensor_magnet_aq2_2",
-                                "zha.osram_lightify_a19_rgbw",
-                                "zha.osram_lightify_a19_rgbw_2",
-                                "zha.osram_lightify_a19_rgbw_3",
-                                "zha.sunricher_zg9101sac_hp",
-                                "zha.sz_lamp_01",
-                                "zha.xbee_xbee_io",
-                                "zha.zha_40c04e54",
-                                "zha.zha_ge_appliances_zll_light_000230a7",
-                                "zha.zha_ge_appliances_zll_light_0006c093",
-                                "zha.zha_lumi_lumi_sensor_magnet_01e1363b",
-                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02bfefd9",
-                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02e2146c",
-                                "zha.zha_lumi_lumi_sensor_magnet_aq2_02ec0d9e",
-                                "zha.zha_lumi_lumi_sensor_motion_aq2_02b7eb7f",
-                                "zha.zha_lumi_lumi_sensor_smoke_02cb2ea9",
-                                "zha.zha_lumi_lumi_sensor_wleak_aq1_0279bc76",
-                                "zha.zha_lumi_lumi_sensor_wleak_aq1_027b09f4",
-                                "zha.zha_lumi_lumi_vibration_aq1_02af6e3c",
-                                "zha.zha_lumi_lumi_weather_02c9fa4a",
-                                "zha.zha_sengled_e11_n1ea_0003232a",
-                                "zha.zha_sengled_e11_n1ea_00038574"
-                            ],
-                            "state_filter": [
-                                "unavailable"
-                            ],
-                            "type": "entity-filter"
-                        },
-                        {
                             "entities": [
                                 "sensor.zha_02b7eb7f_1_1024"
                             ],

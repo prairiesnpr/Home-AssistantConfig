@@ -20,6 +20,7 @@ device_tracker:
 
 pi_hole:
   api_key: !secret pi_hole_api_key
+  host: !secret pi_hole_ip
 
 zoneminder:
  - host: !secret zm_host 

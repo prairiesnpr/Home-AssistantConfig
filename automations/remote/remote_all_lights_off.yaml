@@ -1,6 +1,6 @@
 action:
-- entity_id: group.all_lights
-  service: homeassistant.turn_off
+- entity_id: all
+  service: light.turn_off
 alias: Remote Press - All Lights Off
 condition: []
 description: ''

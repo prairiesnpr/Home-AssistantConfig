@@ -83,4 +83,9 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 * Software
   * [Room Assistant](https://github.com/mKeRix/room-assistant)
   * [Setup Script](https://gist.github.com/prairiesnpr/dd0a81fc1acf3a26ab43d29ffff114cb)
+  
+## Install Method and Hardware
+* Raspberry pi 4
+* Flirc Raspberry Pi 4 Case
+* Running in venv 
 

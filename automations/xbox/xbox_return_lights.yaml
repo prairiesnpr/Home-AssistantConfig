@@ -7,4 +7,4 @@ alias: Return Lights to Normal Xbox
 trigger:
 - entity_id: sensor.xbox_source
   platform: state
-  to: "\xE2\u20AC\u02DC\xE2\u20AC\u2122"
+  to: ""

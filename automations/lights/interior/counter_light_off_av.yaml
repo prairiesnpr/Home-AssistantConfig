@@ -7,4 +7,4 @@ trigger:
 - entity_id: media_player.pioneer_vsx_1131_ee67e7
   platform: state
   to: "off"
-  for: 5
+  for: '00:05:00'

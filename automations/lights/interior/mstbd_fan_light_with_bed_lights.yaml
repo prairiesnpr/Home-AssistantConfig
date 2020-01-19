@@ -1,0 +1,20 @@
+action:
+  service_template: >
+    {% if is_state('light.bedroom_lights', 'on') %} 
+      light.turn_on
+    {% else %}
+      light.turn_off
+    {% endif %}
+  entity_id: light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off
+  alias: Switch Master bedroom fan light with bedside lights
+condition:
+  condition: time
+  after: '07:00:00'
+  before: '21:00:00'
+trigger:
+- entity_id: light.bedroom_lights
+  platform: state
+  to: 'on' 
+- entity_id: light.bedroom_lights
+  platform: state
+  to: 'off' 

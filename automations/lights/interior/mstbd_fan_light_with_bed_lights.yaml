@@ -6,7 +6,7 @@ action:
       light.turn_off
     {% endif %}
   entity_id: light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off
-  alias: Switch Master bedroom fan light with bedside lights
+alias: Switch Master bedroom fan light with bedside lights
 condition:
   condition: time
   after: '07:00:00'

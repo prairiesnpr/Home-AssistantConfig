@@ -328,6 +328,37 @@
                 {
                     "cards": [
                         {
+                            "cards": [
+                                {
+                                    "entity": "script.activate_xbox",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon": "mdi:xbox",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                },
+                                {
+                                    "entity": "script.turn_av_off",
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    },
+                                    "icon": "mdi:power",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "type": "entity-button"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
                             "entity": "media_player.receiver",
                             "type": "media-control"
                         },
@@ -366,11 +397,11 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.samsung_tv_remote",
+                            "entity": "media_player.plex_xboxone",
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.plex_xboxone",
+                            "entity": "media_player.living_room_un55js6900",
                             "type": "media-control"
                         }
                     ],

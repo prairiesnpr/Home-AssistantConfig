@@ -22,6 +22,38 @@ arrival:
   - data:
       entity_id: media_player.receiver
     service: media_player.turn_off
+activate_xbox:
+  alias: Activate Xbox 
+  sequence:
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.receiver
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.living_room_un55js6900 
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.xbox_one
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.receiver
+      source: XBOX 
+  - data:
+      entity_id: media_player.receiver
+      volume_level: 0.55
+    service: media_player.volume_set
+turn_av_off:
+  alias: Turn off AV
+  sequence:
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.receiver
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.xbox_one
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.living_room_un55js6900
 intruder:
   alias: Intruder Alarm
   sequence:

@@ -20,7 +20,7 @@
   name: receiver
   receiver_max_volume: 200 
 - platform: gstreamer
-- platform: samsungtv_custom
+- platform: samsungtv
   host: !secret livingroomtv_ip
 - platform: xboxone
   device: FD00472764D4AE81

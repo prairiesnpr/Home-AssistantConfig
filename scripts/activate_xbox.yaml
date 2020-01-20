@@ -4,7 +4,7 @@ sequence:
     entity_id: media_player.receiver
   service: media_player.turn_on
 - data:
-    entity_id: media_player.living_room_un55js6900
+    entity_id: media_player.samsung_tv_remote
   service: media_player.turn_on
 - data:
     entity_id: media_player.xbox_one

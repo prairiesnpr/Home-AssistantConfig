@@ -22,7 +22,6 @@
 - platform: gstreamer
 - platform: samsungtv_custom
   host: !secret livingroomtv_ip
-  protocol: ws
 - platform: xboxone
   device: FD00472764D4AE81
   name: Xbox One

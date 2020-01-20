@@ -401,7 +401,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.living_room_un55js6900",
+                            "entity": "media_player.samsung_tv_remote",
                             "type": "media-control"
                         }
                     ],

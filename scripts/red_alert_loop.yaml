@@ -1,0 +1,8 @@
+alias: Red Alert Loop
+sequence:
+- delay:
+    seconds: 0.5
+- alias: loop_red_alert
+  data:
+    entity_id: script.red_alert
+  service: script.turn_on

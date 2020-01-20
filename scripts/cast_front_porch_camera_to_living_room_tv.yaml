@@ -1,9 +1,10 @@
-alias: Cast Front Porch Camera to Living Room TV
-sequence:
-- data:
-    entity_id: media_player.receiver
-  service: media_player.turn_on
-- data:
-    entity_id: camera.front_porch_direct
-    media_player: media_player.pioneer_vsx_1131_ee67e7
-  service: camera.play_stream
+cast_fp_lv_tv:
+  alias: Cast Front Porch Camera to Living Room TV
+  sequence:
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.turn_on
+  - data:
+      entity_id: camera.front_porch_direct
+      media_player: media_player.pioneer_vsx_1131_ee67e7
+    service: camera.play_stream

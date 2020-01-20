@@ -1,23 +1,24 @@
-alias: Intruder Alarm
-sequence:
-- data:
-    entity_id: script.tts_setup
-  service: homeassistant.turn_on
-- delay: 00:00:10
-- data:
-    entity_id: media_player.gstreamer
-    message: Unauthorized user detected, Please leave the premises immediately.
-  service: tts.microsoft_say
-- data:
-    entity_id: media_player.receiver
-    volume_level: 0.55
-  service: media_player.volume_set
-- data:
-    entity_id: media_player.gstreamer
-    media_content_id: file:///home/ryan/prairiesnpr/20_seconds_comply.mp3
-    media_content_type: music
-  service: media_player.play_media
-- delay: 00:00:30
-- data:
-    entity_id: media_player.receiver
-  service: media_player.turn_off
+intruder:
+  alias: Intruder Alarm
+  sequence:
+  - data:
+      entity_id: script.tts_setup
+    service: homeassistant.turn_on
+  - delay: 00:00:10
+  - data:
+      entity_id: media_player.gstreamer
+      message: Unauthorized user detected, Please leave the premises immediately.
+    service: tts.microsoft_say
+  - data:
+      entity_id: media_player.receiver
+      volume_level: 0.55
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.gstreamer
+      media_content_id: file:///home/ryan/prairiesnpr/20_seconds_comply.mp3
+      media_content_type: music
+    service: media_player.play_media
+  - delay: 00:00:30
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.turn_off

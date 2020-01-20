@@ -1,11 +1,12 @@
-alias: Turn off AV
-sequence:
-- data:
-    entity_id: media_player.receiver
-  service: media_player.turn_off
-- data:
-    entity_id: media_player.xbox_one
-  service: media_player.turn_off
-- data:
-    entity_id: media_player.samsung_tv_remote
-  service: media_player.turn_off
+turn_av_off:
+  alias: Turn off AV
+  sequence:
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.turn_off
+  - data:
+      entity_id: media_player.xbox_one
+    service: media_player.turn_off
+  - data:
+      entity_id: media_player.samsung_tv_remote
+    service: media_player.turn_off

@@ -15,4 +15,4 @@ with open(r"..\config_files\scripts.yaml") as file:
         # new_a.pop("id", None)
 
         with open(path, "w") as file:
-            documents = yaml.dump(v, file)
+            documents = yaml.dump({s: v}, file)

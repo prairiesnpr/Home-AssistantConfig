@@ -1,0 +1,9 @@
+alias: Living Room - Adjust volume (receiver)
+trigger:
+  platform: state
+  entity_id: input_number.living_room_volume
+action:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: media_player.receiver 
+      volume_level: '{{ (((states.input_number.living_room_volume.state | float) / 100) + 0.82) | round(2) }}'

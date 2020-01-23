@@ -1,6 +1,6 @@
 bath_fan_off:
   name: Bathroom Fan On
-  initial: 63
+  initial: 72 
   min: 30
   max: 90
   step: 1
@@ -8,9 +8,17 @@ bath_fan_off:
   icon: mdi:water-percent
 bath_fan_on:
   name: Bathroom Fan Off 
-  initial: 63
+  initial: 72 
   min: 30
   max: 90
   step: 1
   unit_of_measurement: '%'
   icon: mdi:water-percent
+living_room_volume:
+  name: Living Room Volume 
+  initial: -42 
+  min: -82
+  max: 0 
+  step: 0.5
+  unit_of_measurement: 'dB'
+  icon: mdi:speaker

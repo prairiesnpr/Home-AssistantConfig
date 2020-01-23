@@ -330,33 +330,49 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "script.activate_xbox",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "icon": "mdi:xbox",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
+                                    "entities": [
+                                        {
+                                            "entity": "input_number.living_room_volume",
+                                            "icon": "mdi:speaker",
+                                            "name": "Volume"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
                                 },
                                 {
-                                    "entity": "script.turn_av_off",
-                                    "hold_action": {
-                                        "action": "more-info"
-                                    },
-                                    "icon": "mdi:power",
-                                    "show_icon": true,
-                                    "show_name": true,
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "type": "entity-button"
+                                    "cards": [
+                                        {
+                                            "entity": "script.activate_xbox",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon": "mdi:xbox",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.turn_av_off",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon": "mdi:power",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
                                 }
                             ],
-                            "type": "horizontal-stack"
+                            "type": "vertical-stack"
                         },
                         {
                             "entity": "media_player.receiver",

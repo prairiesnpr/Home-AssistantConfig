@@ -1,4 +1,4 @@
-xbox:
+script:
   alias: Activate Xbox
   sequence:
   - data:

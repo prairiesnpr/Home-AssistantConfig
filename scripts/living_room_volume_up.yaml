@@ -1,0 +1,5 @@
+alias: Living Room - Volume Up
+sequence:
+- data:
+    entity_id: media_player.receiver
+  service: media_player.volume_up

@@ -1,4 +1,4 @@
-alias: Living Room - Volume Up
+alias: Living Room - Volume Down
 sequence:
 - data:
     entity_id: media_player.receiver

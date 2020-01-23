@@ -1,5 +1,6 @@
-alias: Living Room - Volume Up
+alias: Living Room - Volume Mute
 sequence:
-- data:
+- data_template:
     entity_id: media_player.receiver
+    is_volume_muted: "{{ not state_attr('media_player.receiver', 'is_volume_muted') }}"
   service: media_player.volume_mute

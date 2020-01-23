@@ -356,7 +356,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "script.turn_av_off",
+                                            "entity": "script.turn_off_av",
                                             "hold_action": {
                                                 "action": "more-info"
                                             },

@@ -1,14 +1,13 @@
-tts_setup:
-  alias: Prepare reciever for output
-  sequence:
-  - data:
-      entity_id: media_player.receiver
-    service: media_player.turn_on
-  - data:
-      entity_id: media_player.receiver
-      source: strm-box
-    service: media_player.select_source
-  - data:
-      entity_id: media_player.receiver
-      volume_level: 0.8
-    service: media_player.volume_set
+alias: Prepare reciever for output
+sequence:
+- data:
+    entity_id: media_player.receiver
+  service: media_player.turn_on
+- data:
+    entity_id: media_player.receiver
+    source: strm-box
+  service: media_player.select_source
+- data:
+    entity_id: media_player.receiver
+    volume_level: 0.8
+  service: media_player.volume_set

@@ -1,12 +1,11 @@
-'1576980850718':
-  alias: Kitchen Smoke - Set Sensitivity to Low
-  sequence:
-  - data:
-      attribute: 65521
-      cluster_id: 1280
-      cluster_type: in
-      endpoint_id: 1
-      ieee: 00:15:8d:00:02:cb:2e:a9
-      manufacturer: 4447
-      value: 67305472
-    service: zha.set_zigbee_cluster_attribute
+alias: Kitchen Smoke - Set Sensitivity to Low
+sequence:
+- data:
+    attribute: 65521
+    cluster_id: 1280
+    cluster_type: in
+    endpoint_id: 1
+    ieee: 00:15:8d:00:02:cb:2e:a9
+    manufacturer: 4447
+    value: 67305472
+  service: zha.set_zigbee_cluster_attribute

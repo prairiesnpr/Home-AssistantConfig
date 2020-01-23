@@ -7,9 +7,9 @@ jeanette_watch:
   name: Jeanette Watch
   entities:
     #Unlock
-    - script.1577500116793
+    - script.unlock_front_door
     #Lock
-    - script.1577500084226
+    - script.lock_front_door
     - light.stairway_lights
     #Master Bathroom Light
     - light.sunricher_zg9101sac_hp_106770a5_1

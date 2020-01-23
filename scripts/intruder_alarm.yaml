@@ -1,7 +1,7 @@
 alias: Intruder Alarm
 sequence:
 - data:
-    entity_id: script.tts_setup
+    entity_id: script.prepare_reciever_for_output
   service: homeassistant.turn_on
 - delay: 00:00:10
 - data:

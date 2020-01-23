@@ -7,7 +7,7 @@ action:
     message: Alarm activated!
     title: Alarm Activated
   service: notify.all_ios_devices
-- entity_id: script.intruder
+- entity_id: script.intruder_alarm
   service: homeassistant.turn_on
 alias: Intruder Alarm
 condition:

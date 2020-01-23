@@ -2,7 +2,7 @@ arrival:
   alias: Arrival Music
   sequence:
   - data:
-      entity_id: script.tts_setup
+      entity_id: script.prepare_reciever_for_output
     service: homeassistant.turn_on
   - delay: 00:00:10
   - data:
@@ -59,7 +59,7 @@ intruder:
   sequence:
   - service: homeassistant.turn_on
     data:
-      entity_id: script.tts_setup
+      entity_id: script.prepare_reciever_for_output
   - delay: 00:00:10
   - service: tts.microsoft_say
     data:

@@ -1,5 +1,5 @@
 action:
-- entity_id: script.arrival
+- entity_id: script.arrival_music
   service: homeassistant.turn_on
 alias: Arrival Greeting
 condition:

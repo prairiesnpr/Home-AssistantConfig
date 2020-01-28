@@ -343,6 +343,50 @@
                                 {
                                     "cards": [
                                         {
+                                            "entity": "script.living_room_volume_mute",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon": "mdi:volume-mute",
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.living_room_volume_down",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon": "mdi:volume-minus",
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.living_room_volume_up",
+                                            "hold_action": {
+                                                "action": "more-info"
+                                            },
+                                            "icon": "mdi:volume-plus",
+                                            "show_icon": true,
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
                                             "entity": "script.activate_xbox",
                                             "hold_action": {
                                                 "action": "more-info"
@@ -1042,7 +1086,7 @@
                             "type": "entities"
                         },
                         {
-                            "content": "Total Automations: {{ states.automation | count }}",
+                            "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
                             "type": "markdown"
                         }
                     ],
@@ -1352,6 +1396,20 @@
                             "entities": [
                                 "sensor.christmas_lights",
                                 "switch.christmas_lights_switch"
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.market"
+                                },
+                                {
+                                    "entity": "sensor.available_funds_0218"
+                                },
+                                {
+                                    "entity": "sensor.available_funds_1644"
+                                }
                             ],
                             "type": "entities"
                         }

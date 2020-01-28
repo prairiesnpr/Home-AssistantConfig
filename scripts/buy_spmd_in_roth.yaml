@@ -1,0 +1,23 @@
+alias: Roth Autotrade                                                                                    
+sequence:                                                                                                
+- data:                                                                                                  
+    symbol: SPMD                                                                                         
+  service: tdameritrade.get_quote                                                                        
+- condition: template                                                                                    
+  value_template: '{{ (((states("sensor.available_funds_0218") | float) / (states("get_quote_service.spmd") | float)) | int) > 0 }}'
+- data_template:                                                                                         
+    account_id: 789090218                                                                                
+    assetType: EQUITY                                                                                    
+    duration: DAY                                                                                        
+    instruction: BUY                                                                                     
+    orderStrategyType: SINGLE                                                                            
+    order_type: LIMIT                                                                                    
+    price: '{{ (states("get_quote_service.spmd") | float) }}'                                            
+    quantity: '{{ (((states("sensor.available_funds_0218") | float) / (states("get_quote_service.spmd") | float)) | int) }}'
+    session: NORMAL                                                                                      
+    symbol: SPMD                                                                                         
+  service: tdameritrade.place_order                                                                      
+- data_template:                                                                                         
+    message: Placed order for {{ (((states("sensor.available_funds_0218") | float) / (states("get_quote_service.spmd") | float)) | int) }} shares of SPMD in account #--0218. 
+    title: TDAmeritrade Auto Trader
+  service: persistent_notification.create

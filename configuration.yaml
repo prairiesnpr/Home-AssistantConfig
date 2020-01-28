@@ -31,6 +31,9 @@ upnp:
   sensors: true
   local_ip: !secret local_ip 
 
+tdameritrade:
+  consumer_key: ROTH_TRADER2@AMER.OAUTHAP 
+
 stream:
 circadian_lighting:
 system_health:
@@ -59,14 +62,13 @@ mqtt: !include config_files/mqtt.yaml
 nest: !include config_files/nest.yaml
 notify: !include config_files/notify.yaml
 recorder: !include config_files/recorder.yaml
-script: !include config_files/scripts.yaml
 sensor: !include config_files/sensor.yaml
 switch: !include config_files/switch.yaml
 tts: !include config_files/tts.yaml
 zha: !include config_files/zha.yaml
 zone: !include config_files/zones.yaml
 
-
+#script: !include config_files/scripts.yaml
 script: !include_dir_named scripts/
 automation: !include automations.yaml
 automation old: !include_dir_list automations/

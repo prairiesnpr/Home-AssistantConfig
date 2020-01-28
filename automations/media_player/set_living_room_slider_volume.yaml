@@ -3,7 +3,7 @@ trigger:
   platform: state
   entity_id: media_player.receiver 
 action:
-  - service: input_number.select_value 
+  - service: input_number.set_value 
     data_template:
       entity_id: input_number.living_room_volume 
       value: '{{ (-100 * (0.82 - states.media_player.receiver.attributes.volume_level)) | round(1) }}'

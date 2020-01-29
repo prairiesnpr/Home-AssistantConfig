@@ -1,0 +1,17 @@
+alias: Place order for SPMD in Ryan's Roth 
+description: Buy SPMD with all available funds in Ryan's Roth account
+trigger:
+- at: 00:09:30
+  platform: time
+condition:
+- condition: state
+  entity_id: binary_sensor.market
+  state: 'on'
+action:
+  service: homeassistant.turn_on 
+  entity_id: script.buy_stock_ira
+  data_template:
+    variables:
+      ticker: SPMD 
+      account: "{{ states.sensor.available_funds_0218.attributes.securitiesAccount.accountId }}"  
+      av_funds: "{{ states.sensor.available_funds_0218.state }}"

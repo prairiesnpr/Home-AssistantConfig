@@ -1402,13 +1402,23 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.market"
+                                    "entity": "binary_sensor.market",
+                                    "icon": "mdi:finance"
                                 },
                                 {
-                                    "entity": "sensor.available_funds_0218"
+                                    "entity": "sensor.available_funds_0218",
+                                    "icon": "mdi:cash",
+                                    "name": "Ryan Roth"
                                 },
                                 {
-                                    "entity": "sensor.available_funds_1644"
+                                    "entity": "sensor.available_funds_1644",
+                                    "icon": "mdi:cash",
+                                    "name": "Ryan Tradeing"
+                                },
+                                {
+                                    "entity": "sensor.available_funds_6227",
+                                    "icon": "mdi:cash",
+                                    "name": "Jeanette Roth"
                                 }
                             ],
                             "type": "entities"

@@ -1419,6 +1419,12 @@
                                     "entity": "sensor.available_funds_6227",
                                     "icon": "mdi:cash",
                                     "name": "Jeanette Roth"
+                                },
+                                {
+                                    "entity": "automation.place_order_for_spmd_in_jeanette_s_roth"
+                                },
+                                {
+                                    "entity": "automation.place_order_for_spmd_in_ryan_s_roth"
                                 }
                             ],
                             "type": "entities"

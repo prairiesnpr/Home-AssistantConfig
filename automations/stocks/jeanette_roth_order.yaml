@@ -1,7 +1,7 @@
 alias: Place order for SPMD in Jeanette's Roth 
 description: Buy SPMD with all available funds in Jeanette's Roth account
 trigger:
-- at: 00:09:30
+- at: 09:45:00
   platform: time
 condition:
 - condition: state

@@ -22,10 +22,10 @@ sequence:
     title: TDAmeritrade Auto Trader
   service: persistent_notification.create
 - data_template:
-    message: "Placed order for {{ ((av_funds | float) // (states.get_quote_service[ticker|lower].attributes.bidPrice | float)) }} shares of {{ ticker }} at {{ sttes.get_quote_service[ticker|lower].attributes.bidPrice }} in account {{ account }}." 
+    message: "Placed order for {{ ((av_funds | float) // (states.get_quote_service[ticker|lower].attributes.bidPrice | float)) }} shares of {{ ticker }} at {{ states.get_quote_service[ticker|lower].attributes.bidPrice }} in account {{ account }}." 
     title: Order Placed 
   service: notify.all_ios_devices
 - data_template:
-    message: "Placed order for {{ ((av_funds | float) // (states.get_quote_service[ticker|lower].attributes.bidPrice | float)) }} shares of {{ ticker }} at {{ sttes.get_quote_service[ticker|lower].attributes.bidPrice }} in account {{ account }}." 
+    message: "Placed order for {{ ((av_funds | float) // (states.get_quote_service[ticker|lower].attributes.bidPrice | float)) }} shares of {{ ticker }} at {{ states.get_quote_service[ticker|lower].attributes.bidPrice }} in account {{ account }}." 
     title: Order Placed 
   service: notify.pushbullet

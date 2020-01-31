@@ -215,26 +215,6 @@
                             "type": "entities"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "light.jasco_products_45856_61d32600_1",
-                                    "name": "Front Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                                    "name": "Back Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
-                                },
-                                {
-                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "type": "entities"
-                        },
-                        {
                             "cards": [
                                 {
                                     "entity": "person.ryan",
@@ -297,6 +277,27 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Guest Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jasco_products_45856_61d32600_1",
+                                    "name": "Front Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                    "name": "Back Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+                                },
+                                {
+                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Outdoor Lights",
                             "type": "entities"
                         },
                         {
@@ -670,9 +671,6 @@
                                 {
                                     "entity": "switch.sengled_e1c_nb6_f32d0400_on_off",
                                     "name": "Christmas Tree"
-                                },
-                                {
-                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off"
                                 }
                             ],
                             "title": "Christmas! \ud83c\udf84\ud83d\udd6f \ud83c\udf81\ud83c\udf1f",

@@ -293,7 +293,8 @@
                                     "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
                                 },
                                 {
-                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off"
+                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off",
+                                    "icon": "bha:path-light"
                                 }
                             ],
                             "show_header_toggle": true,

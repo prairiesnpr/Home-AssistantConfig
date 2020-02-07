@@ -17,3 +17,7 @@ trigger:
 - entity_id: sensor.xbox_source
   platform: state
   to: Amazon Prime Video US
+- entity_id: sensor.xbox_source
+  platform: state
+  to: Plex for Xbox One 
+

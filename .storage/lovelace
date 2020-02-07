@@ -29,6 +29,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/button-entity-row/button-entity-row.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/hass-bha-icons/hass-bha-icons.js"
                 }
             ],
             "title": "Wiebelo Villa",
@@ -179,6 +183,7 @@
                             "entities": [
                                 {
                                     "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
+                                    "icon": "bha:ceiling-lamp",
                                     "name": "Ceiling Light"
                                 },
                                 {
@@ -198,10 +203,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.osram_lightify_a19_rgbw_00a434be_3"
+                                    "entity": "light.osram_lightify_a19_rgbw_00a434be_3",
+                                    "icon": "bha:table-lamp-variant"
                                 },
                                 {
                                     "entity": "light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off",
+                                    "icon": "bha:ceiling-lamp",
                                     "name": "Ceiling Light"
                                 },
                                 {
@@ -267,6 +274,7 @@
                             "entities": [
                                 {
                                     "entity": "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
+                                    "icon": "bha:ceiling-lamp",
                                     "name": "Ceiling Light"
                                 },
                                 {

@@ -1,5 +1,5 @@
 
-# Home Assistant (0.104.2) configuration
+# Home Assistant (0.105) configuration
 
 ## Zigbee Network
 

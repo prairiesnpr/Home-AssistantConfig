@@ -24,3 +24,5 @@ include:
     - person.jeanette
     - switch.ledvance_plug_00054922_1
     - lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    - sensor.lumi_lumi_weather_810c5c04_temperature
+    - sensor.lumi_lumi_weather_810c5c04_humidity

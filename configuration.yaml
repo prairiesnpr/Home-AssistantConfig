@@ -1,6 +1,5 @@
 frontend:
-  extra_module_url:
-    - /local/hass-bha-icons.js
+
 http:
   base_url: !secret ha_url
   use_x_forwarded_for: true

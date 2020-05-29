@@ -1,0 +1,12 @@
+action:                                                                                                    
+- data:                                                                                                    
+    entity_id:                                                                                             
+    - switch.xbee_xbee_io_4192cf47_211_6                                                                   
+  service: switch.turn_off
+alias: Turn off garden irrigation after 15 min 
+trigger:
+  for:
+    minutes: 15
+  platform: state
+  entity_id: switch.xbee_xbee_io_4192cf47_211_6
+  to: 'on'

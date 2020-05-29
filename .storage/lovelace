@@ -43,34 +43,36 @@
                             "entities": [
                                 {
                                     "buttons": [
-                                        {
-                                            "entity": "binary_sensor.wiebelo_away",
-                                            "icon": "mdi:home"
-                                        },
-                                        {
-                                            "entity": "sensor.plex_son_of_joel",
-                                            "state_icons": {
-                                                "0": "mdi:numeric-0-circle-outline",
-                                                "1": "mdi:numeric-1-circle-outline",
-                                                "2": "mdi:numeric-2-circle-outline",
-                                                "3": "mdi:numeric-3-circle-outline",
-                                                "4": "mdi:numeric-4-circle-outline",
-                                                "5": "mdi:numeric-5-circle-outline",
-                                                "6": "mdi:numeric-6-circle-outline",
-                                                "7": "mdi:numeric-7-circle-outline",
-                                                "8": "mdi:numeric-8-circle-outline",
-                                                "9": "mdi:numeric-9-circle-outline"
+                                        [
+                                            {
+                                                "entity": "binary_sensor.wiebelo_away",
+                                                "icon": "mdi:home"
+                                            },
+                                            {
+                                                "entity": "sensor.plex_son_of_joel",
+                                                "state_icons": {
+                                                    "0": "mdi:numeric-0-circle-outline",
+                                                    "1": "mdi:numeric-1-circle-outline",
+                                                    "2": "mdi:numeric-2-circle-outline",
+                                                    "3": "mdi:numeric-3-circle-outline",
+                                                    "4": "mdi:numeric-4-circle-outline",
+                                                    "5": "mdi:numeric-5-circle-outline",
+                                                    "6": "mdi:numeric-6-circle-outline",
+                                                    "7": "mdi:numeric-7-circle-outline",
+                                                    "8": "mdi:numeric-8-circle-outline",
+                                                    "9": "mdi:numeric-9-circle-outline"
+                                                }
+                                            },
+                                            {
+                                                "entity": "sensor.f150"
+                                            },
+                                            {
+                                                "entity": "sensor.porsche"
+                                            },
+                                            {
+                                                "entity": "sensor.dumpster"
                                             }
-                                        },
-                                        {
-                                            "entity": "sensor.f150"
-                                        },
-                                        {
-                                            "entity": "sensor.porsche"
-                                        },
-                                        {
-                                            "entity": "sensor.dumpster"
-                                        }
+                                        ]
                                     ],
                                     "type": "custom:button-entity-row"
                                 }
@@ -189,6 +191,7 @@
                                 {
                                     "entity": "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
                                     "name": "Ceiling Fan",
+                                    "state_color": true,
                                     "type": "custom:custom-fan-card"
                                 },
                                 {
@@ -214,6 +217,7 @@
                                 {
                                     "entity": "fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan",
                                     "name": "Ceiling Fan",
+                                    "state_color": true,
                                     "type": "custom:custom-fan-card"
                                 }
                             ],
@@ -251,7 +255,8 @@
                                     "name": "Fan Light"
                                 },
                                 {
-                                    "entity": "fan.master_bath_fan"
+                                    "entity": "fan.master_bath_fan",
+                                    "state_color": true
                                 }
                             ],
                             "title": "Master Bathroom",
@@ -264,7 +269,8 @@
                                     "name": "Fan Light"
                                 },
                                 {
-                                    "entity": "fan.downstairs_bath_fan"
+                                    "entity": "fan.downstairs_bath_fan",
+                                    "state_color": true
                                 }
                             ],
                             "title": "Downstairs Bathroom",
@@ -280,6 +286,7 @@
                                 {
                                     "entity": "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
                                     "name": "Ceiling Fan",
+                                    "state_color": true,
                                     "type": "custom:custom-fan-card"
                                 }
                             ],
@@ -302,7 +309,13 @@
                                 },
                                 {
                                     "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off",
-                                    "icon": "bha:path-light"
+                                    "icon": "bha:path-light",
+                                    "state_color": true
+                                },
+                                {
+                                    "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
+                                    "icon": "mdi:led-strip-variant",
+                                    "name": "Backyard RGB"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -474,7 +487,7 @@
                             "type": "media-control"
                         },
                         {
-                            "entity": "media_player.samsung_tv_remote",
+                            "entity": "media_player.living_room_tv",
                             "type": "media-control"
                         }
                     ],
@@ -624,7 +637,8 @@
                                     "entity": "sensor.zha_40c04dcb_3_1026"
                                 },
                                 {
-                                    "entity": "switch.zha_40c04dcb_1_6"
+                                    "entity": "switch.zha_40c04dcb_1_6",
+                                    "state_color": true
                                 }
                             ],
                             "title": "Water Heater",
@@ -633,7 +647,8 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "switch.ledvance_plug_00054922_1"
+                                    "entity": "switch.ledvance_plug_00054922_1",
+                                    "state_color": true
                                 }
                             ],
                             "type": "entities"
@@ -1216,6 +1231,33 @@
                     "cards": [
                         {
                             "entities": [
+                                {
+                                    "entity": "automation.turn_on_garden_irrigation_in_morning"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure",
+                                    "name": "Pressure"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature",
+                                    "name": "Temperature"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity",
+                                    "name": "Humidity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Greenhouse",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
                                 "moisture:sensor.poinsettia_moisture",
                                 "intensity:sensor.poinsettia_light_intensity",
                                 "temperature:sensor.poinsettia_temperature",
@@ -1246,7 +1288,7 @@
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                                    "name": "Zone 4"
+                                    "name": "Garden"
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_212_6",
@@ -1267,6 +1309,23 @@
                             ],
                             "title": "Irrigation",
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Greenhouse",
+                            "type": "history-graph"
                         }
                     ],
                     "icon": "mdi:sprout",

@@ -25,3 +25,5 @@
 - platform: xboxone
   device: FD00472764D4AE81
   name: Xbox One
+  host: !secret local_ip
+

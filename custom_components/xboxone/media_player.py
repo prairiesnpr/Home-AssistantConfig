@@ -13,9 +13,10 @@ import functools
 import requests
 import voluptuous as vol
 from urllib.parse import urljoin
+from packaging import version
 
 from homeassistant.components.media_player import (
-    MediaPlayerDevice, PLATFORM_SCHEMA)
+    MediaPlayerEntity, PLATFORM_SCHEMA)
 
 from homeassistant.components.media_player.const import (
     SUPPORT_NEXT_TRACK, SUPPORT_PAUSE, SUPPORT_PREVIOUS_TRACK,
@@ -36,7 +37,7 @@ SUPPORT_XBOXONE = SUPPORT_PAUSE | \
     SUPPORT_NEXT_TRACK | SUPPORT_SELECT_SOURCE | SUPPORT_PLAY | \
     SUPPORT_VOLUME_STEP | SUPPORT_VOLUME_MUTE
 
-REQUIRED_SERVER_VERSION = '0.9.8'
+MIN_REQUIRED_SERVER_VERSION = '1.1.2'
 
 DEFAULT_SSL = False
 DEFAULT_HOST = 'localhost'
@@ -447,11 +448,11 @@ class XboxOne:
 
         try:
             resp = self.get('/versions').json()
-            version = resp['versions']['xbox-smartglass-rest']
-            if version != REQUIRED_SERVER_VERSION:
+            lib_version = resp['versions']['xbox-smartglass-core']
+            if version.parse(lib_version) < version.parse(MIN_REQUIRED_SERVER_VERSION):
                 self.is_server_correct_version = False
-                _LOGGER.error("Invalid xbox-smartglass-rest version: %s. Required: %s",
-                              version, REQUIRED_SERVER_VERSION)
+                _LOGGER.error("Invalid xbox-smartglass-core version: %s. Min Required: %s",
+                              lib_version, MIN_REQUIRED_SERVER_VERSION)
         except requests.exceptions.RequestException:
             self.is_server_up = False
             return False
@@ -497,7 +498,7 @@ class XboxOne:
             self._update_volume_controls()
 
 
-class XboxOneDevice(MediaPlayerDevice):
+class XboxOneDevice(MediaPlayerEntity):
     """Representation of an Xbox One device on the network."""
 
     def __init__(self, base_url, liveid, ip, name, auth):
@@ -549,7 +550,7 @@ class XboxOneDevice(MediaPlayerDevice):
         if playback_state:
             state = playback_state
         elif self._xboxone.connected or self._xboxone.available:
-            if self._xboxone.active_app_type in ['Application', 'App'] or self._xboxone.active_app == 'Home':
+            if self._xboxone.active_app_type in ['Application', 'App', 'Game'] or self._xboxone.active_app == 'Home':
                 state = STATE_ON
             else:
                 state = STATE_UNKNOWN

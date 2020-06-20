@@ -1,5 +1,5 @@
 
-# Home Assistant (0.105.2) configuration
+# Home Assistant (0.111.4) configuration
 
 ## Zigbee Network
 
@@ -47,7 +47,7 @@ I utilize the native ZHA integration.
       * [1] Xiaomi Aqara vibration sensor (I keep moving this around, still haven't found a great use for it)
       * [3] Xiaomi Aqara motion sensor
       * [2] Xiaomi Aqara Water Sensor
-      * [1] Xiaomi Aqara Weather Sensor
+      * [2] Xiaomi Aqara Weather Sensor
       * [1] Xiaomi/Honeywell Smoke Detector
     * Door Lock
       * [1] Yale YRD256 TSDB

@@ -14,3 +14,4 @@ include:
     - person.jeanette
     - switch.ledvance_plug_00054922_1
     - lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water

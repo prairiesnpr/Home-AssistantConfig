@@ -20,10 +20,14 @@
   name: receiver
   receiver_max_volume: 200 
 - platform: gstreamer
-- platform: samsungtv
-  host: !secret livingroomtv_ip
 - platform: xboxone
   device: FD00472764D4AE81
   name: Xbox One
   host: !secret local_ip
+- platform: samsungtv_encrypted
+  host: !secret livingroomtv_ip
+  token: !secret livingroomtv_token
+  sessionid: !secret livingroomtv_duid
+  port: 8080
+  name: Living Room TV
 

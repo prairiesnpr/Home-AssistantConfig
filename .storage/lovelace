@@ -415,34 +415,8 @@
                             "type": "media-control"
                         },
                         {
-                            "card": {
-                                "entity": "media_player.plex",
-                                "type": "media-control"
-                            },
-                            "conditions": [
-                                {
-                                    "entity": "media_player.plex",
-                                    "state_not": "unavailable"
-                                }
-                            ],
-                            "type": "conditional"
-                        },
-                        {
                             "entity": "media_player.xbox_one",
                             "type": "media-control"
-                        },
-                        {
-                            "card": {
-                                "entity": "media_player.living_room_un55js6900",
-                                "type": "media-control"
-                            },
-                            "conditions": [
-                                {
-                                    "entity": "media_player.living_room_u55js6900",
-                                    "state_not": "unavailable"
-                                }
-                            ],
-                            "type": "conditional"
                         },
                         {
                             "entity": "media_player.gstreamer",
@@ -454,6 +428,10 @@
                         },
                         {
                             "entity": "media_player.living_room_tv",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.living_room_tv_2",
                             "type": "media-control"
                         }
                     ],
@@ -559,6 +537,17 @@
                             "hours_to_show": 24,
                             "refresh_interval": 0,
                             "title": "Greenhouse",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6"
+                                }
+                            ],
+                            "hours_to_show": 168,
+                            "refresh_interval": 0,
+                            "title": "Garden Water History",
                             "type": "history-graph"
                         }
                     ],
@@ -1463,6 +1452,10 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entity": "camera.front_porch_direct",
+                            "type": "entity"
                         }
                     ],
                     "path": "test",

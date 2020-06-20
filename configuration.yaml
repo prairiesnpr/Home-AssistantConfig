@@ -11,7 +11,7 @@ weather:
 
 logger:
   default: warning
-  logs: !include zigbee_logging.yaml
+#  logs: !include zigbee_logging.yaml
 
 device_tracker:
   - platform: bluetooth_tracker
@@ -26,7 +26,6 @@ zoneminder:
    password: !secret zm_pwd 
 
 upnp:
-  sensors: true
   local_ip: !secret local_ip 
 
 tdameritrade:

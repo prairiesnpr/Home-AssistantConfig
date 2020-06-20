@@ -1,40 +1,6 @@
 {
     "data": {
         "config": {
-            "resources": [
-                {
-                    "type": "js",
-                    "url": "/local/custom_ui/weasley-card.js?v=1.5"
-                },
-                {
-                    "type": "module",
-                    "url": "/local/floorplan/floorplan-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/local/custom_ui/card-mod.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/local/custom_ui/fan-card.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/community_plugin/zha-network-card/zha-network-card.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/community_plugin/miflora-card/miflora-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/button-entity-row/button-entity-row.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/community_plugin/hass-bha-icons/hass-bha-icons.js"
-                }
-            ],
             "title": "Wiebelo Villa",
             "views": [
                 {
@@ -493,6 +459,112 @@
                     ],
                     "icon": "mdi:play-network",
                     "title": "Media"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "automation.turn_on_garden_irrigation_in_morning"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure",
+                                    "name": "Pressure"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature",
+                                    "name": "Temperature"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity",
+                                    "name": "Humidity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Greenhouse",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "moisture:sensor.poinsettia_moisture",
+                                "intensity:sensor.poinsettia_light_intensity",
+                                "temperature:sensor.poinsettia_temperature",
+                                "conductivity:sensor.poinsettia_conductivity",
+                                "battery:sensor.poinsettia_battery"
+                            ],
+                            "image": "flower_power/poinsettia_600.jpg",
+                            "max_moisture": 60,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "Poinsettia",
+                            "type": "custom:miflora-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_208_6",
+                                    "name": "Zone 1"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_209_6",
+                                    "name": "Zone 2"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
+                                    "name": "Zone 3"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
+                                    "name": "Garden"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_212_6",
+                                    "name": "Zone 5"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_213_6",
+                                    "name": "Zone 6"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_216_6",
+                                    "name": "Zone 7"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_220_6",
+                                    "name": "Zone 8"
+                                }
+                            ],
+                            "title": "Irrigation",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Greenhouse",
+                            "type": "history-graph"
+                        }
+                    ],
+                    "icon": "mdi:sprout",
+                    "path": "plants",
+                    "title": "Plants"
                 },
                 {
                     "cards": [
@@ -1225,112 +1297,6 @@
                     ],
                     "icon": "mdi:server-network",
                     "title": "Server/VMs"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "automation.turn_on_garden_irrigation_in_morning"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure",
-                                    "name": "Pressure"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature",
-                                    "name": "Temperature"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity",
-                                    "name": "Humidity"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Greenhouse",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "moisture:sensor.poinsettia_moisture",
-                                "intensity:sensor.poinsettia_light_intensity",
-                                "temperature:sensor.poinsettia_temperature",
-                                "conductivity:sensor.poinsettia_conductivity",
-                                "battery:sensor.poinsettia_battery"
-                            ],
-                            "image": "flower_power/poinsettia_600.jpg",
-                            "max_moisture": 60,
-                            "min_conductivity": 350,
-                            "min_moisture": 15,
-                            "min_temperature": 12,
-                            "title": "Poinsettia",
-                            "type": "custom:miflora-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_208_6",
-                                    "name": "Zone 1"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_209_6",
-                                    "name": "Zone 2"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                                    "name": "Zone 3"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                                    "name": "Garden"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_212_6",
-                                    "name": "Zone 5"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_213_6",
-                                    "name": "Zone 6"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_216_6",
-                                    "name": "Zone 7"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_220_6",
-                                    "name": "Zone 8"
-                                }
-                            ],
-                            "title": "Irrigation",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_temperature"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_pressure"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_weather_810c5c04_humidity"
-                                }
-                            ],
-                            "hours_to_show": 24,
-                            "refresh_interval": 0,
-                            "title": "Greenhouse",
-                            "type": "history-graph"
-                        }
-                    ],
-                    "icon": "mdi:sprout",
-                    "path": "plants",
-                    "title": "Plants"
                 },
                 {
                     "badges": [],

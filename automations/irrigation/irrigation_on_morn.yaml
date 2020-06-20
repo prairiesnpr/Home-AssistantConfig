@@ -5,7 +5,7 @@ action:
   service: switch.turn_on
 alias: Turn on garden irrigation in morning
 trigger:
-- at: 07:45:00
+- at: 07:30:00
   platform: time
 condition:
   - condition: template

@@ -9,38 +9,41 @@
                             "entities": [
                                 {
                                     "buttons": [
-                                        [
-                                            {
-                                                "entity": "binary_sensor.wiebelo_away",
-                                                "icon": "mdi:home"
-                                            },
-                                            {
-                                                "entity": "sensor.plex_son_of_joel",
-                                                "state_icons": {
-                                                    "0": "mdi:numeric-0-circle-outline",
-                                                    "1": "mdi:numeric-1-circle-outline",
-                                                    "2": "mdi:numeric-2-circle-outline",
-                                                    "3": "mdi:numeric-3-circle-outline",
-                                                    "4": "mdi:numeric-4-circle-outline",
-                                                    "5": "mdi:numeric-5-circle-outline",
-                                                    "6": "mdi:numeric-6-circle-outline",
-                                                    "7": "mdi:numeric-7-circle-outline",
-                                                    "8": "mdi:numeric-8-circle-outline",
-                                                    "9": "mdi:numeric-9-circle-outline"
-                                                }
-                                            },
-                                            {
-                                                "entity": "sensor.f150"
-                                            },
-                                            {
-                                                "entity": "sensor.porsche"
-                                            },
-                                            {
-                                                "entity": "sensor.dumpster"
+                                        {
+                                            "entity": "binary_sensor.wiebelo_away",
+                                            "icon": "mdi:home",
+                                            "name": false
+                                        },
+                                        {
+                                            "entity": "sensor.plex_son_of_joel",
+                                            "name": false,
+                                            "state_icons": {
+                                                "0": "mdi:numeric-0-circle-outline",
+                                                "1": "mdi:numeric-1-circle-outline",
+                                                "2": "mdi:numeric-2-circle-outline",
+                                                "3": "mdi:numeric-3-circle-outline",
+                                                "4": "mdi:numeric-4-circle-outline",
+                                                "5": "mdi:numeric-5-circle-outline",
+                                                "6": "mdi:numeric-6-circle-outline",
+                                                "7": "mdi:numeric-7-circle-outline",
+                                                "8": "mdi:numeric-8-circle-outline",
+                                                "9": "mdi:numeric-9-circle-outline"
                                             }
-                                        ]
+                                        },
+                                        {
+                                            "entity": "sensor.f150",
+                                            "name": false
+                                        },
+                                        {
+                                            "entity": "sensor.porsche",
+                                            "name": false
+                                        },
+                                        {
+                                            "entity": "sensor.dumpster",
+                                            "name": false
+                                        }
                                     ],
-                                    "type": "custom:button-entity-row"
+                                    "type": "custom:paper-buttons-row"
                                 }
                             ],
                             "type": "entities"
@@ -429,10 +432,6 @@
                         {
                             "entity": "media_player.living_room_tv",
                             "type": "media-control"
-                        },
-                        {
-                            "entity": "media_player.living_room_tv_2",
-                            "type": "media-control"
                         }
                     ],
                     "icon": "mdi:play-network",
@@ -496,7 +495,7 @@
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                                    "name": "Zone 3"
+                                    "name": "Blueberries"
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_211_6",
@@ -504,7 +503,7 @@
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_212_6",
-                                    "name": "Zone 5"
+                                    "name": "Spare"
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_213_6",
@@ -543,6 +542,9 @@
                             "entities": [
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_211_6"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6"
                                 }
                             ],
                             "hours_to_show": 168,
@@ -1445,17 +1447,18 @@
                                     "name": "Jeanette Roth"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_spmd_in_jeanette_s_roth"
+                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_spmd_in_ryan_s_roth"
+                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth"
                                 }
                             ],
                             "type": "entities"
                         },
                         {
-                            "entity": "camera.front_porch_direct",
-                            "type": "entity"
+                            "content": "[Xbox Oauth](http://10.10.1.185:5557/auth/oauth)\n",
+                            "title": "Tools",
+                            "type": "markdown"
                         }
                     ],
                     "path": "test",

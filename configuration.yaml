@@ -26,8 +26,9 @@ zoneminder:
 upnp:
   local_ip: !secret local_ip 
 
-tdameritrade:
-  consumer_key: ROTH_TRADER2@AMER.OAUTHAP 
+rest_command:
+  xbox_server_auth:
+    url: !secret xbox_load_auth
 
 stream:
 circadian_lighting:

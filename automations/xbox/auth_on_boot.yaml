@@ -1,0 +1,5 @@
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  service: rest_command.xbox_server_auth

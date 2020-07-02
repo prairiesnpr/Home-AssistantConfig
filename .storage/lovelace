@@ -443,7 +443,10 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "automation.turn_on_garden_irrigation_in_morning"
+                                    "entity": "automation.turn_on_garden_irrigation_zone_in_morning"
+                                },
+                                {
+                                    "entity": "automation.turn_on_bluberry_irrigation_zone_in_morning"
                                 }
                             ],
                             "type": "entities"
@@ -541,10 +544,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6"
+                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
+                                    "name": "Garden Zone"
                                 },
                                 {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6"
+                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
+                                    "name": "Blueberry Zone"
                                 }
                             ],
                             "hours_to_show": 168,

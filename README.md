@@ -1,5 +1,5 @@
 
-# Home Assistant (0.111.4) configuration
+# Home Assistant (0.112.5) configuration
 
 ## Zigbee Network
 

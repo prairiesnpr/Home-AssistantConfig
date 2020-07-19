@@ -490,35 +490,43 @@
                             "entities": [
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_208_6",
-                                    "name": "Zone 1"
+                                    "name": "Zone 1",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_209_6",
-                                    "name": "Zone 2"
+                                    "name": "Zone 2",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                                    "name": "Blueberries"
+                                    "name": "Blueberries",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                                    "name": "Garden"
+                                    "name": "Garden",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_212_6",
-                                    "name": "Spare"
+                                    "name": "Spare",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_213_6",
-                                    "name": "Zone 6"
+                                    "name": "Zone 6",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_216_6",
-                                    "name": "Zone 7"
+                                    "name": "Zone 7",
+                                    "state_color": true
                                 },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_220_6",
-                                    "name": "Zone 8"
+                                    "name": "Zone 8",
+                                    "state_color": true
                                 }
                             ],
                             "title": "Irrigation",

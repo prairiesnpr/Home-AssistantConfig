@@ -7,12 +7,8 @@ action:
     entity_id:
     - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
   service: light.turn_on
-- data:
-    entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
-    speed: low
-  service: fan.set_speed
-alias: Office Occupied
-condition: []
+alias: Office Occupied Winter
+condition: "{{ is_state('sensor.downstairs_thermostat_operation_mode', 'heat') }}" 
 description: ''
 trigger:
 - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1

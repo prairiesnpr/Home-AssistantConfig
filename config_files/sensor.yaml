@@ -5,6 +5,16 @@
   name: "Christmas Lights"
   state_topic: "christmas/sensor0"
   value_template: "{{ value_json.status }}"
+- platform: mqtt
+  json_attributes_topic: "zoneminder/1"
+  state_topic: "zoneminder/1"
+  value_template: "{{ value_json.name }}"
+  name: "front_porch_alerts"
+- platform: mqtt
+  state_topic: "zoneminder/2"
+  json_attributes_topic: "zoneminder/2"
+  value_template: "{{ value_json.name }}"
+  name: "porsche_alerts"
 - platform: mqtt_room
   device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
   name: Dumpster
@@ -21,10 +31,11 @@
   state_topic: room_presence
   away_timeout: 30
 - platform: zoneminder
+  include_archived: false
 - platform: template 
   sensors:
     xbox_source: 
-      value_template: '{{ states.media_player.xbox_one.attributes["source"] }}'
+      value_template: '{{ states.media_player.xboxone_2.attributes["media_title"] }}' 
       friendly_name: 'Xbox Source'
     water_heater_time_to_temp:
       value_template: >-
@@ -35,5 +46,3 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
-- platform: rpi_power
-  text_state: true

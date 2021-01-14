@@ -20,6 +20,8 @@ pi_hole:
 
 zoneminder:
  - host: !secret zm_host 
+   ssl: true
+   verify_ssl: false
    username: !secret zm_uid
    password: !secret zm_pwd 
 

@@ -7,6 +7,7 @@ import voluptuous as vol
 import wakeonlan
 import subprocess
 import urllib.request
+import ipaddress
 
 from .PySmartCrypto.pysmartcrypto import PySmartCrypto
 from bs4 import BeautifulSoup
@@ -42,6 +43,7 @@ from homeassistant.const import (
     STATE_ON,
 )
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.script import Script
 from homeassistant.util import dt as dt_util
 
 _LOGGER = logging.getLogger(__name__)
@@ -59,6 +61,7 @@ KNOWN_DEVICES_KEY = "samsungtv_known_devices"
 CONF_TOKEN = "token"
 CONF_SESSIONID = "sessionid"
 CONF_KEY_POWER_OFF = "key_power_off"
+CONF_TURN_ON_ACTION = "turn_on_action"
 MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=2)
 MIN_TIME_BETWEEN_SCANS = timedelta(seconds=10)
 
@@ -87,12 +90,14 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_TOKEN): cv.string,
         vol.Optional(CONF_SESSIONID): cv.string,
         vol.Optional(CONF_KEY_POWER_OFF, default=DEFAULT_KEY_POWER_OFF): cv.string,
+        vol.Optional(CONF_TURN_ON_ACTION, default=None): cv.SCRIPT_SCHEMA,
     }
 )
 
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Samsung TV platform."""
+    _LOGGER.debug("function setup_platform")
     known_devices = hass.data.get(KNOWN_DEVICES_KEY)
     if known_devices is None:
         known_devices = set()
@@ -120,6 +125,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         token = config.get(CONF_TOKEN)
         sessionid = config.get(CONF_SESSIONID)
         key_power_off = config.get(CONF_KEY_POWER_OFF)
+        turn_on_action = config.get(CONF_TURN_ON_ACTION)
+        if turn_on_action:
+            turn_on_action = Script(hass, turn_on_action, name, 'media_player')
     elif discovery_info is not None:
         tv_name = discovery_info.get("name")
         model = discovery_info.get("model_name")
@@ -131,6 +139,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         sessionid = "0"
         key_power_off = DEFAULT_KEY_POWER_OFF
         mac = None
+        turn_on_action = None
         udn = discovery_info.get("udn")
         if udn and udn.startswith("uuid:"):
             uuid = udn[len("uuid:") :]
@@ -138,11 +147,14 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         _LOGGER.warning("Cannot determine device")
         return
 
+    try:
+        ipaddress.ip_address(host)
+    except:
+        host = socket.gethostbyname(host)
     # Only add a device once, so discovered devices do not override manual config.
-    ip_addr = socket.gethostbyname(host)
-    if ip_addr not in known_devices:
+    if host not in known_devices:
         # known_devices.add(ip_addr)
-        add_entities([SamsungTVDevice(host, port, name, timeout, mac, uuid, token, sessionid, key_power_off)])
+        add_entities([SamsungTVDevice(host, port, name, timeout, mac, uuid, token, sessionid, key_power_off, turn_on_action)])
         _LOGGER.info("Samsung TV %s:%d added as '%s'", host, port, name)
     else:
         _LOGGER.info("Ignoring duplicate Samsung TV %s:%d", host, port)
@@ -151,8 +163,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 class SamsungTVDevice(MediaPlayerEntity):
     """Representation of a Samsung TV."""
 
-    def __init__(self, host, port, name, timeout, mac, uuid, token, sessionid, key_power_off):
+    def __init__(self, host, port, name, timeout, mac, uuid, token, sessionid, key_power_off, turn_on_action):
         """Initialize the Samsung device."""
+        _LOGGER.debug("function __init__")
         # Save a reference to the imported classes
         self._host = host
         self._port = port
@@ -174,6 +187,7 @@ class SamsungTVDevice(MediaPlayerEntity):
         # Mark the end of a shutdown command (need to wait 15 seconds before
         # sending the next command to avoid turning the TV back ON).
         self._end_of_power_off = None
+        self._turn_on_action = turn_on_action
         # Generate a configuration for the Samsung library
         self._config = {
             "name": "HomeAssistant",
@@ -182,6 +196,7 @@ class SamsungTVDevice(MediaPlayerEntity):
             "port": port,
             "host": host,
             "timeout": timeout,
+            "turn_on_action": turn_on_action,
         }
         self._sourcelist = {}
         self._selected_source = None
@@ -191,6 +206,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def update(self):
         """Update state of device."""
+        _LOGGER.debug("function update")
         self.send_key("KEY")
         if self._state == STATE_ON:
             if not self._upnp_paths:
@@ -210,6 +226,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def pingTV(self):
         """ping TV"""
+        _LOGGER.debug("function pingTV")
         cmd = ['ping', '-c1', '-W2', self._host]
         response = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         stdout, stderr = response.communicate()
@@ -220,6 +237,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def get_remote(self):
         """Create or return a remote control instance."""
+        _LOGGER.debug("function get_remote")
         if self._remote is None:
             # We need to create a new instance to reconnect.
             self._remote = self._remote_class(self._host, self._port, self._token, self._sessionid)
@@ -228,6 +246,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def send_key(self, key):
         """Send a key to the tv and handles exceptions."""
+        _LOGGER.debug("function send_key")
         if self._power_off_in_progress() and key not in ("KEY_POWER", "KEY_POWEROFF"):
             _LOGGER.info("TV is powering off, not sending command: %s", key)
             return
@@ -257,12 +276,14 @@ class SamsungTVDevice(MediaPlayerEntity):
             self._set_state_off()
 
     def _power_off_in_progress(self):
+        _LOGGER.debug("function _power_off_in_progress")
         return (
             self._end_of_power_off is not None
             and self._end_of_power_off > dt_util.utcnow()
         )
 
     def _set_state_off(self):
+        _LOGGER.debug("function _set_state_off")
         self._state = STATE_OFF
         self._sourcelist = {}
         self._selected_source = None
@@ -303,7 +324,7 @@ class SamsungTVDevice(MediaPlayerEntity):
     @property
     def supported_features(self):
         """Flag media player features that are supported."""
-        if self._mac:
+        if self._mac or self._turn_on_action:
             return SUPPORT_SAMSUNGTV | SUPPORT_TURN_ON
         return SUPPORT_SAMSUNGTV
 
@@ -319,18 +340,22 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def volume_up(self):
         """Volume up the media player."""
+        _LOGGER.debug("function volume_up")
         self.send_key("KEY_VOLUP")
 
     def volume_down(self):
         """Volume down media player."""
+        _LOGGER.debug("function volume_down")
         self.send_key("KEY_VOLDOWN")
 
     def mute_volume(self, mute):
         """Send mute command."""
+        _LOGGER.debug("function mute_volume")
         self.send_key("KEY_MUTE")
 
     def media_play_pause(self):
         """Simulate play pause media player."""
+        _LOGGER.debug("function media_play_pause")
         if self._playing:
             self.media_pause()
         else:
@@ -338,24 +363,29 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def media_play(self):
         """Send play command."""
+        _LOGGER.debug("function media_play")
         self._playing = True
         self.send_key("KEY_PLAY")
 
     def media_pause(self):
         """Send media pause command to media player."""
+        _LOGGER.debug("function media_pause")
         self._playing = False
         self.send_key("KEY_PAUSE")
 
     def media_next_track(self):
         """Send next track command."""
+        _LOGGER.debug("function media_next_track")
         self.send_key("KEY_FF")
 
     def media_previous_track(self):
         """Send the previous track command."""
+        _LOGGER.debug("function media_previous_track")
         self.send_key("KEY_REWIND")
 
     def select_source(self, source):
         """Select input source."""
+        _LOGGER.debug("function select_source")
         if source not in self._sourcelist:
             _LOGGER.error("Unsupported source: {}".format(source))
             return
@@ -365,14 +395,17 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def set_volume_level(self, volume):
         """Volume up the media player."""
-        volset = str(round(volume * 100))
+        _LOGGER.debug("function set_volume_level")
+        if self._upnp_paths:
+            volset = str(round(volume * 100))
 
-        self.SendSOAP(self._upnp_ports[0], self._upnp_paths[0], self._urns[0], 'SetVolume',
-                      '<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>' + volset + '</DesiredVolume>',
-                      '')
+            self.SendSOAP(self._upnp_ports[0], self._upnp_paths[0], self._urns[0], 'SetVolume',
+                          '<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>' + volset +
+                          '</DesiredVolume>', '')
 
     async def async_play_media(self, media_type, media_id, **kwargs):
         """Support changing a channel."""
+        _LOGGER.debug("function async_play_media")
         if media_type == MEDIA_TYPE_CHANNEL:
         # media_id should only be a channel number
             try:
@@ -393,6 +426,7 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def turn_off(self):
         """Turn off media player."""
+        _LOGGER.debug("function turn_off")
         self._end_of_power_off = dt_util.utcnow() + timedelta(seconds=15)
 
         self.send_key(self._key_power_off)
@@ -405,17 +439,24 @@ class SamsungTVDevice(MediaPlayerEntity):
 
     def turn_on(self):
         """Turn the media player on."""
-        if self._mac:
+        _LOGGER.debug("function turn_on")
+        if self._turn_on_action:
+            self._turn_on_action.run()
+        elif self._mac:
             wakeonlan.send_magic_packet(self._mac)
         else:
             self.send_key("KEY_POWERON")
 
     async def async_select_source(self, source):
         """Select input source."""
-        # await self.hass.async_add_job(self.send_key, self._sourcelist[source])
+        _LOGGER.debug("function async_select_source")
+        while self._sourcelist == {}:
+            await self.hass.async_add_job(self.update)
+
         await self.hass.async_add_job(self.select_source, source)
 
     def SendSOAP(self, port, path, urn, service, body, XMLTag):
+        _LOGGER.debug("function SendSOAP")
         CRLF = "\r\n"
         xmlBody = '<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.' \
                    'xmlsoap.org/soap/encoding/">'
@@ -466,12 +507,14 @@ class SamsungTVDevice(MediaPlayerEntity):
             return response_xml[response_xml.find('<s:Envelope'):]
 
     def xmlBytesToStr(self, xml_bytes):
+        _LOGGER.debug("function xmlBytesToStr")
         response_xml = xml_bytes.decode(encoding="utf-8")
         response_xml = response_xml.replace("&lt;", "<")
         response_xml = response_xml.replace("&gt;", ">")
         return response_xml.replace("&quot;", "\"")
 
     def discoverSSDP(self, timeout=5):
+        _LOGGER.debug("function discoverSSDP")
         upnp_ports = [None] * len(self._urns)
         upnp_paths = [None] * len(self._urns)
         for entry in scan(timeout):
@@ -490,6 +533,7 @@ class SamsungTVDevice(MediaPlayerEntity):
         return None, None
 
     def getPathFromUrlSsdp(self, url, i, timeout=2):
+        _LOGGER.debug("function getPathFromUrlSsdp")
         try:
             file = urllib.request.urlopen(url, timeout=timeout)
             data = file.read()
@@ -508,6 +552,7 @@ class SamsungTVDevice(MediaPlayerEntity):
         return None
 
     def getSourceList(self):
+        _LOGGER.debug("function getSourceList")
         sources = {}
         source_names = self.SendSOAP(self._upnp_ports[1], self._upnp_paths[1], self._urns[1], 'GetSourceList', '', 'sourcetype')
         if source_names:

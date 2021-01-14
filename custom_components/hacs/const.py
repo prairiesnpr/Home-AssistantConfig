@@ -1,7 +1,7 @@
 """Constants for HACS"""
 NAME_LONG = "HACS (Home Assistant Community Store)"
 NAME_SHORT = "HACS"
-VERSION = "1.1.2"
+VERSION = "1.9.0"
 DOMAIN = "hacs"
 PROJECT_URL = "https://github.com/hacs/integration/"
 CUSTOM_UPDATER_LOCATIONS = [
@@ -14,6 +14,8 @@ DOMAIN_DATA = f"{NAME_SHORT.lower()}_data"
 
 ELEMENT_TYPES = ["integration", "plugin"]
 
+PACKAGE_NAME = "custom_components.hacs"
+
 IFRAME = {
     "title": "HACS",
     "icon": "hacs:hacs",
@@ -22,8 +24,12 @@ IFRAME = {
     "require_admin": True,
 }
 
+VERSION_STORAGE = "6"
+STORENAME = "hacs"
 
 # Messages
+NO_ELEMENTS = "No elements to show, open the store to install some awesome stuff."
+
 CUSTOM_UPDATER_WARNING = """
 This cannot be used with custom_updater.
 To use this you need to remove custom_updater form {}

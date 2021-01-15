@@ -6,8 +6,8 @@
   state_topic: "christmas/sensor0"
   value_template: "{{ value_json.status }}"
 - platform: mqtt
-  json_attributes_topic: "zoneminder/1"
   state_topic: "zoneminder/1"
+  json_attributes_topic: "zoneminder/1"
   value_template: "{{ value_json.name }}"
   name: "front_porch_alerts"
 - platform: mqtt

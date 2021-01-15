@@ -67,7 +67,7 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 
 ## Cameras
 * DVR
-  * Zoneminder in Docker
+  * Zoneminder in [Docker](https://github.com/dlandon/zoneminder)
 * Cameras
   * [2] Hikvision DS-2CD2385FWD-I
   * [1] Foscam FI8918W

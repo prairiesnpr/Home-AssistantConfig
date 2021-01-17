@@ -32,7 +32,7 @@ click==7.1.2
 click-log==0.2.0
 coloredlogs==15.0
 colorlog==4.5.0
-convertdate==2.2.0
+convertdate
 crccheck==1.0
 cryptography==3.2
 cycler==0.10.0

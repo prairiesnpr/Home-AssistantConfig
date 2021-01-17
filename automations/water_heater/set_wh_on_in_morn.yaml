@@ -8,5 +8,5 @@ condition:
   entity_id: group.home_owners
   state: home
 trigger:
-- at: 05:00:00
+- at: sensor.water_heater_start_time 
   platform: time

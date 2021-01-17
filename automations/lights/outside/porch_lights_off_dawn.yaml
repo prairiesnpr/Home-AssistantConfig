@@ -9,9 +9,9 @@ action:
   service: homeassistant.turn_off
 alias: Porch Lights Off
 condition: []
-description: At 2200 or more than 1.5 deg above the horizon
+description: At system sleep time or more than 1.5 deg above the horizon
 trigger:
-- at: '22:00:00'
+- at: input_datetime.system_sleep_time 
   platform: time
 - above: '1.5'
   entity_id: sun.sun

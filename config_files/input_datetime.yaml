@@ -1,0 +1,12 @@
+system_start_time:
+  name: System Start Time 
+  has_date: false
+  has_time: true
+jeanette_start_time:
+  name: Jeanette Start Time
+  has_date: false
+  has_time: true
+system_sleep_time:
+  name: System Sleep Time
+  has_date: false
+  has_time: true

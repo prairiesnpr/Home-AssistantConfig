@@ -1710,6 +1710,12 @@
                             "show_header_toggle": false,
                             "title": "Ryan\u2019s S8",
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.sm_g950u_next_alarm"
+                            ]
                         }
                     ],
                     "icon": "mdi:cellphone-android",
@@ -1754,6 +1760,45 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.system_start_time"
+                                },
+                                {
+                                    "entity": "input_datetime.jeanette_start_time"
+                                },
+                                {
+                                    "entity": "sensor.calculated_system_start_time"
+                                },
+                                {
+                                    "entity": "sensor.water_heater_start_time"
+                                },
+                                {
+                                    "entity": "sensor.coffee_start_time"
+                                }
+                            ],
+                            "title": "Day Start"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.system_sleep_time"
+                                },
+                                {
+                                    "entity": "sensor.water_heater_off_time"
+                                },
+                                {
+                                    "entity": "sensor.coffee_off_time"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_lights_off_time"
+                                }
+                            ],
+                            "title": "Day End"
                         }
                     ],
                     "path": "test",

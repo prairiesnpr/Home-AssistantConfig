@@ -3,11 +3,11 @@ action:
     entity_id:
     - switch.ledvance_plug_00054922_1
   service: switch.turn_on
-alias: Turn on Coffee Pot in the morning (Jeanette)
+alias: Turn on Coffee Pot in the morning
 condition:
 - condition: state
-  entity_id: person.jeanette
+  entity_id: group.home_owners 
   state: home
 trigger:
-- at: 07:30:00
+- at: sensor.coffee_start_time 
   platform: time

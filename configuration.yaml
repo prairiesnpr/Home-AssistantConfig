@@ -65,6 +65,7 @@ switch: !include config_files/switch.yaml
 tts: !include config_files/tts.yaml
 zha: !include config_files/zha.yaml
 zone: !include config_files/zones.yaml
+input_datetime: !include config_files/input_datetime.yaml
 
 script: !include_dir_named scripts/
 automation: !include automations.yaml

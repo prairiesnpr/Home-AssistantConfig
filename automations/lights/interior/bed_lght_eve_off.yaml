@@ -9,5 +9,5 @@ condition:
   entity_id: person.ryan
   state: home
 trigger:
-- at: '22:00:00'
+- at: sensor.bedroom_lights_off_time
   platform: time

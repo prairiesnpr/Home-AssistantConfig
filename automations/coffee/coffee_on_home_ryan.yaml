@@ -5,9 +5,10 @@ action:
   service: switch.turn_on
 alias: Turn on the Coffee Pot when home (Ryan)
 condition:
-- after: 06:15:00
-  before: '20:00:00'
-  condition: time
+  condition: and
+  conditions:
+    - "{{ (strptime(states('sensor.coffee_start_time'), '%H:%M:%S')) < now() }}"
+    - "{{ (strptime(states('sensor.coffee_off_time'), '%H:%M:%S')) > now() }}" 
 trigger:
 - entity_id: person.ryan
   platform: state

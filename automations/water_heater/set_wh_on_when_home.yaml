@@ -4,9 +4,10 @@ action:
   service: switch.turn_on
 alias: Set Water Heater on When Home
 condition:
-- after: 05:00:00
-  before: '22:00:00'
-  condition: time
+  condition: and
+  conditions:
+    - "{{ (strptime(states('sensor.water_heater_start_time'), '%H:%M:%S')) < now() }}"
+    - "{{ (strptime(states('sensor.water_heater_off_time'), '%H:%M:%S')) > now() }}"
 trigger:
 - entity_id: group.home_owners
   platform: state

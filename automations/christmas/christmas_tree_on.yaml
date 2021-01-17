@@ -7,5 +7,5 @@ alias: Christmas Tree On
 condition: []
 description: ''
 trigger:
-- at: 06:00:00
+- at: sensor.calculated_system_start_time
   platform: time

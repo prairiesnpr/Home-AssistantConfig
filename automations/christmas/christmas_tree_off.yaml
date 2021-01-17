@@ -7,5 +7,5 @@ alias: Christmas Tree Off
 condition: []
 description: ''
 trigger:
-- at: '22:00:00'
+- at: input_datetime.system_sleep_time 
   platform: time

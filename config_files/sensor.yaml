@@ -34,6 +34,8 @@
   include_archived: false
 - platform: template 
   sensors:
+    zm_url:
+      value_template: !secret zm_url
     xbox_source: 
       value_template: '{{ states.media_player.xboxone_2.attributes["media_title"] }}' 
       friendly_name: 'Xbox Source'
@@ -46,3 +48,48 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
+    front_porch_detect:
+      friendly_name: "Front Porch Detection"
+      value_template: >-
+          {% if state_attr('sensor.front_porch_alerts',  'detection') -%}
+              {{states('sensor.zm_url')}}/zm/index.php?action=login&view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
+          {%- else -%}
+  
+          {%- endif %}
+    front_porch_objects:
+      friendly_name: "Front Porch Objects"
+      value_template: >-
+          {% if state_attr('sensor.front_porch_alerts',  'detection') and state_attr('sensor.front_porch_alerts',  'detection').labels -%}
+            {%- for x in state_attr('sensor.front_porch_alerts', 'detection').labels|unique -%}
+              {%- if loop.first -%}
+                {{ x }}
+              {%- else -%}
+                {{', '}}{{ x }}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            No Results
+          {%- endif %}
+    porsche_detect:
+      friendly_name: "Porsche Detection"
+      value_template: >-
+          {% if state_attr('sensor.porsche_alerts',  'detection') -%}
+              {{states('sensor.zm_url')}}/zm/index.php?action=login&view=image&eid={{ state_attr('sensor.porsche_alerts',  'eventid')}}&fid=objdetect
+          {%- else -%}
+
+          {%- endif %}
+    porsche_objects:
+      friendly_name: "Porsche Objects"
+      value_template: >-
+          {% if state_attr('sensor.porsche_alerts',  'detection') and state_attr('sensor.porsche_alerts',  'detection').labels -%}
+            {%- for x in state_attr('sensor.porsche_alerts', 'detection').labels|unique -%}
+              {%- if loop.first -%}
+                {{ x }}
+              {%- else -%}
+                {{', '}}{{ x }}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            No Results
+          {%- endif %}
+

@@ -11,3 +11,15 @@
   authentication: digest
   still_image_url: !secret uk_cam_still_url
   stream_source: !secret uk_cam_rtsp
+- platform: generic
+  name: Front Porch Last Detect
+  username: !secret zm_uid
+  password: !secret zm_pwd
+  authentication: basic
+  limit_refetch_to_url_change: false
+  still_image_url: >-
+          {% if state_attr('sensor.front_porch_alerts',  'detection') -%}
+              {{states('sensor.zm_url')}}/zm/index.php?view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
+          {%- else -%}
+
+          {%- endif %}

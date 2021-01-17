@@ -1,7 +1,7 @@
 dist: bionic
 language: python
 python:
-  - "3.8"
+  - "3.9"
 before_install:
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev
   - sudo apt-get install -y libavutil-dev libswscale-dev libswresample-dev libavfilter-dev
@@ -10,7 +10,7 @@ before_install:
   - sudo apt-get install -y gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-libav
   - mv travis_secrets.yaml secrets.yaml
   - sudo apt-get install libgirepository1.0-dev
-  - pip3 install vext vext.gi PyGObject
+  - pip3 install vext vext.gi PyGObject wakeonlan beautifulsoup4 netdisco
 install:
   - pip3 install homeassistant
 script:

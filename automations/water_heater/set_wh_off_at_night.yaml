@@ -4,5 +4,5 @@ action:
   service: switch.turn_off
 alias: Set Water Heater off at night
 trigger:
-- at: '21:00:00'
+- at: sensor.water_heater_off_time 
   platform: time

@@ -38,6 +38,7 @@
       value_template: !secret zm_url
     calculated_system_start_time:
       friendly_name: Calculated Day Start
+      device_class: timestamp
       value_template: >- 
         {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
         {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
@@ -48,30 +49,41 @@
         {% if is_state('person.jeanette', 'home') %}
           {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
         {% endif %}
-        {{ (start_dates | min).time() }}
+        {{ (start_dates | min) }}
+    calculated_system_sleep_time:
+      friendly_name: Calculated Day End
+      device_class: timestamp
+      value_template: >-
+        {% set sys_sleep = (strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) %}
+        {{ now().replace(hour=sys_sleep.hour, minute=sys_sleep.minute, second=0, microsecond=0) }}
     xbox_source: 
       value_template: '{{ states.media_player.xboxone_2.attributes["media_title"] }}' 
       friendly_name: 'Xbox Source'
     water_heater_start_time:
       friendly_name: Water Heater Start Time
-      value_template: "{{ ((strptime(states('sensor.calculated_system_start_time'), '%H:%M:%S')) - timedelta(hours=1, minutes=30)).time()}}"
+      device_class: timestamp
+      value_template: "{{ strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%d %H:%M:%S%z') - timedelta(hours=1, minutes=30) }}"
     coffee_start_time:
       friendly_name: Coffee Start Time
-      value_template: "{{ ((strptime(states('sensor.calculated_system_start_time'), '%H:%M:%S')) - timedelta(minutes=15)).time()}}"
+      device_class: timestamp
+      value_template: "{{ strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%d %H:%M:%S%z') - timedelta(minutes=15) }}"
     water_heater_off_time:
       friendly_name: Water Heater off Time
-      value_template: "{{ ((strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) - timedelta(hours=1)).time()}}"
+      device_class: timestamp
+      value_template: "{{ strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%d %H:%M:%S%z') - timedelta(hours=1) }}"
     coffee_off_time:
       friendly_name: Coffee off Time
+      device_class: timestamp
       value_template: >-
         {% if is_state('person.ryan', 'home') %}
-          {{ ((strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) - timedelta(hours=2)).time() }}
+          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%d %H:%M:%S%z') - timedelta(hours=2)) }}
         {% else  %}
-          {{ ((strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) - timedelta(hours=8)).time() }}
+          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%d %H:%M:%S%z') - timedelta(hours=8)) }}
         {% endif %}
     bedroom_lights_off_time:
+      device_class: timestamp
       friendly_name: Bedroom Lights off Time
-      value_template: "{{ ((strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) + timedelta(minutes=15)).time()}}"
+      value_template: "{{ strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%d %H:%M:%S%z') + timedelta(minutes=15) }}"
     water_heater_time_to_temp:
       value_template: >-
           {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}

@@ -1,4 +1,4 @@
-dist: bionic
+dist: groovy 
 language: python
 python:
   - "3.9"

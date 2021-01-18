@@ -378,24 +378,6 @@
                             "show_state": false,
                             "type": "picture-entity",
                             "camera_view": "live"
-                        },
-                        {
-                            "entity": "automation.turn_on_bedroom_lights_in_the_morning",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:alarm",
-                            "name": "Alarm",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "automation.toggle",
-                                "service_data": {
-                                    "entity_id": "automation.turn_on_bedroom_lights_in_the_morning"
-                                }
-                            },
-                            "type": "entity-button"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -1396,36 +1378,19 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.xbox_source"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.pi_hole_ads_blocked_today",
-                                "sensor.pi_hole_ads_percentage_blocked_today",
-                                "sensor.pi_hole_seen_clients",
-                                "sensor.pi_hole_domains_blocked",
-                                "sensor.pi_hole_dns_unique_domains",
-                                "sensor.pi_hole_dns_unique_clients",
-                                "sensor.pi_hole_dns_queries_today",
-                                "sensor.pi_hole_dns_queries_forwarded",
-                                "sensor.pi_hole_dns_queries_cached"
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "binary_sensor.rpi_power_status"
                                 }
                             ],
                             "type": "entities"
                         },
                         {
-                            "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
-                            "type": "markdown"
+                            "type": "entities",
+                            "entities": [
+                                "input_datetime.jeanette_start_time",
+                                "input_datetime.system_sleep_time",
+                                "input_datetime.system_start_time",
+                                "sensor.calculated_system_start_time"
+                            ]
                         }
                     ]
                 },
@@ -1532,6 +1497,20 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                "sensor.pi_hole_ads_blocked_today",
+                                "sensor.pi_hole_ads_percentage_blocked_today",
+                                "sensor.pi_hole_seen_clients",
+                                "sensor.pi_hole_domains_blocked",
+                                "sensor.pi_hole_dns_unique_domains",
+                                "sensor.pi_hole_dns_unique_clients",
+                                "sensor.pi_hole_dns_queries_today",
+                                "sensor.pi_hole_dns_queries_forwarded",
+                                "sensor.pi_hole_dns_queries_cached"
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:server-network",
@@ -1673,12 +1652,6 @@
                             "show_header_toggle": false,
                             "title": "Ryan\u2019s S8",
                             "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "sensor.sm_g950u_next_alarm"
-                            ]
                         }
                     ],
                     "icon": "mdi:cellphone-android",
@@ -1799,6 +1772,36 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entity": "automation.turn_on_bedroom_lights_in_the_morning",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon": "mdi:alarm",
+                            "name": "Alarm",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "automation.toggle",
+                                "service_data": {
+                                    "entity_id": "automation.turn_on_bedroom_lights_in_the_morning"
+                                }
+                            },
+                            "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.xbox_source"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
+                            "type": "markdown"
                         }
                     ],
                     "path": "test",

@@ -20,7 +20,7 @@
   name: receiver
   receiver_max_volume: 200 
 - platform: gstreamer
-  pipeline: alsasink
+  pipeline: 'audioconvert ! audioresample ! autoaudiosink' 
 - platform: samsungtv_encrypted
   host: !secret livingroomtv_ip
   token: !secret livingroomtv_token

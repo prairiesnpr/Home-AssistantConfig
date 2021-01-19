@@ -189,21 +189,6 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "light.stairway_lights",
-                                    "type": "light",
-                                    "icon": "mdi:wall-sconce-round-variant"
-                                },
-                                {
-                                    "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
-                                    "name": "Counter",
-                                    "type": "light"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "cards": [
-                                {
                                     "entity": "light.bedroom_lights",
                                     "type": "light"
                                 },
@@ -211,6 +196,11 @@
                                     "entity": "light.sunricher_zg9101sac_hp_106770a5_1",
                                     "name": "Master Bath",
                                     "type": "light"
+                                },
+                                {
+                                    "entity": "light.stairway_lights",
+                                    "type": "light",
+                                    "icon": "mdi:wall-sconce-round-variant"
                                 }
                             ],
                             "type": "horizontal-stack"
@@ -225,6 +215,11 @@
                                 {
                                     "entity": "light.jasco_products_45857_8a1e2500_level_on_off",
                                     "name": "Kitchen",
+                                    "type": "light"
+                                },
+                                {
+                                    "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
+                                    "name": "Counter",
                                     "type": "light"
                                 }
                             ],
@@ -273,29 +268,6 @@
                             "show_header_toggle": false,
                             "title": "Office",
                             "type": "entities"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "person.ryan",
-                                    "image": "/images/ryan_away.jpg",
-                                    "state_image": {
-                                        "home": "/images/ryan_home.jpg",
-                                        "not_home": "/images/ryan_away.jpg"
-                                    },
-                                    "type": "picture-entity"
-                                },
-                                {
-                                    "entity": "person.jeanette",
-                                    "image": "/images/jeanette_away.jpg",
-                                    "state_image": {
-                                        "home": "/images/jeanette_home.jpg",
-                                        "not_home": "/images/jeanette_away.jpg"
-                                    },
-                                    "type": "picture-entity"
-                                }
-                            ],
-                            "type": "horizontal-stack"
                         },
                         {
                             "entities": [
@@ -372,12 +344,42 @@
                             "type": "entities"
                         },
                         {
-                            "aspect_ratio": "100%",
-                            "entity": "camera.skyfield",
-                            "show_name": false,
-                            "show_state": false,
-                            "type": "picture-entity",
-                            "camera_view": "live"
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "entity": "camera.skyfield",
+                                    "aspect_ratio": "100%",
+                                    "show_name": false,
+                                    "show_state": false,
+                                    "type": "picture-entity",
+                                    "camera_view": "live"
+                                },
+                                {
+                                    "type": "custom:weasley-card",
+                                    "fontface": "font-family: itcblkad_font;    src: local(itcblkad_font), url('/local/custom_ui/ITCBLKAD.TTF') format('opentype');",
+                                    "fontname": "itcblkad_font",
+                                    "locations": [
+                                        "Home"
+                                    ],
+                                    "lost": "Mortal Peril",
+                                    "shaft_colour": "#000",
+                                    "travelling": "Travelling",
+                                    "wizards": [
+                                        {
+                                            "colour": "#7E5FC0",
+                                            "entity": "person.jeanette",
+                                            "name": "Jeanette",
+                                            "textcolour": "#FFF"
+                                        },
+                                        {
+                                            "colour": "#b29d69",
+                                            "entity": "person.ryan",
+                                            "name": "Ryan",
+                                            "textcolour": "#000"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -1302,6 +1304,29 @@
                                 }
                             ],
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "person.ryan",
+                                    "image": "/images/ryan_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/ryan_home.jpg",
+                                        "not_home": "/images/ryan_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "person.jeanette",
+                                    "image": "/images/jeanette_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/jeanette_home.jpg",
+                                        "not_home": "/images/jeanette_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         }
                     ],
                     "icon": "mdi:floor-plan",
@@ -1313,28 +1338,12 @@
                     "badges": [],
                     "cards": [
                         {
-                            "fontface": "font-family: itcblkad_font;    src: local(itcblkad_font), url('/local/custom_ui/ITCBLKAD.TTF') format('opentype');",
-                            "fontname": "itcblkad_font",
-                            "locations": [
-                                "Home"
-                            ],
-                            "lost": "Mortal Peril",
-                            "shaft_colour": "#000",
-                            "travelling": "Travelling",
-                            "type": "custom:weasley-card",
-                            "wizards": [
-                                {
-                                    "colour": "#7E5FC0",
-                                    "entity": "person.jeanette",
-                                    "name": "Jeanette",
-                                    "textcolour": "#FFF"
-                                },
-                                {
-                                    "colour": "#b29d69",
-                                    "entity": "person.ryan",
-                                    "name": "Ryan",
-                                    "textcolour": "#000"
-                                }
+                            "type": "entities",
+                            "entities": [
+                                "input_datetime.jeanette_start_time",
+                                "input_datetime.system_sleep_time",
+                                "input_datetime.system_start_time",
+                                "sensor.calculated_system_start_time"
                             ]
                         }
                     ],
@@ -1382,15 +1391,6 @@
                                 }
                             ],
                             "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "input_datetime.jeanette_start_time",
-                                "input_datetime.system_sleep_time",
-                                "input_datetime.system_start_time",
-                                "sensor.calculated_system_start_time"
-                            ]
                         }
                     ]
                 },
@@ -1710,6 +1710,9 @@
                                     "entity": "sensor.calculated_system_start_time"
                                 },
                                 {
+                                    "entity": "sensor.system_start_next"
+                                },
+                                {
                                     "entity": "sensor.water_heater_start_time"
                                 },
                                 {
@@ -1802,6 +1805,44 @@
                         {
                             "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
                             "type": "markdown"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "person.ryan",
+                                    "image": "/images/ryan_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/ryan_home.jpg",
+                                        "not_home": "/images/ryan_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "person.jeanette",
+                                    "image": "/images/jeanette_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/jeanette_home.jpg",
+                                        "not_home": "/images/jeanette_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "light.stairway_lights",
+                                    "type": "light",
+                                    "icon": "mdi:wall-sconce-round-variant"
+                                },
+                                {
+                                    "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
+                                    "name": "Counter",
+                                    "type": "light"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         }
                     ],
                     "path": "test",

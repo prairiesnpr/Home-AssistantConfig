@@ -1,11 +1,11 @@
 action:
-- data:
-    entity_id: all
-  service: media_player.turn_off
-alias: Turn off all lights when away
+  - data:
+      entity_id: all
+    service: media_player.turn_off
+alias: Turn off all media players when away
 trigger:
-- entity_id: group.home_owners
-  for:
-    minutes: 5
-  platform: state
-  to: not_home
+  - entity_id: group.home_owners
+    for:
+      minutes: 5
+    platform: state
+    to: not_home

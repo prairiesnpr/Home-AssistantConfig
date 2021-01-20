@@ -4,18 +4,16 @@ action:
     - light.jasco_products_45856_61d32600_1
     - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
     - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
-  service: light.turn_on
+    - switch.sengled_e1c_nb6_6d0b0400_on_off
+    - light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off
+  service: homeassistant.turn_on
 alias: Porch Lights on at Dusk/Dawn
 condition: []
-description: ''
+description: 'Turn Porch Lights on at Dusk or Dawn'
 trigger:
-- above: '-65'
-  below: '-4'
+- below: '-4.0'
   entity_id: sun.sun
   platform: numeric_state
-  value_template: '{{ state.attributes.elevation }}'
-- above: '-10'
-  below: '-4'
-  entity_id: sun.sun
-  platform: numeric_state
-  value_template: '{{ state.attributes.elevation }}'
+  attribute: elevation
+- platform: time
+  at: sensor.outdoor_lights_on

@@ -1,5 +1,5 @@
 
-# Home Assistant (0.104.2) configuration
+# Home Assistant (2021.1.4) configuration
 
 ## Zigbee Network
 
@@ -47,7 +47,7 @@ I utilize the native ZHA integration.
       * [1] Xiaomi Aqara vibration sensor (I keep moving this around, still haven't found a great use for it)
       * [3] Xiaomi Aqara motion sensor
       * [2] Xiaomi Aqara Water Sensor
-      * [1] Xiaomi Aqara Weather Sensor
+      * [2] Xiaomi Aqara Weather Sensor
       * [1] Xiaomi/Honeywell Smoke Detector
     * Door Lock
       * [1] Yale YRD256 TSDB
@@ -67,7 +67,7 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 
 ## Cameras
 * DVR
-  * Zoneminder in Docker
+  * Zoneminder in [Docker](https://github.com/dlandon/zoneminder)
 * Cameras
   * [2] Hikvision DS-2CD2385FWD-I
   * [1] Foscam FI8918W

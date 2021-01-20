@@ -1,0 +1,15 @@
+action:
+- data:
+    entity_id:
+    - switch.ledvance_plug_00054922_1
+  service: switch.turn_on
+alias: Turn on the Coffee Pot when home (Ryan)
+condition:
+  condition: and
+  conditions:
+    - "{{ (strptime(states('sensor.coffee_start_time'), '%Y-%m-%dT%H:%M:%S%z')) < now() }}"
+    - "{{ (strptime(states('sensor.coffee_off_time'), '%Y-%m-%dT%H:%M:%S%z')) > now() }}"
+trigger:
+- entity_id: person.ryan
+  platform: state
+  to: home

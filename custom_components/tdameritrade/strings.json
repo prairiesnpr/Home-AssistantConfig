@@ -1,0 +1,33 @@
+{
+  "config": {
+    "title": "TDAmeritrade",
+    "step": {
+      "pick_implementation": {
+        "title": "Pick Authentication Method"
+      },
+      "user": {
+        "title": "Set Consumer Key and Choose Accounts",
+        "data": {
+          "accounts": "Accounts",
+          "consumer_key": "Consumer Key"
+        }
+      }
+    },
+    "abort": {
+      "missing_configuration": "The TDAmeritrade component is not configured. Please follow the documentation."
+    },
+    "create_entry": {
+      "default": "Successfully authenticated with TDAmeritrade."
+    }
+  },
+  "options": {
+    "step": {
+      "tda_settings": {
+        "description": "Options for TDAmeritrade",
+        "data": {
+          "accounts": "Accounts"
+        }
+      }
+    }
+  }
+}

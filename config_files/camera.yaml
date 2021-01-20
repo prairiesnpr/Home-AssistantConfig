@@ -11,3 +11,13 @@
   authentication: digest
   still_image_url: !secret uk_cam_still_url
   stream_source: !secret uk_cam_rtsp
+- platform: generic
+  name: Front Porch Last Detect
+  limit_refetch_to_url_change: true 
+  verify_ssl: false
+  still_image_url: "{{ states('sensor.front_porch_detect') }}" 
+- platform: generic
+  name: Porsche Last Detect
+  limit_refetch_to_url_change: true
+  verify_ssl: false
+  still_image_url: "{{ states('sensor.porsche_detect') }}"

@@ -4,12 +4,14 @@ action:
     - light.jasco_products_45856_61d32600_1
     - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
     - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
-  service: light.turn_off
+    - switch.sengled_e1c_nb6_6d0b0400_on_off
+    - light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off
+  service: homeassistant.turn_off
 alias: Porch Lights Off
 condition: []
-description: At 2200 or more than 1.5 deg above the horizon
+description: At system sleep time or more than 1.5 deg above the horizon
 trigger:
-- at: '22:00:00'
+- at: input_datetime.system_sleep_time 
   platform: time
 - above: '1.5'
   entity_id: sun.sun

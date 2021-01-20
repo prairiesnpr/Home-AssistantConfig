@@ -1,9 +1,6 @@
 frontend:
-  extra_html_url:
-    - /local/hass-bha-icons.html
 
 http:
-  base_url: !secret ha_url
   use_x_forwarded_for: true
   trusted_proxies: !secret ha_ip
 
@@ -13,7 +10,6 @@ weather:
 
 logger:
   default: warning
-  logs: !include zigbee_logging.yaml
 
 device_tracker:
   - platform: bluetooth_tracker
@@ -24,12 +20,17 @@ pi_hole:
 
 zoneminder:
  - host: !secret zm_host 
+   ssl: true
+   verify_ssl: false
    username: !secret zm_uid
    password: !secret zm_pwd 
 
 upnp:
-  sensors: true
   local_ip: !secret local_ip 
+
+rest_command:
+  xbox_server_auth:
+    url: !secret xbox_load_auth
 
 stream:
 circadian_lighting:
@@ -59,13 +60,12 @@ mqtt: !include config_files/mqtt.yaml
 nest: !include config_files/nest.yaml
 notify: !include config_files/notify.yaml
 recorder: !include config_files/recorder.yaml
-script: !include config_files/scripts.yaml
 sensor: !include config_files/sensor.yaml
 switch: !include config_files/switch.yaml
 tts: !include config_files/tts.yaml
 zha: !include config_files/zha.yaml
 zone: !include config_files/zones.yaml
-
+input_datetime: !include config_files/input_datetime.yaml
 
 script: !include_dir_named scripts/
 automation: !include automations.yaml

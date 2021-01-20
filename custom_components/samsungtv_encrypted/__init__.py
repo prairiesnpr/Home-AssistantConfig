@@ -1,0 +1,1 @@
+"""The samsungtv component for encrypted models"""

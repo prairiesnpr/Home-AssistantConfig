@@ -5,15 +5,18 @@ action:
   service: light.turn_on
 alias: Set Lights on Netflix or Bluray
 trigger:
-- entity_id: sensor.xbox_source
   platform: state
-  to: Netflix
-- entity_id: sensor.xbox_source
-  platform: state
-  to: Blu-ray Player
-- entity_id: sensor.xbox_source
-  platform: state
-  to: Plex For Xbox One
-- entity_id: sensor.xbox_source
-  platform: state
-  to: Amazon Prime Video US
+  entity_id: sensor.xbox_source
+condition:
+  condition: or
+  conditions:
+    - condition: template
+      value_template: "{{ 'Netflix' in trigger.to_state.state }}"
+    - condition: template
+      value_template: "{{ 'Blu-ray' in trigger.to_state.state }}"
+    - condition: template
+      value_template: "{{ 'Plex' in trigger.to_state.state }}"
+    - condition: template
+      value_template: "{{ 'Amazon' in trigger.to_state.state }}"
+    - condition: template
+      value_template: "{{ 'Disney' in trigger.to_state.state }}"

@@ -5,5 +5,7 @@ elevation: 727
 unit_system: imperial 
 time_zone: America/New_York
 customize: !include customize.yaml
-whitelist_external_dirs:
+external_url: !secret ha_url
+internal_url: !secret ha_url
+allowlist_external_dirs:
   - !secret snapshot_dir

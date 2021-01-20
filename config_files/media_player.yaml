@@ -20,8 +20,11 @@
   name: receiver
   receiver_max_volume: 200 
 - platform: gstreamer
-- platform: samsungtv
+  pipeline: 'audioconvert ! audioresample ! autoaudiosink' 
+- platform: samsungtv_encrypted
   host: !secret livingroomtv_ip
-- platform: xboxone
-  device: FD00472764D4AE81
-  name: Xbox One
+  token: !secret livingroomtv_token
+  sessionid: !secret livingroomtv_duid
+  port: 8080
+  name: Living Room TV
+

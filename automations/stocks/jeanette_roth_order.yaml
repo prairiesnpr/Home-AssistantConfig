@@ -1,0 +1,17 @@
+alias: Place order for VOO in Jeanette's Roth 
+description: Buy VOO with all available funds in Jeanette's Roth account
+trigger:
+- at: 09:46:00
+  platform: time
+condition:
+- condition: state
+  entity_id: binary_sensor.market
+  state: 'on'
+action:
+  service: homeassistant.turn_on 
+  entity_id: script.buy_stock_ira
+  data_template:
+    variables:
+      ticker: VOO 
+      account: "{{ states.sensor.available_funds_6227.attributes.accountId }}"  
+      av_funds: "{{ states.sensor.available_funds_6227.state }}"

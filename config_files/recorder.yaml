@@ -1,5 +1,7 @@
 purge_keep_days: 5
 db_url: !secret recorder_url 
+db_max_retries: 100
+db_retry_wait: 6
 include:
   entities:
     - binary_sensor.zha_02bfefd9_1_6 #Back Door
@@ -24,3 +26,8 @@ include:
     - person.jeanette
     - switch.ledvance_plug_00054922_1
     - lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    - sensor.lumi_lumi_weather_810c5c04_temperature
+    - sensor.lumi_lumi_weather_810c5c04_humidity
+    - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water
+    - switch.xbee_xbee_io_4192cf47_210_6 #Blueberries Water
+    - switch.xbee_xbee_io_4192cf47_212_6 # Spare

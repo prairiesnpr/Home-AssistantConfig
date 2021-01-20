@@ -8,9 +8,14 @@ action:
   entity_id: light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off
 alias: Switch Master bedroom fan light with bedside lights
 condition:
-  condition: time
-  after: '07:00:00'
-  before: '21:00:00'
+  condition: or
+  conditions:
+    - condition: time
+      after: '07:00:00'
+      before: '21:00:00'
+    - condition: state
+      entity_id: light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off
+      state: 'on'
 trigger:
 - entity_id: light.bedroom_lights
   platform: state

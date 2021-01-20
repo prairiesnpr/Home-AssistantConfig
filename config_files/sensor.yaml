@@ -5,6 +5,16 @@
   name: "Christmas Lights"
   state_topic: "christmas/sensor0"
   value_template: "{{ value_json.status }}"
+- platform: mqtt
+  state_topic: "zoneminder/1"
+  json_attributes_topic: "zoneminder/1"
+  value_template: "{{ value_json.name }}"
+  name: "front_porch_alerts"
+- platform: mqtt
+  state_topic: "zoneminder/2"
+  json_attributes_topic: "zoneminder/2"
+  value_template: "{{ value_json.name }}"
+  name: "porsche_alerts"
 - platform: mqtt_room
   device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
   name: Dumpster
@@ -21,11 +31,77 @@
   state_topic: room_presence
   away_timeout: 30
 - platform: zoneminder
+  include_archived: false
 - platform: template 
   sensors:
+    zm_url:
+      value_template: !secret zm_url
+    calculated_system_start_time:
+      friendly_name: Calculated Day Start
+      device_class: timestamp
+      value_template: >- 
+        {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
+        {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
+        {% set start_dates =[now().replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
+        {% if is_state('person.ryan', 'home') %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.sm_g950u_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+        {% endif %}
+        {% if is_state('person.jeanette', 'home') %}
+          {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
+        {% endif %}
+        {{ (start_dates | min).isoformat() }}
+    system_start_next:
+      friendly_name: Next Day Start
+      device_class: timestamp
+      value_template: >-
+        {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
+        {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
+        {% set start_dates =[(now() + timedelta(days=1)).replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
+        {% if is_state('person.ryan', 'home') %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.sm_g950u_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+        {% endif %}
+        {% if is_state('person.jeanette', 'home') %}
+          {% set start_dates = start_dates + [(now() + timedelta(days=1)).replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
+        {% endif %}
+        {{ (start_dates | min).isoformat() }}
+    calculated_system_sleep_time:
+      friendly_name: Calculated Day End
+      device_class: timestamp
+      value_template: >-
+        {% set sys_sleep = (strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) %}
+        {{ now().replace(hour=sys_sleep.hour, minute=sys_sleep.minute, second=0, microsecond=0).isoformat() }}
     xbox_source: 
-      value_template: '{{ states.media_player.xbox_one.attributes["source"] }}'
+      value_template: "{{ state_attr('media_player.xboxone_2', 'media_title') }}" 
       friendly_name: 'Xbox Source'
+    water_heater_start_time:
+      friendly_name: Water Heater Start Time
+      device_class: timestamp
+      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1, minutes=30)).isoformat() }}"
+    coffee_start_time:
+      friendly_name: Coffee Start Time
+      device_class: timestamp
+      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(minutes=15)).isoformat() }}"
+    outdoor_lights_on:
+      friendly_name: Outdoor Lights On Time
+      device_class: timestamp
+      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}"
+    water_heater_off_time:
+      friendly_name: Water Heater off Time
+      device_class: timestamp
+      value_template: "{{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1)).isoformat() }}"
+    coffee_off_time:
+      friendly_name: Coffee off Time
+      device_class: timestamp
+      value_template: >-
+        {% if is_state('person.ryan', 'home') %}
+          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=2)).isoformat() }}
+        {% else  %}
+          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=8)).isoformat() }}
+        {% endif %}
+    bedroom_lights_off_time:
+      device_class: timestamp
+      friendly_name: Bedroom Lights off Time
+      value_template: "{{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}"
     water_heater_time_to_temp:
       value_template: >-
           {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
@@ -35,5 +111,48 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
-- platform: rpi_power
-  text_state: true
+    front_porch_detect:
+      friendly_name: "Front Porch Detection"
+      value_template: >-
+          {% if state_attr('sensor.front_porch_alerts',  'detection') -%}
+              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
+          {%- else -%}
+  
+          {%- endif %}
+    front_porch_objects:
+      friendly_name: "Front Porch Objects"
+      value_template: >-
+          {% if state_attr('sensor.front_porch_alerts',  'detection') and state_attr('sensor.front_porch_alerts',  'detection').labels -%}
+            {%- for x in state_attr('sensor.front_porch_alerts', 'detection').labels|unique -%}
+              {%- if loop.first -%}
+                {{ x }}
+              {%- else -%}
+                {{', '}}{{ x }}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            No Results
+          {%- endif %}
+    porsche_detect:
+      friendly_name: "Porsche Detection"
+      value_template: >-
+          {% if state_attr('sensor.porsche_alerts',  'detection') -%}
+              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.porsche_alerts',  'eventid')}}&fid=objdetect
+          {%- else -%}
+
+          {%- endif %}
+    porsche_objects:
+      friendly_name: "Porsche Objects"
+      value_template: >-
+          {% if state_attr('sensor.porsche_alerts',  'detection') and state_attr('sensor.porsche_alerts',  'detection').labels -%}
+            {%- for x in state_attr('sensor.porsche_alerts', 'detection').labels|unique -%}
+              {%- if loop.first -%}
+                {{ x }}
+              {%- else -%}
+                {{', '}}{{ x }}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            No Results
+          {%- endif %}
+

@@ -21,3 +21,6 @@ secrets.yaml
 known_devices.yaml
 ryan_home.jpg
 ryan_away.jpg
+www/snapshots/*.jpg
+*.pyc
+/lib

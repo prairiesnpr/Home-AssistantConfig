@@ -1855,15 +1855,6 @@
                                 },
                                 {
                                     "entity": "sensor.porsche_objects"
-                                },
-                                {
-                                    "entity": "sensor.porsche_detect"
-                                },
-                                {
-                                    "entity": "sensor.front_porch_detect"
-                                },
-                                {
-                                    "entity": "sensor.zm_url"
                                 }
                             ]
                         }

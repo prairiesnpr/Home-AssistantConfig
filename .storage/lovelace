@@ -1857,6 +1857,11 @@
                                     "entity": "sensor.porsche_objects"
                                 }
                             ]
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.koqt_daynight",
+                            "show_forecast": true
                         }
                     ],
                     "path": "test",

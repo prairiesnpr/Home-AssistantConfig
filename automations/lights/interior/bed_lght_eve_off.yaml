@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - light.bedroom_lights
+    - light.bedroom_bed_lights_zha_group_0x0004
   service: homeassistant.turn_off
 alias: Turn off bedroom lights at night
 condition:

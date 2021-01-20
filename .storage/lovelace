@@ -189,8 +189,10 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "light.bedroom_lights",
-                                    "type": "light"
+                                    "entity": "light.bedroom_bed_lights_zha_group_0x0004",
+                                    "type": "light",
+                                    "icon": "mdi:lamp",
+                                    "name": "Bedroom"
                                 },
                                 {
                                     "entity": "light.sunricher_zg9101sac_hp_106770a5_1",
@@ -198,9 +200,10 @@
                                     "type": "light"
                                 },
                                 {
-                                    "entity": "light.stairway_lights",
+                                    "entity": "light.stairway_lights_zha_group_0x0003",
                                     "type": "light",
-                                    "icon": "mdi:wall-sconce-round-variant"
+                                    "icon": "mdi:wall-sconce-round-variant",
+                                    "name": "Stairs"
                                 }
                             ],
                             "type": "horizontal-stack"
@@ -239,7 +242,7 @@
                                     "type": "custom:custom-fan-card"
                                 },
                                 {
-                                    "entity": "light.master_bedroom_lights",
+                                    "entity": "light.master_bedroom_closet_zha_group_0x0002",
                                     "name": "Walk-In Closet"
                                 }
                             ],

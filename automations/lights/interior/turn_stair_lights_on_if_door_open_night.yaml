@@ -1,7 +1,7 @@
 action:
 - data:
     brightness: 50
-    entity_id: light.stairway_lights
+    entity_id: light.stairway_lights_zha_group_0x0003
   service: light.turn_on
 alias: Turn on Stair Lights if Door Opened at Night
 condition:

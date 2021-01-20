@@ -1,10 +1,10 @@
 action:
-- data:
-    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
-  service: light.turn_off
+  - data:
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+    service: light.turn_off
 alias: "Turn off counter light if A/V is off"
 trigger:
-- entity_id: media_player.pioneer_vsx_1131_ee67e7
-  platform: state
-  to: "off"
-  for: '00:05:00'
+  - entity_id: media_player.receiver
+    platform: state
+    to: "off"
+    for: "00:05:00"

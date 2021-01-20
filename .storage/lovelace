@@ -675,9 +675,9 @@
                         {
                             "elements": [
                                 {
-                                    "camera_image": "camera.front_porch",
+                                    "camera_image": "camera.front_porch_direct",
                                     "camera_view": "live",
-                                    "entity": "camera.front_porch",
+                                    "entity": "camera.front_porch_direct",
                                     "style": {
                                         "height": "100%",
                                         "left": "50%",
@@ -769,15 +769,12 @@
                             ]
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.front_porch_objects"
-                                },
-                                {
-                                    "entity": "sensor.porsche_objects"
-                                }
-                            ]
+                            "type": "picture-entity",
+                            "entity": "camera.front_porch_last_detect"
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.porsche_last_detect"
                         }
                     ],
                     "icon": "mdi:camera",
@@ -1717,6 +1714,9 @@
                                 },
                                 {
                                     "entity": "sensor.coffee_start_time"
+                                },
+                                {
+                                    "entity": "sensor.outdoor_lights_on"
                                 }
                             ],
                             "title": "Day Start"
@@ -1843,6 +1843,26 @@
                                 }
                             ],
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.front_porch_objects"
+                                },
+                                {
+                                    "entity": "sensor.porsche_objects"
+                                },
+                                {
+                                    "entity": "sensor.porsche_detect"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_detect"
+                                },
+                                {
+                                    "entity": "sensor.zm_url"
+                                }
+                            ]
                         }
                     ],
                     "path": "test",

@@ -81,6 +81,10 @@
       friendly_name: Coffee Start Time
       device_class: timestamp
       value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(minutes=15)).isoformat() }}"
+    outdoor_lights_on:
+      friendly_name: Outdoor Lights On Time
+      device_class: timestamp
+      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}"
     water_heater_off_time:
       friendly_name: Water Heater off Time
       device_class: timestamp
@@ -111,7 +115,7 @@
       friendly_name: "Front Porch Detection"
       value_template: >-
           {% if state_attr('sensor.front_porch_alerts',  'detection') -%}
-              {{states('sensor.zm_url')}}/zm/index.php?action=login&view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
+              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
           {%- else -%}
   
           {%- endif %}
@@ -133,7 +137,7 @@
       friendly_name: "Porsche Detection"
       value_template: >-
           {% if state_attr('sensor.porsche_alerts',  'detection') -%}
-              {{states('sensor.zm_url')}}/zm/index.php?action=login&view=image&eid={{ state_attr('sensor.porsche_alerts',  'eventid')}}&fid=objdetect
+              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.porsche_alerts',  'eventid')}}&fid=objdetect
           {%- else -%}
 
           {%- endif %}

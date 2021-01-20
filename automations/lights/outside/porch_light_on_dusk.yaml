@@ -9,10 +9,11 @@ action:
   service: homeassistant.turn_on
 alias: Porch Lights on at Dusk/Dawn
 condition: []
-description: ''
+description: 'Turn Porch Lights on at Dusk or Dawn'
 trigger:
-- below: '-4'
-  above: '-5'
+- below: '-4.0'
   entity_id: sun.sun
   platform: numeric_state
-  value_template: '{{ state.attributes.elevation }}'
+  attribute: elevation
+- platform: time
+  at: sensor.outdoor_lights_on

@@ -1,7 +1,7 @@
 dist: groovy 
 language: python
 python:
-  - "3.9"
+  - "3.8"
 before_install:
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev
   - sudo apt-get install -y libavutil-dev libswscale-dev libswresample-dev libavfilter-dev

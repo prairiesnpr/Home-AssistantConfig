@@ -15,6 +15,7 @@
 .storage
 .cloud
 .google.token
+google_calendars.yaml
 
 ip_bans.yaml
 secrets.yaml

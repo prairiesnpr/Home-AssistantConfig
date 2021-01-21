@@ -229,6 +229,38 @@
                             "type": "horizontal-stack"
                         },
                         {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "type": "custom:fold-entity-row",
+                                    "head": "light.outdoor_lights",
+                                    "entities": [
+                                        {
+                                            "entity": "light.jasco_products_45856_61d32600_1",
+                                            "name": "Front Porch"
+                                        },
+                                        {
+                                            "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                            "name": "Back Porch"
+                                        },
+                                        {
+                                            "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+                                        },
+                                        {
+                                            "entity": "light.path_lights",
+                                            "icon": "bha:path-light",
+                                            "state_color": true
+                                        },
+                                        {
+                                            "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
+                                            "icon": "mdi:led-strip-variant",
+                                            "name": "Backyard RGB"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
@@ -316,34 +348,6 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Guest Bedroom",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.jasco_products_45856_61d32600_1",
-                                    "name": "Front Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                                    "name": "Back Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
-                                },
-                                {
-                                    "entity": "switch.sengled_e1c_nb6_6d0b0400_on_off",
-                                    "icon": "bha:path-light",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
-                                    "icon": "mdi:led-strip-variant",
-                                    "name": "Backyard RGB"
-                                }
-                            ],
-                            "show_header_toggle": true,
-                            "title": "Outdoor Lights",
                             "type": "entities"
                         },
                         {
@@ -1365,6 +1369,15 @@
                                 },
                                 {
                                     "entity": "switch.circadian_lighting_master_bathroom_vanity"
+                                },
+                                {
+                                    "entity": "switch.circadian_lighting_kitchen_can_lights"
+                                },
+                                {
+                                    "entity": "switch.circadian_lighting_master_bathroom_vanity"
+                                },
+                                {
+                                    "entity": "switch.circadian_lighting_master_bedroom_lights"
                                 }
                             ],
                             "type": "entities"
@@ -1862,6 +1875,32 @@
                             "type": "weather-forecast",
                             "entity": "weather.koqt_daynight",
                             "show_forecast": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jasco_products_45856_61d32600_1",
+                                    "name": "Front Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                    "name": "Back Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+                                },
+                                {
+                                    "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
+                                    "icon": "mdi:led-strip-variant",
+                                    "name": "Backyard RGB"
+                                },
+                                {
+                                    "entity": "light.path_lights"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Outdoor Lights",
+                            "type": "entities"
                         }
                     ],
                     "path": "test",

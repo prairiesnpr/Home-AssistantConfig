@@ -187,3 +187,5 @@ sensor.jasco_products_45857_242c2500_smartenergy_metering: {}
 sensor.jasco_products_45857_8a1e2500_smartenergy_metering: {}
 light.master_bedroom_closet_zha_group_0x0002:
   icon: bha:ceiling-lamp-round
+light.path_lights:
+  icon: bha:path-light

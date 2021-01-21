@@ -1,3 +1,6 @@
+- platform: switch
+  name: Path Lights
+  entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
 - platform: group
   name: Master Bedroom Lights
   entities:
@@ -13,3 +16,11 @@
   entities:
     - light.osram_lightify_a19_rgbw_00a5deb3_3
     - light.osram_lightify_a19_rgbw_00a69e14_3
+- platform: group
+  name: Outdoor Lights
+  entities:
+    - light.jasco_products_45856_61d32600_1
+    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
+    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    - light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off
+    - light.path_lights

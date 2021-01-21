@@ -1,5 +1,11 @@
 alias: Living Room - Volume Up
 sequence:
-- data:
-    entity_id: media_player.receiver
-  service: media_player.volume_up
+  - data:
+      entity_id: automation.living_room_adjust_volume_receiver
+    service: automation.turn_off
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.volume_up
+  - data:
+      entity_id: automation.living_room_adjust_volume_receiver
+    service: automation.turn_on

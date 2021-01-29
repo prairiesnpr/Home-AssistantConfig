@@ -97,5 +97,3 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
-    ha_url:
-      value_template: !secret ha_url

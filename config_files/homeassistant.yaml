@@ -9,3 +9,6 @@ external_url: !secret ha_url
 internal_url: !secret ha_url
 allowlist_external_dirs:
   - !secret snapshot_dir
+media_dirs:
+    clips: /home/homeassistant/.homeassistant/frigate/clips
+    recordings: /home/homeassistant/.homeassistant/frigate/recordings

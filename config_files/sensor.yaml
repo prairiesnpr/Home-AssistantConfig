@@ -5,16 +5,6 @@
   name: "Christmas Lights"
   state_topic: "christmas/sensor0"
   value_template: "{{ value_json.status }}"
-- platform: mqtt
-  state_topic: "zoneminder/1"
-  json_attributes_topic: "zoneminder/1"
-  value_template: "{{ value_json.name }}"
-  name: "front_porch_alerts"
-- platform: mqtt
-  state_topic: "zoneminder/2"
-  json_attributes_topic: "zoneminder/2"
-  value_template: "{{ value_json.name }}"
-  name: "porsche_alerts"
 - platform: mqtt_room
   device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
   name: Dumpster
@@ -30,12 +20,8 @@
   name: Porsche 
   state_topic: room_presence
   away_timeout: 30
-- platform: zoneminder
-  include_archived: false
 - platform: template 
   sensors:
-    zm_url:
-      value_template: !secret zm_url
     calculated_system_start_time:
       friendly_name: Calculated Day Start
       device_class: timestamp
@@ -111,48 +97,5 @@
           {% endif %}
       friendly_name: 'Water Heater: Time to Temp'
       unit_of_measurement: 'Min'
-    front_porch_detect:
-      friendly_name: "Front Porch Detection"
-      value_template: >-
-          {% if state_attr('sensor.front_porch_alerts',  'detection') -%}
-              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.front_porch_alerts',  'eventid')}}&fid=objdetect
-          {%- else -%}
-  
-          {%- endif %}
-    front_porch_objects:
-      friendly_name: "Front Porch Objects"
-      value_template: >-
-          {% if state_attr('sensor.front_porch_alerts',  'detection') and state_attr('sensor.front_porch_alerts',  'detection').labels -%}
-            {%- for x in state_attr('sensor.front_porch_alerts', 'detection').labels|unique -%}
-              {%- if loop.first -%}
-                {{ x }}
-              {%- else -%}
-                {{', '}}{{ x }}
-              {%- endif -%}
-            {%- endfor -%}
-          {%- else -%}
-            No Results
-          {%- endif %}
-    porsche_detect:
-      friendly_name: "Porsche Detection"
-      value_template: >-
-          {% if state_attr('sensor.porsche_alerts',  'detection') -%}
-              {{states('sensor.zm_url')}}&view=image&eid={{ state_attr('sensor.porsche_alerts',  'eventid')}}&fid=objdetect
-          {%- else -%}
-
-          {%- endif %}
-    porsche_objects:
-      friendly_name: "Porsche Objects"
-      value_template: >-
-          {% if state_attr('sensor.porsche_alerts',  'detection') and state_attr('sensor.porsche_alerts',  'detection').labels -%}
-            {%- for x in state_attr('sensor.porsche_alerts', 'detection').labels|unique -%}
-              {%- if loop.first -%}
-                {{ x }}
-              {%- else -%}
-                {{', '}}{{ x }}
-              {%- endif -%}
-            {%- endfor -%}
-          {%- else -%}
-            No Results
-          {%- endif %}
-
+    ha_url:
+      value_template: !secret ha_url

@@ -1,12 +1,9 @@
 {
   "config": {
-    "title": "TDAmeritrade",
     "step": {
-      "pick_implementation": {
-        "title": "Pick Authentication Method"
-      },
       "user": {
-        "title": "Set Consumer Key and Choose Accounts",
+        "title": "Authenticate with TDAmeritrade",
+        "description": "Account numbers must be seperated wuth commas",
         "data": {
           "accounts": "Accounts",
           "consumer_key": "Consumer Key"
@@ -22,8 +19,9 @@
   },
   "options": {
     "step": {
-      "tda_settings": {
-        "description": "Options for TDAmeritrade",
+      "init": {
+        "title": "TDAmeritrade Options",
+        "description": "Configure Accounts, Use commas to seperate entries",
         "data": {
           "accounts": "Accounts"
         }
@@ -31,3 +29,5 @@
     }
   }
 }
+
+

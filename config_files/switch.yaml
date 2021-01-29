@@ -24,7 +24,7 @@
     #Living room cans
     - light.jasco_products_45857_242c2500_level_on_off
 - platform: circadian_lighting
-  name: Master Bedroom Lights'
+  name: Master Bedroom Lights
   lights_xy:
     - light.bedroom_bed_lights_zha_group_0x0004
 - platform: circadian_lighting
@@ -36,6 +36,3 @@
   min_brightness: 25
   lights_brightness:
     - light.sunricher_zg9101sac_hp_106770a5_1
-- platform: zoneminder
-  command_on: Modect
-  command_off: Monitor

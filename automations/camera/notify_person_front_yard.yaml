@@ -1,0 +1,37 @@
+alias: Notify of events
+trigger:
+  platform: mqtt
+  topic: frigate/events
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['type'] == 'new' }}"
+    - condition: or
+      conditions:
+        - condition: template
+          value_template: "{{ trigger.payload_json['after']['camera'] == 'front_porch' }}"
+        - condition: template
+          value_template: "{{ trigger.payload_json['after']['camera'] == 'back_yard' }}" 
+    - condition: or
+      conditions:
+        - condition: template
+          value_template: "{{ trigger.payload_json['after']['label'] == 'person' }}"
+        - condition: template
+          value_template: "{{ trigger.payload_json['after']['label'] == 'dog' }}"
+action:
+  - service: notify.all_ios_devices 
+    data_template:
+      message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      data:
+        attachment:
+          url: '{{states("sensor.ha_url")}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg' 
+          content-type: jpg
+          hide-thumbnail: false
+  - service: notify.pushbullet
+    data_template:
+      title: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      data:
+        attachment:
+          file: '{{states("sensor.ha_url")}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'

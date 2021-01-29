@@ -1,18 +1,10 @@
 """The TDAmeritrade integration."""
 import asyncio
 import logging
+
 import voluptuous as vol
 
-from tdameritrade_api import AmeritradeAPI
-
-from homeassistant.const import (
-    ATTR_CREDENTIALS,
-    CONF_CLIENT_ID,
-    CONF_CLIENT_SECRET,
-)
-
 from homeassistant.config_entries import ConfigEntry
-
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import (
     aiohttp_client,
@@ -20,24 +12,24 @@ from homeassistant.helpers import (
     config_validation as cv,
 )
 
-from . import config_flow
+from tdameritrade_api import AmeritradeAPI
+
+from . import api, config_flow
+
 from .const import (
     DOMAIN,
-    TDA_URL,
     CONF_CONSUMER_KEY,
     OAUTH2_AUTHORIZE,
     OAUTH2_TOKEN,
     CONF_ACCOUNTS,
 )
 
-_LOGGER = logging.getLogger(__name__)
-
 CONFIG_SCHEMA = vol.Schema(
     {
         DOMAIN: vol.Schema(
             {
-                vol.Inclusive(CONF_CONSUMER_KEY, ATTR_CREDENTIALS): cv.string,
-                vol.Inclusive(CONF_ACCOUNTS, ATTR_CREDENTIALS): cv.string,
+                vol.Required(CONF_CONSUMER_KEY): cv.string,
+                vol.Required(CONF_ACCOUNTS): cv.string,
             }
         )
     },
@@ -46,46 +38,47 @@ CONFIG_SCHEMA = vol.Schema(
 
 PLATFORMS = ["binary_sensor", "sensor"]
 
+_LOGGER = logging.getLogger(__name__)
+
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the TDAmeritrade component."""
+    hass.data[DOMAIN] = {}
 
     if DOMAIN not in config:
-        _LOGGER.warning(f"{DOMAIN} not in config.")
         return True
-
-    if CONF_CLIENT_ID in config[DOMAIN]:
-        config_flow.TDAmeritradeFlowHandler.async_register_implementation(
-            hass,
-            config_flow.TDAmeritradeLocalOAuth2Implementation(
-                hass,
-                DOMAIN,
-                config[DOMAIN][CONF_CONSUMER_KEY],
-                None,
-                OAUTH2_AUTHORIZE,
-                OAUTH2_TOKEN,
-            ),
-        )
 
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up TDAmeritrade from a config entry."""
-
-    websession = aiohttp_client.async_get_clientsession(hass)
-    _LOGGER.warning(f"Domain: {entry.domain}") 
-    #_LOGGER.warning(f"Domains = {[e for e in entry]}")
-
-    implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(
-        hass, entry
+    _LOGGER.debug("Setting up entry")
+    config_flow.OAuth2FlowHandler.async_register_implementation(
+        hass,
+        config_entry_oauth2_flow.LocalOAuth2Implementation(
+            hass,
+            entry.domain,
+            entry.data["consumer_key"],
+            None,
+            OAUTH2_AUTHORIZE,
+            OAUTH2_TOKEN,
+        ),
     )
 
-    oauth_session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
+    implementation = (
+        await config_entry_oauth2_flow.async_get_config_entry_implementation(
+            hass, entry
+        )
+    )
 
-    auth = config_flow.TDAmeritradeOAuth(TDA_URL, websession, oauth_session)
+    session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
 
-    tda_api = AmeritradeAPI(auth)
+    auth = api.AsyncConfigEntryAuth(
+        aiohttp_client.async_get_clientsession(hass), session
+    )
+
+    client = AmeritradeAPI(auth)
 
     async def place_order_service(call):
         """Handle a place trade service call."""
@@ -101,7 +94,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         order_strategy_type = call.data["orderStrategyType"]
         asset_type = call.data["assetType"]
 
-        return await tda_api.async_place_order(
+        return await client.async_place_order(
             price,
             instruction,
             quantity,
@@ -117,7 +110,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     async def get_quote_service(call):
         """Handle a place trade service call."""
         symbol = call.data["symbol"]
-        res = await tda_api.async_get_quote(ticker=symbol)
+        res = await client.async_get_quote(ticker=symbol)
 
         hass.states.async_set(
             f"get_quote_service.{symbol}",
@@ -126,27 +119,52 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         )
 
         return True
-
+    _LOGGER.debug("Registering Services")
     hass.services.async_register(DOMAIN, "place_order", place_order_service)
     hass.services.async_register(DOMAIN, "get_quote", get_quote_service)
 
     hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = {"TEST": "Test Entry", "td_api": tda_api}
-
-    for component in PLATFORMS:
-        hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(entry, component)
-        )
+    hass_data = dict(entry.data)
+    entry.update_listeners = []
+    hass_data["unsub"] = entry.add_update_listener(options_update_listener)
+    hass_data["client"] = AmeritradeAPI(auth)
+    hass.data[DOMAIN][entry.entry_id] = hass_data
+    if entry.state == "not_loaded":
+        for component in PLATFORMS:
+            _LOGGER.debug("Setting up %s component", component)
+            hass.async_create_task(
+                hass.config_entries.async_forward_entry_setup(entry, component)
+            )
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
+async def options_update_listener(hass, config_entry):
+    """Handle options update."""
+    _LOGGER.debug("Options Updated, reloading.")
+    await hass.config_entries.async_reload(config_entry.entry_id)
+
+
+async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     """Unload a config entry."""
-    unload_ok = all(
-        await asyncio.gather(
-            *[
-                hass.config_entries.async_forward_entry_unload(entry, component)
-                for component in PLATFORMS
-            ]
-        )
+    _LOGGER.debug("Unload Requested")
+    try:
+        hass.data[DOMAIN][config_entry.entry_id]["unsub"]()
+    except ValueError:
+        pass
+    unload_res = await asyncio.gather(
+        *[
+            hass.config_entries.async_forward_entry_unload(
+                config_entry,
+                component
+            )
+            for component in PLATFORMS
+        ],
+        return_exceptions=True
     )
+    unload_ok = all(unload_res)
+    if unload_ok:
+        hass.data[DOMAIN].pop(config_entry.entry_id)
+        _LOGGER.debug("Unload Completed")
+        return True
+    _LOGGER.debug("Failed to Unload: %s", unload_res)
+    return False

@@ -128,6 +128,26 @@
                             "type": "entities"
                         },
                         {
+                            "type": "custom:atomic-calendar-revive",
+                            "entities": [
+                                {
+                                    "entity": "calendar.birthdays"
+                                },
+                                {
+                                    "entity": "calendar.holidays_in_united_states"
+                                },
+                                {
+                                    "entity": "calendar.ryanmiller_prairiesnpr_info"
+                                },
+                                {
+                                    "entity": "calendar.navy_midshipmen"
+                                },
+                                {
+                                    "entity": "calendar.nebraska_cornhuskers"
+                                }
+                            ]
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "binary_sensor.zha_02bfefd9_1_6"
@@ -136,13 +156,16 @@
                                     "entity": "binary_sensor.zha_02e2146c_1_6"
                                 },
                                 {
-                                    "entity": "binary_sensor.zha_02ec0d9e_1_6"
+                                    "entity": "binary_sensor.zha_02ec0d9e_1_6",
+                                    "name": "Gar/Kit"
                                 },
                                 {
-                                    "entity": "binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6"
+                                    "entity": "binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6",
+                                    "name": "Dog"
                                 },
                                 {
-                                    "entity": "binary_sensor.zha_02bfe504_1_6"
+                                    "entity": "binary_sensor.zha_02bfe504_1_6",
+                                    "name": "Gar/Bk"
                                 }
                             ],
                             "show_name": true,
@@ -263,23 +286,32 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
-                                    "icon": "bha:ceiling-lamp",
-                                    "name": "Ceiling Light"
+                                    "type": "custom:fold-entity-row",
+                                    "head": {
+                                        "entity": "fan.master_bath_fan",
+                                        "state_color": true
+                                    },
+                                    "entities": [
+                                        {
+                                            "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
+                                            "name": "Fan Light"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
-                                    "name": "Ceiling Fan",
-                                    "state_color": true,
-                                    "type": "custom:custom-fan-card"
-                                },
-                                {
-                                    "entity": "light.master_bedroom_closet_zha_group_0x0002",
-                                    "name": "Walk-In Closet"
+                                    "type": "custom:fold-entity-row",
+                                    "head": {
+                                        "entity": "fan.downstairs_bath_fan",
+                                        "state_color": true
+                                    },
+                                    "entities": [
+                                        {
+                                            "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                                            "name": "Fan Light"
+                                        }
+                                    ]
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Master Bedroom",
                             "type": "entities"
                         },
                         {
@@ -301,35 +333,27 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Office",
                             "type": "entities"
                         },
                         {
                             "entities": [
                                 {
-                                    "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
-                                    "name": "Fan Light"
+                                    "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
+                                    "icon": "bha:ceiling-lamp",
+                                    "name": "Master Bedroom"
                                 },
                                 {
-                                    "entity": "fan.master_bath_fan",
-                                    "state_color": true
-                                }
-                            ],
-                            "title": "Master Bathroom",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
-                                    "name": "Fan Light"
+                                    "entity": "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
+                                    "name": "Ceiling Fan",
+                                    "state_color": true,
+                                    "type": "custom:custom-fan-card"
                                 },
                                 {
-                                    "entity": "fan.downstairs_bath_fan",
-                                    "state_color": true
+                                    "entity": "light.master_bedroom_closet_zha_group_0x0002",
+                                    "name": "Walk-In Closet"
                                 }
                             ],
-                            "title": "Downstairs Bathroom",
+                            "show_header_toggle": false,
                             "type": "entities"
                         },
                         {
@@ -337,7 +361,7 @@
                                 {
                                     "entity": "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
                                     "icon": "bha:ceiling-lamp",
-                                    "name": "Ceiling Light"
+                                    "name": "Guest Bedroom"
                                 },
                                 {
                                     "entity": "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
@@ -347,7 +371,6 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "title": "Guest Bedroom",
                             "type": "entities"
                         },
                         {
@@ -694,7 +717,7 @@
                                     "type": "image"
                                 },
                                 {
-                                    "entity": "sensor.front_porch_events",
+                                    "entity": "binary_sensor.front_porch_person_motion",
                                     "prefix": "Front Porch - ",
                                     "style": {
                                         "background-color": "rgba(0, 0, 0, 0.3)",
@@ -726,6 +749,50 @@
                         {
                             "elements": [
                                 {
+                                    "camera_image": "camera.back_yard_direct",
+                                    "camera_view": "live",
+                                    "entity": "camera.back_yard_direct",
+                                    "style": {
+                                        "height": "100%",
+                                        "left": "50%",
+                                        "top": "50%",
+                                        "width": "100%"
+                                    },
+                                    "type": "image"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_yard_person_motion",
+                                    "prefix": "Back Yard - ",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "left": 0,
+                                        "padding": "1vh",
+                                        "transform": "initial",
+                                        "width": "100%"
+                                    },
+                                    "type": "state-label"
+                                },
+                                {
+                                    "entity": "camera.back_yard",
+                                    "style": {
+                                        "background-color": "rgba(0, 0, 0, 0.3)",
+                                        "bottom": 0,
+                                        "color": "white",
+                                        "padding": "1vh",
+                                        "right": 0,
+                                        "transform": "initial"
+                                    },
+                                    "type": "state-label"
+                                }
+                            ],
+                            "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png",
+                            "type": "picture-elements"
+                        },
+                        {
+                            "elements": [
+                                {
                                     "camera_image": "camera.porsche",
                                     "camera_view": "live",
                                     "entity": "camera.porsche",
@@ -738,7 +805,7 @@
                                     "type": "image"
                                 },
                                 {
-                                    "entity": "sensor.porsche_events",
+                                    "entity": "binary_sensor.porsche_person_motion",
                                     "prefix": "Porsche - ",
                                     "style": {
                                         "background-color": "rgba(0, 0, 0, 0.3)",
@@ -768,20 +835,73 @@
                             "type": "picture-elements"
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                "switch.front_porch_state",
-                                "switch.porsche_state",
-                                "switch.ukn_cam_state"
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.front_porch_person",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.back_yard_person",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.porsche_person",
+                                    "show_state": false,
+                                    "show_name": false
+                                }
                             ]
                         },
                         {
-                            "type": "picture-entity",
-                            "entity": "camera.front_porch_last_detect"
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.front_porch_dog",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.back_yard_dog",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.porsche_dog",
+                                    "show_state": false,
+                                    "show_name": false
+                                }
+                            ]
                         },
                         {
-                            "type": "picture-entity",
-                            "entity": "camera.porsche_last_detect"
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.front_porch_car",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.front_porch_truck",
+                                    "show_state": false,
+                                    "show_name": false
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.front_porch_bird",
+                                    "show_state": false,
+                                    "show_name": false
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:camera",
@@ -790,17 +910,24 @@
                 {
                     "cards": [
                         {
-                            "entity": "climate.downstairs",
-                            "type": "thermostat"
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.downstairs"
+                                },
+                                {
+                                    "type": "glance",
+                                    "show_name": false,
+                                    "show_state": false,
+                                    "entities": [
+                                        "fan.upstairs_hvac_fan"
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "cards": [
-                                {
-                                    "entities": [
-                                        "fan.upstairs_hvac_fan"
-                                    ],
-                                    "type": "glance"
-                                },
                                 {
                                     "entities": [
                                         "sensor.downstairs_thermostat_temperature",
@@ -833,27 +960,31 @@
                 {
                     "cards": [
                         {
+                            "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.water_heater_time_to_temp",
-                                    "name": "Time to Temp"
-                                },
-                                {
-                                    "entity": "sensor.zha_40c04dcb_1_1794"
-                                },
-                                {
-                                    "entity": "sensor.zha_40c04dcb_2_1026"
-                                },
-                                {
-                                    "entity": "sensor.zha_40c04dcb_3_1026"
-                                },
-                                {
-                                    "entity": "switch.zha_40c04dcb_1_6",
-                                    "state_color": true
+                                    "type": "custom:fold-entity-row",
+                                    "head": {
+                                        "entity": "switch.zha_40c04dcb_1_6",
+                                        "state_color": true
+                                    },
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.water_heater_time_to_temp",
+                                            "name": "Time to Temp"
+                                        },
+                                        {
+                                            "entity": "sensor.zha_40c04dcb_1_1794"
+                                        },
+                                        {
+                                            "entity": "sensor.zha_40c04dcb_2_1026"
+                                        },
+                                        {
+                                            "entity": "sensor.zha_40c04dcb_3_1026"
+                                        }
+                                    ]
                                 }
-                            ],
-                            "title": "Water Heater",
-                            "type": "entities"
+                            ]
                         },
                         {
                             "entities": [
@@ -871,7 +1002,6 @@
                                     "name": "Christmas Tree"
                                 }
                             ],
-                            "title": "Christmas! \ud83c\udf84\ud83d\udd6f \ud83c\udf81\ud83c\udf1f",
                             "type": "entities"
                         }
                     ],
@@ -1010,88 +1140,6 @@
                     "icon": "mdi:sprout",
                     "path": "plants",
                     "title": "Plants"
-                },
-                {
-                    "cards": [
-                        {
-                            "entities": [
-                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
-                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
-                            ],
-                            "show_state": false,
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
-                            ],
-                            "show_state": false,
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                "binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1280",
-                                "binary_sensor.lumi_lumi_sensor_motion_aq2_02b7eb7f_1_1030",
-                                "binary_sensor.zha_02b7eb7f_1_1280"
-                            ],
-                            "show_state": false,
-                            "title": "Woodpecker Detection",
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                "sensor.zha_02b7eb7f_1_1024"
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.zha_02c39915_1_6"
-                                }
-                            ],
-                            "show_state": false,
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy",
-                                    "name": "Occupied"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_4cd42104_illuminance",
-                                    "name": "Illumination"
-                                },
-                                {
-                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_ias_zone",
-                                    "name": "Motion"
-                                }
-                            ],
-                            "title": "Master Bath",
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy",
-                                    "name": "Occupied"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_illuminance",
-                                    "name": "Illumination"
-                                },
-                                {
-                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_ias_zone",
-                                    "name": "Motion"
-                                }
-                            ],
-                            "title": "Office",
-                            "type": "glance"
-                        }
-                    ],
-                    "icon": "mdi:heart-broken",
-                    "title": "Device Health"
                 },
                 {
                     "badges": [],
@@ -1408,6 +1456,44 @@
                     ]
                 },
                 {
+                    "icon": "mdi:account-cash",
+                    "title": "Finance",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.market",
+                                    "icon": "mdi:finance",
+                                    "state_color": true
+                                },
+                                {
+                                    "entity": "sensor.available_funds_0218",
+                                    "icon": "mdi:cash",
+                                    "name": "Ryan Roth"
+                                },
+                                {
+                                    "entity": "sensor.available_funds_1644",
+                                    "icon": "mdi:cash",
+                                    "name": "Ryan Tradeing"
+                                },
+                                {
+                                    "entity": "sensor.available_funds_6227",
+                                    "icon": "mdi:cash",
+                                    "name": "Jeanette Roth"
+                                },
+                                {
+                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth"
+                                },
+                                {
+                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ]
+                },
+                {
                     "cards": [
                         {
                             "cards": [
@@ -1528,6 +1614,88 @@
                     ],
                     "icon": "mdi:server-network",
                     "title": "Server/VMs"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1280",
+                                "binary_sensor.lumi_lumi_sensor_motion_aq2_02b7eb7f_1_1030",
+                                "binary_sensor.zha_02b7eb7f_1_1280"
+                            ],
+                            "show_state": false,
+                            "title": "Woodpecker Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "sensor.zha_02b7eb7f_1_1024"
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.zha_02c39915_1_6"
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy",
+                                    "name": "Occupied"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_4cd42104_illuminance",
+                                    "name": "Illumination"
+                                },
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_ias_zone",
+                                    "name": "Motion"
+                                }
+                            ],
+                            "title": "Master Bath",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy",
+                                    "name": "Occupied"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_illuminance",
+                                    "name": "Illumination"
+                                },
+                                {
+                                    "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_ias_zone",
+                                    "name": "Motion"
+                                }
+                            ],
+                            "title": "Office",
+                            "type": "glance"
+                        }
+                    ],
+                    "icon": "mdi:heart-broken",
+                    "title": "Device Health"
                 },
                 {
                     "badges": [],
@@ -1677,36 +1845,6 @@
                             "entities": [
                                 "sensor.christmas_lights",
                                 "switch.christmas_lights_switch"
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.market",
-                                    "icon": "mdi:finance"
-                                },
-                                {
-                                    "entity": "sensor.available_funds_0218",
-                                    "icon": "mdi:cash",
-                                    "name": "Ryan Roth"
-                                },
-                                {
-                                    "entity": "sensor.available_funds_1644",
-                                    "icon": "mdi:cash",
-                                    "name": "Ryan Tradeing"
-                                },
-                                {
-                                    "entity": "sensor.available_funds_6227",
-                                    "icon": "mdi:cash",
-                                    "name": "Jeanette Roth"
-                                },
-                                {
-                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth"
-                                },
-                                {
-                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth"
-                                }
                             ],
                             "type": "entities"
                         },
@@ -1901,10 +2039,110 @@
                             "show_header_toggle": true,
                             "title": "Outdoor Lights",
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.downstairs_bath_fan",
+                                    "state_color": true
+                                }
+                            ],
+                            "title": "Downstairs Bathroom",
+                            "type": "entities"
                         }
                     ],
                     "path": "test",
                     "title": "test"
+                },
+                {
+                    "title": "Cam Test",
+                    "path": "cam-test",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.front_porch_camera_fps"
+                                },
+                                {
+                                    "entity": "switch.front_porch_clips"
+                                },
+                                {
+                                    "entity": "switch.front_porch_detect"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_detection_fps"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_person"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_porch_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_process_fps"
+                                },
+                                {
+                                    "entity": "sensor.front_porch_skipped_fps"
+                                },
+                                {
+                                    "entity": "switch.front_porch_snapshots"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.front_porch"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.back_yard_camera_fps",
+                                "switch.back_yard_clips",
+                                "switch.back_yard_detect",
+                                "sensor.back_yard_detection_fps",
+                                "sensor.back_yard_person",
+                                "binary_sensor.back_yard_person_motion",
+                                "sensor.back_yard_process_fps",
+                                "sensor.back_yard_skipped_fps",
+                                "switch.back_yard_snapshots"
+                            ]
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.back_yard"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.porsche_camera_fps",
+                                "switch.porsche_clips",
+                                "switch.porsche_detect",
+                                "sensor.porsche_detection_fps",
+                                "sensor.porsche_person",
+                                "binary_sensor.porsche_person_motion",
+                                "sensor.porsche_process_fps",
+                                "sensor.porsche_skipped_fps",
+                                "switch.porsche_snapshots"
+                            ]
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.porsche"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.cpu1_inference_speed",
+                                "sensor.cpu2_inference_speed"
+                            ]
+                        }
+                    ]
                 }
             ]
         }

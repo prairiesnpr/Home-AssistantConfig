@@ -1,23 +1,17 @@
 - platform: ha_skyfield
-- platform: zoneminder
 - platform: generic
   name: Front Porch (direct)
   still_image_url: !secret fp_cam_still_url
   stream_source: !secret fp_cam_rtsp
-- platform: generic
-  name: Ukn (direct)
-  username: !secret zm_uid
-  password: !secret zm_pwd
+  username: !secret hikcam_uid
+  password: !secret hikcam_pwd
   authentication: digest
+  verify_ssl: false
+- platform: generic
+  name: Back Yard (direct)
   still_image_url: !secret uk_cam_still_url
   stream_source: !secret uk_cam_rtsp
-- platform: generic
-  name: Front Porch Last Detect
-  limit_refetch_to_url_change: true 
+  username: !secret hikcam_uid
+  password: !secret hikcam_pwd
+  authentication: digest
   verify_ssl: false
-  still_image_url: "{{ states('sensor.front_porch_detect') }}" 
-- platform: generic
-  name: Porsche Last Detect
-  limit_refetch_to_url_change: true
-  verify_ssl: false
-  still_image_url: "{{ states('sensor.porsche_detect') }}"

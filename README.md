@@ -1,5 +1,5 @@
 
-# Home Assistant (2021.1.5) configuration
+# Home Assistant (2021.2.0) configuration
 
 ## Zigbee Network
 
@@ -67,7 +67,7 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 
 ## Cameras
 * DVR
-  * Zoneminder in [Docker](https://github.com/dlandon/zoneminder)
+  * [Frigate](https://github.com/blakeblackshear/frigate)
 * Cameras
   * [2] Hikvision DS-2CD2385FWD-I
   * [1] Foscam FI8918W

@@ -10,29 +10,3 @@
   optimistic: false
   qos: 0
   retain: false
-- platform: circadian_lighting
-  name: "Default Circadian Lights"
-  lights_xy:
-    - light.stairway_lights_zha_group_0x0003
-    # Counter light - Living Room
-    - light.feibit_inc_co_fzb56_zcw27lx1_0_1c465fb1_11
-    # Desk lamp - Office
-    - light.osram_lightify_a19_rgbw_00a434be_3
-  lights_brightness:
-    # Master bedroom closet lights
-    - light.master_bedroom_closet_zha_group_0x0002
-    #Living room cans
-    - light.jasco_products_45857_242c2500_level_on_off
-- platform: circadian_lighting
-  name: Master Bedroom Lights
-  lights_xy:
-    - light.bedroom_bed_lights_zha_group_0x0004
-- platform: circadian_lighting
-  name: "Kitchen Can Lights"
-  lights_xy:
-    - light.jasco_products_45857_8a1e2500_level_on_off
-- platform: circadian_lighting
-  name: "Master Bathroom Vanity"
-  min_brightness: 25
-  lights_brightness:
-    - light.sunricher_zg9101sac_hp_106770a5_1

@@ -119,6 +119,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         )
 
         return True
+
     _LOGGER.debug("Registering Services")
     hass.services.async_register(DOMAIN, "place_order", place_order_service)
     hass.services.async_register(DOMAIN, "get_quote", get_quote_service)
@@ -140,8 +141,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def options_update_listener(hass, config_entry):
     """Handle options update."""
-    _LOGGER.debug("Options Updated, reloading.")
-    await hass.config_entries.async_reload(config_entry.entry_id)
+    old_config = hass.data[DOMAIN][config_entry.entry_id]
+    old_accounts = old_config[CONF_ACCOUNTS]
+    new_accounts = config_entry.data[CONF_ACCOUNTS]
+    if old_accounts != new_accounts:
+        _LOGGER.debug("Options Updated, reloading.")
+        await hass.config_entries.async_reload(config_entry.entry_id)
+    else:
+        _LOGGER.debug("No change to accounts, ignoring option update")
 
 
 async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
@@ -150,16 +157,13 @@ async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry):
     try:
         hass.data[DOMAIN][config_entry.entry_id]["unsub"]()
     except ValueError:
-        pass
+        _LOGGER.warning("Failed to unsubscribe from update listener.")
     unload_res = await asyncio.gather(
         *[
-            hass.config_entries.async_forward_entry_unload(
-                config_entry,
-                component
-            )
+            hass.config_entries.async_forward_entry_unload(config_entry, component)
             for component in PLATFORMS
         ],
-        return_exceptions=True
+        return_exceptions=True,
     )
     unload_ok = all(unload_res)
     if unload_ok:

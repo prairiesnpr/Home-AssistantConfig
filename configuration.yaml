@@ -1,4 +1,5 @@
 frontend:
+  themes: !include_dir_merge_named themes
 
 http:
   use_x_forwarded_for: true
@@ -10,8 +11,6 @@ weather:
 
 logger:
   default: warning
-#  logs:
-#    custom_components.tdameritrade: debug
 
 device_tracker:
   - platform: bluetooth_tracker
@@ -32,7 +31,6 @@ google:
   client_secret: !secret google_cal_client_secret
 
 stream:
-circadian_lighting:
 system_health:
 person:
 cloud:
@@ -47,6 +45,7 @@ map:
 sun:
 media_source:
 
+adaptive_lighting: !include config_files/adaptive_lighting.yaml
 binary_sensor: !include config_files/binary_sensor.yaml
 camera: !include config_files/camera.yaml
 fan: !include config_files/fan.yaml

@@ -24,7 +24,7 @@ action:
       ha_url_var: !secret ha_url
   - service: notify.all_ios_devices 
     data_template:
-      message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      message: 'A {{trigger.payload_json["after"]["label"]}} was detected in the ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}).'
       data:
         attachment:
           url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg' 
@@ -33,7 +33,6 @@ action:
   - service: notify.pushbullet
     data_template:
       title: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
-      message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      message: 'A {{trigger.payload_json["after"]["label"]}} was detected in the ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}).'
       data:
-        attachment:
-          file: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'
+        file_url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'

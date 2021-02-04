@@ -7,9 +7,22 @@ from homeassistant.util import dt
 
 from datetime import timedelta
 
-from aiohttp.client_exceptions import ClientConnectorError, ClientResponseError
+from aiohttp.client_exceptions import ClientConnectorError, ClientResponseError, ServerDisconnectedError
 
-from .const import DOMAIN, PRE_MARKET, POST_MARKET, REG_MARKET
+from .const import (
+    DOMAIN,
+    PRE_MARKET,
+    POST_MARKET,
+    REG_MARKET,
+    CLIENT,
+    EQUITY,
+    EQ,
+    START,
+    END,
+    SESSION_HOURS,
+    IS_OPEN,
+    EQUITY_MKT_TYPE,
+)
 
 SCAN_INTERVAL = timedelta(seconds=30)
 
@@ -18,9 +31,7 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config, async_add_entities, discovery_info=None):
     """Set up the TDAmeritrade binary sensor platform."""
-    sensors = []
-    sensors.append(MarketOpenSensor(hass.data[DOMAIN][config.entry_id]["client"]))
-    sensors = [entity for entity in sensors if not hass.states.get("binary_sensor.market")]
+    sensors = [MarketOpenSensor(hass.data[DOMAIN][config.entry_id][CLIENT])]
     async_add_entities(sensors)
     return True
 
@@ -75,10 +86,10 @@ class MarketOpenSensor(BinarySensorEntity):
         if resp:
             try:
                 market_open = dt.parse_datetime(
-                    resp["equity"]["EQ"]["sessionHours"][market][0]["start"]
+                    resp[EQUITY][EQ][SESSION_HOURS][market][0][START]
                 )
                 market_close = dt.parse_datetime(
-                    resp["equity"]["EQ"]["sessionHours"][market][0]["end"]
+                    resp[EQUITY][EQ][SESSION_HOURS][market][0][END]
                 )
                 market_state = market_open < dt.now() < market_close
                 _LOGGER.debug(
@@ -91,7 +102,11 @@ class MarketOpenSensor(BinarySensorEntity):
                 )
                 return market_state
             except KeyError:
-                _LOGGER.warning("Failed to update '%s' sensor", market)
+                pass
+            try:
+                market_state = resp[EQUITY][EQUITY][IS_OPEN]
+            except KeyError:
+                _LOGGER.warning("Failed to update '%s' sensor.", market)
                 return None
         return None
 
@@ -100,8 +115,8 @@ class MarketOpenSensor(BinarySensorEntity):
         _LOGGER.debug("Updating sensor: %s, id: %s", self._name, self.entity_id)
         resp = None
         try:
-            resp = await self._client.async_get_market_hours("EQUITY")
-        except (ClientConnectorError, ClientResponseError) as error:
+            resp = await self._client.async_get_market_hours(EQUITY_MKT_TYPE)
+        except (ClientConnectorError, ClientResponseError, ServerDisconnectedError) as error:
             _LOGGER.warning("Client Exception: %s", error)
 
         if resp:

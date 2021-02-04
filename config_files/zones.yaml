@@ -88,3 +88,8 @@
    longitude: -102.867023
    radius: 100
    icon: mdi:account-child-outline
+ - name: Smithwood
+   latitude: 36.029370
+   longitude: -83.921540
+   radius: 100
+   icon: mdi:church

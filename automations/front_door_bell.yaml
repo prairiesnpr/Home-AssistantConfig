@@ -10,15 +10,11 @@ action:
     title: Door Bell Alert
   service: notify.all_ios_devices
 - data:
-    entity_id: camera.front_porch_direct
-    filename: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
-  service: camera.snapshot
-- data:
     data:
-      file: /home/homeassistant/.homeassistant/www/snapshots/front_porch.jpg
-    message: Front Door Bell was Rung
-    title: Front Door Alert
-  service: notify.pushbullet
+      image: /api/camera_proxy/camera.front_porch_direct
+    message: Front Door Bell Was Rung!
+    title: Door Bell Alert
+  service: notify.all_android_devices
 alias: Front Door Bell Rung
 trigger:
 - entity_id: switch.zha_40c04e54_1_6

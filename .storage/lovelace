@@ -2178,29 +2178,213 @@
                             "type": "entities"
                         },
                         {
+                            "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "device_tracker.sm_g950u"
+                                    "entity": "device_tracker.ballam"
                                 },
                                 {
-                                    "entity": "binary_sensor.sm_g950u_is_charging"
+                                    "entity": "sensor.ballam_active_notification_count"
                                 },
                                 {
-                                    "entity": "sensor.sm_g950u_battery_health"
+                                    "entity": "sensor.ballam_app_importance"
                                 },
                                 {
-                                    "entity": "sensor.sm_g950u_next_alarm"
+                                    "entity": "binary_sensor.ballam_app_inactive"
                                 },
                                 {
-                                    "entity": "sensor.sm_g950u_geocoded_location"
+                                    "entity": "sensor.ballam_app_memory"
                                 },
                                 {
-                                    "entity": "sensor.sm_g950u_charger_type"
+                                    "entity": "sensor.ballam_app_rx_gb"
+                                },
+                                {
+                                    "entity": "sensor.ballam_app_standby_bucket"
+                                },
+                                {
+                                    "entity": "sensor.ballam_app_tx_gb"
+                                },
+                                {
+                                    "entity": "sensor.ballam_audio_mode"
+                                },
+                                {
+                                    "entity": "sensor.ballam_battery_health"
+                                },
+                                {
+                                    "entity": "sensor.ballam_battery_state"
+                                },
+                                {
+                                    "entity": "sensor.ballam_bluetooth_connection"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_bluetooth_state"
+                                },
+                                {
+                                    "entity": "sensor.ballam_charger_type"
+                                },
+                                {
+                                    "entity": "sensor.ballam_current_time_zone"
+                                },
+                                {
+                                    "entity": "sensor.ballam_current_version"
+                                },
+                                {
+                                    "entity": "sensor.ballam_detected_activity"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_device_locked"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_device_secure"
+                                },
+                                {
+                                    "entity": "sensor.ballam_do_not_disturb_sensor"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_doze_mode"
+                                },
+                                {
+                                    "entity": "sensor.ballam_external_storage"
+                                },
+                                {
+                                    "entity": "sensor.ballam_geocoded_location"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_headphones"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_interactive"
+                                },
+                                {
+                                    "entity": "sensor.ballam_internal_storage"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_is_charging"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_keyguard_locked"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_keyguard_secure"
+                                },
+                                {
+                                    "entity": "sensor.ballam_last_notification"
+                                },
+                                {
+                                    "entity": "sensor.ballam_last_reboot"
+                                },
+                                {
+                                    "entity": "sensor.ballam_last_removed_notification"
+                                },
+                                {
+                                    "entity": "sensor.ballam_last_update_trigger"
+                                },
+                                {
+                                    "entity": "sensor.ballam_light_sensor"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_mic_muted"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_mobile_data"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_mobile_data_roaming"
+                                },
+                                {
+                                    "entity": "sensor.ballam_mobile_rx_gb"
+                                },
+                                {
+                                    "entity": "sensor.ballam_mobile_tx_gb"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_music_active"
+                                },
+                                {
+                                    "entity": "sensor.ballam_next_alarm"
+                                },
+                                {
+                                    "entity": "sensor.ballam_phone_state"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_power_save"
+                                },
+                                {
+                                    "entity": "sensor.ballam_pressure_sensor"
+                                },
+                                {
+                                    "entity": "sensor.ballam_proximity_sensor"
+                                },
+                                {
+                                    "entity": "sensor.ballam_public_ip_address"
+                                },
+                                {
+                                    "entity": "sensor.ballam_ringer_mode"
+                                },
+                                {
+                                    "entity": "sensor.ballam_rx"
+                                },
+                                {
+                                    "entity": "sensor.rx"
+                                },
+                                {
+                                    "entity": "sensor.ballam_sim_1"
+                                },
+                                {
+                                    "entity": "sensor.ballam_sim_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_speakerphone"
+                                },
+                                {
+                                    "entity": "sensor.ballam_steps_sensor"
+                                },
+                                {
+                                    "entity": "sensor.ballam_total_rx_gb"
+                                },
+                                {
+                                    "entity": "sensor.ballam_total_tx_gb"
+                                },
+                                {
+                                    "entity": "sensor.ballam_tx"
+                                },
+                                {
+                                    "entity": "sensor.tx"
+                                },
+                                {
+                                    "entity": "sensor.ballam_volume_level_alarm"
+                                },
+                                {
+                                    "entity": "sensor.ballam_volume_level_call"
+                                },
+                                {
+                                    "entity": "sensor.ballam_volume_level_music"
+                                },
+                                {
+                                    "entity": "sensor.ballam_volume_level_ringer"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_bssid"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_connection"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_frequency"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_ip_address"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_link_speed"
+                                },
+                                {
+                                    "entity": "sensor.ballam_wifi_signal_strength"
+                                },
+                                {
+                                    "entity": "binary_sensor.ballam_wifi_state"
                                 }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Ryan\u2019s S8",
-                            "type": "entities"
+                            ]
                         }
                     ],
                     "icon": "mdi:cellphone-android",

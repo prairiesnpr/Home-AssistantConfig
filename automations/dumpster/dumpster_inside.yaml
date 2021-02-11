@@ -2,7 +2,7 @@ action:
 - data:
     message: It's trash day and the dumpster is still inside the garage.
     title: Take Dumpster Outside
-  service: notify.pushbullet
+  service: notify.all_android_devices
 alias: Set Dumpster Outside
 condition:
 - after: 02:30:00

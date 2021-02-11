@@ -2,7 +2,7 @@ action:
 - data:
     message: The dumpster is still outside, please bring it back inside.
     title: Bring Dumpster Inside
-  service: notify.pushbullet
+  service: notify.all_android_devices
 alias: Bring Dumpster In
 condition:
 - after: '10:30:00'

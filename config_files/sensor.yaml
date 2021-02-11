@@ -30,7 +30,7 @@
         {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
         {% set start_dates =[now().replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
         {% if is_state('person.ryan', 'home') %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.sm_g950u_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
         {% endif %}
         {% if is_state('person.jeanette', 'home') %}
           {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
@@ -44,7 +44,7 @@
         {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
         {% set start_dates =[(now() + timedelta(days=1)).replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
         {% if is_state('person.ryan', 'home') %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.sm_g950u_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
         {% endif %}
         {% if is_state('person.jeanette', 'home') %}
           {% set start_dates = start_dates + [(now() + timedelta(days=1)).replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}

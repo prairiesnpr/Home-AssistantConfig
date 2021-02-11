@@ -19,6 +19,8 @@ condition:
           value_template: "{{ trigger.payload_json['after']['label'] == 'person' }}"
         - condition: template
           value_template: "{{ trigger.payload_json['after']['label'] == 'dog' }}"
+    - condition: template
+      value_template: "{{ as_timestamp(now()) - as_timestamp(states.automation.notify_of_events.last_triggered) | int > 300 }}"
 action:
   - variables:
       ha_url_var: !secret ha_url
@@ -30,9 +32,9 @@ action:
           url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg' 
           content-type: jpg
           hide-thumbnail: false
-  - service: notify.pushbullet
+  - service: notify.all_android_devices
     data_template:
       title: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
       message: 'A {{trigger.payload_json["after"]["label"]}} was detected in the ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}).'
       data:
-        file_url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'
+        image: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'

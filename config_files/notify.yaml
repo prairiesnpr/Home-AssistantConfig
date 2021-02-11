@@ -6,3 +6,7 @@
   services:
     - service: mobile_app_jeanette_s_iphone
     - service: mobile_app_ryans_ipad 
+- platform: group
+  name: all_android_devices
+  services:
+    - service: mobile_app_ballam

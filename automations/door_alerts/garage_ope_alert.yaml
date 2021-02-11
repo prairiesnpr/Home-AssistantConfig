@@ -6,7 +6,7 @@ action:
   - data:
       message: The garage door has been open for more than five minutes.
       title: Garage Door Left Open Alert
-    service: notify.pushbullet
+    service: notify.all_android_devices
 alias: Garage Open Alert
 trigger:
   - entity_id: binary_sensor.door

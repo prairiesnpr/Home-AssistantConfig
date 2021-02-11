@@ -1,4 +1,6 @@
 {
+    "version": 2,
+    "key": "person",
     "data": {
         "items": [
             {
@@ -6,7 +8,7 @@
                     "device_tracker.balaam",
                     "device_tracker.balaam_3",
                     "device_tracker.ryans_ipad_5",
-                    "device_tracker.sm_g950u"
+                    "device_tracker.ballam"
                 ],
                 "id": "72b9c204f62b4f82b0ace8fec1f79be6",
                 "name": "Ryan",
@@ -22,7 +24,5 @@
                 "user_id": "79d341406a424302a004185560e9b35f"
             }
         ]
-    },
-    "key": "person",
-    "version": 2
+    }
 }

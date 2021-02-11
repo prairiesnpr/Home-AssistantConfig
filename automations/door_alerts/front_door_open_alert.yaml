@@ -2,7 +2,7 @@ action:
 - data:
     message: The front door was opened.
     title: Front Door Opened
-  service: notify.pushbullet
+  service: notify.all_android_devices
 - data:
     message: The front door was opened.
     title: Front Door Opened

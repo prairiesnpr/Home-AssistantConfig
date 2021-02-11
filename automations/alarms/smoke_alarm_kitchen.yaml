@@ -6,7 +6,7 @@ action:
 - data:
     message: Smoke detected in the Kitchen!
     title: Smoke Alarm
-  service: notify.pushbullet
+  service: notify.all_android_devices
 alias: Smoke Alarm Kitchen
 trigger:
 - entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280

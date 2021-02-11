@@ -2,7 +2,7 @@ action:
   data:
     message: Woodpecker Activity Detected!
     title: Woodpecker Detected!
-  service: notify.pushbullet
+  service: notify.all_android_devices
 alias: Alert on Woodpecker Pecking
 trigger:
 - entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1

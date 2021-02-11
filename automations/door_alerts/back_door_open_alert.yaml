@@ -2,7 +2,7 @@ action:
 - data:
     message: The back door was opened.
     title: Back Door Opened
-  service: notify.pushbullet
+  service: notify.all_android_devices
 - data:
     message: The back door was opened.
     title: Back Door Opened

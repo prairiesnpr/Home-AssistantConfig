@@ -2,10 +2,19 @@ action:
 - data:
     message: The kitchen to garage door was opened.
     title: Kitchen-Garage Door Opened
+    data:
+      ttl: 0
+      priority: high
   service: notify.all_android_devices
 - data:
     message: The kitchen to garage door was opened.
     title: Kitchen-Garage Door Opened
+    data:
+      push:
+        sound:
+          name: default
+          critical: 1
+          volume: 1.0
   service: notify.all_ios_devices
 alias: Kitchen-Garage Door Opened Alert
 condition:

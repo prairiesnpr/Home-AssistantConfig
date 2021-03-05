@@ -1,0 +1,11 @@
+alias: Power Amos off on Power Failure
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.serverroom_battery_charge 
+    below: 60 
+action:
+  - service: mqtt.publish
+    data:
+      topic: "iotlink/prairiesnpr.com/amos/commands/shutdown"
+      payload: ""
+

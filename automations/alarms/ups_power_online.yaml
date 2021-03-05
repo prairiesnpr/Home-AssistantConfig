@@ -1,0 +1,27 @@
+action:
+- data:
+    message: Server Power Resotred!
+    title: Server Power Restored 
+    data:
+      push:
+        sound:
+          name: default
+          critical: 1
+          volume: 1.0
+  service: notify.all_ios_devices
+- data:
+    message: Server Power Restored!
+    title: Server Power Resotred
+    data:
+      ttl: 0
+      priority: high
+  service: notify.all_android_devices
+alias: Server Power Resotred 
+trigger:
+- entity_id: sensor.serverroom_status 
+  platform: state
+  to: 'Online'
+  from: 'On Battery Battery Discharging'
+- entity_id: sensor.serverroom_status
+  platform: state
+  to: 'Online Battery Charging'

@@ -15,3 +15,11 @@
   password: !secret hikcam_pwd
   authentication: digest
   verify_ssl: false
+- platform: generic
+  name: Front Porch (h265)
+  still_image_url: !secret fp_cam_still_url
+  stream_source: !secret fp_265cam_rtsp
+  username: !secret hikcam_uid
+  password: !secret hikcam_pwd
+  authentication: digest
+  verify_ssl: false

@@ -134,7 +134,7 @@
                                     "entity": "calendar.birthdays"
                                 },
                                 {
-                                    "entity": "calendar.holidays_in_united_states"
+                                    "entity": "calendar.jeanette_l_miller_isilentllc_com"
                                 },
                                 {
                                     "entity": "calendar.ryanmiller_prairiesnpr_info"
@@ -144,6 +144,12 @@
                                 },
                                 {
                                     "entity": "calendar.nebraska_cornhuskers"
+                                },
+                                {
+                                    "entity": "calendar.usa_tn_public_holidays"
+                                },
+                                {
+                                    "entity": "calendar.christian_holidays"
                                 }
                             ]
                         },
@@ -721,7 +727,7 @@
                                             "type": "image"
                                         },
                                         {
-                                            "entity": "binary_sensor.front_porch_person_motion",
+                                            "entity": "switch.front_porch_detect",
                                             "prefix": "Front Porch - ",
                                             "style": {
                                                 "background-color": "rgba(0, 0, 0, 0.3)",
@@ -910,7 +916,7 @@
                                             "type": "image"
                                         },
                                         {
-                                            "entity": "binary_sensor.back_yard_person_motion",
+                                            "entity": "switch.back_yard_detect",
                                             "prefix": "Back Yard - ",
                                             "style": {
                                                 "background-color": "rgba(0, 0, 0, 0.3)",
@@ -1099,7 +1105,7 @@
                                             "type": "image"
                                         },
                                         {
-                                            "entity": "binary_sensor.porsche_person_motion",
+                                            "entity": "switch.porsche_detect",
                                             "prefix": "Porsche - ",
                                             "style": {
                                                 "background-color": "rgba(0, 0, 0, 0.3)",
@@ -2060,6 +2066,61 @@
                             ],
                             "title": "Office",
                             "type": "glance"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_battery_charge",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Charge",
+                                            "severity": {
+                                                "green": 90,
+                                                "yellow": 60,
+                                                "red": 30
+                                            }
+                                        },
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_load",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Load",
+                                            "severity": {
+                                                "green": 0,
+                                                "yellow": 50,
+                                                "red": 80
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.server_room_ups_battery_runtime",
+                                            "name": "Runtime"
+                                        },
+                                        {
+                                            "entity": "sensor.serverroom_input_voltage",
+                                            "name": "Input"
+                                        },
+                                        {
+                                            "entity": "sensor.serverroom_self_test_result",
+                                            "name": "Test Result"
+                                        },
+                                        {
+                                            "entity": "sensor.serverroom_status",
+                                            "name": "Status"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:heart-broken",
@@ -2679,6 +2740,10 @@
                         {
                             "type": "picture-entity",
                             "entity": "camera.back_yard_latest"
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.front_porch_h265"
                         }
                     ]
                 }

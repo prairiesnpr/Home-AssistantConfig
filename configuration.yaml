@@ -44,6 +44,7 @@ logbook:
 map:
 sun:
 media_source:
+wake_on_lan:
 
 adaptive_lighting: !include config_files/adaptive_lighting.yaml
 binary_sensor: !include config_files/binary_sensor.yaml

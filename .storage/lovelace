@@ -111,12 +111,95 @@
                                             "state_color": true
                                         },
                                         {
-                                            "entity": "sensor.dumpster",
+                                            "entity": "sensor.serverroom_status",
                                             "name": false,
+                                            "state_icons": {
+                                                "Online": "mdi:power-plug",
+                                                "On Battery Battery Discharging": "mdi:battery-alert",
+                                                "Online Battery Charging": "mdi:battery-charging"
+                                            },
                                             "state_styles": {
-                                                "garage": {
+                                                "Online": {
                                                     "button": {
                                                         "color": "green"
+                                                    }
+                                                },
+                                                "Online Battery Battery Charging": {
+                                                    "button": {
+                                                        "color": "yellow"
+                                                    }
+                                                },
+                                                "On Battery Battery Discharging": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "entity": "binary_sensor.rpi_power_status",
+                                            "name": false,
+                                            "state_styles": {
+                                                "off": {
+                                                    "button": {
+                                                        "color": "green"
+                                                    }
+                                                },
+                                                "on": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "entity": "sensor.the_library_of_alexandria_healthstatus_2",
+                                            "name": false,
+                                            "state_styles": {
+                                                "Healthy": {
+                                                    "button": {
+                                                        "color": "green"
+                                                    }
+                                                },
+                                                "Unhealthy": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "Warning": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "Unknown": {
+                                                    "button": {
+                                                        "color": "yellow"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "entity": "sensor.the_metropolitan_library_healthstatus_2",
+                                            "name": false,
+                                            "state_styles": {
+                                                "Healthy": {
+                                                    "button": {
+                                                        "color": "green"
+                                                    }
+                                                },
+                                                "Unhealthy": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "Warning": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "Unknown": {
+                                                    "button": {
+                                                        "color": "yellow"
                                                     }
                                                 }
                                             }
@@ -1984,6 +2067,42 @@
                                 "sensor.pi_hole_dns_queries_cached"
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.the_library_of_alexandria_healthstatus_2",
+                                    "name": "Health Status"
+                                },
+                                {
+                                    "entity": "sensor.the_library_of_alexandria_operationalstatus_2",
+                                    "name": "Operational Status"
+                                },
+                                {
+                                    "entity": "sensor.the_library_of_alexandria_readonlyreason",
+                                    "name": "Readonly Reason"
+                                }
+                            ],
+                            "title": "The Library of Alexandria"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.the_metropolitan_library_healthstatus_2",
+                                    "name": "Health Status"
+                                },
+                                {
+                                    "entity": "sensor.the_metropolitan_library_operationalstatus_2",
+                                    "name": "Operational Status"
+                                },
+                                {
+                                    "entity": "sensor.the_metropolitan_library_readonlyreason",
+                                    "name": "Readonly Reason"
+                                }
+                            ],
+                            "title": "The Metropolitan Library"
                         }
                     ],
                     "icon": "mdi:server-network",
@@ -1992,16 +2111,66 @@
                 {
                     "cards": [
                         {
-                            "entities": [
-                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
-                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
-                            ],
-                            "show_state": false,
-                            "type": "glance"
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_battery_charge",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Charge",
+                                            "severity": {
+                                                "green": 90,
+                                                "yellow": 60,
+                                                "red": 30
+                                            }
+                                        },
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_load",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Load",
+                                            "severity": {
+                                                "green": 0,
+                                                "yellow": 50,
+                                                "red": 80
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.serverroom_input_voltage",
+                                    "graph": "line",
+                                    "name": "Input"
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.server_room_ups_battery_runtime",
+                                            "name": "Runtime"
+                                        },
+                                        {
+                                            "entity": "sensor.serverroom_self_test_result",
+                                            "name": "Test Result"
+                                        },
+                                        {
+                                            "entity": "sensor.serverroom_status",
+                                            "name": "Status"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "entities": [
-                                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
+                                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
                             ],
                             "show_state": false,
                             "type": "glance"
@@ -2014,6 +2183,13 @@
                             ],
                             "show_state": false,
                             "title": "Woodpecker Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
+                            ],
+                            "show_state": false,
                             "type": "glance"
                         },
                         {
@@ -2066,61 +2242,6 @@
                             ],
                             "title": "Office",
                             "type": "glance"
-                        },
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "gauge",
-                                            "entity": "sensor.serverroom_battery_charge",
-                                            "min": 0,
-                                            "max": 100,
-                                            "name": "Charge",
-                                            "severity": {
-                                                "green": 90,
-                                                "yellow": 60,
-                                                "red": 30
-                                            }
-                                        },
-                                        {
-                                            "type": "gauge",
-                                            "entity": "sensor.serverroom_load",
-                                            "min": 0,
-                                            "max": 100,
-                                            "name": "Load",
-                                            "severity": {
-                                                "green": 0,
-                                                "yellow": 50,
-                                                "red": 80
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "entities",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.server_room_ups_battery_runtime",
-                                            "name": "Runtime"
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_input_voltage",
-                                            "name": "Input"
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_self_test_result",
-                                            "name": "Test Result"
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_status",
-                                            "name": "Status"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ],
                     "icon": "mdi:heart-broken",

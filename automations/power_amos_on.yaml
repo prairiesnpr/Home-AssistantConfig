@@ -16,4 +16,5 @@ action:
   - service: wake_on_lan.send_magic_packet
     data:
       mac: "D0:50:99:AC:F7:50"
+      broadcast_port: 7
 

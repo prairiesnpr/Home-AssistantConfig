@@ -33,3 +33,7 @@ include:
     - switch.xbee_xbee_io_4192cf47_212_6 # Spare
     - sensor.f150
     - sensor.porsche
+    - sensor.serverroom_battery_charge
+    - sensor.serverroom_load
+    - sensor.serverroom_input_voltage
+    - sensor.serverroom_status

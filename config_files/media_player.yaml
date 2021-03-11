@@ -1,9 +1,9 @@
 - platform: onkyo
   host: !secret avr_ip 
   sources:
-    hdmi-6: 'ha'
+    hdmi-6: 'hdmi-6'
     hdmi-5: 'hdmi-5'
-    strm-box: 'Strm-Box'
+    strm-box: 'Home Assistant'
     bd: 'XBOX'
     bluetooth: 'Bluetooth'
     # usb_usb: 'USB'
@@ -12,7 +12,7 @@
     am: 'AM'
     video4: 'Video 4'
     video3: 'Game'
-    video2: 'Cable/Sat'
+    video2: 'Amos'
     #'cd_tv/cd': 'CD'
     tv: 'TV'
     phono: 'Phono'

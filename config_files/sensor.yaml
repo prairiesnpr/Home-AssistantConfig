@@ -24,8 +24,7 @@
   sensors:
     server_room_ups_battery_runtime:
       friendly_name: Server Room Battery Runtime
-      device_class: timestamp
-      value_template: "{{ now()+timedelta(seconds=(states('sensor.serverroom_battery_runtime')|int)) }}"
+      value_template: "{{ relative_time(now()-timedelta(seconds=(states('sensor.serverroom_battery_runtime')|int))) }}"
     calculated_system_start_time:
       friendly_name: Calculated Day Start
       device_class: timestamp

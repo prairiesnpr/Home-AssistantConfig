@@ -176,6 +176,12 @@
                                                         "color": "yellow"
                                                     }
                                                 }
+                                            },
+                                            "state_icons": {
+                                                "Unknown": "mdi:server-network-off",
+                                                "Warning": "mdi:server-network-off",
+                                                "Unhealthy": "mdi:server-network-off",
+                                                "Healthy": "mdi:server-network"
                                             }
                                         },
                                         {
@@ -202,6 +208,32 @@
                                                         "color": "yellow"
                                                     }
                                                 }
+                                            },
+                                            "state_icons": {
+                                                "Unknown": "mdi:server-network-off",
+                                                "Warning": "mdi:server-network-off",
+                                                "Unhealthy": "mdi:server-network-off",
+                                                "Healthy": "mdi:server-network"
+                                            }
+                                        },
+                                        {
+                                            "entity": "binary_sensor.amos_power_status",
+                                            "name": false,
+                                            "state_styles": {
+                                                "off": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "on": {
+                                                    "button": {
+                                                        "color": "green"
+                                                    }
+                                                }
+                                            },
+                                            "state_icons": {
+                                                "off": "mdi:server-off",
+                                                "on": "mdi:server"
                                             }
                                         }
                                     ],
@@ -1451,6 +1483,53 @@
                             "type": "entities"
                         },
                         {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_battery_charge",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Charge",
+                                            "severity": {
+                                                "green": 90,
+                                                "yellow": 60,
+                                                "red": 30
+                                            }
+                                        },
+                                        {
+                                            "type": "gauge",
+                                            "entity": "sensor.serverroom_load",
+                                            "min": 0,
+                                            "max": 100,
+                                            "name": "Load",
+                                            "severity": {
+                                                "green": 0,
+                                                "yellow": 50,
+                                                "red": 80
+                                            }
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.server_room_ups_battery_runtime",
+                                            "name": "Runtime",
+                                            "icon": "mdi:clock",
+                                            "detail": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.serverroom_input_voltage",
+                                    "graph": "line",
+                                    "name": "Input"
+                                }
+                            ]
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "switch.sengled_e1c_nb6_f32d0400_on_off",
@@ -2103,6 +2182,35 @@
                                 }
                             ],
                             "title": "The Metropolitan Library"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ata_hgst_huh721212al_2_healthstatus",
+                                    "name": "HGST 5PJ81J3D"
+                                },
+                                {
+                                    "entity": "sensor.ata_hgst_huh721212al_3_healthstatus",
+                                    "name": "HGST 5PJ6WDME"
+                                },
+                                {
+                                    "entity": "sensor.ata_st3000vn000_1hj1_1_healthstatus",
+                                    "name": "ATA W7307NXY"
+                                },
+                                {
+                                    "entity": "sensor.ata_st3000vn000_1hj1_4_healthstatus",
+                                    "name": "ATA W7307NXW"
+                                },
+                                {
+                                    "entity": "sensor.ata_wdc_wd30efrx_68e_0_healthstatus",
+                                    "name": "ATA WD-WCC4N2PNTT9K"
+                                },
+                                {
+                                    "entity": "sensor.ata_wdc_wd30efrx_68e_5_healthstatus",
+                                    "name": "ATA WD-WCC4N2FX2JH2"
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:server-network",
@@ -2110,63 +2218,6 @@
                 },
                 {
                     "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "gauge",
-                                            "entity": "sensor.serverroom_battery_charge",
-                                            "min": 0,
-                                            "max": 100,
-                                            "name": "Charge",
-                                            "severity": {
-                                                "green": 90,
-                                                "yellow": 60,
-                                                "red": 30
-                                            }
-                                        },
-                                        {
-                                            "type": "gauge",
-                                            "entity": "sensor.serverroom_load",
-                                            "min": 0,
-                                            "max": 100,
-                                            "name": "Load",
-                                            "severity": {
-                                                "green": 0,
-                                                "yellow": 50,
-                                                "red": 80
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.serverroom_input_voltage",
-                                    "graph": "line",
-                                    "name": "Input"
-                                },
-                                {
-                                    "type": "entities",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.server_room_ups_battery_runtime",
-                                            "name": "Runtime"
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_self_test_result",
-                                            "name": "Test Result"
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_status",
-                                            "name": "Status"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         {
                             "entities": [
                                 "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",

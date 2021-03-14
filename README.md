@@ -1,5 +1,5 @@
 
-# Home Assistant (2021.2.0) configuration
+# Home Assistant (2021.3.0) configuration
 
 ## Zigbee Network
 
@@ -70,7 +70,7 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
   * [Frigate](https://github.com/blakeblackshear/frigate)
 * Cameras
   * [2] Hikvision DS-2CD2385FWD-I
-  * [1] Amcrest ![IP8M-T2499EW-28MM](https://www.amazon.com/gp/product/B07RHQGS8V/)
+  * [1] Amcrest [IP8M-T2499EW-28MM](https://www.amazon.com/gp/product/B07RHQGS8V/)
   * [1] Foscam FI8918W
   
 ## HVAC

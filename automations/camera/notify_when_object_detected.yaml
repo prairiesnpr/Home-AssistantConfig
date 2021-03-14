@@ -13,6 +13,8 @@ condition:
           value_template: "{{ trigger.payload_json['after']['camera'] == 'front_porch' }}"
         - condition: template
           value_template: "{{ trigger.payload_json['after']['camera'] == 'back_yard' }}" 
+        - condition: template
+          value_template: "{{ trigger.payload_json['after']['camera'] == 'garage' }}"
     - condition: or
       conditions:
         - condition: template
@@ -20,13 +22,38 @@ condition:
         - condition: template
           value_template: "{{ trigger.payload_json['after']['label'] == 'dog' }}"
     - condition: template
-      value_template: "{{ (now() - state_attr('automation.notify_of_events', 'last_triggered')).seconds > 300 }}"
+      value_template: >
+        {% if state_attr('automation.notify_of_events', 'last_triggered') -%}
+            {{ (now() - state_attr('automation.notify_of_events', 'last_triggered')).seconds > 300 }}
+        {%- else -%}
+            {{True}}
+        {%- endif %}
 action:
   - variables:
       ha_url_var: !secret ha_url
+      entered_zones: '{{trigger.payload_json["after"]["entered_zones"]}}'
+      zone_prep: >
+        {% if entered_zones | count > 1 -%}
+            on
+        {%- elif "deck" in entered_zones -%}
+            on
+        {%- elif "porch_sidewalk" in entered_zones -%}
+            on
+        {%- elif "driveway" in entered_zones -%}
+            on
+        {%- else -%}
+            in
+        {%- endif %}
+      zone_text: >
+        {% if entered_zones | count > 1 -%}
+            ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}) zones
+        {%- else -%}
+            {{trigger.payload_json["after"]["entered_zones"] | first}}
+        {%- endif %}
+      zone_message: 'A {{trigger.payload_json["after"]["label"]}} was detected {{zone_prep}} the {{zone_text}}.'
   - service: notify.all_ios_devices 
     data_template:
-      message: 'A {{trigger.payload_json["after"]["label"]}} was detected in the ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}).'
+      message: '{{zone_message}}'
       data:
         attachment:
           url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg' 
@@ -35,6 +62,6 @@ action:
   - service: notify.all_android_devices
     data_template:
       title: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
-      message: 'A {{trigger.payload_json["after"]["label"]}} was detected in the ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}).'
+      message: '{{zone_message}}' 
       data:
         image: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'

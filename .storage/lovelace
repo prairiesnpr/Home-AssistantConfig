@@ -119,22 +119,23 @@
                                                 "Online Battery Charging": "mdi:battery-charging"
                                             },
                                             "state_styles": {
-                                                "Online": {
+                                                "online": {
                                                     "button": {
                                                         "color": "green"
                                                     }
                                                 },
-                                                "Online Battery Battery Charging": {
+                                                "online Battery Battery Charging": {
                                                     "button": {
                                                         "color": "yellow"
                                                     }
                                                 },
-                                                "On Battery Battery Discharging": {
+                                                "on Battery Battery Discharging": {
                                                     "button": {
                                                         "color": "red"
                                                     }
                                                 }
-                                            }
+                                            },
+                                            "state_color": true
                                         },
                                         {
                                             "entity": "binary_sensor.rpi_power_status",
@@ -156,71 +157,90 @@
                                             "entity": "sensor.the_library_of_alexandria_healthstatus_2",
                                             "name": false,
                                             "state_styles": {
-                                                "Healthy": {
+                                                "healthy": {
                                                     "button": {
                                                         "color": "green"
                                                     }
                                                 },
-                                                "Unhealthy": {
+                                                "unhealthy": {
                                                     "button": {
                                                         "color": "red"
                                                     }
                                                 },
-                                                "Warning": {
+                                                "warning": {
                                                     "button": {
                                                         "color": "red"
                                                     }
                                                 },
-                                                "Unknown": {
+                                                "unknown": {
                                                     "button": {
                                                         "color": "yellow"
+                                                    }
+                                                },
+                                                "unavailable": {
+                                                    "button": {
+                                                        "color": "red"
                                                     }
                                                 }
                                             },
                                             "state_icons": {
-                                                "Unknown": "mdi:server-network-off",
-                                                "Warning": "mdi:server-network-off",
-                                                "Unhealthy": "mdi:server-network-off",
-                                                "Healthy": "mdi:server-network"
-                                            }
+                                                "unknown": "mdi:server-network-off",
+                                                "warning": "mdi:server-network-off",
+                                                "unhealthy": "mdi:server-network-off",
+                                                "healthy": "mdi:server-network",
+                                                "unavailable": "mdi:server-network-off"
+                                            },
+                                            "state_color": true
                                         },
                                         {
                                             "entity": "sensor.the_metropolitan_library_healthstatus_2",
                                             "name": false,
                                             "state_styles": {
-                                                "Healthy": {
+                                                "healthy": {
                                                     "button": {
                                                         "color": "green"
                                                     }
                                                 },
-                                                "Unhealthy": {
+                                                "unhealthy": {
                                                     "button": {
                                                         "color": "red"
                                                     }
                                                 },
-                                                "Warning": {
+                                                "warning": {
                                                     "button": {
                                                         "color": "red"
                                                     }
                                                 },
-                                                "Unknown": {
+                                                "unknown": {
                                                     "button": {
                                                         "color": "yellow"
+                                                    }
+                                                },
+                                                "unavailable": {
+                                                    "button": {
+                                                        "color": "red"
                                                     }
                                                 }
                                             },
                                             "state_icons": {
-                                                "Unknown": "mdi:server-network-off",
-                                                "Warning": "mdi:server-network-off",
-                                                "Unhealthy": "mdi:server-network-off",
-                                                "Healthy": "mdi:server-network"
-                                            }
+                                                "unknown": "mdi:server-network-off",
+                                                "warning": "mdi:server-network-off",
+                                                "unhealthy": "mdi:server-network-off",
+                                                "healthy": "mdi:server-network",
+                                                "unavailable": "mdi:server-network-off"
+                                            },
+                                            "state_color": true
                                         },
                                         {
                                             "entity": "binary_sensor.amos_power_status",
                                             "name": false,
                                             "state_styles": {
                                                 "off": {
+                                                    "button": {
+                                                        "color": "red"
+                                                    }
+                                                },
+                                                "unavailable": {
                                                     "button": {
                                                         "color": "red"
                                                     }
@@ -232,6 +252,7 @@
                                                 }
                                             },
                                             "state_icons": {
+                                                "unavailable": "mdi:server-off",
                                                 "off": "mdi:server-off",
                                                 "on": "mdi:server"
                                             }
@@ -529,6 +550,16 @@
                                             "textcolour": "#000"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.in_bed",
+                                    "icon": "mdi:bed",
+                                    "name": "In Bed"
                                 }
                             ]
                         }
@@ -1208,6 +1239,195 @@
                                     "type": "picture-elements",
                                     "elements": [
                                         {
+                                            "camera_image": "camera.garage_h265",
+                                            "camera_view": "live",
+                                            "entity": "camera.garage",
+                                            "style": {
+                                                "height": "100%",
+                                                "left": "50%",
+                                                "top": "50%",
+                                                "width": "100%"
+                                            },
+                                            "type": "image"
+                                        },
+                                        {
+                                            "entity": "switch.garage_detect",
+                                            "prefix": "Garage - ",
+                                            "style": {
+                                                "background-color": "rgba(0, 0, 0, 0.3)",
+                                                "bottom": 0,
+                                                "color": "white",
+                                                "left": 0,
+                                                "padding": "1vh",
+                                                "transform": "initial",
+                                                "width": "100%"
+                                            },
+                                            "type": "state-label"
+                                        },
+                                        {
+                                            "entity": "camera.garage",
+                                            "style": {
+                                                "background-color": "rgba(0, 0, 0, 0.3)",
+                                                "bottom": 0,
+                                                "color": "white",
+                                                "padding": "1vh",
+                                                "right": 0,
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-label"
+                                        }
+                                    ],
+                                    "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_person",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_person",
+                                                "show_state": false,
+                                                "name": "Man"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_car",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_car",
+                                                "show_state": false,
+                                                "name": "Car"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_cat",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_cat",
+                                                "show_state": false,
+                                                "name": "Cat"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_truck",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_truck",
+                                                "show_state": false,
+                                                "name": "Truck"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_bus",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_bus",
+                                                "show_state": false,
+                                                "name": "Bus"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_bicycle",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_bicycle",
+                                                "show_state": false,
+                                                "name": "Bicycle"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_bird",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_bird",
+                                                "show_state": false,
+                                                "name": "Bird"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_motorcycle",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_motorcycle",
+                                                "show_state": false,
+                                                "name": "Motorcycle"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "camera.garage_dog",
+                                                    "state": "active"
+                                                }
+                                            ],
+                                            "card": {
+                                                "type": "picture-entity",
+                                                "entity": "camera.garage_dog",
+                                                "show_state": false,
+                                                "name": "Dog"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "picture-elements",
+                                    "elements": [
+                                        {
                                             "camera_image": "camera.porsche",
                                             "camera_view": "live",
                                             "entity": "camera.porsche",
@@ -1477,7 +1697,8 @@
                             "entities": [
                                 {
                                     "entity": "switch.ledvance_plug_00054922_1",
-                                    "state_color": true
+                                    "state_color": true,
+                                    "icon": "mdi:coffee-maker"
                                 }
                             ],
                             "type": "entities"
@@ -1937,61 +2158,6 @@
                     "title": "Wizard Clock"
                 },
                 {
-                    "icon": "mdi:cog",
-                    "title": "Settings",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "input_number.bath_fan_on",
-                                    "name": "Fan On"
-                                },
-                                {
-                                    "entity": "input_number.bath_fan_off",
-                                    "name": "Fan Off"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Bathroom Exhaust Fans",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.rpi_power_status"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "switch.adaptive_lighting_adapt_brightness_default",
-                                "switch.adaptive_lighting_adapt_brightness_kitchen_cans",
-                                "switch.adaptive_lighting_adapt_brightness_living_room_cans",
-                                "switch.adaptive_lighting_adapt_brightness_master_bathroom_vanity",
-                                "switch.adaptive_lighting_adapt_brightness_master_bedroom",
-                                "switch.adaptive_lighting_adapt_color_default",
-                                "switch.adaptive_lighting_adapt_color_kitchen_cans",
-                                "switch.adaptive_lighting_adapt_color_living_room_cans",
-                                "switch.adaptive_lighting_adapt_color_master_bathroom_vanity",
-                                "switch.adaptive_lighting_adapt_color_master_bedroom",
-                                "switch.adaptive_lighting_sleep_mode_default",
-                                "switch.adaptive_lighting_sleep_mode_kitchen_cans",
-                                "switch.adaptive_lighting_sleep_mode_living_room_cans",
-                                "switch.adaptive_lighting_sleep_mode_master_bathroom_vanity",
-                                "switch.adaptive_lighting_sleep_mode_master_bedroom",
-                                "switch.adaptive_lighting_default",
-                                "switch.adaptive_lighting_kitchen_cans",
-                                "switch.adaptive_lighting_living_room_cans",
-                                "switch.adaptive_lighting_master_bathroom_vanity",
-                                "switch.adaptive_lighting_master_bedroom"
-                            ]
-                        }
-                    ]
-                },
-                {
                     "icon": "mdi:account-cash",
                     "title": "Finance",
                     "badges": [],
@@ -2026,6 +2192,53 @@
                                 }
                             ],
                             "type": "entities"
+                        }
+                    ]
+                },
+                {
+                    "icon": "mdi:cog",
+                    "title": "Settings",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.bath_fan_on",
+                                    "name": "Fan On"
+                                },
+                                {
+                                    "entity": "input_number.bath_fan_off",
+                                    "name": "Fan Off"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Bathroom Exhaust Fans",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.adaptive_lighting_adapt_brightness_default",
+                                "switch.adaptive_lighting_adapt_brightness_kitchen_cans",
+                                "switch.adaptive_lighting_adapt_brightness_living_room_cans",
+                                "switch.adaptive_lighting_adapt_brightness_master_bathroom_vanity",
+                                "switch.adaptive_lighting_adapt_brightness_master_bedroom",
+                                "switch.adaptive_lighting_adapt_color_default",
+                                "switch.adaptive_lighting_adapt_color_kitchen_cans",
+                                "switch.adaptive_lighting_adapt_color_living_room_cans",
+                                "switch.adaptive_lighting_adapt_color_master_bathroom_vanity",
+                                "switch.adaptive_lighting_adapt_color_master_bedroom",
+                                "switch.adaptive_lighting_sleep_mode_default",
+                                "switch.adaptive_lighting_sleep_mode_kitchen_cans",
+                                "switch.adaptive_lighting_sleep_mode_living_room_cans",
+                                "switch.adaptive_lighting_sleep_mode_master_bathroom_vanity",
+                                "switch.adaptive_lighting_sleep_mode_master_bedroom",
+                                "switch.adaptive_lighting_default",
+                                "switch.adaptive_lighting_kitchen_cans",
+                                "switch.adaptive_lighting_living_room_cans",
+                                "switch.adaptive_lighting_master_bathroom_vanity",
+                                "switch.adaptive_lighting_master_bedroom"
+                            ]
                         }
                     ]
                 },
@@ -2916,6 +3129,20 @@
                         {
                             "type": "picture-entity",
                             "entity": "camera.front_porch_h265"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.garage_camera_fps",
+                                "switch.garage_clips",
+                                "switch.garage_detect",
+                                "sensor.garage_detection_fps",
+                                "sensor.garage_person",
+                                "binary_sensor.garage_person_motion",
+                                "sensor.garage_process_fps",
+                                "sensor.garage_skipped_fps",
+                                "switch.garage_snapshots"
+                            ]
                         }
                     ]
                 }

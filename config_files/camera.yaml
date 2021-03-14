@@ -23,3 +23,11 @@
   password: !secret hikcam_pwd
   authentication: digest
   verify_ssl: false
+- platform: generic
+  name: Garage (h265)
+  still_image_url: !secret grg_cam_still_url
+  stream_source: !secret grg_265cam_rtsp
+  username: !secret hikcam_uid
+  password: !secret hikcam_pwd
+  authentication: digest
+  verify_ssl: false

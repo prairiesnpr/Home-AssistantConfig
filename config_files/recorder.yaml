@@ -37,3 +37,4 @@ include:
     - sensor.serverroom_load
     - sensor.serverroom_input_voltage
     - sensor.serverroom_status
+    - binary_sensor.in_bed

@@ -7,8 +7,11 @@ alias: Turn on the Coffee Pot when home (Ryan)
 condition:
   condition: and
   conditions:
-    - "{{ (strptime(states('sensor.coffee_start_time'), '%Y-%m-%dT%H:%M:%S%z')) < now() }}"
-    - "{{ (strptime(states('sensor.coffee_off_time'), '%Y-%m-%dT%H:%M:%S%z')) > now() }}"
+  - '{{ (strptime(states(''sensor.coffee_start_time''), ''%Y-%m-%dT%H:%M:%S%z''))
+    < now() }}'
+  - '{{ (strptime(states(''sensor.coffee_off_time''), ''%Y-%m-%dT%H:%M:%S%z'')) >
+    now() }}'
+id: 119b684d6bfa4598a4e03a35f09d9100
 trigger:
 - entity_id: person.ryan
   platform: state

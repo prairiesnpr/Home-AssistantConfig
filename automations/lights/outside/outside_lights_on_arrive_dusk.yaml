@@ -9,6 +9,7 @@ condition:
   condition: numeric_state
   entity_id: sun.sun
   value_template: '{{ state.attributes.elevation }}'
+id: c52287b157974c959bf471ca38c22871
 trigger:
 - entity_id: group.home_owners
   platform: state

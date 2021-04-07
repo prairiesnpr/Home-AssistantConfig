@@ -1,12 +1,13 @@
 action:
 - data:
     entity_id:
-    - switch.xbee_xbee_io_4192cf47_210_6 
+    - switch.xbee_xbee_io_4192cf47_210_6
   service: switch.turn_off
-alias: Turn off bluberry irrigation zone after 20 min 
+alias: Turn off bluberry irrigation zone after 20 min
+id: 708a84ea371c4455b34157cee41bc087
 trigger:
+  entity_id: switch.xbee_xbee_io_4192cf47_210_6
   for:
-    minutes: 20 
+    minutes: 20
   platform: state
-  entity_id: switch.xbee_xbee_io_4192cf47_210_6 
   to: 'on'

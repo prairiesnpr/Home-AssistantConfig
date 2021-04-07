@@ -1,16 +1,17 @@
 action:
-  - data:
-      entity_id:
-        - light.bedroom_bed_lights_zha_group_0x0004
-    service: homeassistant.turn_on
+- data:
+    entity_id:
+    - light.bedroom_bed_lights_zha_group_0x0004
+  service: homeassistant.turn_on
 alias: Turn on bedroom lights in the morning
 condition:
-  - condition: state
-    entity_id: person.ryan
-    state: home
-  - condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: "on"
+- condition: state
+  entity_id: person.ryan
+  state: home
+- condition: state
+  entity_id: binary_sensor.workday_sensor
+  state: 'on'
+id: 436f87873cbd468a81a629878a8c7a9a
 trigger:
-  - at: sensor.calculated_system_start_time
-    platform: time
+- at: sensor.calculated_system_start_time
+  platform: time

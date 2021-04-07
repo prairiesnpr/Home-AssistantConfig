@@ -3,6 +3,7 @@ action:
     entity_id: light.jasco_products_45856_00db2500_1
   service: light.turn_on
 alias: Turn Circulation Fan on With HVAC
+id: 9c2112dd117a412c86263f3465e76591
 trigger:
 - entity_id: sensor.downstairs_thermostat_hvac_state
   from: 'off'

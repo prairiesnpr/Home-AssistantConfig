@@ -5,6 +5,7 @@ action:
 alias: Christmas Outdoor Lights Off
 condition: []
 description: ''
+id: 80e3dd63555f4c5ebba28545933fe0dd
 trigger:
-- at: input_datetime.system_sleep_time 
+- at: input_datetime.system_sleep_time
   platform: time

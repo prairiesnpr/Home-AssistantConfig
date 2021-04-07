@@ -7,6 +7,7 @@ action:
 alias: Remote Press - Toggle Backyard Lights
 condition: []
 description: Toggle the back porch and garage walk-in lights
+id: 743d763933d74d87af8b7a1c1d37da02
 trigger:
 - event_data:
     command: move_to_level

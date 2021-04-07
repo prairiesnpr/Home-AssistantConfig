@@ -1,26 +1,27 @@
 action:
 - data:
+    data:
+      priority: high
+      ttl: 0
     message: The garage walk in door was opened.
     title: Garage Walk-In Opened
-    data:
-      ttl: 0
-      priority: high
   service: notify.all_android_devices
 - data:
-    message: The garage walk in door was opened.
-    title: Garage Walk-In Opened
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
+    message: The garage walk in door was opened.
+    title: Garage Walk-In Opened
   service: notify.all_ios_devices
 alias: Garage Walk In Door Opened Alert
 condition:
 - condition: state
   entity_id: group.home_owners
   state: not_home
+id: f6f1de16dd6842aa88250ae26d455773
 trigger:
 - entity_id: binary_sensor.zha_02bfe504_1_6
   platform: state

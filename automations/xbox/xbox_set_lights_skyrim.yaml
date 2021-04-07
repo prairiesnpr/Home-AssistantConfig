@@ -4,6 +4,7 @@ action:
     profile: skyrim_blue
   service: light.turn_on
 alias: Set Lights on Skyrim
+id: b7404816efa04001bff287dca28df87d
 trigger:
 - entity_id: sensor.xbox_source
   platform: state

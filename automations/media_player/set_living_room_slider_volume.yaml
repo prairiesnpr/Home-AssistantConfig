@@ -1,9 +1,11 @@
-alias: Living Room - Adjust volume (Slider)
-trigger:
-  platform: state
-  entity_id: media_player.receiver 
 action:
-  - service: input_number.set_value 
-    data_template:
-      entity_id: input_number.living_room_volume 
-      value: '{{ (-100 * (0.82 - states.media_player.receiver.attributes.volume_level)) | round(1) }}'
+- data_template:
+    entity_id: input_number.living_room_volume
+    value: '{{ (-100 * (0.82 - states.media_player.receiver.attributes.volume_level))
+      | round(1) }}'
+  service: input_number.set_value
+alias: Living Room - Adjust volume (Slider)
+id: 275ef0a18baa42c1a575c7114f13ac37
+trigger:
+  entity_id: media_player.receiver
+  platform: state

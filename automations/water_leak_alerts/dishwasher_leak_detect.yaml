@@ -1,22 +1,23 @@
 action:
 - data:
-    message: Water leak deteted at the dishwasher!
-    title: Dishwasher Leak
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
-  service: notify.all_ios_devices
-- data:
     message: Water leak deteted at the dishwasher!
     title: Dishwasher Leak
+  service: notify.all_ios_devices
+- data:
     data:
-      ttl: 0
       priority: high
+      ttl: 0
+    message: Water leak deteted at the dishwasher!
+    title: Dishwasher Leak
   service: notify.all_android_devices
 alias: Dishwasher Leak Detected
+id: 0f80c86530744a7d8107f58ae118d6a8
 trigger:
 - entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280
   platform: state

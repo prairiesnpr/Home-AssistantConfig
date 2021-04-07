@@ -6,6 +6,7 @@ action:
 alias: Master Bathroom Fan on humidity
 condition: []
 description: Turn on bathroom fan when humidity is above setpoint
+id: c425c81d82db4a83b933c979ff8b32a6
 trigger:
   platform: template
   value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state > states.input_number.bath_fan_on.state

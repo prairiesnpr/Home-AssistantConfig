@@ -1,22 +1,23 @@
 action:
 - data:
-    message: Smoke detected in the Kitchen!
-    title: Smoke Alarm
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
-  service: notify.all_ios_devices
-- data:
     message: Smoke detected in the Kitchen!
     title: Smoke Alarm
+  service: notify.all_ios_devices
+- data:
     data:
-      ttl: 0
       priority: high
+      ttl: 0
+    message: Smoke detected in the Kitchen!
+    title: Smoke Alarm
   service: notify.all_android_devices
 alias: Smoke Alarm Kitchen
+id: d7cdad646254479194e59ddfbbe68d02
 trigger:
 - entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
   platform: state

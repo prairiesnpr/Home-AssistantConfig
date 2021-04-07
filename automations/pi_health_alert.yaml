@@ -1,17 +1,18 @@
+action:
+- data_template:
+    message: RPI Power issue reported.
+    title: Power Supply Issue
+  service: persistent_notification.create
+- data_template:
+    message: RPI Power issue reported.
+    title: Power Supply Issue
+  service: notify.notify
 alias: Power Problem Notification
+condition: null
+id: 49ee629a642b43a7ba796ca000f23f70
 trigger:
-  entity_id: binary_sensor.rpi_power_status 
-  platform: state
-  to: 'on'
+  entity_id: binary_sensor.rpi_power_status
   for:
     minutes: 5
-condition:
-action:
-- service: persistent_notification.create
-  data_template:
-    message: "RPI Power issue reported."
-    title: Power Supply Issue
-- service: notify.notify
-  data_template:
-    message: "RPI Power issue reported."
-    title: Power Supply Issue
+  platform: state
+  to: 'on'

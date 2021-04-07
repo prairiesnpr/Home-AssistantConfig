@@ -4,6 +4,7 @@ action:
     - switch.ledvance_plug_00054922_1
   service: switch.turn_off
 alias: Turn off the Coffee Pot at night
+id: 6f7fd6b90f674be783873e466efa6bcc
 trigger:
-- at: sensor.coffee_off_time 
+- at: sensor.coffee_off_time
   platform: time

@@ -12,8 +12,10 @@ action:
     speed: low
   service: fan.set_speed
 alias: Office Occupied Summer
-condition: "{{ not is_state('sensor.downstairs_thermostat_operation_mode', 'heat') }}" 
+condition: '{{ not is_state(''sensor.downstairs_thermostat_operation_mode'', ''heat'')
+  }}'
 description: ''
+id: ad908542af5d4dfea1c7231486ab777d
 trigger:
 - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
   domain: binary_sensor

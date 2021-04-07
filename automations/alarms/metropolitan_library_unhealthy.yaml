@@ -1,23 +1,26 @@
 action:
 - data:
-    message: "Storage Pool: The Metropolitan Library is {{ trigger.to_state.state }}" 
-    title: Storage Pool {{ trigger.to_state.state }} 
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
+    message: 'Storage Pool: The Metropolitan Library is {{ trigger.to_state.state
+      }}'
+    title: Storage Pool {{ trigger.to_state.state }}
   service: notify.all_ios_devices
 - data:
-    message: "Storage Pool: The Metropolitan Library is {{ trigger.to_state.state }}" 
-    title: Storage Pool {{ trigger.to_state.state }} 
     data:
-      ttl: 0
       priority: high
+      ttl: 0
+    message: 'Storage Pool: The Metropolitan Library is {{ trigger.to_state.state
+      }}'
+    title: Storage Pool {{ trigger.to_state.state }}
   service: notify.all_android_devices
-alias: Storage Pool Metropolitan Library Unhealthy 
+alias: Storage Pool Metropolitan Library Unhealthy
+id: 0a257e6f8b5c45258c34f2be38068a65
 trigger:
-- entity_id: sensor.the_metropolitan_library_healthstatus_2 
+- entity_id: sensor.the_metropolitan_library_healthstatus_2
+  from: Healthy
   platform: state
-  from: 'Healthy'

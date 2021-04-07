@@ -6,6 +6,7 @@ condition:
 - condition: state
   entity_id: person.jeanette
   state: not_home
+id: 658abbef143a405887e3df16e0612a78
 trigger:
 - entity_id: person.ryan
   platform: state

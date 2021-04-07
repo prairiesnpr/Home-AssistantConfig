@@ -560,6 +560,11 @@
                                     "entity": "binary_sensor.in_bed",
                                     "icon": "mdi:bed",
                                     "name": "In Bed"
+                                },
+                                {
+                                    "entity": "binary_sensor.ryan_in_call",
+                                    "name": "Ryan In Call",
+                                    "icon": "mdi:phone-alert"
                                 }
                             ]
                         }
@@ -861,7 +866,7 @@
                                     "type": "picture-elements",
                                     "elements": [
                                         {
-                                            "camera_image": "camera.front_porch_direct",
+                                            "camera_image": "camera.front_porch",
                                             "camera_view": "live",
                                             "entity": "camera.front_porch_direct",
                                             "style": {
@@ -1050,7 +1055,7 @@
                                     "type": "picture-elements",
                                     "elements": [
                                         {
-                                            "camera_image": "camera.back_yard_direct",
+                                            "camera_image": "camera.back_yard",
                                             "camera_view": "live",
                                             "entity": "camera.back_yard_direct",
                                             "style": {
@@ -1239,7 +1244,7 @@
                                     "type": "picture-elements",
                                     "elements": [
                                         {
-                                            "camera_image": "camera.garage_h265",
+                                            "camera_image": "camera.garage",
                                             "camera_view": "live",
                                             "entity": "camera.garage",
                                             "style": {
@@ -1441,7 +1446,7 @@
                                         },
                                         {
                                             "entity": "switch.porsche_detect",
-                                            "prefix": "Porsche - ",
+                                            "prefix": "Scipio/Peno - ",
                                             "style": {
                                                 "background-color": "rgba(0, 0, 0, 0.3)",
                                                 "bottom": 0,
@@ -2185,10 +2190,10 @@
                                     "name": "Jeanette Roth"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth"
+                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth_2"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth"
+                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth_2"
                                 }
                             ],
                             "type": "entities"

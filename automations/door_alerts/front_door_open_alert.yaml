@@ -1,20 +1,20 @@
 action:
 - data:
+    data:
+      priority: high
+      ttl: 0
     message: The front door was opened.
     title: Front Door Opened
-    data:
-      ttl: 0
-      priority: high
   service: notify.all_android_devices
 - data:
-    message: The front door was opened.
-    title: Front Door Opened
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
+    message: The front door was opened.
+    title: Front Door Opened
   service: notify.all_ios_devices
 - entity_id: script.intruder_alarm
   service: homeassistant.turn_on
@@ -23,6 +23,7 @@ condition:
 - condition: state
   entity_id: group.home_owners
   state: not_home
+id: 428b936667894a12ba4e4e7d3be5e9bc
 trigger:
 - entity_id: binary_sensor.zha_02e2146c_1_6
   platform: state

@@ -10,6 +10,7 @@ condition:
 - condition: state
   entity_id: binary_sensor.downstairs_thermostat_fan
   state: 'off'
+id: 255ff23b450e4aac9c2eab13dfde213a
 trigger:
 - entity_id: sensor.downstairs_thermostat_hvac_state
   platform: state

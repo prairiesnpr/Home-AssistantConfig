@@ -4,6 +4,7 @@ action:
     profile: xbox_green
   service: light.turn_on
 alias: Set Lights on Home Screen
+id: 7194f465b5f9423f890324b3c6005935
 trigger:
 - entity_id: sensor.xbox_source
   platform: state

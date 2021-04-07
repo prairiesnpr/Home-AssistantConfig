@@ -1,5 +1,5 @@
 
-# Home Assistant (2021.3.0) configuration
+# Home Assistant (2021.4.0) configuration
 
 ## Zigbee Network
 

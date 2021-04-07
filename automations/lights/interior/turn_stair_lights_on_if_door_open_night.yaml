@@ -12,6 +12,7 @@ condition:
 - condition: state
   entity_id: light.stairway_lights
   state: 'off'
+id: 30d226518fc646bc98d1141105fc4e8a
 trigger:
 - entity_id: binary_sensor.zha_02e2146c_1_6
   platform: state

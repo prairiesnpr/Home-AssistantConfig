@@ -6,7 +6,6 @@
             {
                 "device_trackers": [
                     "device_tracker.balaam",
-                    "device_tracker.balaam_3",
                     "device_tracker.ryans_ipad_5",
                     "device_tracker.ballam",
                     "device_tracker.sm_g991u"
@@ -17,7 +16,6 @@
             },
             {
                 "device_trackers": [
-                    "device_tracker.jeanettesiphone_2",
                     "device_tracker.jeanette_s_iphone_2"
                 ],
                 "id": "cd6bb9c4b5b847ff8e138fc3fd1be84d",

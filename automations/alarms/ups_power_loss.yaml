@@ -1,23 +1,24 @@
 action:
 - data:
-    message: Server Power Loss!
-    title: Server Power Loss 
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
-  service: notify.all_ios_devices
-- data:
     message: Server Power Loss!
     title: Server Power Loss
+  service: notify.all_ios_devices
+- data:
     data:
-      ttl: 0
       priority: high
+      ttl: 0
+    message: Server Power Loss!
+    title: Server Power Loss
   service: notify.all_android_devices
-alias: Server Power Loss 
+alias: Server Power Loss
+id: af00900ed2ab47989514b978298c187d
 trigger:
-- entity_id: sensor.serverroom_status 
+- entity_id: sensor.serverroom_status
   platform: state
-  to: 'On Battery Battery Discharging'
+  to: On Battery Battery Discharging

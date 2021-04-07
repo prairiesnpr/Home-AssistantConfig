@@ -6,6 +6,7 @@ action:
 alias: Master Bathroom Not Occupied
 condition: []
 description: ''
+id: 83e074c0f17f4947b8009f44ad76cc14
 trigger:
 - device_id: 3c59aad704c6450ea1f2090902fbe970
   domain: binary_sensor

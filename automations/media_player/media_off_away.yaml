@@ -1,11 +1,12 @@
 action:
-  - data:
-      entity_id: all
-    service: media_player.turn_off
+- data:
+    entity_id: all
+  service: media_player.turn_off
 alias: Turn off all media players when away
+id: 00769b0de48f4c9b94fe22d647c5ad04
 trigger:
-  - entity_id: group.home_owners
-    for:
-      minutes: 5
-    platform: state
-    to: not_home
+- entity_id: group.home_owners
+  for:
+    minutes: 5
+  platform: state
+  to: not_home

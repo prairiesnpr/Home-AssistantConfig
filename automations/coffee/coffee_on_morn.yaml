@@ -6,8 +6,9 @@ action:
 alias: Turn on Coffee Pot in the morning
 condition:
 - condition: state
-  entity_id: group.home_owners 
+  entity_id: group.home_owners
   state: home
+id: 3954b94c53624631ab42bc0a073cae95
 trigger:
-- at: sensor.coffee_start_time 
+- at: sensor.coffee_start_time
   platform: time

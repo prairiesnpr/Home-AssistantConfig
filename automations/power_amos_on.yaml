@@ -1,20 +1,20 @@
-alias: Power Amos on if Sufficent Battery
-trigger:
-  - platform: numeric_state
-    entity_id: sensor.serverroom_battery_charge 
-    above: 20 
-condition:
-  condition: or 
-  conditions:
-    - condition: state 
-      entity_id: sensor.serverroom_status 
-      state: 'Online Battery Charging'
-    - condition: state 
-      entity_id: sensor.serverroom_status
-      state: 'Online'
 action:
-  - service: wake_on_lan.send_magic_packet
-    data:
-      mac: "D0:50:99:AC:F7:50"
-      broadcast_port: 7
-
+- data:
+    broadcast_port: 7
+    mac: D0:50:99:AC:F7:50
+  service: wake_on_lan.send_magic_packet
+alias: Power Amos on if Sufficent Battery
+condition:
+  condition: or
+  conditions:
+  - condition: state
+    entity_id: sensor.serverroom_status
+    state: Online Battery Charging
+  - condition: state
+    entity_id: sensor.serverroom_status
+    state: Online
+id: ab85d85a267a4600971d12cf470738a1
+trigger:
+- above: 20
+  entity_id: sensor.serverroom_battery_charge
+  platform: numeric_state

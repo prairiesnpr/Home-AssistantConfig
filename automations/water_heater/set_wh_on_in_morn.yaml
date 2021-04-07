@@ -7,6 +7,7 @@ condition:
 - condition: state
   entity_id: group.home_owners
   state: home
+id: bffd8e47080a482d8712bac99b3465c6
 trigger:
-- at: sensor.water_heater_start_time 
+- at: sensor.water_heater_start_time
   platform: time

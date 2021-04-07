@@ -3,6 +3,7 @@ action:
     entity_id: all
   service: light.turn_off
 alias: Turn off all lights when away
+id: d0a59c1d46944361ab08ace46254cd88
 trigger:
 - entity_id: group.home_owners
   for:

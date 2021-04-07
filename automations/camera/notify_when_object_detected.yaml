@@ -1,4 +1,5 @@
 alias: Notify of events
+id: a7b736332d6345abb15a526bacc4251a 
 trigger:
   platform: mqtt
   topic: frigate/events

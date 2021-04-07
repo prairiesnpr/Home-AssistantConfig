@@ -14,6 +14,7 @@ action:
 alias: Office Not Occupied
 condition: []
 description: ''
+id: 0cdd5e8a9d6a44318a1f6ba5a420a204
 trigger:
 - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
   domain: binary_sensor

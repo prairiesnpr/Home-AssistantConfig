@@ -16,6 +16,7 @@ action:
     title: Door Bell Alert
   service: notify.all_android_devices
 alias: Front Door Bell Rung
+id: 952f4a47953c44fdab090dda91412dbc
 trigger:
 - entity_id: switch.zha_40c04e54_1_6
   platform: state

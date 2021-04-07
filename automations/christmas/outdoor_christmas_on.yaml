@@ -5,6 +5,7 @@ action:
 alias: Christmas Outdoor Lights On
 condition: []
 description: ''
+id: 15a88fd5332b4ec98f5588e982a8795c
 trigger:
 - below: -4.0
   entity_id: sun.sun

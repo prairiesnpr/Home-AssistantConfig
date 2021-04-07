@@ -4,7 +4,8 @@ action:
     profile: warm_white
   service: light.turn_on
 alias: Return Lights to Normal Xbox
+id: 46dfa9206b134f7fb6834210ba7389de
 trigger:
 - entity_id: sensor.xbox_source
   platform: state
-  to: ""
+  to: ''

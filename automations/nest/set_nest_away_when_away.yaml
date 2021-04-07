@@ -3,6 +3,7 @@ action:
     away_mode: away
   service: nest.set_away_mode
 alias: Set Nest Away When Away
+id: 80aada0c1b274af883ae984eae953f86
 trigger:
 - entity_id: group.home_owners
   platform: state

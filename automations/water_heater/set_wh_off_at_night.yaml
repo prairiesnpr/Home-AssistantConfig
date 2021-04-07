@@ -3,6 +3,7 @@ action:
     entity_id: switch.zha_40c04dcb_1_6
   service: switch.turn_off
 alias: Set Water Heater off at night
+id: 1ebbb228fdf4477e8104d736bea059a1
 trigger:
-- at: sensor.water_heater_off_time 
+- at: sensor.water_heater_off_time
   platform: time

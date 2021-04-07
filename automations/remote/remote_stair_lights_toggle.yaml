@@ -3,7 +3,8 @@ action:
   service: light.toggle
 alias: Remote Press - Stair Lights Toggle
 condition: []
-description: 'Toggle Stair lights when remote button is pressed'
+description: Toggle Stair lights when remote button is pressed
+id: 18ef7e83bc8f4effbb9f802081fe2805
 trigger:
 - event_data:
     command: 'off'

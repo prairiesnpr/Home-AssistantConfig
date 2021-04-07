@@ -6,6 +6,7 @@ action:
 alias: Remote Press - Garage Toggle
 condition: []
 description: ''
+id: 551ab2c09fcd4f11948ade96a9dffcb7
 trigger:
 - event_data:
     command: 'on'

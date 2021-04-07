@@ -2,13 +2,16 @@ action:
 - data:
     entity_id: switch.zha_40c04dcb_1_6
   service: switch.turn_on
-alias: Set Water Heater on if restarted and home 
+alias: Set Water Heater on if restarted and home
 condition:
   condition: and
   conditions:
-    - "{{ (strptime(states('sensor.water_heater_start_time'), '%Y-%m-%dT%H:%M:%S%z')) < now() }}"
-    - "{{ (strptime(states('sensor.water_heater_off_time'), '%Y-%m-%dT%H:%M:%S%z')) > now() }}"
-    - "{{ states('group.home_owners') == 'home'}}"
+  - '{{ (strptime(states(''sensor.water_heater_start_time''), ''%Y-%m-%dT%H:%M:%S%z''))
+    < now() }}'
+  - '{{ (strptime(states(''sensor.water_heater_off_time''), ''%Y-%m-%dT%H:%M:%S%z''))
+    > now() }}'
+  - '{{ states(''group.home_owners'') == ''home''}}'
+id: 4c57e6f056854814be783c32d97c0e24
 trigger:
-  platform: homeassistant
   event: start
+  platform: homeassistant

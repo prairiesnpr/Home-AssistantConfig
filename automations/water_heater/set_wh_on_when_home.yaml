@@ -6,8 +6,11 @@ alias: Set Water Heater on When Home
 condition:
   condition: and
   conditions:
-    - "{{ (strptime(states('sensor.water_heater_start_time'), '%Y-%m-%dT%H:%M:%S%z')) < now() }}"
-    - "{{ (strptime(states('sensor.water_heater_off_time'), '%Y-%m-%dT%H:%M:%S%z')) > now() }}"
+  - '{{ (strptime(states(''sensor.water_heater_start_time''), ''%Y-%m-%dT%H:%M:%S%z''))
+    < now() }}'
+  - '{{ (strptime(states(''sensor.water_heater_off_time''), ''%Y-%m-%dT%H:%M:%S%z''))
+    > now() }}'
+id: b08ffc27801d48d588874f71c411692d
 trigger:
 - entity_id: group.home_owners
   platform: state

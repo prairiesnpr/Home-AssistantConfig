@@ -3,17 +3,20 @@ action:
     entity_id:
     - fan.master_bath_fan
   service: fan.turn_off
-alias: Master Bathroom Fan Off Time 
+alias: Master Bathroom Fan Off Time
 condition:
-  - condition: state
-    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
-    state: 'off' 
-  - condition: template
-    value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state < states.input_number.bath_fan_off.state }}'
-description: Turn off bathroom fan when humidity is below setpoint, unocuppied and on for more than ten min.
+- condition: state
+  entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+  state: 'off'
+- condition: template
+  value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state < states.input_number.bath_fan_off.state
+    }}'
+description: Turn off bathroom fan when humidity is below setpoint, unocuppied and
+  on for more than ten min.
+id: c3e05421233847b8881f8f31ea7d6aad
 trigger:
+  entity_id: fan.master_bath_fan
   for:
     minutes: 10
-  platform: state 
-  entity_id: fan.master_bath_fan
-  to: 'on' 
+  platform: state
+  to: 'on'

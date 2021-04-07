@@ -8,6 +8,7 @@ condition:
 - condition: state
   entity_id: person.ryan
   state: home
+id: 49d78e8a6b564fd5ac4eafc25e7b6eb5
 trigger:
 - at: sensor.bedroom_lights_off_time
   platform: time

@@ -1,8 +1,9 @@
 action:
   data:
-    entity_id: light.master_bedroom_closet_zha_group_0x0002 
+    entity_id: light.master_bedroom_closet_zha_group_0x0002
   service: light.turn_on
-alias: Mstr Bedroom Closet Lights - On When Opened 
+alias: Mstr Bedroom Closet Lights - On When Opened
+id: 16731e371f46408e82c6c6828426cb54
 trigger:
 - entity_id: binary_sensor.zha_02c39915_1_6
   platform: state

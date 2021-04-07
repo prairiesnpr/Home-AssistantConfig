@@ -1,18 +1,19 @@
 action:
 - data_template:
-    entity_id: "{{ trigger.entity_id }}"
+    entity_id: '{{ trigger.entity_id }}'
   service: fan.turn_off
-alias: Bathroom Fan Off Failsafe 
+alias: Bathroom Fan Off Failsafe
 condition: []
 description: Turn off bathroom fan if it has run for more than forty-five min.
+id: a52b2df19188446f8091b0ec0c40d2c4
 trigger:
-  - for:
-      minutes: 45 
-    platform: state 
-    entity_id: fan.master_bath_fan
-    to: 'on' 
-  - for:
-      minutes: 45 
-    platform: state 
-    entity_id: fan.downstairs_bath_fan 
-    to: 'on' 
+- entity_id: fan.master_bath_fan
+  for:
+    minutes: 45
+  platform: state
+  to: 'on'
+- entity_id: fan.downstairs_bath_fan
+  for:
+    minutes: 45
+  platform: state
+  to: 'on'

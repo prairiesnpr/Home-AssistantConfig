@@ -6,6 +6,7 @@ action:
 alias: Christmas Tree Off
 condition: []
 description: ''
+id: 438e3166dd1443329e3477b42251d001
 trigger:
-- at: input_datetime.system_sleep_time 
+- at: input_datetime.system_sleep_time
   platform: time

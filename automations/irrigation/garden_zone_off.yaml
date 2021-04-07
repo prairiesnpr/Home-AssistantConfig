@@ -3,10 +3,11 @@ action:
     entity_id:
     - switch.xbee_xbee_io_4192cf47_211_6
   service: switch.turn_off
-alias: Turn off garden irrigation zone after 20 min 
+alias: Turn off garden irrigation zone after 20 min
+id: 0ad35af431674c81bcd5a8d3942fac0d
 trigger:
-  for:
-    minutes: 20 
-  platform: state
   entity_id: switch.xbee_xbee_io_4192cf47_211_6
+  for:
+    minutes: 20
+  platform: state
   to: 'on'

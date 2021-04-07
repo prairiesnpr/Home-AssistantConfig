@@ -4,19 +4,20 @@ action:
     profile: movie_red
   service: light.turn_on
 alias: Set Lights on Netflix or Bluray
-trigger:
-  platform: state
-  entity_id: sensor.xbox_source
 condition:
   condition: or
   conditions:
-    - condition: template
-      value_template: "{{ 'Netflix' in trigger.to_state.state }}"
-    - condition: template
-      value_template: "{{ 'Blu-ray' in trigger.to_state.state }}"
-    - condition: template
-      value_template: "{{ 'Plex' in trigger.to_state.state }}"
-    - condition: template
-      value_template: "{{ 'Amazon' in trigger.to_state.state }}"
-    - condition: template
-      value_template: "{{ 'Disney' in trigger.to_state.state }}"
+  - condition: template
+    value_template: '{{ ''Netflix'' in trigger.to_state.state }}'
+  - condition: template
+    value_template: '{{ ''Blu-ray'' in trigger.to_state.state }}'
+  - condition: template
+    value_template: '{{ ''Plex'' in trigger.to_state.state }}'
+  - condition: template
+    value_template: '{{ ''Amazon'' in trigger.to_state.state }}'
+  - condition: template
+    value_template: '{{ ''Disney'' in trigger.to_state.state }}'
+id: 7bf524de9f104eadac9d8c8f774659ea
+trigger:
+  entity_id: sensor.xbox_source
+  platform: state

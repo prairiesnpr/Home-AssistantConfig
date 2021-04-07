@@ -4,6 +4,7 @@ action:
     - switch.xbee_xbee_io_4193fedf_210_6
   service: switch.turn_on
 alias: Garage Toggle On
+id: 2a59c67b664341c48168e94af9bad9f3
 trigger:
 - entity_id: switch.xbee_xbee_io_4193fedf_209_6
   from: 'off'

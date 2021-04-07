@@ -13,6 +13,7 @@ condition:
 - condition: state
   entity_id: sensor.dumpster
   state: garage
+id: 0af778663e7541448750d51e4129f9f1
 trigger:
 - at: 08:00:00
   platform: time

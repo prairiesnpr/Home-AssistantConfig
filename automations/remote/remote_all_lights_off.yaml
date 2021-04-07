@@ -4,6 +4,7 @@ action:
 alias: Remote Press - All Lights Off
 condition: []
 description: ''
+id: 1bd44ecb75674d88a7ffb094c8be719c
 trigger:
 - event_data:
     command: move_to_color_temp

@@ -175,10 +175,33 @@ class CustomFanCard extends Polymer.Element {
 
     setSpeed(e) {
         const speed = e.currentTarget.getAttribute('name');
-        this.hass.callService('fan', 'set_speed', {
-            entity_id: this._config.entity,
-            speed: speed
-        });
+        if (speed === 'smart'){
+            this.hass.callService('fan', 'set_preset_mode', {
+                entity_id: this._config.entity,
+                preset_mode: speed
+            });
+        }
+        else if (speed === 'off') {
+            this.hass.callService('fan', 'turn_off', {
+                entity_id: this._config.entity,
+            });        
+        }
+        else {
+            var percent = 100;
+            if (speed === 'low') {
+                percent = 33;
+            }
+            if (speed === 'medium') {
+                percent = 66;
+            }
+            if (speed === 'high') {
+                percent = 100;
+            }
+            this.hass.callService('fan', 'set_percentage', {
+                entity_id: this._config.entity,
+                percentage: percent
+            });
+        }
     }
 
 }

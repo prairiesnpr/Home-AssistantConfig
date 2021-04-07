@@ -4,11 +4,12 @@ action:
     - switch.xbee_xbee_io_4192cf47_211_6
   service: switch.turn_on
 alias: Turn on garden irrigation zone in morning
+condition:
+- condition: template
+  value_template: "{% set last_run = state_attr('automation.turn_on_garden_irrigation_zone_in_morning',\
+    \ 'last_triggered') %} {{ last_run is none or (now().date() - last_run.date()).days\
+    \ >= 2 }} \n"
+id: 3017ff74f63a4a5eabce04fff4267a11
 trigger:
 - at: 07:30:00
   platform: time
-condition:
-  - condition: template
-    value_template: >
-      {% set last_run = state_attr('automation.turn_on_garden_irrigation_zone_in_morning', 'last_triggered') %}
-      {{ last_run is none or (now().date() - last_run.date()).days >= 2 }} 

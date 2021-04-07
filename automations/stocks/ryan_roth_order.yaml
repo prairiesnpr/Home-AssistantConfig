@@ -1,17 +1,18 @@
-alias: Place order for VOO in Ryan's Roth 
-description: Buy VOO with all available funds in Ryan's Roth account
-trigger:
-- at: 09:45:00
-  platform: time
+action:
+  data_template:
+    variables:
+      account: '{{ states.sensor.available_funds_0218.attributes.accountId }}'
+      av_funds: '{{ states.sensor.available_funds_0218.state }}'
+      ticker: VOO
+  entity_id: script.buy_stock_ira
+  service: homeassistant.turn_on
+alias: Place order for VOO in Ryan's Roth
 condition:
 - condition: state
   entity_id: binary_sensor.market
   state: 'on'
-action:
-  service: homeassistant.turn_on 
-  entity_id: script.buy_stock_ira
-  data_template:
-    variables:
-      ticker: VOO 
-      account: "{{ states.sensor.available_funds_0218.attributes.accountId }}"  
-      av_funds: "{{ states.sensor.available_funds_0218.state }}"
+description: Buy VOO with all available funds in Ryan's Roth account
+id: f2235f5113b64765b72ce4e6367532b6
+trigger:
+- at: 09:45:00
+  platform: time

@@ -1,26 +1,27 @@
 action:
 - data:
+    data:
+      priority: high
+      ttl: 0
     message: The garage door was opened.
     title: Garage Door Opened
-    data:
-      ttl: 0
-      priority: high
   service: notify.all_android_devices
 - data:
-    message: The garage door was opened.
-    title: Garage Door Opened
     data:
       push:
         sound:
-          name: default
           critical: 1
+          name: default
           volume: 1.0
+    message: The garage door was opened.
+    title: Garage Door Opened
   service: notify.all_ios_devices
 alias: Garage Door Opened Alert
 condition:
 - condition: state
   entity_id: group.home_owners
   state: not_home
+id: 4e53f7e81d654d9e9c32e5c088b7a4db
 trigger:
 - entity_id: switch.xbee_xbee_io_4193fedf_209_6
   from: 'off'

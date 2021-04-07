@@ -12,6 +12,7 @@ condition:
 - condition: state
   entity_id: sensor.dumpster
   state: not_home
+id: ca9bf3a7498a4aefac795b2d35518c06
 trigger:
 - at: '11:00:00'
   platform: time

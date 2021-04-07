@@ -4,6 +4,7 @@ action:
     - switch.ledvance_plug_00054922_1
   service: switch.turn_off
 alias: Turn off the Coffee Pot when away
+id: 3cd110d4bd3d4c80af7822de40ec6caa
 trigger:
 - entity_id: group.home_owners
   platform: state

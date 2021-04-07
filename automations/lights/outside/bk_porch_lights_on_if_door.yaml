@@ -11,6 +11,7 @@ condition:
   entity_id: sun.sun
   value_template: '{{ state.attributes.elevation }}'
 description: ''
+id: 9906146158d54663997a7ffa2c5422e1
 trigger:
 - entity_id: binary_sensor.zha_02bfefd9_1_6
   platform: state

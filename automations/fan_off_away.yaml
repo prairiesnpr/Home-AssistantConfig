@@ -3,6 +3,7 @@ action:
     entity_id: all
   service: fan.turn_off
 alias: Turn off all lights when away
+id: 5b74c5909c9d4b65a27023716237a08e
 trigger:
 - entity_id: group.home_owners
   for:

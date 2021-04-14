@@ -8,24 +8,14 @@ condition:
   conditions:
     - condition: template
       value_template: "{{ trigger.payload_json['type'] == 'new' }}"
-    - condition: or
-      conditions:
-        - condition: template
-          value_template: "{{ trigger.payload_json['after']['camera'] == 'front_porch' }}"
-        - condition: template
-          value_template: "{{ trigger.payload_json['after']['camera'] == 'back_yard' }}" 
-        - condition: template
-          value_template: "{{ trigger.payload_json['after']['camera'] == 'garage' }}"
-    - condition: or
-      conditions:
-        - condition: template
-          value_template: "{{ trigger.payload_json['after']['label'] == 'person' }}"
-        - condition: template
-          value_template: "{{ trigger.payload_json['after']['label'] == 'dog' }}"
+    - condition: template
+      value_template: "{{ trigger.payload_json['after']['camera'] in ['garage', 'front_porch', 'back_yard'] }}"
+    - condition: template
+      value_template: "{{ trigger.payload_json['after']['label'] in ['person', 'dog'] }}"
     - condition: template
       value_template: >
-        {% if state_attr('automation.notify_of_events', 'last_triggered') -%}
-            {{ (now() - state_attr('automation.notify_of_events', 'last_triggered')).seconds > 300 }}
+        {% if state_attr('automation.notify_of_events_2', 'last_triggered') -%}
+            {{ (now() - state_attr('automation.notify_of_events_2', 'last_triggered')).seconds > 300 }}
         {%- else -%}
             {{True}}
         {%- endif %}

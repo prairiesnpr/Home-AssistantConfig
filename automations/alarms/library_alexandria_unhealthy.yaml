@@ -24,3 +24,4 @@ trigger:
 - entity_id: sensor.the_library_of_alexandria_healthstatus_2
   from: Healthy
   platform: state
+  for: "00:10:00"

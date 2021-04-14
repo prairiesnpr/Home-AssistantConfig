@@ -24,3 +24,4 @@ trigger:
 - entity_id: sensor.the_metropolitan_library_healthstatus_2
   from: Healthy
   platform: state
+  for: "00:10:00"

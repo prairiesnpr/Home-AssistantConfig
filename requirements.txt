@@ -108,7 +108,7 @@ pycognito==0.1.4
 pycparser==2.20
 pycryptodome==3.9.9
 pycsspeechtts==1.0.4
-pydantic==1.7.3
+pydantic==1.7.4
 PyGObject==3.38.0
 PyJWT==1.7.1
 PyMeeus==0.3.7

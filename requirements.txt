@@ -62,7 +62,7 @@ home-assistant-frontend==20201229.1
 homeassistant==2021.1.4
 html5lib==1.1
 httpcore==0.12.2
-httpx==0.16.1
+httpx==0.23.0
 humanfriendly==9.1
 idna==2.10
 ifaddr==0.1.7

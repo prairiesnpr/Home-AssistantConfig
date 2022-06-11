@@ -196,7 +196,7 @@ responses==0.12.1
 rfc3986==1.4.0
 rpi-bad-power==0.1.0
 RPi.GPIO==0.7.0
-rsa==4.6
+rsa==4.7
 ruamel.yaml==0.15.100
 s3transfer==0.3.3
 samsungctl==0.7.1

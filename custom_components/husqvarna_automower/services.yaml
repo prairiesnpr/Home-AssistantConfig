@@ -1,0 +1,175 @@
+# Describes the format for available Husqvarna Automower services
+
+park_and_start:
+  name: Park and start
+  description: Send a custom command to the mower for parking and starting. The schedule will be overriden for the selected time.
+  target:
+    entity:
+      integration: "husqvarna_automower"
+      domain: "vacuum"
+  fields:
+    command:
+      # Field name as shown in UI
+      name: Command
+      # Description of the field
+      description: Custom command
+      # Whether or not field is required
+      required: true
+      # Example value that can be passed for this field
+      example: "Start"
+      # Selector (https://www.home-assistant.io/docs/blueprint/selectors/) to control the input UI for this field
+      default: "Start"
+      selector:
+        select:
+          options:
+            - "Start"
+            - "Park"
+    duration:
+      name: Duration for the command
+      description: Duration of the command (only for 'Start' and 'Park')
+      required: true
+      example: 60
+      default: 100
+      selector:
+        number:
+          min: 1
+          max: 60480
+          unit_of_measurement: "min"
+
+calendar:
+  name: Calendar
+  description: This service deletes all of your calendar tasks and replaces it with a new one.
+  target:
+    entity:
+      integration: "husqvarna_automower"
+      domain: "vacuum"
+  fields:
+    start:
+      name: Starting time
+      description: When the mower should start mowing (must be earlier than the ending time, seconds will be ignored)
+      required: true
+      example: "11:11:00"
+      default: "12:00:00"
+      selector:
+        time:
+    end:
+      name: Ending time
+      description: When the mower should return to the dock (must be later than the starting time, seconds will be ignored)
+      required: true
+      example: "17:30:00"
+      default: "18:00:00"
+      selector:
+        time:
+    monday:
+      name: Monday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    tuesday:
+      name: Tuesday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    wednesday:
+      name: Wednesday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    thursday:
+      name: Thursday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    friday:
+      name: Friday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    saturday:
+      name: Saturday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+    sunday:
+      name: Sunday
+      description: Do you wish, that your lawn is mowed on this day?
+      required: true
+      example: true
+      default: true
+      selector:
+        boolean:
+
+custom_command:
+  name: Custom command
+  description: Send a highly individual command to the mower, like a multiple calendar task or a command for a new feature, which is not implemented yet by this integration.
+  target:
+    entity:
+      integration: "husqvarna_automower"
+      domain: "vacuum"
+  fields:
+    command_type:
+      name: Command Type
+      description: Command type
+      required: true
+      example: "calendar"
+      default: "actions"
+      selector:
+        select:
+          options:
+            - "actions"
+            - "calendar"
+            - "settings"
+    json_string:
+      name: JSON
+      description: "Custom command as JSON. You can get examples from https://developer.husqvarnagroup.cloud/apis/Automower+Connect+API#/swagger"
+      required: true
+      example: >-
+        '{
+          "data":{
+              "type":"calendar",
+              "attributes":{
+                "tasks":[
+                    {
+                      "start":300,
+                      "duration":360,
+                      "monday":false,
+                      "tuesday":true,
+                      "wednesday":false,
+                      "thursday":false,
+                      "friday":false,
+                      "saturday":false,
+                      "sunday":false
+                    },
+                    {
+                      "start":500,
+                      "duration":60,
+                      "monday":true,
+                      "tuesday":false,
+                      "wednesday":false,
+                      "thursday":false,
+                      "friday":false,
+                      "saturday":false,
+                      "sunday":false
+                    }
+                ]
+              }
+          }
+        }'

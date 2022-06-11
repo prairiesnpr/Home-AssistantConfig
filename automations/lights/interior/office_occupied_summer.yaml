@@ -9,8 +9,8 @@ action:
   service: light.turn_on
 - data:
     entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
-    speed: low
-  service: fan.set_speed
+    percentage: 33 
+  service: fan.set_percentage
 alias: Office Occupied Summer
 condition: '{{ not is_state(''sensor.downstairs_thermostat_operation_mode'', ''heat'')
   }}'

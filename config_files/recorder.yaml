@@ -2,39 +2,3 @@ purge_keep_days: 5
 db_url: !secret recorder_url 
 db_max_retries: 100
 db_retry_wait: 6
-include:
-  entities:
-    - binary_sensor.zha_02bfefd9_1_6 #Back Door
-    - binary_sensor.zha_02e2146c_1_6 #Front Door
-    - binary_sensor.zha_02ec0d9e_1_6 #Kitchen - Garage Door
-    - automation.skip_door_alert #Dog Door 
-    - binary_sensor.zha_02bfe504_1_6 # Garage Walk in door
-    - switch.xbee_xbee_io_4193fedf_211_6 #Garage Rollup Door
-    - switch.xbee_xbee_io_4193fedf_209_6 #Garage Rollup Door Push Button
-    - fan.upstairs_hvac_fan
-    - sensor.downstairs_thermostat_temperature
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1026
-    - sensor.zha_40c04e54_2_1026
-    - sensor.downstairs_thermostat_humidity
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1029
-    - sensor.zha_40c04e54_2_1029
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1027
-    - switch.zha_40c04dcb_1_6
-    - sensor.zha_40c04dcb_2_1026
-    - sensor.zha_40c04dcb_3_1026
-    - person.ryan
-    - person.jeanette
-    - switch.ledvance_plug_00054922_1
-    - lock.yale_yrd256_tsdb_7b1f1911_door_lock
-    - sensor.lumi_lumi_weather_810c5c04_temperature
-    - sensor.lumi_lumi_weather_810c5c04_humidity
-    - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water
-    - switch.xbee_xbee_io_4192cf47_210_6 #Blueberries Water
-    - switch.xbee_xbee_io_4192cf47_212_6 # Spare
-    - sensor.f150
-    - sensor.porsche
-    - sensor.serverroom_battery_charge
-    - sensor.serverroom_load
-    - sensor.serverroom_input_voltage
-    - sensor.serverroom_status
-    - binary_sensor.in_bed

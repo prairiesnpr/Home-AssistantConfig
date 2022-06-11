@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -8,260 +9,304 @@
                 {
                     "cards": [
                         {
-                            "entities": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "buttons": [
+                                    "type": "entities",
+                                    "entities": [
                                         {
-                                            "entity": "binary_sensor.wiebelo_away",
-                                            "icon": "mdi:home",
-                                            "name": false,
-                                            "state_styles": {
-                                                "off": {
-                                                    "button": {
-                                                        "color": "green"
+                                            "buttons": [
+                                                {
+                                                    "entity": "binary_sensor.wiebelo_away",
+                                                    "icon": "mdi:home",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "off": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
                                                     }
+                                                },
+                                                {
+                                                    "entity": "vacuum.aeinarr",
+                                                    "name": false,
+                                                    "tap_action": {
+                                                        "action": "more-info"
+                                                    },
+                                                    "state_styles": {
+                                                        "cleaning": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        },
+                                                        "idle": {
+                                                            "button": {
+                                                                "color": "blue"
+                                                            }
+                                                        },
+                                                        "unavailable": {
+                                                            "button": {
+                                                                "color": "grey"
+                                                            }
+                                                        },
+                                                        "error": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "docked": {
+                                                            "button": {
+                                                                "color": "orange"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.f150",
+                                                    "name": false,
+                                                    "state_color": true,
+                                                    "state_styles": {
+                                                        "garage": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.porsche",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "garage": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
                                                 }
-                                            }
+                                            ],
+                                            "type": "custom:paper-buttons-row"
                                         },
                                         {
-                                            "entity": "sensor.plex_son_of_joel",
-                                            "name": false,
-                                            "state_icons": {
-                                                "0": "mdi:numeric-0-circle-outline",
-                                                "1": "mdi:numeric-1-circle-outline",
-                                                "2": "mdi:numeric-2-circle-outline",
-                                                "3": "mdi:numeric-3-circle-outline",
-                                                "4": "mdi:numeric-4-circle-outline",
-                                                "5": "mdi:numeric-5-circle-outline",
-                                                "6": "mdi:numeric-6-circle-outline",
-                                                "7": "mdi:numeric-7-circle-outline",
-                                                "8": "mdi:numeric-8-circle-outline",
-                                                "9": "mdi:numeric-9-circle-outline"
-                                            },
-                                            "state_styles": {
-                                                "1": {
-                                                    "button": {
-                                                        "color": "#00cc00"
+                                            "buttons": [
+                                                {
+                                                    "entity": "sensor.plex_son_of_joel",
+                                                    "name": false,
+                                                    "state_icons": {
+                                                        "0": "mdi:numeric-0-circle-outline",
+                                                        "1": "mdi:numeric-1-circle-outline",
+                                                        "2": "mdi:numeric-2-circle-outline",
+                                                        "3": "mdi:numeric-3-circle-outline",
+                                                        "4": "mdi:numeric-4-circle-outline",
+                                                        "5": "mdi:numeric-5-circle-outline",
+                                                        "6": "mdi:numeric-6-circle-outline",
+                                                        "7": "mdi:numeric-7-circle-outline",
+                                                        "8": "mdi:numeric-8-circle-outline",
+                                                        "9": "mdi:numeric-9-circle-outline"
+                                                    },
+                                                    "state_styles": {
+                                                        "1": {
+                                                            "button": {
+                                                                "color": "#00cc00"
+                                                            }
+                                                        },
+                                                        "2": {
+                                                            "button": {
+                                                                "color": "#66ff66"
+                                                            }
+                                                        },
+                                                        "3": {
+                                                            "button": {
+                                                                "color": "#ccff99"
+                                                            }
+                                                        },
+                                                        "4": {
+                                                            "button": {
+                                                                "color": "#ffffcc"
+                                                            }
+                                                        },
+                                                        "5": {
+                                                            "button": {
+                                                                "color": "#ffff66"
+                                                            }
+                                                        },
+                                                        "6": {
+                                                            "button": {
+                                                                "color": "#ffcc00"
+                                                            }
+                                                        },
+                                                        "7": {
+                                                            "button": {
+                                                                "color": "#ff9900"
+                                                            }
+                                                        },
+                                                        "8": {
+                                                            "button": {
+                                                                "color": "#ff6600"
+                                                            }
+                                                        },
+                                                        "9": {
+                                                            "button": {
+                                                                "color": "#ff0000"
+                                                            }
+                                                        }
                                                     }
                                                 },
-                                                "2": {
-                                                    "button": {
-                                                        "color": "#66ff66"
+                                                {
+                                                    "entity": "sensor.serverroom_status",
+                                                    "name": false,
+                                                    "state_icons": {
+                                                        "online": "mdi:power-plug",
+                                                        "on Battery Battery Discharging": "mdi:battery-alert",
+                                                        "online Battery Charging": "mdi:battery-charging"
+                                                    },
+                                                    "state_styles": {
+                                                        "online": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        },
+                                                        "online Battery Battery Charging": {
+                                                            "button": {
+                                                                "color": "yellow"
+                                                            }
+                                                        },
+                                                        "on Battery Battery Discharging": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "binary_sensor.rpi_power_status",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "off": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        },
+                                                        "on": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        }
                                                     }
                                                 },
-                                                "3": {
-                                                    "button": {
-                                                        "color": "#ccff99"
-                                                    }
+                                                {
+                                                    "entity": "sensor.the_library_of_alexandria_healthstatus_2",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "healthy": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        },
+                                                        "unhealthy": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "warning": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "unknown": {
+                                                            "button": {
+                                                                "color": "yellow"
+                                                            }
+                                                        },
+                                                        "unavailable": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_icons": {
+                                                        "unknown": "mdi:server-network-off",
+                                                        "warning": "mdi:server-network-off",
+                                                        "unhealthy": "mdi:server-network-off",
+                                                        "healthy": "mdi:server-network",
+                                                        "unavailable": "mdi:server-network-off"
+                                                    },
+                                                    "state_color": true
                                                 },
-                                                "4": {
-                                                    "button": {
-                                                        "color": "#ffffcc"
-                                                    }
+                                                {
+                                                    "entity": "sensor.the_metropolitan_library_healthstatus_2",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "healthy": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        },
+                                                        "unhealthy": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "warning": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "unknown": {
+                                                            "button": {
+                                                                "color": "yellow"
+                                                            }
+                                                        },
+                                                        "unavailable": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_icons": {
+                                                        "unknown": "mdi:server-network-off",
+                                                        "warning": "mdi:server-network-off",
+                                                        "unhealthy": "mdi:server-network-off",
+                                                        "healthy": "mdi:server-network",
+                                                        "unavailable": "mdi:server-network-off"
+                                                    },
+                                                    "state_color": true
                                                 },
-                                                "5": {
-                                                    "button": {
-                                                        "color": "#ffff66"
-                                                    }
-                                                },
-                                                "6": {
-                                                    "button": {
-                                                        "color": "#ffcc00"
-                                                    }
-                                                },
-                                                "7": {
-                                                    "button": {
-                                                        "color": "#ff9900"
-                                                    }
-                                                },
-                                                "8": {
-                                                    "button": {
-                                                        "color": "#ff6600"
-                                                    }
-                                                },
-                                                "9": {
-                                                    "button": {
-                                                        "color": "#ff0000"
+                                                {
+                                                    "entity": "binary_sensor.amos_power_status",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "off": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "unavailable": {
+                                                            "button": {
+                                                                "color": "red"
+                                                            }
+                                                        },
+                                                        "on": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_icons": {
+                                                        "unavailable": "mdi:server-off",
+                                                        "off": "mdi:server-off",
+                                                        "on": "mdi:server"
                                                     }
                                                 }
-                                            }
-                                        },
-                                        {
-                                            "entity": "sensor.f150",
-                                            "name": false,
-                                            "state_color": true,
-                                            "state_styles": {
-                                                "garage": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "entity": "sensor.porsche",
-                                            "name": false,
-                                            "state_styles": {
-                                                "garage": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                }
-                                            },
-                                            "state_color": true
-                                        },
-                                        {
-                                            "entity": "sensor.serverroom_status",
-                                            "name": false,
-                                            "state_icons": {
-                                                "Online": "mdi:power-plug",
-                                                "On Battery Battery Discharging": "mdi:battery-alert",
-                                                "Online Battery Charging": "mdi:battery-charging"
-                                            },
-                                            "state_styles": {
-                                                "online": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                },
-                                                "online Battery Battery Charging": {
-                                                    "button": {
-                                                        "color": "yellow"
-                                                    }
-                                                },
-                                                "on Battery Battery Discharging": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                }
-                                            },
-                                            "state_color": true
-                                        },
-                                        {
-                                            "entity": "binary_sensor.rpi_power_status",
-                                            "name": false,
-                                            "state_styles": {
-                                                "off": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                },
-                                                "on": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "entity": "sensor.the_library_of_alexandria_healthstatus_2",
-                                            "name": false,
-                                            "state_styles": {
-                                                "healthy": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                },
-                                                "unhealthy": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "warning": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "unknown": {
-                                                    "button": {
-                                                        "color": "yellow"
-                                                    }
-                                                },
-                                                "unavailable": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                }
-                                            },
-                                            "state_icons": {
-                                                "unknown": "mdi:server-network-off",
-                                                "warning": "mdi:server-network-off",
-                                                "unhealthy": "mdi:server-network-off",
-                                                "healthy": "mdi:server-network",
-                                                "unavailable": "mdi:server-network-off"
-                                            },
-                                            "state_color": true
-                                        },
-                                        {
-                                            "entity": "sensor.the_metropolitan_library_healthstatus_2",
-                                            "name": false,
-                                            "state_styles": {
-                                                "healthy": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                },
-                                                "unhealthy": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "warning": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "unknown": {
-                                                    "button": {
-                                                        "color": "yellow"
-                                                    }
-                                                },
-                                                "unavailable": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                }
-                                            },
-                                            "state_icons": {
-                                                "unknown": "mdi:server-network-off",
-                                                "warning": "mdi:server-network-off",
-                                                "unhealthy": "mdi:server-network-off",
-                                                "healthy": "mdi:server-network",
-                                                "unavailable": "mdi:server-network-off"
-                                            },
-                                            "state_color": true
-                                        },
-                                        {
-                                            "entity": "binary_sensor.amos_power_status",
-                                            "name": false,
-                                            "state_styles": {
-                                                "off": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "unavailable": {
-                                                    "button": {
-                                                        "color": "red"
-                                                    }
-                                                },
-                                                "on": {
-                                                    "button": {
-                                                        "color": "green"
-                                                    }
-                                                }
-                                            },
-                                            "state_icons": {
-                                                "unavailable": "mdi:server-off",
-                                                "off": "mdi:server-off",
-                                                "on": "mdi:server"
-                                            }
+                                            ],
+                                            "type": "custom:paper-buttons-row"
                                         }
-                                    ],
-                                    "type": "custom:paper-buttons-row"
+                                    ]
                                 }
-                            ],
-                            "type": "entities"
+                            ]
                         },
                         {
                             "type": "custom:atomic-calendar-revive",
@@ -315,8 +360,10 @@
                             "type": "glance"
                         },
                         {
-                            "entity": "weather.dark_sky",
-                            "type": "weather-forecast"
+                            "show_current": true,
+                            "show_forecast": true,
+                            "type": "weather-forecast",
+                            "entity": "weather.koqt_hourly"
                         },
                         {
                             "cards": [
@@ -567,6 +614,49 @@
                                     "icon": "mdi:phone-alert"
                                 }
                             ]
+                        },
+                        {
+                            "type": "custom:xiaomi-vacuum-map-card",
+                            "entity": "vacuum.aeinarr",
+                            "vacuum_platform": "send_command",
+                            "map_source": {
+                                "camera": "camera.aeinarr"
+                            },
+                            "map_locked": true,
+                            "map_modes": [
+                                {
+                                    "template": "vacuum_goto_predefined",
+                                    "run_immediately": true
+                                }
+                            ],
+                            "calibration_source": {
+                                "identity": true
+                            },
+                            "tiles": [
+                                {
+                                    "label": "Cutting Height",
+                                    "entity": "number.aeinarr_cutting_height",
+                                    "icon": "mdi:grass"
+                                },
+                                {
+                                    "label": "Headlight Mode",
+                                    "entity": "select.aeinarr_headlight_mode",
+                                    "icon": "mdi:car-light-high"
+                                },
+                                {
+                                    "label": "Battery",
+                                    "entity": "sensor.aeinarr_battery_level",
+                                    "unit": "%",
+                                    "icon": "mdi:battery"
+                                },
+                                {
+                                    "label": "Status",
+                                    "entity": "vacuum.aeinarr",
+                                    "attribute": "status",
+                                    "icon": "mdi:robot-mower"
+                                }
+                            ],
+                            "title": "\u00c6inarr"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -1760,6 +1850,10 @@
                                 {
                                     "entity": "switch.sengled_e1c_nb6_f32d0400_on_off",
                                     "name": "Christmas Tree"
+                                },
+                                {
+                                    "entity": "switch.plug_outdoor_christmas_lights_on_off",
+                                    "icon": "mdi:led-outline"
                                 }
                             ],
                             "type": "entities"
@@ -2581,6 +2675,225 @@
                     "cards": [
                         {
                             "entities": [
+                                "sensor.christmas_lights",
+                                "switch.christmas_lights_switch"
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.system_start_time"
+                                },
+                                {
+                                    "entity": "input_datetime.jeanette_start_time"
+                                },
+                                {
+                                    "entity": "sensor.calculated_system_start_time"
+                                },
+                                {
+                                    "entity": "sensor.system_start_next"
+                                },
+                                {
+                                    "entity": "sensor.water_heater_start_time"
+                                },
+                                {
+                                    "entity": "sensor.coffee_start_time"
+                                },
+                                {
+                                    "entity": "sensor.outdoor_lights_on"
+                                }
+                            ],
+                            "title": "Day Start"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.system_sleep_time"
+                                },
+                                {
+                                    "entity": "sensor.water_heater_off_time"
+                                },
+                                {
+                                    "entity": "sensor.coffee_off_time"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_lights_off_time"
+                                }
+                            ],
+                            "title": "Day End"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
+                                    "name": "Master Bedroom Left Lamp"
+                                },
+                                {
+                                    "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
+                                    "name": "Master Bedroom Right Lamp"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_61d32600_1_1794",
+                                    "name": "Front Porch Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45856_00db2500_1_1794",
+                                    "name": "HVAC Booster Fan"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
+                                    "name": "Kitchen Can Lights"
+                                },
+                                {
+                                    "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
+                                    "name": "Living Room Can Lights"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_relay_c2acn01_08ec4404_electrical_measurement",
+                                    "name": "Downstairs Bathroom Fan"
+                                },
+                                {
+                                    "entity": "sensor.lumi_lumi_relay_c2acn01_b4012704_electrical_measurement",
+                                    "name": "Master Bathroom Fan"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "automation.turn_on_bedroom_lights_in_the_morning",
+                            "hold_action": {
+                                "action": "more-info"
+                            },
+                            "icon": "mdi:alarm",
+                            "name": "Alarm",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "automation.toggle",
+                                "service_data": {
+                                    "entity_id": "automation.turn_on_bedroom_lights_in_the_morning"
+                                }
+                            },
+                            "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.xbox_source"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
+                            "type": "markdown"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "person.ryan",
+                                    "image": "/images/ryan_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/ryan_home.jpg",
+                                        "not_home": "/images/ryan_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                },
+                                {
+                                    "entity": "person.jeanette",
+                                    "image": "/images/jeanette_away.jpg",
+                                    "state_image": {
+                                        "home": "/images/jeanette_home.jpg",
+                                        "not_home": "/images/jeanette_away.jpg"
+                                    },
+                                    "type": "picture-entity"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.koqt_daynight",
+                            "show_forecast": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jasco_products_45856_61d32600_1",
+                                    "name": "Front Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
+                                    "name": "Back Porch"
+                                },
+                                {
+                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+                                },
+                                {
+                                    "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
+                                    "icon": "mdi:led-strip-variant",
+                                    "name": "Backyard RGB"
+                                },
+                                {
+                                    "entity": "light.path_lights"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Outdoor Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                                    "name": "Fan Light"
+                                },
+                                {
+                                    "entity": "fan.downstairs_bath_fan",
+                                    "state_color": true
+                                }
+                            ],
+                            "title": "Downstairs Bathroom",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.ge_appliances_zll_light_000230a7_1"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.ge_appliances_zll_light_0006c093_1"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.jasco_products_45856_00db2500_1"
+                        },
+                        {
+                            "entity": "weather.dark_sky",
+                            "type": "weather-forecast"
+                        }
+                    ],
+                    "path": "test",
+                    "title": "test"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
                                 {
                                     "entity": "sensor.jeanette_s_iphone_activity"
                                 },
@@ -2773,12 +3086,6 @@
                                     "entity": "sensor.ballam_ringer_mode"
                                 },
                                 {
-                                    "entity": "sensor.ballam_rx"
-                                },
-                                {
-                                    "entity": "sensor.rx"
-                                },
-                                {
                                     "entity": "sensor.ballam_sim_1"
                                 },
                                 {
@@ -2795,12 +3102,6 @@
                                 },
                                 {
                                     "entity": "sensor.ballam_total_tx_gb"
-                                },
-                                {
-                                    "entity": "sensor.ballam_tx"
-                                },
-                                {
-                                    "entity": "sensor.tx"
                                 },
                                 {
                                     "entity": "sensor.ballam_volume_level_alarm"
@@ -2836,204 +3137,179 @@
                                     "entity": "binary_sensor.ballam_wifi_state"
                                 }
                             ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "lock.fordpass_doorlock",
+                                "switch.fordpass_ignition_switch"
+                            ],
+                            "title": "Ford Vehicle (3FMCR9C61NRD68617)"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.fordpass_alarm"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_battery"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_deepsleepinprogress"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_doorstatus"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_firmwareupginprogress"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_fuel"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_gps"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_ignitionstatus"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_lastrefresh"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_messages"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_odometer"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_oil"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_remotestartstatus"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_tirepressure"
+                                },
+                                {
+                                    "entity": "sensor.fordpass_windowposition"
+                                },
+                                {
+                                    "entity": "sensor.bronco_sport_odo"
+                                },
+                                {
+                                    "entity": "input_number.bronco_sport_fuel_total"
+                                },
+                                {
+                                    "entity": "device_tracker.fordpass_tracker"
+                                }
+                            ],
+                            "title": "Bronco Sport",
+                            "state_color": true
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Bronco Sport",
+                            "cards": [
+                                {
+                                    "type": "gauge",
+                                    "entity": "sensor.fordpass_fuel",
+                                    "unit": "%",
+                                    "needle": true,
+                                    "name": "Fuel",
+                                    "max": 100,
+                                    "severity": {
+                                        "green": 50,
+                                        "yellow": 25,
+                                        "red": 0
+                                    }
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "buttons": [
+                                                {
+                                                    "entity": "sensor.fordpass_ignitionstatus",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "run": {
+                                                            "button": {
+                                                                "color": "yellow"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_windowposition",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "closed": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_doorstatus",
+                                                    "name": false,
+                                                    "state_color": true,
+                                                    "state_styles": {
+                                                        "closed": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_battery",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_tirepressure",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_oil",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                }
+                                            ],
+                                            "type": "custom:paper-buttons-row"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:cellphone-android",
                     "title": "Devices"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                "sensor.christmas_lights",
-                                "switch.christmas_lights_switch"
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "input_datetime.system_start_time"
-                                },
-                                {
-                                    "entity": "input_datetime.jeanette_start_time"
-                                },
-                                {
-                                    "entity": "sensor.calculated_system_start_time"
-                                },
-                                {
-                                    "entity": "sensor.system_start_next"
-                                },
-                                {
-                                    "entity": "sensor.water_heater_start_time"
-                                },
-                                {
-                                    "entity": "sensor.coffee_start_time"
-                                },
-                                {
-                                    "entity": "sensor.outdoor_lights_on"
-                                }
-                            ],
-                            "title": "Day Start"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "input_datetime.system_sleep_time"
-                                },
-                                {
-                                    "entity": "sensor.water_heater_off_time"
-                                },
-                                {
-                                    "entity": "sensor.coffee_off_time"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_lights_off_time"
-                                }
-                            ],
-                            "title": "Day End"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
-                                    "name": "Master Bedroom Left Lamp"
-                                },
-                                {
-                                    "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
-                                    "name": "Master Bedroom Right Lamp"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45856_61d32600_1_1794",
-                                    "name": "Front Porch Lights"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45856_00db2500_1_1794",
-                                    "name": "HVAC Booster Fan"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
-                                    "name": "Kitchen Can Lights"
-                                },
-                                {
-                                    "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
-                                    "name": "Living Room Can Lights"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_relay_c2acn01_08ec4404_electrical_measurement",
-                                    "name": "Downstairs Bathroom Fan"
-                                },
-                                {
-                                    "entity": "sensor.lumi_lumi_relay_c2acn01_b4012704_electrical_measurement",
-                                    "name": "Master Bathroom Fan"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entity": "automation.turn_on_bedroom_lights_in_the_morning",
-                            "hold_action": {
-                                "action": "more-info"
-                            },
-                            "icon": "mdi:alarm",
-                            "name": "Alarm",
-                            "show_icon": true,
-                            "show_name": true,
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "automation.toggle",
-                                "service_data": {
-                                    "entity_id": "automation.turn_on_bedroom_lights_in_the_morning"
-                                }
-                            },
-                            "type": "entity-button"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.xbox_source"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "content": "Total Automations: {{ states.automation | count }}\n Total Scripts: {{ states.scripts | count }}\n",
-                            "type": "markdown"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "person.ryan",
-                                    "image": "/images/ryan_away.jpg",
-                                    "state_image": {
-                                        "home": "/images/ryan_home.jpg",
-                                        "not_home": "/images/ryan_away.jpg"
-                                    },
-                                    "type": "picture-entity"
-                                },
-                                {
-                                    "entity": "person.jeanette",
-                                    "image": "/images/jeanette_away.jpg",
-                                    "state_image": {
-                                        "home": "/images/jeanette_home.jpg",
-                                        "not_home": "/images/jeanette_away.jpg"
-                                    },
-                                    "type": "picture-entity"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        },
-                        {
-                            "type": "weather-forecast",
-                            "entity": "weather.koqt_daynight",
-                            "show_forecast": true
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.jasco_products_45856_61d32600_1",
-                                    "name": "Front Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                                    "name": "Back Porch"
-                                },
-                                {
-                                    "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
-                                },
-                                {
-                                    "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
-                                    "icon": "mdi:led-strip-variant",
-                                    "name": "Backyard RGB"
-                                },
-                                {
-                                    "entity": "light.path_lights"
-                                }
-                            ],
-                            "show_header_toggle": true,
-                            "title": "Outdoor Lights",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
-                                    "name": "Fan Light"
-                                },
-                                {
-                                    "entity": "fan.downstairs_bath_fan",
-                                    "state_color": true
-                                }
-                            ],
-                            "title": "Downstairs Bathroom",
-                            "type": "entities"
-                        }
-                    ],
-                    "path": "test",
-                    "title": "test"
                 },
                 {
                     "title": "Cam Test",
@@ -3045,9 +3321,6 @@
                             "entities": [
                                 {
                                     "entity": "sensor.front_porch_camera_fps"
-                                },
-                                {
-                                    "entity": "switch.front_porch_clips"
                                 },
                                 {
                                     "entity": "switch.front_porch_detect"
@@ -3079,15 +3352,30 @@
                         {
                             "type": "entities",
                             "entities": [
-                                "sensor.back_yard_camera_fps",
-                                "switch.back_yard_clips",
-                                "switch.back_yard_detect",
-                                "sensor.back_yard_detection_fps",
-                                "sensor.back_yard_person",
-                                "binary_sensor.back_yard_person_motion",
-                                "sensor.back_yard_process_fps",
-                                "sensor.back_yard_skipped_fps",
-                                "switch.back_yard_snapshots"
+                                {
+                                    "entity": "sensor.back_yard_camera_fps"
+                                },
+                                {
+                                    "entity": "switch.back_yard_detect"
+                                },
+                                {
+                                    "entity": "sensor.back_yard_detection_fps"
+                                },
+                                {
+                                    "entity": "sensor.back_yard_person"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_yard_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.back_yard_process_fps"
+                                },
+                                {
+                                    "entity": "sensor.back_yard_skipped_fps"
+                                },
+                                {
+                                    "entity": "switch.back_yard_snapshots"
+                                }
                             ]
                         },
                         {
@@ -3120,33 +3408,32 @@
                             ]
                         },
                         {
-                            "type": "picture-entity",
-                            "entity": "camera.front_porch_latest"
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.porsche_latest"
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.back_yard_latest"
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.front_porch_h265"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
-                                "sensor.garage_camera_fps",
-                                "switch.garage_clips",
-                                "switch.garage_detect",
-                                "sensor.garage_detection_fps",
-                                "sensor.garage_person",
-                                "binary_sensor.garage_person_motion",
-                                "sensor.garage_process_fps",
-                                "sensor.garage_skipped_fps",
-                                "switch.garage_snapshots"
+                                {
+                                    "entity": "sensor.garage_camera_fps"
+                                },
+                                {
+                                    "entity": "switch.garage_detect"
+                                },
+                                {
+                                    "entity": "sensor.garage_detection_fps"
+                                },
+                                {
+                                    "entity": "sensor.garage_person"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.garage_process_fps"
+                                },
+                                {
+                                    "entity": "sensor.garage_skipped_fps"
+                                },
+                                {
+                                    "entity": "switch.garage_snapshots"
+                                }
                             ]
                         }
                     ]

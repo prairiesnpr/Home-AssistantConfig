@@ -1,0 +1,13 @@
+alias: "Bronco Sport Fuel Totalizer"
+id: 49ee629a642b43a7ba796ca000f23f71
+trigger:
+  platform: state
+  entity_id: sensor.bronco_sport_fuel 
+  to:
+condition: "{{ trigger.to_state.state|float < trigger.from_state.state|float }}"
+action:
+  service: input_number.set_value
+  target:
+    entity_id: input_number.bronco_sport_fuel_total 
+  data:
+    value: "{{ states('input_number.bronco_sport_fuel_total')|float + (trigger.from_state.state|float - trigger.to_state.state|float) }}"

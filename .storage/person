@@ -5,14 +5,12 @@
         "items": [
             {
                 "device_trackers": [
-                    "device_tracker.balaam",
-                    "device_tracker.ryans_ipad_5",
-                    "device_tracker.ballam",
-                    "device_tracker.sm_g991u"
+                    "device_tracker.ballam"
                 ],
                 "id": "72b9c204f62b4f82b0ace8fec1f79be6",
                 "name": "Ryan",
-                "user_id": "af985ab56a9e4d00998711c0fe6586bd"
+                "user_id": "af985ab56a9e4d00998711c0fe6586bd",
+                "picture": null
             },
             {
                 "device_trackers": [

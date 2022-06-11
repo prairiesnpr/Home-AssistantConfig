@@ -1,0 +1,26 @@
+alias: Master Bedroom Switch - On
+description: ''
+id: 47bfa142e9d811ec8fea0242ac120002
+trigger:
+  - platform: event
+    event_type: zha_event
+    event_data:
+      device_ieee: 04:cf:8c:df:3c:75:c1:67
+      unique_id: 04:cf:8c:df:3c:75:c1:67:2:0x0012
+      device_id: dbbe8d29713d44d7961de69d1680e3f6
+      endpoint_id: 2
+      cluster_id: 18
+      command: 2_single
+      args:
+        button: 2
+        press_type: single
+        attr_id: 85
+        value: 1
+condition: []
+action:
+  - service: light.turn_on
+    target:
+      entity_id: light.bedroom_bed_lights_zha_group_0x0004
+    data: {}
+mode: single
+

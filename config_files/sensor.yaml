@@ -1,10 +1,6 @@
 - platform: miflora
   mac: '80:EA:CA:88:E3:EB' 
   name: Poinsettia
-- platform: mqtt
-  name: "Christmas Lights"
-  state_topic: "christmas/sensor0"
-  value_template: "{{ value_json.status }}"
 - platform: mqtt_room
   device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
   name: Dumpster
@@ -20,8 +16,26 @@
   name: Porsche 
   state_topic: room_presence
   away_timeout: 30
+- platform: template
+  sensors:
+    bronco_sport_odo:
+      friendly_name: Bronco Sport Odometer
+      unit_of_measurement: Mi
+      value_template: "{{ (states('sensor.fordpass_odometer')|float * 0.6214)|round(2) }}"
+- platform: template
+  sensors:
+    bronco_sport_fuel:
+      friendly_name: Bronco Sport Fuel
+      unit_of_measurement: Gal
+      value_template: "{{ (states('sensor.fordpass_fuel')|float * 0.15385)|round(2) }}"
+
 - platform: template 
   sensors:
+    server_room_ups_power:
+      friendly_name: Server Room UPS Power
+      device_class: power  
+      unit_of_measurement: "W"
+      value_template: "{{ ((states('sensor.serverroom_load')|float * states('sensor.serverroom_nominal_real_power')|int / 100) * 0.98)|round(2) }}"
     server_room_ups_battery_runtime:
       friendly_name: Server Room Battery Runtime
       value_template: "{{ relative_time(now()-timedelta(seconds=(states('sensor.serverroom_battery_runtime')|int))) }}"
@@ -32,8 +46,8 @@
         {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
         {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
         {% set start_dates =[now().replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
-        {% if is_state('person.ryan', 'home') %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+        {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
         {% endif %}
         {% if is_state('person.jeanette', 'home') %}
           {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
@@ -46,8 +60,8 @@
         {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
         {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
         {% set start_dates =[(now() + timedelta(days=1)).replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
-        {% if is_state('person.ryan', 'home') %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S.%fZ')|as_local())] %}
+        {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
+          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
         {% endif %}
         {% if is_state('person.jeanette', 'home') %}
           {% set start_dates = start_dates + [(now() + timedelta(days=1)).replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}

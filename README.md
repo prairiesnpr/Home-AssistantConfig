@@ -1,5 +1,5 @@
 
-# Home Assistant (2021.4.0) configuration
+# Home Assistant (2022.6.1) configuration
 
 ## Zigbee Network
 
@@ -76,6 +76,14 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 ## HVAC
 * Thermostat
   * Nest 3rd Generation Thermostat Pro T3008US
+
+## Mower
+* Husqvarna Automower 450xh
+
+## Vehicles
+* Ford
+  * Bronco Sport - Tracking with fordpass
+
 
 ## BLE Tracking
 * Hardware

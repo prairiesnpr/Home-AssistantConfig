@@ -1,5 +1,6 @@
 include:
   entities:
+    - device_tracker.aeinarr
     - sensor.downstairs_thermostat_temperature
     - sensor.lumi_lumi_weather_02c9fa4a_1_1026
     - sensor.zha_40c04e54_2_1026

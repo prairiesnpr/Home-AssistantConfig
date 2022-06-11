@@ -1,7 +1,7 @@
 {
   "domain": "tdameritrade",
   "name": "TDAmeritrade",
-  "version": "0.1.1",
+  "version": "0.3",
   "config_flow": true,
   "documentation": "https://github.com/prairiesnpr/hass-tdameritrade",
   "issue_tracker": "https://github.com/prairiesnpr/hass-tdameritrade/issues",
@@ -16,5 +16,6 @@
   ],
   "codeowners": [
     "@PrairieSnpr"
-  ]
+  ],
+  "iot_class": "cloud_polling"
 }

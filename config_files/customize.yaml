@@ -109,6 +109,7 @@ zha.zha_40c04dcb:
   friendly_name: Water Heater
 sensor.zha_40c04dcb_1_1794:
   friendly_name: Apparent Power
+  unit_of_measurement: VA
 sensor.water_heater_time_to_temp:
   icon: mdi:camera-timer
 zha.isilentllc_door_1:
@@ -189,3 +190,17 @@ light.master_bedroom_closet_zha_group_0x0002:
   icon: bha:ceiling-lamp-round
 light.path_lights:
   icon: bha:path-light
+device_tracker.aeinarr:
+  entity_picture: /local/450x.png
+sensor.downstairs_bath_fan_power_sum:
+  last_reset: "1970-01-01T00:00:00+00:00"
+  state_class: total_increasing
+  device_type: Electric Metering
+sensor.master_bath_fan_power_sum:
+  last_reset: "1970-01-01T00:00:00+00:00"
+  state_class: total_increasing
+  device_type: Electric Metering
+sensor.server_room_ups_power_sum:
+  last_reset: "1970-01-01T00:00:00+00:00"
+  state_class: total_increasing
+  device_type: Electric Metering

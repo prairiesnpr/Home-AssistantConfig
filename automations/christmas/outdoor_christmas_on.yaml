@@ -1,6 +1,6 @@
 action:
 - data:
-    entity_id: switch.sengled_e1c_nb6_6d0b0400_on_off
+    entity_id: switch.plug_outdoor_christmas_lights_on_off 
   service: homeassistant.turn_on
 alias: Christmas Outdoor Lights On
 condition: []

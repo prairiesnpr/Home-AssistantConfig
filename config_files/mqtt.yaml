@@ -1,9 +1,17 @@
-broker: !secret mqtt_path 
-discovery: true
 discovery_prefix: !secret mqtt_prefix 
-birth_message:
-  topic: !secret mqtt_status
-  payload: 'online'
-will_message:
-  topic: !secret mqtt_status
-  payload: 'offline'
+switch:
+  name: "Christmas Lights Switch"
+  state_topic: "christmas/switch0"
+  command_topic: "christmas/switch0/set"
+  availability_topic: "christmas/switch0/available"
+  payload_on: "ON"
+  payload_off: "OFF"
+  state_on: "ON"
+  state_off: "OFF"
+  optimistic: false
+  qos: 0
+  retain: false
+sensor:
+  name: "Christmas Lights"
+  state_topic: "christmas/sensor0"
+  value_template: "{{ value_json.status }}"

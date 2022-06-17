@@ -12,8 +12,13 @@ action:
     - fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
   service: fan.turn_off
 alias: Office Not Occupied
-condition: []
-description: ''
+
+condition: 
+  condition: state
+  entity_id:
+    - binary_sensor.cx02up3yv_active
+  state: "off"
+description: 'Turn office off if unocupied'
 id: 0cdd5e8a9d6a44318a1f6ba5a420a204
 trigger:
 - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1

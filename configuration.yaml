@@ -53,8 +53,6 @@ input_select:
 input_text:
 scene:
 ssdp:
-stream:
-system_health:
 tag:
 timer:
 usb:

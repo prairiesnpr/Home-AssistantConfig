@@ -1,0 +1,23 @@
+id: '1655076810794'
+alias: Disable Adaptive Lighting When Master Bedroom Lights turn off
+description: ''
+trigger:
+- platform: state
+  entity_id:
+  - light.master_bedroom_lights
+  from: 'on'
+  to: 'off'
+condition: []
+action:
+- service: adaptive_lighting.set_manual_control
+  data:
+    entity_id: switch.adaptive_lighting_master_bedroom
+- delay:
+    hours: 0
+    minutes: 0
+    seconds: 30
+    milliseconds: 0
+- service: adaptive_lighting.apply
+  data:
+    entity_id: switch.adaptive_lighting_master_bedroom
+mode: single

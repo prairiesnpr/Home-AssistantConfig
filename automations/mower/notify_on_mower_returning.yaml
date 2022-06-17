@@ -1,0 +1,14 @@
+alias: Notify on mower returning 
+id: 183310cb-e2d0-421c-99f0-c29f79ec045d 
+trigger:
+  - platform: state
+    entity_id: vacuum.aeinarr
+    to: 'returning' 
+action:
+  - service: notify.all_ios_devices 
+    data_template:
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} is returning to the inn.' 
+  - service: notify.all_android_devices
+    data_template:
+      title: '{{ state_attr("camera.aeinarr", "friendly_name") }} Quest Update!'
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} is returning to the inn.' 

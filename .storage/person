@@ -1,11 +1,13 @@
 {
     "version": 2,
+    "minor_version": 1,
     "key": "person",
     "data": {
         "items": [
             {
                 "device_trackers": [
-                    "device_tracker.ballam"
+                    "device_tracker.ballam",
+                    "device_tracker.cx02up3yv_3"
                 ],
                 "id": "72b9c204f62b4f82b0ace8fec1f79be6",
                 "name": "Ryan",

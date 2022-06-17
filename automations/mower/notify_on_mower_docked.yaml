@@ -1,0 +1,14 @@
+alias: Notify on mower docked 
+id: 9f49e5f1-80e4-4e70-905e-881ac7e26638 
+trigger:
+  - platform: state
+    entity_id: vacuum.aeinarr
+    to: 'docked' 
+action:
+  - service: notify.all_ios_devices 
+    data_template:
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} has arrived at the inn.' 
+  - service: notify.all_android_devices
+    data_template:
+      title: '{{ state_attr("camera.aeinarr", "friendly_name") }} Quest Update!'
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} has arrived at the inn.' 

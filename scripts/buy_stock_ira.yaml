@@ -28,4 +28,4 @@ sequence:
 - data_template:
     message: "Placed order for {{ ((av_funds | float) // (states.get_quote_service[ticker|lower].attributes.bidPrice | float)) }} shares of {{ ticker }} at {{ states.get_quote_service[ticker|lower].attributes.bidPrice }} in account {{ account }}." 
     title: Order Placed 
-  service: notify.pushbullet
+  service: notify.all_android_devices

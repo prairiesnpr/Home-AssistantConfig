@@ -1,0 +1,20 @@
+alias: Bronco Sport - Notify on doors unlocked
+id: 89d34667-315e-4a4a-a90f-0a05b020575a
+trigger:
+  - platform: state
+    entity_id: lock.fordpass_doorlock
+    to: 'unlocked'
+    for:
+      minutes: 10
+condition:
+   condition: state
+   entity_id: sensor.fordpass_ignitionstatus
+   state: "off"
+action:
+  - service: notify.all_ios_devices
+    data_template:
+      message: 'Bronco Sport is unlocked.'
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: 'Doors are unlocked.'

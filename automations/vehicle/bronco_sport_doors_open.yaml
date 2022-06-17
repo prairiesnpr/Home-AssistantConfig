@@ -1,0 +1,66 @@
+alias: Bronco Sport - Notify on doors open
+id: 06521f4d-a4d7-4518-b262-e363125e57f1
+trigger:
+  - platform: state
+    entity_id: sensor.fordpass_doorstatus
+    from: 'Closed'
+    for:
+      minutes: 10
+action:
+  - variables:
+      rightRearDoor: state_attr('sensor.fordpass_doorstatus', 'rightRearDoor')
+      leftRearDoor: state_attr('sensor.fordpass_doorstatus', 'leftRearDoor')
+      driverDoor: state_attr('sensor.fordpass_doorstatus', 'driverDoor')
+      passengerDoor: state_attr('sensor.fordpass_doorstatus', 'passengerDoor')
+      hoodDoor: state_attr('sensor.fordpass_doorstatus', 'hoodDoor')
+      tailgateDoor: state_attr('sensor.fordpass_doorstatus', 'tailgateDoor')
+      innerTailgateDoor: state_attr('sensor.fordpass_doorstatus', 'innerTailgateDoor')
+  - service: notify.all_ios_devices
+    data_template:
+      message: >
+        {% if driverDoor != 'Closed' -%}
+        Driver's door open
+        {% endif -%}
+        {% if passengerDoor != 'Closed' -%}
+        Front Passenger's door open
+        {% endif -%}
+        {% if leftRearDoor != 'Closed' -%}
+          Left rear door open
+        {% endif -%}
+        {% if rightRearDoor != 'Closed' -%}
+          Right rear door open
+        {% endif -%}
+        {% if tailgateDoor != 'Closed' -%}
+          Tailgate door open
+        {% endif -%}
+        {% if innerTailgateDoor != 'Closed' -%}
+          Tailgate glass door open
+        {% endif -%}
+        {% if hoodDoor != 'Closed' -%}
+          Hood open
+        {% endif -%}
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: >
+        {% if driverDoor != 'Closed' -%}
+        Driver's door open
+        {% endif -%}
+        {% if passengerDoor != 'Closed' -%}
+        Front Passenger's door open
+        {% endif -%}
+        {% if leftRearDoor != 'Closed' -%}
+          Left rear door open
+        {% endif -%}
+        {% if rightRearDoor != 'Closed' -%}
+          Right rear door open
+        {% endif -%}
+        {% if tailgateDoor != 'Closed' -%}
+          Tailgate door open
+        {% endif -%}
+        {% if innerTailgateDoor != 'Closed' -%}
+          Tailgate glass door open
+        {% endif -%}
+        {% if hoodDoor != 'Closed' -%}
+          Hood open
+        {% endif -%}

@@ -7,6 +7,7 @@ time_zone: America/New_York
 customize: !include customize.yaml
 external_url: !secret ha_url
 internal_url: !secret ha_url
+currency: USD
 allowlist_external_dirs:
   - !secret snapshot_dir
 media_dirs:

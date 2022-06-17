@@ -1,0 +1,24 @@
+alias: Notify on mower error
+id: b137371e-e844-452e-b401-bac1fbe151bd 
+trigger:
+  - platform: state
+    entity_id: binary_sensor.aeinarr_error
+    to: 'on' 
+action:
+  - variables:
+      ha_url_var: !secret ha_url
+      quest_update: '{{ states("sensor.aeinarr_error_quest_desc") }}'
+  - service: notify.all_ios_devices 
+    data_template:
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} {{ quest_update }}' 
+      data:
+        attachment:
+          url: '{{ha_url_var}}{{ state_attr("camera.aeinarr", "entity_picture") }}'
+          content-type: jpg
+          hide-thumbnail: false
+  - service: notify.all_android_devices
+    data_template:
+      title: '{{ state_attr("camera.aeinarr", "friendly_name") }} Quest Update!'
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} {{ quest_update }}' 
+      data:
+        image: '{{ha_url_var}}{{ state_attr("camera.aeinarr", "entity_picture") }}' 

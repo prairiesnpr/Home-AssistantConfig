@@ -1,0 +1,49 @@
+alias: Bronco Sport - Notify on engine off windows down
+id: 97280a16-f36e-4231-97f2-a768ca591aed
+trigger:
+  - platform: state
+    entity_id: lock.fordpass_ignitionstatus
+    to: 'off'
+    for:
+      minutes: 10
+condition:
+   condition: state
+   entity_id: sensor.fordpass_windowposition
+   state: "Open"
+action:
+  - variables:
+      driverWindowPosition: state_attr('sensor.fordpass_windowposition', 'driverWindowPosition')
+      passWindowPosition: state_attr('sensor.fordpass_windowposition', 'passWindowPosition')
+      rearDriverWindowPos: state_attr('sensor.fordpass_windowposition', 'rearDriverWindowPos')
+      rearPassWindowPos: state_attr('sensor.fordpass_windowposition', 'rearPassWindowPos')
+  - service: notify.all_ios_devices
+    data_template:
+      message: >
+        {% if driverWindowPosition != 'Closed' -%}
+        Front Driver's side window open
+        {% endif -%}
+        {% if passWindowPosition != 'Closed' -%}
+        Front Passenger's side window open
+        {% endif -%}
+        {% if rearDriverWindowPos != 'Closed' -%}
+        Rear Driver's side window open
+        {% endif -%}
+        {% if rearPassWindowPos != 'Closed' -%}
+        Rear Passenger's side window open
+        {% endif -%}
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: >
+        {% if driverWindowPosition != 'Closed' -%}
+        Front Driver's side window open
+        {% endif -%}
+        {% if passWindowPosition != 'Closed' -%}
+        Front Passenger's side window open
+        {% endif -%}
+        {% if rearDriverWindowPos != 'Closed' -%}
+        Rear Driver's side window open
+        {% endif -%}
+        {% if rearPassWindowPos != 'Closed' -%}
+        Rear Passenger's side window open
+        {% endif -%}

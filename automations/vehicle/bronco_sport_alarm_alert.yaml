@@ -1,0 +1,29 @@
+alias: Bronco Sport - Notify on alarm
+id: 8eb8a2dc-d7b0-4d1d-8353-2ead48e75f06
+trigger:
+  - platform: state
+    entity_id: sensor.fordpass_alarm
+    from: 'set'
+condition:
+  not:
+    - condition: state
+      entity_id: sensor.fordpass_alarm
+      state: 'not_set'
+action:
+  - service: notify.all_ios_devices
+    data:
+      message: 'Bronco Sport Alarm Triggered!'
+      data:
+        push:
+          sound:
+            critical: 1
+            name: default
+            volume: 1.0
+  - service: notify.all_android_devices
+    data:
+      title: 'Bronco Sport Critical Alert'
+      message: 'Bronco Sport Alarm Triggered!'
+      data:
+        data:
+          priority: high
+          ttl: 0

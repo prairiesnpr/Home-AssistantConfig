@@ -1,0 +1,14 @@
+alias: Bronco Sport - Notify on low battery
+id: 888dee80-24bb-4376-af29-7adf836718ef
+trigger:
+  - platform: state
+    entity_id: sensor.fordpass_battery
+    from: 'STATUS_GOOD'
+action:
+  - service: notify.all_ios_devices
+    data_template:
+      message: "Bronco Sport battery is low ({{ state_attr('sensor.fordpass_battery', 'Battery Voltage') }} volts)."
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: "Bronco Sport battery is low ({{ state_attr('sensor.fordpass_battery', 'Battery Voltage') }} volts)."

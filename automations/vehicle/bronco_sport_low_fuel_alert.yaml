@@ -1,0 +1,15 @@
+alias: Bronco Sport - Notify on low fuel
+id: 371c53e4-5ee2-47f0-b6c4-da8825b5722d
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.fordpass_fuel
+    attribute: fuelLevel
+    below: 12.5
+action:
+  - service: notify.all_ios_devices
+    data_template:
+      message: 'Bronco Sport fuel level is below 1/8 of a tank.'
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: 'Fuel level is below 1/8 of a tank.'

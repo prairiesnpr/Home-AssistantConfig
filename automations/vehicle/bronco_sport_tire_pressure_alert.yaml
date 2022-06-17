@@ -1,0 +1,45 @@
+alias: Bronco Sport - Notify on low tire pressure
+id: abe28d47-5a61-4366-839e-e69554df6ccc
+trigger:
+  - platform: state
+    entity_id: sensor.fordpass_fuel
+    from: 'STATUS_GOOD'
+action:
+  - variables:
+      front_left_tp: state_attr('sensor.fordpass_tirepressure', 'leftFrontTirePressure')
+      front_right_tp: state_attr('sensor.fordpass_tirepressure', 'rightFrontTirePressure')
+      rec_front_tp: state_attr('sensor.fordpass_tirepressure', 'recommendedFrontTirePressure')
+      rear_left_tp: state_attr('sensor.fordpass_tirepressure', 'outerLeftRearTirePressure')
+      rear_right_tp: state_attr('sensor.fordpass_tirepressure', 'outerRightRearTirePressure')
+      rec_rear_tp: state_attr('sensor.fordpass_tirepressure', 'recommendedRearTirePressure')
+  - service: notify.all_ios_devices
+    data_template:
+      message: >
+        {% if front_left_tp < rec_front_tp -%}
+        Left front tire is {{ front_left_tp }} psi, recommend {{ rec_front_tp }} psi
+        {% endif -%}
+        {% if front_right_tp < rec_front_tp -%}
+        Right front tire is {{ front_right_tp }} psi, recommend {{ rec_front_tp }} psi
+        {% endif -%}
+        {% if rear_left_tp < rec_rear_tp -%}
+        Left rear tire is {{ rear_left_tp }} psi, recommend {{ rec_rear_tp }} psi
+        {% endif -%}
+        {% if rear_right_tp < rec_rear_tp -%}
+        Right rear tire is {{ rear_right_tp }} psi, recommend {{ rec_rear_tp }} psi
+        {% endif -%}
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: >
+        {% if front_left_tp < rec_front_tp -%}
+        Left front tire is {{ front_left_tp }} psi, recommend {{ rec_front_tp }} psi
+        {% endif -%}
+        {% if front_right_tp < rec_front_tp -%}
+        Right front tire is {{ front_right_tp }} psi, recommend {{ rec_front_tp }} psi
+        {% endif -%}
+        {% if rear_left_tp < rec_rear_tp -%}
+        Left rear tire is {{ rear_left_tp }} psi, recommend {{ rec_rear_tp }} psi
+        {% endif -%}
+        {% if rear_right_tp < rec_rear_tp -%}
+        Right rear tire is {{ rear_right_tp }} psi, recommend {{ rec_rear_tp }} psi
+        {% endif -%}

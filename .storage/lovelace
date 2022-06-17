@@ -57,7 +57,7 @@
                                                         },
                                                         "docked": {
                                                             "button": {
-                                                                "color": "orange"
+                                                                "color": "teal"
                                                             }
                                                         }
                                                     }
@@ -79,6 +79,18 @@
                                                     "name": false,
                                                     "state_styles": {
                                                         "garage": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "device_tracker.fordpass_tracker",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "home": {
                                                             "button": {
                                                                 "color": "green"
                                                             }
@@ -609,9 +621,17 @@
                                     "name": "In Bed"
                                 },
                                 {
-                                    "entity": "binary_sensor.ryan_in_call",
-                                    "name": "Ryan In Call",
+                                    "entity": "binary_sensor.cx02up3yv_audio_input_in_use",
+                                    "name": "Ryan Talking",
                                     "icon": "mdi:phone-alert"
+                                },
+                                {
+                                    "entity": "binary_sensor.cx02up3yv_audio_output_in_use",
+                                    "name": "Ryan Listening"
+                                },
+                                {
+                                    "entity": "sensor.cx02up3yv_active_camera",
+                                    "name": "Ryan on camera"
                                 }
                             ]
                         },
@@ -657,6 +677,129 @@
                                 }
                             ],
                             "title": "\u00c6inarr"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Arthur - Bronco Sport",
+                            "cards": [
+                                {
+                                    "type": "gauge",
+                                    "entity": "sensor.fordpass_fuel",
+                                    "unit": "%",
+                                    "needle": true,
+                                    "name": "Fuel",
+                                    "max": 100,
+                                    "severity": {
+                                        "green": 50,
+                                        "yellow": 25,
+                                        "red": 0
+                                    }
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "buttons": [
+                                                {
+                                                    "entity": "sensor.fordpass_ignitionstatus",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "run": {
+                                                            "button": {
+                                                                "color": "yellow"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_windowposition",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "closed": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_doorstatus",
+                                                    "name": false,
+                                                    "state_color": true,
+                                                    "state_styles": {
+                                                        "closed": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_battery",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_tirepressure",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                },
+                                                {
+                                                    "entity": "sensor.fordpass_oil",
+                                                    "name": false,
+                                                    "state_styles": {
+                                                        "status_good": {
+                                                            "button": {
+                                                                "color": "green"
+                                                            }
+                                                        }
+                                                    },
+                                                    "state_color": true
+                                                }
+                                            ],
+                                            "type": "custom:paper-buttons-row"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "show_name": false,
+                                            "show_icon": true,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "switch.fordpass_ignition_switch"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": true,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "lock.fordpass_doorlock"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -1897,32 +2040,22 @@
                         },
                         {
                             "entities": [
-                                "moisture:sensor.poinsettia_moisture",
-                                "intensity:sensor.poinsettia_light_intensity",
-                                "temperature:sensor.poinsettia_temperature",
-                                "conductivity:sensor.poinsettia_conductivity",
-                                "battery:sensor.poinsettia_battery"
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
+                                    "name": "Garden Zone"
+                                },
+                                {
+                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
+                                    "name": "Blueberry Zone"
+                                }
                             ],
-                            "image": "flower_power/poinsettia_600.jpg",
-                            "max_moisture": 60,
-                            "min_conductivity": 350,
-                            "min_moisture": 15,
-                            "min_temperature": 12,
-                            "title": "Poinsettia",
-                            "type": "custom:miflora-card"
+                            "hours_to_show": 168,
+                            "refresh_interval": 0,
+                            "title": "Garden Water History",
+                            "type": "history-graph"
                         },
                         {
                             "entities": [
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_208_6",
-                                    "name": "Zone 1",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_209_6",
-                                    "name": "Zone 2",
-                                    "state_color": true
-                                },
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_210_6",
                                     "name": "Blueberries",
@@ -1936,21 +2069,6 @@
                                 {
                                     "entity": "switch.xbee_xbee_io_4192cf47_212_6",
                                     "name": "Spare",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_213_6",
-                                    "name": "Zone 6",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_216_6",
-                                    "name": "Zone 7",
-                                    "state_color": true
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_220_6",
-                                    "name": "Zone 8",
                                     "state_color": true
                                 }
                             ],
@@ -1972,22 +2090,6 @@
                             "hours_to_show": 24,
                             "refresh_interval": 0,
                             "title": "Greenhouse",
-                            "type": "history-graph"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                                    "name": "Garden Zone"
-                                },
-                                {
-                                    "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                                    "name": "Blueberry Zone"
-                                }
-                            ],
-                            "hours_to_show": 168,
-                            "refresh_interval": 0,
-                            "title": "Garden Water History",
                             "type": "history-graph"
                         }
                     ],
@@ -2284,10 +2386,10 @@
                                     "name": "Jeanette Roth"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth_2"
+                                    "entity": "automation.place_order_for_voo_in_jeanette_s_roth"
                                 },
                                 {
-                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth_2"
+                                    "entity": "automation.place_order_for_voo_in_ryan_s_roth"
                                 }
                             ],
                             "type": "entities"
@@ -2299,6 +2401,12 @@
                     "title": "Settings",
                     "badges": [],
                     "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "automation.notify_of_events"
+                            ]
+                        },
                         {
                             "entities": [
                                 {
@@ -2884,6 +2992,22 @@
                         {
                             "entity": "weather.dark_sky",
                             "type": "weather-forecast"
+                        },
+                        {
+                            "entities": [
+                                "moisture:sensor.poinsettia_moisture",
+                                "intensity:sensor.poinsettia_light_intensity",
+                                "temperature:sensor.poinsettia_temperature",
+                                "conductivity:sensor.poinsettia_conductivity",
+                                "battery:sensor.poinsettia_battery"
+                            ],
+                            "image": "flower_power/poinsettia_600.jpg",
+                            "max_moisture": 60,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "Poinsettia",
+                            "type": "custom:miflora-card"
                         }
                     ],
                     "path": "test",
@@ -3195,10 +3319,7 @@
                                     "entity": "sensor.fordpass_windowposition"
                                 },
                                 {
-                                    "entity": "sensor.bronco_sport_odo"
-                                },
-                                {
-                                    "entity": "input_number.bronco_sport_fuel_total"
+                                    "entity": "sensor.bronco_sport_fuel_used"
                                 },
                                 {
                                     "entity": "device_tracker.fordpass_tracker"
@@ -3206,106 +3327,6 @@
                             ],
                             "title": "Bronco Sport",
                             "state_color": true
-                        },
-                        {
-                            "type": "vertical-stack",
-                            "title": "Bronco Sport",
-                            "cards": [
-                                {
-                                    "type": "gauge",
-                                    "entity": "sensor.fordpass_fuel",
-                                    "unit": "%",
-                                    "needle": true,
-                                    "name": "Fuel",
-                                    "max": 100,
-                                    "severity": {
-                                        "green": 50,
-                                        "yellow": 25,
-                                        "red": 0
-                                    }
-                                },
-                                {
-                                    "type": "entities",
-                                    "entities": [
-                                        {
-                                            "buttons": [
-                                                {
-                                                    "entity": "sensor.fordpass_ignitionstatus",
-                                                    "name": false,
-                                                    "state_styles": {
-                                                        "run": {
-                                                            "button": {
-                                                                "color": "yellow"
-                                                            }
-                                                        }
-                                                    },
-                                                    "state_color": true
-                                                },
-                                                {
-                                                    "entity": "sensor.fordpass_windowposition",
-                                                    "name": false,
-                                                    "state_styles": {
-                                                        "closed": {
-                                                            "button": {
-                                                                "color": "green"
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    "entity": "sensor.fordpass_doorstatus",
-                                                    "name": false,
-                                                    "state_color": true,
-                                                    "state_styles": {
-                                                        "closed": {
-                                                            "button": {
-                                                                "color": "green"
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    "entity": "sensor.fordpass_battery",
-                                                    "name": false,
-                                                    "state_styles": {
-                                                        "status_good": {
-                                                            "button": {
-                                                                "color": "green"
-                                                            }
-                                                        }
-                                                    },
-                                                    "state_color": true
-                                                },
-                                                {
-                                                    "entity": "sensor.fordpass_tirepressure",
-                                                    "name": false,
-                                                    "state_styles": {
-                                                        "status_good": {
-                                                            "button": {
-                                                                "color": "green"
-                                                            }
-                                                        }
-                                                    },
-                                                    "state_color": true
-                                                },
-                                                {
-                                                    "entity": "sensor.fordpass_oil",
-                                                    "name": false,
-                                                    "state_styles": {
-                                                        "status_good": {
-                                                            "button": {
-                                                                "color": "green"
-                                                            }
-                                                        }
-                                                    },
-                                                    "state_color": true
-                                                }
-                                            ],
-                                            "type": "custom:paper-buttons-row"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ],
                     "icon": "mdi:cellphone-android",

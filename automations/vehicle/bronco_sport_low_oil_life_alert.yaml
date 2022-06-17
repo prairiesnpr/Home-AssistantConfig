@@ -1,0 +1,14 @@
+alias: Bronco Sport - Notify on oil life
+id: ef509347-77d8-4998-b90b-a932eab1e4e7
+trigger:
+  - platform: state
+    entity_id: sensor.fordpass_oil
+    from: 'STATUS_GOOD'
+action:
+  - service: notify.all_ios_devices
+    data_template:
+      message: "Bronco Sport oil life is low ({{ state_attr('sensor.fordpass_oil', 'oilLifeActual') }}%)."
+  - service: notify.all_android_devices
+    data_template:
+      title: 'Bronco Sport Warning'
+      message: "Bronco Sport oil life is low ({{ state_attr('sensor.fordpass_oil', 'oilLifeActual') }}%)."

@@ -1,7 +1,7 @@
 dist: groovy 
 language: python
 python:
-  - "3.8"
+  - "3.9"
 before_install:
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev
   - sudo apt-get install -y libavutil-dev libswscale-dev libswresample-dev libavfilter-dev
@@ -11,7 +11,7 @@ before_install:
   - mv travis_secrets.yaml secrets.yaml
   - sudo apt-get install libgirepository1.0-dev
   - sudo apt-get install ffmpeg
-  - pip3 install vext vext.gi PyGObject wakeonlan beautifulsoup4 netdisco av
+  - pip3 install vext vext.gi PyGObject wakeonlan beautifulsoup4 netdisco av lxml
 install:
   - pip3 install homeassistant
 script:

@@ -36,10 +36,12 @@ action:
             in
         {%- endif %}
       zone_text: >
-        {% if entered_zones | count > 1 -%}
+        {% if entered_zones|count > 1 -%}
             ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}) zones
-        {%- else -%}
+        {%- elif entered_zones|count == 1 -%}
             {{trigger.payload_json["after"]["entered_zones"] | first}}
+        {%- else -%}
+            No Zone
         {%- endif %}
       zone_message: 'A {{trigger.payload_json["after"]["label"]}} was detected {{zone_prep}} the {{zone_text}}.'
   - service: notify.all_ios_devices 

@@ -1,0 +1,120 @@
+alias: Notify - Outside Temperature - Windows Actions
+id: da34dea6-59ac-496a-8e14-d00e1df9ee0b
+description: >-
+  Notifies when to open or close windows based on comparing outside temp and
+  humidity to setpoints as well as inside conditions. 
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.weather_front_porch_temperature 
+    above: sensor.downstairs_thermostat_temperature 
+    id: Hotter Outside
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - platform: numeric_state
+    entity_id: sensor.weather_front_porch_temperature 
+    below: sensor.downstairs_thermostat_temperature 
+    id: Cooler Outside
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - platform: state
+    entity_id: binary_sensor.nicer_outside
+    id: Nicer Outside
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+condition:
+  - condition: time
+    after: sensor.calculated_system_start_time 
+#  - condition: state
+#    entity_id: input_boolean.a_in_bed
+#    state: 'off'
+  - condition: state
+    entity_id: group.home_owners 
+    state: 'home'
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: Hotter Outside
+#          - condition: state
+#            entity_id: binary_sensor.all_window_sensors
+#            state: 'on'
+          - condition: numeric_state
+            entity_id: sensor.forecast_high
+            above: '74'
+        sequence:
+          - wait_for_trigger:
+              - platform: numeric_state
+                entity_id: sensor.downstairs_thermostat_temperature 
+                above: '74'
+                for:
+                  hours: 0
+                  minutes: 10
+                  seconds: 0
+                  milliseconds: 0
+            timeout: '01:00:00'
+          - condition: numeric_state
+            entity_id: sensor.outside_temperature_derivative_2
+            above: '0'
+          - service: notify.all_ios_devices 
+            data_template:
+              message: "It's warming up outside, Suggest closing the windows." 
+          - service: notify.all_android_devices
+            data_template:
+              title: 'Window Alert'
+              message: "It's warming up outside, Suggest closing the windows." 
+      - conditions:
+          - condition: trigger
+            id: Cooler Outside
+          - condition: numeric_state
+            entity_id: sensor.outside_temperature_derivative_2
+            below: '0'
+       #   - condition: state
+       #     entity_id: binary_sensor.all_window_sensors
+       #     state: 'off'
+          - condition: numeric_state
+            entity_id: sensor.downstairs_thermostat_temperature 
+            above: '41'
+            below: '65'
+          - condition: numeric_state
+            entity_id: sensor.forecast_low 
+            above: '40'
+        sequence:
+          - service: notify.all_ios_devices
+            data_template:
+              message: "It's cooling down outside, Suggest opening the windows."
+          - service: notify.all_android_devices
+            data_template:
+              title: 'Window Alert'
+              message: "It's cooling down outside, Suggest opening the windows."
+      - conditions:
+          - condition: trigger
+            id: Nicer Outside
+      #    - condition: state
+      #      entity_id: binary_sensor.all_window_sensors
+      #      state: 'off'
+          - condition: numeric_state
+            entity_id: sensor.downstairs_thermostat_temperature 
+            below: '74'
+            above: '40'
+          - condition: numeric_state
+            entity_id: sensor.forecast_low
+            above: '40'
+        sequence:
+          - service: notify.all_ios_devices
+            data_template:
+              message: "It's nicer outside then inside, Suggest opening the windows."
+          - service: notify.all_android_devices
+            data_template:
+              title: 'Window Alert'
+              message: "It's nicer outside then inside, Suggest opening the windows."
+    default: []
+mode: single

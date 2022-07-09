@@ -1,0 +1,12 @@
+set_cloudflare_record:
+  url: 'https://api.cloudflare.com/client/v4/zones/{{ zone_id }}/dns_records/{{ rec_id }}'
+  method: PUT 
+  headers:
+    X-Auth-Key: !secret cloudflare_api_token
+    X-Auth-Email: !secret cloudflare_api_email
+  payload: '{"type":"A","name":"{{ site }}","content":"{{ ip }}","ttl":1, "proxied":true}'
+  content_type:  'application/json; charset=utf-8'
+  verify_ssl: true
+
+
+

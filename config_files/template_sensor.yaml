@@ -1,0 +1,214 @@
+binary_sensor:
+  - name: "Nicer Outside"
+    unique_id: 4e1f3df6-fed0-11ec-b939-0242ac120002
+    state: >-
+      {{ states('sensor.inside_discomfort_index')|float(0)|round(1,0) - 1.5
+      >= states('sensor.outside_discomfort_index')|float(0)|round(1,0) }}
+  - name: "Aeinarr blade change due"
+    unique_id: 4e1f3c2a-fed0-11ec-b939-0242ac120002
+    state: >-
+      {% set blade_interval = 300.0 %}
+      {% set cut_time_hrs = states('sensor.aeinarr_total_cutting_time')|float /3600.0 %}
+      {% set last_blade_change_hrs = states('input_number.aeinarr_last_blade_change')|float %}
+      {{ (cut_time_hrs - last_blade_change_hrs) > blade_interval }}
+    attributes:
+      due_in_hrs: >-
+        {% set blade_interval = 300.0 %}
+        {% set cut_time_hrs = states('sensor.aeinarr_total_cutting_time')|float /3600.0 %}
+        {% set last_blade_change_hrs = states('input_number.aeinarr_last_blade_change')|float %}
+        {{ blade_interval|float - (cut_time_hrs - last_blade_change_hrs) }}
+sensor:
+  - name: "Forecast Low"
+    unique_id: 4e1f3a40-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: "F"
+    state_class: measurement
+    state: >-
+      {{ (state_attr('weather.koqt_daynight', 'forecast')|selectattr('daytime', 'false')|first).temperature }}
+  - name: "Forecast High"
+    unique_id: 4e1f34b4-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: "F"
+    state_class: measurement
+    state: >-
+      {{ (state_attr('weather.koqt_daynight', 'forecast')|selectattr('daytime', 'true')|first).temperature }}
+  - name: "Inside Discomfort Index"
+    unique_id: 4e1f332e-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: ""
+    state_class: measurement
+    state: >-
+      {% set t = (states('sensor.downstairs_thermostat_temperature')|float(0)-32)/1.8  %}
+      {% set h = states('sensor.downstairs_thermostat_humidity')|float(0) %}
+      {{ (t - (0.55*(1  - (0.01*h) ) * (t - 14.5)))|round(2,0) }}
+    attributes:
+      comfortable: >-
+        {{ this.state|int(0)  < 20 }}
+  - name: "Outside Discomfort Index"
+    unique_id: 4e1f3158-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: ""
+    state_class: measurement
+    state: >-
+      {% set t = (states('sensor.weather_front_porch_temperature')|float(0)-32)/1.8 %}
+      {% set h = states('sensor.weather_front_porch_humidity')|float(0) %}
+      {{ (t - (0.55*(1  - (0.01*h) ) * (t - 14.5)))|round(2,0) }}
+    attributes:
+      comfortable: >-
+        {{ this.state|int(0)  < 20 }}
+  - name: "Front Porch Barometric Pressure"
+    unique_id: 4e1f2e42-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: "inHg"
+    state_class: measurement
+    device_class: pressure
+    state: >- 
+        {% set sen_alt = 1025 %}
+        {% set alt_cor = 1/((760 - (sen_alt*0.026))/760) %} 
+        {% set gen_cor = 1.002334111370457 %}
+        {% set hpa_inhg = 0.029529988 %}
+        {{ "%.2f"|format((states('sensor.weather_front_porch_pressure')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
+  - name: "Greenhouse Barometric Pressure"
+    unique_id: 4e1f2d16-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: "inHg"
+    state_class: measurement
+    device_class: pressure
+    state: >-
+        {% set sen_alt = 1025 %}
+        {% set alt_cor = 1/((760 - (sen_alt*0.026))/760) %}
+        {% set gen_cor = 1.0004 %}
+        {% set hpa_inhg = 0.029529988 %}
+        {{ "%.2f"|format((states('sensor.lumi_lumi_weather_810c5c04_pressure')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
+  - name: "Bronco Sport Fuel"
+    unique_id: 4e1f2bc2-fed0-11ec-b939-0242ac120002
+    unit_of_measurement: Gal
+    state_class: measurement
+    state: >-
+      {%- if states('sensor.fordpass_fuel') != 'unavailable' -%}
+        {{ (states('sensor.fordpass_fuel')|float * 0.15385)|round(2) }}
+      {%- else -%}
+        unavailable
+      {%- endif -%}
+  - name: "Bronco Sport Fuel Used"
+    unique_id: 4e1f2a3c-fed0-11ec-b939-0242ac120002
+    state_class: total_increasing
+    unit_of_measurement: Gal
+    state: >-
+      {{ states('input_number.bronco_sport_fuel_total') }}
+  - name: "Server Room UPS Power"
+    unique_id: 4e1f2852-fed0-11ec-b939-0242ac120002
+    device_class: power
+    unit_of_measurement: "W"
+    state: >-
+      {{ ((states('sensor.serverroom_load')|float * states('sensor.serverroom_nominal_real_power')|int / 100) * 0.98)|round(2) }}
+  - name: "Server Room UPS Battery Runtime"
+    unique_id: 4e1f271c-fed0-11ec-b939-0242ac120002
+    state_class: measurement
+    unit_of_measurement: Min
+    state: >-
+      {{ relative_time(now()-timedelta(seconds=(states('sensor.serverroom_battery_runtime')|int))) }}
+  - name: "Calculated System Start Time"
+    unique_id: 4e1f256e-fed0-11ec-b939-0242ac120002
+    device_class: timestamp
+    state: >-
+      {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
+      {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
+      {% set start_dates =[now().replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
+      {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
+        {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
+      {% endif %}
+      {% if is_state('person.jeanette', 'home') %}
+        {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
+      {% endif %}
+      {{ (start_dates | min).isoformat() }}
+  - name: "System Start Next"
+    unique_id: 4e1f23c0-fed0-11ec-b939-0242ac120002
+    device_class: timestamp
+    state: >-
+      {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
+      {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
+      {% set start_dates =[(now() + timedelta(days=1)).replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
+      {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
+        {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
+      {% endif %}
+      {% if is_state('person.jeanette', 'home') %}
+        {% set start_dates = start_dates + [(now() + timedelta(days=1)).replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
+      {% endif %}
+      {{ (start_dates | min).isoformat() }}
+  - name: "Calculated System Sleep Time"
+    unique_id: 4e1f21ea-fed0-11ec-b939-0242ac120002
+    device_class: timestamp
+    state: >-
+      {% set sys_sleep = (strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) %}
+      {{ now().replace(hour=sys_sleep.hour, minute=sys_sleep.minute, second=0, microsecond=0).isoformat() }}
+  - name: "XBOX Source"
+    unique_id: 4e1f2028-fed0-11ec-b939-0242ac120002 
+    state: >-
+      {{ state_attr('media_player.xboxone_2', 'media_title') }}
+  - name: "Water Heater Start Time"
+    unique_id: 4e1f1e5c-fed0-11ec-b939-0242ac120002 
+    device_class: timestamp
+    state: >-
+      {{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1, minutes=30)).isoformat() }}
+  - name: "Coffee Start Time"
+    unique_id: 4e1f1cae-fed0-11ec-b939-0242ac120002 
+    device_class: timestamp
+    state: >-
+      {{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(minutes=15)).isoformat() }}
+  - name: "Outdoor Lights On"
+    unique_id: 4e1f1934-fed0-11ec-b939-0242ac120002 
+    device_class: timestamp
+    state: >-
+      {{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}
+  - name: "Water Heater off Time"
+    unique_id: 4e1f3f7c-fed0-11ec-b939-0242ac120002 
+    device_class: timestamp
+    state: >-
+      {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1)).isoformat() }}
+  - name: "Coffee off Time"
+    unique_id: 4e1f17cc-fed0-11ec-b939-0242ac120002
+    device_class: timestamp
+    state: >-
+      {% if is_state('person.ryan', 'home') %}
+        {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=2)).isoformat() }}
+      {% else  %}
+        {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=8)).isoformat() }}
+      {% endif %}
+  - name: "Bedroom Lights off Time"
+    unique_id: 4e1f1650-fed0-11ec-b939-0242ac120002
+    state: >-
+      {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}
+    device_class: timestamp
+  - name: "Water Heater Time to Temp"
+    unique_id: 4e1f14c0-fed0-11ec-b939-0242ac120002 
+    unit_of_measurement: "Min"
+    state_class: measurement
+    state: >-
+      {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
+        0
+      {% else %}
+        {{((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}}
+      {% endif %}
+  - name: "Aeinarr Mowing Zones"
+    unique_id: 4e1f1308-fed0-11ec-b939-0242ac120002 
+    state: >-
+        {%- if states('vacuum.aeinarr') not in ["error", "unavailable"] -%}
+          {{ states('sensor.aeinarr_zone_sensor') }}
+        {%- else -%}
+          error
+        {%- endif -%}
+  - name: "Aeinarr Error Quest Desc"
+    unique_id: 4e1f0f70-fed0-11ec-b939-0242ac120002 
+    state: >-
+        {% set error_code = state_attr("binary_sensor.aeinarr_error", "error_code")|int %}
+        {% set quest_strings = {-1: "is pressing the attack", 0:"reports bewildered and confused", 1:"ventured beyond the bounds of this realm",2:"unable to maintain contact",3:"received forged orders",4:"failed to comprehend his orders",5:"failed to comprehend his orders, dropped and stepped on them",6:"failed to comprehend his orders, left on side quests",7:"failed to comprehend his orders",8:"found evidence of lockpicking",9:"was ensnared",10:"is caught in a snare and hanging by his feet",11:"is famished",12:"has perished from starvation",13:"lacks motivation",14:"was snatched into the heavens",15:"was carried away by a dragon",16:"is waylaid at the table",17:"found no space at the table",18:"reports unable to retreat",19:"reports the path is blocked",20:"took an arrow to the right knee",21:"took an arrow to the left knee",22:"shattered his right greaves",23:"shattered his left greaves",24:"buried his sword in a tree branch",25:"buried his sword in a tree branch",26:"has mismatched armour",27:"is reborn",28:"reports altitude sickness, memory is clouded",29:"found the mountain too ragged",30:"states, food is unediable",31:"refused orders",32:"shakes, the ground is unsteady",33:"drank too much",34:"abandoned the fight, the path was too steep",35:"is overencumbered",36:"is overencumbered",37:"suffered -5 shock damage",38:"lost heart",39:"lost strength, reports sword arm has failed",40:"reports sword debuff",41:"equipped his axe",42:"equipped his dagger",43:"would cleave the troll's head, but lacks strength",44:"would cleave the troll's head, but lacks stamina",45:"would cleave the troll's head, but lacks coordination",46:"would press the attack, but the enemy's shield is strong",47:"was rebuffed",48:"reports innkeeper cut him off",49:"reports his vision is unclear",50:"reports primary path is unclear",51:"reports secondary path is unclear",52:"reports tertiary path is unclear",53:"reports the map is torn",54:"reports the stars have dimmed",55:"unable to fast travel",56:"reports map updated",57:"reports cartographer failed",58:"reports maximum health decreased",59:"reports no cheese wheels ",60:"has been poisoned",61:"can't find the perfect health potion",62:"reports nightshade is poison",63:"found his provisions to be stale",64:"ate too many cheese wheels",65:"has contracted Bone Break Fever",66:"has been cursed -5 strength",67:"reports no stamina",68:"reports temporary food poisoning",69:"has been knocked unconscious",70:"is paralyzed",71:"reports \"horse is high centered\"",72:"reports \"stuck on side of a hill\"",73:"reports \"They've caught me!\"",74:"reports being off the edge of the map",75:"accepted new quest",76:"declined new quest",77:"is unable to speak",78:"reports stuck in the molasses mud pit",79:"reports gear incompatible with Viking class",80:"reports cannot swing sword",81:"shattered his shield",82:"reports damage to right heel",83:"reports damage to left heel",84:"reports damage to right arm",85:"reports damage to left arm",86:"reports over encumbered right pack",87:"reports over encumbered left pack",88:"is confused",89:"reports Viking class not properly specialized",90:"reports no food at the inn",91:"reports, energy spell failed",92:"reports outside quest area",93:"reports star signs obscured",94:"reports didn't understand quest giver",95:"was brushed by a wraith",96:"pulled his right hamstring",97:"pulled his left hamstring",98:"sees dead people",99:"reports helmet visor stuck ",100:"reports dirt in eyes",101:"reports the sun was in eyes",102:"reports dull sword blade",103:"reports dull axe blade",104:"reports dull dagger blade",105:"reports climbed 7,000 steps can do no more",106:"reports shield is damaged",107:"reports inn is missing",108:"encountered a wraith",109:"smells burnt toast",110:"reports \"I'm invincible!\"",111:"reports not exactly lost, but...",112:"reports sword unbalanced",113:"reports underleveled for this quest",114:"reports lightning strike",115:"reports caffine intake",116:"reports loss of appetite",117:"reports may have lockjaw",118:"reports the food is bad and there are rats",119:"states, his ward is insufficent",120:"reports the sweet roll is a lie",121:"reports feverish, may have contracted Porphyric Hemophilia",122:"reports no CAN do",123:"reports the way was blocked, he cannot get through",} %}
+        {%- if error_code > -1 -%}
+          {{ quest_strings.get(error_code) }}
+        {%- else -%}
+          {%- if states('sensor.aeinarr_problem_sensor') == 'SENSOR' -%}
+            is weeping for there are no more worlds to conquer
+          {%- elif states('sensor.aeinarr_problem_sensor') == 'WEEK_SCHEDULE' -%}
+            will fight another day  
+          {%- elif states('sensor.aeinarr_problem_sensor') == 'PARK_OVERRIDE' -%}
+            was forced to stand down
+          {%- elif states('sensor.aeinarr_problem_sensor') == 'unknown' -%}
+            is pressing the attack 
+          {% else %}
+            {{ states('sensor.aeinarr_problem_sensor') }}
+          {%- endif -%}
+        {%- endif -%}

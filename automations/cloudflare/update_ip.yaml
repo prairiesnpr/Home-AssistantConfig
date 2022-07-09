@@ -1,0 +1,44 @@
+alias: "Update Cloudflare IP on Change"
+id: b057665d-9255-4246-b829-05b0dd68ad82
+trigger:
+  platform: state 
+  entity_id: sensor.wan_ip 
+  not_to: 'unavailable'
+condition:
+  alias: "Is valid IP"
+  condition: template
+  value_template: >
+    {%- set is_ip = False -%}
+    {%- for part in states('sensor.wan_ip').split('.') -%}
+      {%- if part | count < 4 and part | count > 0 and part | int(-1) != -1 -%}
+        {%- set is_ip = True -%}
+      {%- else -%}
+        {%- set is_ip = False -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {{ is_ip }}
+action:
+  - service: rest_command.set_cloudflare_record 
+    data:
+      zone_id: "{{ state_attr('sensor.prairiesnpr_com', 'zone_id') }}" 
+      rec_id: "{{ state_attr('sensor.prairiesnpr_com', 'id') }}"
+      ip: "{{ states('sensor.wan_ip') }}"
+      site: "{{ state_attr('sensor.prairiesnpr_com', 'zone_name') }}" 
+  - service: rest_command.set_cloudflare_record
+    data:
+      zone_id: "{{ state_attr('sensor.prairiesnpr_info', 'zone_id') }}"
+      rec_id: "{{ state_attr('sensor.prairiesnpr_info', 'id') }}"
+      ip: "{{ states('sensor.wan_ip') }}"
+      site: "{{ state_attr('sensor.prairiesnpr_info', 'zone_name') }}"
+  - service: rest_command.set_cloudflare_record
+    data:
+      zone_id: "{{ state_attr('sensor.isilentllc_com', 'zone_id') }}"
+      rec_id: "{{ state_attr('sensor.isilentllc_com', 'id') }}"
+      ip: "{{ states('sensor.wan_ip') }}"
+      site: "{{ state_attr('sensor.isilentllc_com', 'zone_name') }}"
+  - service: rest_command.set_cloudflare_record
+    data:
+      zone_id: "{{ state_attr('sensor.llmillerlaw_com', 'zone_id') }}"
+      rec_id: "{{ state_attr('sensor.llmillerlaw_com', 'id') }}"
+      ip: "{{ states('sensor.wan_ip') }}"
+      site: "{{ state_attr('sensor.llmillerlaw_com', 'zone_name') }}"

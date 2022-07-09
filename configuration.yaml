@@ -5,12 +5,9 @@ http:
   use_x_forwarded_for: true
   trusted_proxies: !secret ha_ip
 
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-
 logger:
   default: warning
+
 
 device_tracker:
   - platform: bluetooth_tracker
@@ -37,7 +34,7 @@ config:
 mobile_app:
 discovery:
 conversation:
-logbook:
+logbook: !include config_files/logbook.yaml
 map:
 sun:
 media_source:
@@ -75,12 +72,18 @@ mqtt: !include config_files/mqtt.yaml
 notify: !include config_files/notify.yaml
 recorder: !include config_files/recorder.yaml
 sensor: !include config_files/sensor.yaml
+template: !include config_files/template_sensor.yaml 
 switch: !include config_files/switch.yaml
 tts: !include config_files/tts.yaml
 zha: !include config_files/zha.yaml
 zone: !include config_files/zones.yaml
 input_datetime: !include config_files/input_datetime.yaml
+websitechecker: !include config_files/websitechecker.yaml
+weather: !include config_files/weather.yaml
+rest_command: !include config_files/rest_command.yaml
+rest: !include config_files/rest.yaml
 
 script: !include_dir_named scripts/
 automation: !include automations.yaml
 automation old: !include_dir_list automations/
+

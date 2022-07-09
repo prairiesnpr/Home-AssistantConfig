@@ -10,5 +10,3 @@ internal_url: !secret ha_url
 currency: USD
 allowlist_external_dirs:
   - !secret snapshot_dir
-media_dirs:
-    recordings: /home/homeassistant/.homeassistant/frigate/recordings

@@ -1,0 +1,76 @@
+- resource: !secret cloudflare_url_a 
+  scan_interval: 300
+  method: GET
+  headers:
+    X-Auth-Key: !secret cloudflare_api_token
+    X-Auth-Email: !secret cloudflare_api_email
+  sensor:
+    - name: !secret cloudflare_name_a 
+      unique_id: 190ebe98-ff11-11ec-b939-0242ac120002 
+      json_attributes_path: 'result[0]'
+      json_attributes:
+        - id
+        - zone_id
+        - zone_name
+        - type
+        - content
+        - locked
+        - ttl
+      value_template: '{{ value_json.result[0].name }}'
+- resource: !secret cloudflare_url_b
+  scan_interval: 300
+  method: GET
+  headers:
+    X-Auth-Key: !secret cloudflare_api_token
+    X-Auth-Email: !secret cloudflare_api_email
+  sensor:
+    - name: !secret cloudflare_name_b
+      unique_id: 190ebd8a-ff11-11ec-b939-0242ac120002
+      json_attributes_path: 'result[0]'
+      json_attributes:
+        - id
+        - zone_id
+        - zone_name
+        - type
+        - content
+        - locked
+        - ttl
+      value_template: '{{ value_json.result[0].name }}'
+- resource: !secret cloudflare_url_c
+  scan_interval: 300
+  method: GET
+  headers:
+    X-Auth-Key: !secret cloudflare_api_token
+    X-Auth-Email: !secret cloudflare_api_email
+  sensor:
+    - name: !secret cloudflare_name_c
+      unique_id: 190ebc5e-ff11-11ec-b939-0242ac120002
+      json_attributes_path: 'result[0]'
+      json_attributes:
+        - id
+        - zone_id
+        - zone_name
+        - type
+        - content
+        - locked
+        - ttl
+      value_template: '{{ value_json.result[0].name }}'
+- resource: !secret cloudflare_url_d
+  scan_interval: 300
+  method: GET
+  headers:
+    X-Auth-Key: !secret cloudflare_api_token
+    X-Auth-Email: !secret cloudflare_api_email
+  sensor:
+    - name: !secret cloudflare_name_d
+      unique_id: 190eba60-ff11-11ec-b939-0242ac120002
+      json_attributes_path: 'result[0]'
+      json_attributes:
+        - id
+        - zone_id
+        - zone_name
+        - type
+        - content
+        - locked
+        - ttl
+      value_template: '{{ value_json.result[0].name }}'

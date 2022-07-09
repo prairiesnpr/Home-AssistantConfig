@@ -1,6 +1,68 @@
 #- platform: miflora
 #  mac: '80:EA:CA:88:E3:EB' 
 #  name: Poinsettia
+- platform: scrape
+  resource: http://192.168.1.254/cgi-bin/broadbandstatistics.ha
+  select: '[summary="Summary of the most important WAN information"] > tr:nth-of-type(5) > td'  
+  name: WAN IP
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home/homeassistant/.homeassistant 
+    - type: disk_use
+    - type: disk_free
+    - type: memory_use_percent
+    - type: memory_use
+    - type: memory_free
+    - type: swap_use_percent
+    - type: swap_use
+    - type: swap_free
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+    - type: network_in
+      arg: eth0
+    - type: network_out
+      arg: eth0
+    - type: throughput_network_in
+      arg: eth0
+    - type: throughput_network_out
+      arg: eth0
+    - type: packets_in
+      arg: eth0
+    - type: packets_out
+      arg: eth0
+    - type: ipv4_address
+      arg: eth0
+    - type: ipv6_address
+      arg: eth0
+    - type: processor_use
+    - type: processor_temperature
+    - type: last_boot
+- platform: history_stats
+  name: Front Yard Cut Time
+  entity_id: sensor.aeinarr_mowing_zones 
+  state: 'Front Yard'
+  type: time
+  end: "{{ now() }}"
+  duration:
+    days: 7
+- platform: history_stats
+  name: Back Yard Cut Time
+  entity_id: sensor.aeinarr_mowing_zones 
+  state: 'Back Yard'
+  type: time
+  end: "{{ now() }}"
+  duration:
+    days: 7
+- platform: history_stats
+  name: Side Yard Cut Time
+  entity_id: sensor.aeinarr_mowing_zones 
+  state: 'Side Yard'
+  type: time
+  end: "{{ now() }}"
+  duration:
+    days: 7
 - platform: mqtt_room
   device_id: "b5b182c7eab14988aa99b5c1517008d9-1-38047"
   name: Dumpster
@@ -16,106 +78,3 @@
   name: Porsche 
   state_topic: room_presence
   away_timeout: 30
-- platform: template
-  sensors:
-    bronco_sport_fuel:
-      friendly_name: Bronco Sport Fuel
-      unit_of_measurement: Gal
-      value_template: "{{ (states('sensor.fordpass_fuel')|float * 0.15385)|round(2) }}"
-    bronco_sport_fuel_used:
-      friendly_name: Bronco Sport Total Fuel Used
-      value_template: "{{ states('input_number.bronco_sport_fuel_total') }}"
-      unit_of_measurement: Gal
-- platform: template 
-  sensors:
-    server_room_ups_power:
-      friendly_name: Server Room UPS Power
-      device_class: power  
-      unit_of_measurement: "W"
-      value_template: "{{ ((states('sensor.serverroom_load')|float * states('sensor.serverroom_nominal_real_power')|int / 100) * 0.98)|round(2) }}"
-    server_room_ups_battery_runtime:
-      friendly_name: Server Room Battery Runtime
-      value_template: "{{ relative_time(now()-timedelta(seconds=(states('sensor.serverroom_battery_runtime')|int))) }}"
-    calculated_system_start_time:
-      friendly_name: Calculated Day Start
-      device_class: timestamp
-      value_template: >- 
-        {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
-        {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
-        {% set start_dates =[now().replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
-        {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
-        {% endif %}
-        {% if is_state('person.jeanette', 'home') %}
-          {% set start_dates = start_dates + [now().replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
-        {% endif %}
-        {{ (start_dates | min).isoformat() }}
-    system_start_next:
-      friendly_name: Next Day Start
-      device_class: timestamp
-      value_template: >-
-        {% set j_start = (strptime(states('input_datetime.jeanette_start_time'), '%H:%M:%S')) %}
-        {% set sys_start = (strptime(states('input_datetime.system_start_time'), '%H:%M:%S')) %}
-        {% set start_dates =[(now() + timedelta(days=1)).replace(hour=sys_start.hour, minute=sys_start.minute, second=0, microsecond=0)] %}
-        {% if is_state('person.ryan', 'home') and states('sensor.ballam_next_alarm') != 'unavailable' %}
-          {% set start_dates = start_dates + [(strptime(states('sensor.ballam_next_alarm'),'%Y-%m-%dT%H:%M:%S%z')|as_local())] %}
-        {% endif %}
-        {% if is_state('person.jeanette', 'home') %}
-          {% set start_dates = start_dates + [(now() + timedelta(days=1)).replace(hour=j_start.hour, minute=j_start.minute, second=0, microsecond=0)] %}
-        {% endif %}
-        {{ (start_dates | min).isoformat() }}
-    calculated_system_sleep_time:
-      friendly_name: Calculated Day End
-      device_class: timestamp
-      value_template: >-
-        {% set sys_sleep = (strptime(states('input_datetime.system_sleep_time'), '%H:%M:%S')) %}
-        {{ now().replace(hour=sys_sleep.hour, minute=sys_sleep.minute, second=0, microsecond=0).isoformat() }}
-    xbox_source: 
-      value_template: "{{ state_attr('media_player.xboxone_2', 'media_title') }}" 
-      friendly_name: 'Xbox Source'
-    water_heater_start_time:
-      friendly_name: Water Heater Start Time
-      device_class: timestamp
-      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1, minutes=30)).isoformat() }}"
-    coffee_start_time:
-      friendly_name: Coffee Start Time
-      device_class: timestamp
-      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(minutes=15)).isoformat() }}"
-    outdoor_lights_on:
-      friendly_name: Outdoor Lights On Time
-      device_class: timestamp
-      value_template: "{{ (strptime(states('sensor.calculated_system_start_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}"
-    water_heater_off_time:
-      friendly_name: Water Heater off Time
-      device_class: timestamp
-      value_template: "{{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=1)).isoformat() }}"
-    coffee_off_time:
-      friendly_name: Coffee off Time
-      device_class: timestamp
-      value_template: >-
-        {% if is_state('person.ryan', 'home') %}
-          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=2)).isoformat() }}
-        {% else  %}
-          {{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') - timedelta(hours=8)).isoformat() }}
-        {% endif %}
-    bedroom_lights_off_time:
-      device_class: timestamp
-      friendly_name: Bedroom Lights off Time
-      value_template: "{{ (strptime(states('sensor.calculated_system_sleep_time'), '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=15)).isoformat() }}"
-    water_heater_time_to_temp:
-      value_template: >-
-          {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
-              0
-          {% else %}
-              {{((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}} 
-          {% endif %}
-      friendly_name: 'Water Heater: Time to Temp'
-      unit_of_measurement: 'Min'
-    aeinarr_error_quest_desc:
-      value_template: >
-        {% set error_code = state_attr("binary_sensor.aeinarr_error", "error_code")|int %}
-        {% set quest_strings = {-1: "is pressing the attack", 0:"reports bewildered and confused", 1:"ventured beyond the bounds of this realm",2:"unable to maintain contact",3:"received forged orders",4:"failed to comprehend his orders",5:"failed to comprehend his orders, dropped and stepped on them",6:"failed to comprehend his orders, left on side quests",7:"failed to comprehend his orders",8:"found evidence of lockpicking",9:"was ensnared",10:"is caught in a snare and hanging by his feet",11:"is famished",12:"has perished from starvation",13:"lacks motivation",14:"was snatched into the heavens",15:"was carried away by a dragon",16:"is waylaid at the table",17:"found no space at the table",18:"reports unable to retreat",19:"reports the path is blocked",20:"took an arrow to the right knee",21:"took an arrow to the left knee",22:"shattered his right greaves",23:"shattered his left greaves",24:"buried his sword in a tree branch",25:"buried his sword in a tree branch",26:"has mismatched armour",27:"is reborn",28:"reports altitude sickness, memory is clouded",29:"found the mountain too ragged",30:"states, food is unediable",31:"refused orders",32:"shakes, the ground is unsteady",33:"drank too much",34:"abandoned the fight, the path was too steep",35:"is overencumbered",36:"is overencumbered",37:"suffered -5 shock damage",38:"lost heart",39:"lost strength, reports sword arm has failed",40:"reports sword debuff",41:"equipped his axe",42:"equipped his dagger",43:"would cleave the troll's head, but lacks strength",44:"would cleave the troll's head, but lacks stamina",45:"would cleave the troll's head, but lacks coordination",46:"would press the attack, but the enemy's shield is strong",47:"was rebuffed",48:"reports innkeeper cut him off",49:"reports his vision is unclear",50:"reports primary path is unclear",51:"reports secondary path is unclear",52:"reports tertiary path is unclear",53:"reports the map is torn",54:"reports the stars have dimmed",55:"unable to fast travel",56:"reports map updated",57:"reports cartographer failed",58:"reports maximum health decreased",59:"reports no cheese wheels ",60:"has been poisoned",61:"can't find the perfect health potion",62:"reports nightshade is poison",63:"found his provisions to be stale",64:"ate too many cheese wheels",65:"has contracted Bone Break Fever",66:"has been cursed -5 strength",67:"reports no stamina",68:"reports temporary food poisoning",69:"has been knocked unconscious",70:"is paralyzed",71:"reports \"horse is high centered\"",72:"reports \"stuck on side of a hill\"",73:"reports \"They've caught me!\"",74:"reports being off the edge of the map",75:"accepted new quest",76:"declined new quest",77:"is unable to speak",78:"reports stuck in the molasses mud pit",79:"reports gear incompatible with Viking class",80:"reports cannot swing sword",81:"shattered his shield",82:"reports damage to right heel",83:"reports damage to left heel",84:"reports damage to right arm",85:"reports damage to left arm",86:"reports over encumbered right pack",87:"reports over encumbered left pack",88:"is confused",89:"reports Viking class not properly specialized",90:"reports no food at the inn",91:"reports, energy spell failed",92:"reports outside quest area",93:"reports star signs obscured",94:"reports didn't understand quest giver",95:"was brushed by a wraith",96:"pulled his right hamstring",97:"pulled his left hamstring",98:"sees dead people",99:"reports helmet visor stuck ",100:"reports dirt in eyes",101:"reports the sun was in eyes",102:"reports dull sword blade",103:"reports dull axe blade",104:"reports dull dagger blade",105:"reports climbed 7,000 steps can do no more",106:"reports shield is damaged",107:"reports inn is missing",108:"encountered a wraith",109:"smells burnt toast",110:"reports \"I'm invincible!\"",111:"reports not exactly lost, but...",112:"reports sword unbalanced",113:"reports underleveled for this quest",114:"reports lightning strike",115:"reports caffine intake",116:"reports loss of appetite",117:"reports may have lockjaw",118:"reports the food is bad and there are rats",119:"states, his ward is insufficent",120:"reports the sweet roll is a lie",121:"reports feverish, may have contracted Porphyric Hemophilia",122:"reports no CAN do",123:"reports the way was blocked, he cannot get through",} %}
-        {{ quest_strings.get(error_code) }}
- 
-       
-     

@@ -10,4 +10,4 @@ trigger:
   for:
     minutes: 20
   platform: state
-  to: 'on'
+  from: 'off'

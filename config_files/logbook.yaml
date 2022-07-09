@@ -1,0 +1,15 @@
+exclude:
+  entities:
+    - sensor.cx02up3yv_last_update_trigger
+    - sensor.amos_screen_0_width
+    - sensor.ballam_last_update_trigger
+    - weather.wiebelo_weather
+    - binary_sensor.ballam_interactive
+    - sensor.fordpass_lastrefresh
+    - sensor.jeanette_s_iphone_last_update_trigger
+    - binary_sensor.ballam_keyguard_locked
+    - weather.koqt_hourly
+    - weather.koqt_daynight
+    - sensor.cx02up3yv_frontmost_app
+    - device_tracker.hp_switch
+    - sensor.ballam_volume_level_call

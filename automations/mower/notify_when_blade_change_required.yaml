@@ -1,0 +1,15 @@
+alias: Notify on mower requires blade change 
+id: d1ce2dce-5159-4147-ba74-bfaa57e45e9a 
+trigger:
+  - platform: state 
+    entity_id: binary_sensor.aeinarr_blade_change_due
+    from: 'off'
+    to: 'on'
+action:
+  - service: notify.all_ios_devices 
+    data_template:
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }}''s blade requires honing.' 
+  - service: notify.all_android_devices
+    data_template:
+      title: '{{ state_attr("camera.aeinarr", "friendly_name") }} Quest Update!'
+      message: '{{ state_attr("camera.aeinarr", "friendly_name") }}''s blade requires honing.' 

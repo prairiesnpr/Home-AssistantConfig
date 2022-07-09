@@ -5,9 +5,6 @@ action:
 alias: Turn Circulation Fan on With HVAC
 id: 9c2112dd117a412c86263f3465e76591
 trigger:
-- entity_id: sensor.downstairs_thermostat_hvac_state
-  from: 'off'
-  platform: state
 - entity_id: binary_sensor.downstairs_thermostat_fan
   from: 'off'
   platform: state

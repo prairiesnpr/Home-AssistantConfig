@@ -104,7 +104,7 @@ light.sz_lamp_01_1baff16c_11:
   friendly_name: Upstairs HVAC Blower
 switch.zha_40c04dcb_1_6:
   friendly_name: Water Heater
-  icon: mdi:hot-tub
+  icon: mdi:water-boiler
 zha.zha_40c04dcb:
   friendly_name: Water Heater
 sensor.zha_40c04dcb_1_1794:

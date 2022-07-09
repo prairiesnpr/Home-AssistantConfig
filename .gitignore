@@ -20,6 +20,7 @@ google_calendars.yaml
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+websitechecker.yaml
 ryan_home.jpg
 ryan_away.jpg
 www/snapshots/*.jpg

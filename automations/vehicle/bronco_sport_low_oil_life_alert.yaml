@@ -4,6 +4,11 @@ trigger:
   - platform: state
     entity_id: sensor.fordpass_oil
     from: 'STATUS_GOOD'
+condition:
+  not:
+    - condition: state
+      entity_id: sensor.fordpass_oil
+      state: 'unavailable' 
 action:
   - service: notify.all_ios_devices
     data_template:

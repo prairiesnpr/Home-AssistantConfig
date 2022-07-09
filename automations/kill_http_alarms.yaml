@@ -1,0 +1,11 @@
+alias: 'Dismiss login failed notification'
+id: 8b22426a-6825-4d19-912c-158ba1beb264
+trigger:
+  - platform: state
+    entity_id: persistent_notification.http_login
+    to: 'notifying'
+action:
+  - delay: "00:00:02"
+  - service: persistent_notification.dismiss
+    data:
+      notification_id: http-login

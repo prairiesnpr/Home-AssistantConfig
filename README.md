@@ -1,5 +1,5 @@
 
-# Home Assistant (2022.6.1) configuration
+# Home Assistant (2022.7.1) configuration
 
 ## Zigbee Network
 
@@ -47,14 +47,14 @@ I utilize the native ZHA integration.
       * [1] Xiaomi Aqara vibration sensor (I keep moving this around, still haven't found a great use for it)
       * [3] Xiaomi Aqara motion sensor
       * [2] Xiaomi Aqara Water Sensor
-      * [2] Xiaomi Aqara Weather Sensor
+      * [5] Xiaomi Aqara Weather Sensor
       * [1] Xiaomi/Honeywell Smoke Detector
     * Door Lock
       * [1] Yale YRD256 TSDB
     * Remotes
       * [2] Home Depot ZBT-CCTSwitch-D0001
       * [1] Xiaomi Opple 1 button switch (These are crazy, they broadcast so everything on the network turns on or off, have to be paired directly.)
-      
+      * [1] Sonoff SNZB-01 button 
       
 ## Floorplan
 
@@ -79,6 +79,7 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 
 ## Mower
 * Husqvarna Automower 450xh
+  * [Automower Component](https://github.com/prairiesnpr/husqvarna_automower)
 
 ## Vehicles
 * Ford

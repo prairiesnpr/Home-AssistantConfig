@@ -1,3 +1,11 @@
+aeinarr_last_blade_change:
+  name: Æinarr Last Blade Change
+  initial: 0
+  min: 0
+  max: 1000000
+  step: 1
+  unit_of_measurement: 'Hr'
+  icon: mdi:swap-horizontal 
 bath_fan_off:
   name: Bathroom Fan On
   initial: 72 

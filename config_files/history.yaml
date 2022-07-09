@@ -18,3 +18,11 @@ include:
     - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water
     - switch.xbee_xbee_io_4192cf47_210_6 #Blueberries Water
     - switch.xbee_xbee_io_4192cf47_212_6 #Spare Water
+    - sensor.aeinarr_zone_sensor
+    - sensor.aeinarr_mowing_zones
+    - sensor.weather_front_porch_temperature
+    - sensor.weather_front_porch_humidity
+    - sensor.weather_front_porch_pressure
+    - sensor.weather_master_bedroom_temperature
+    - sensor.weather_master_bedroom_humidity
+    - sensor.weather_master_bedroom_pressure

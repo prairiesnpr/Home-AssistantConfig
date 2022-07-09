@@ -4,7 +4,7 @@ trigger:
   platform: state
   entity_id: sensor.bronco_sport_fuel 
   to:
-condition: "{{ trigger.from_state != None and (trigger.to_state.state|float < trigger.from_state.state|float) }}"
+condition: "{{ trigger.from_state != 'unavailable' and (trigger.to_state.state|float < trigger.from_state.state|float) }}"
 action:
   service: input_number.set_value
   target:

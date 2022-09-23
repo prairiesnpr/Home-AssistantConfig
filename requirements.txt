@@ -116,7 +116,7 @@ PlexAPI==4.11.2
 plexauth==0.0.6
 plexwebsocket==0.0.13
 proto-plus==1.20.6
-protobuf==3.20.1
+protobuf==3.20.2
 psutil==5.9.0
 psycopg2==2.9.3
 pure-pcapy3==1.0.1

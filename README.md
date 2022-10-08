@@ -8,7 +8,7 @@ I utilize the native ZHA integration.
 ## Current Zigbee Devices
 * Coordinator
   * [Tube's CC2652P2 POE coordinator](https://www.tubeszb.com/product/cc2652_poe_coordinator/47) 
- Routers (Mains Powered Devices)
+* Routers (Mains Powered Devices)
   * Switches
     * Jasco/GE
       * [2] Add on switches [AS2005](https://byjasco.com/ge-enbrighten-add-switch-quickfit-and-simplewire) (Used for 3 way switching)

@@ -2,7 +2,7 @@ alias: Bronco Sport - Notify on engine off windows down
 id: 97280a16-f36e-4231-97f2-a768ca591aed
 trigger:
   - platform: state
-    entity_id: lock.fordpass_ignitionstatus
+    entity_id: sensor.fordpass_ignitionstatus
     to: 'off'
     for:
       minutes: 10

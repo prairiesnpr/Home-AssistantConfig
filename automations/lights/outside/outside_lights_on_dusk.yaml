@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - light.outdoor_lights
+    - light.outdoor_lights_zha_group 
   service: homeassistant.turn_on
 alias: Porch Lights on at Dusk/Dawn
 condition: 

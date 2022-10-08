@@ -1,13 +1,45 @@
 action:
-- entity_id: script.arrival_music
-  service: homeassistant.turn_on
-alias: Arrival Greeting
+- wait_template: "{{ ((now() - states.binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3.last_changed).seconds < 300) or is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3','on') or ((now() - states.binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_4.last_changed).seconds < 300) or is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_4','on') }}" 
+  timeout:
+    minutes: 5
+  continue_on_timeout: false
+- service: media_player.turn_on
+  data:
+    entity_id: media_player.receiver
+- service: script.arrival_music
+  data:
+    message: >
+      {%- if states('person.ryan') == 'home' and states('person.jeanette') == 'home' -%}
+        Welcome home Lady Jeanette and Master Ryan
+      {%- elif states('person.jeanette') == 'home' -%}
+        Welcome home Lady Jeanette
+      {%- elif states('person.ryan') == 'home' -%}
+        Welcome home Master Ryan
+      {%- else -%}
+        Well this is unfortunate
+      {%- endif %}
+    filename: >
+      {%- if states('person.ryan') == 'home' and states('person.jeanette') == 'home' -%}
+        jeanette_and_ryan.mp3 
+      {%- elif states('person.jeanette') == 'home' -%}
+        jeanette.mp3 
+      {%- elif states('person.ryan') == 'home' -%}
+        ryan.mp3 
+      {%- else -%}
+        ryan.mp3 
+      {%- endif %}
+    return_volume: "{{ state_attr('media_player.receiver', 'volume_level') }}"
+    return_source: "{{ state_attr('media_player.receiver', 'source') }}"
+alias: Arrival Greeting - Front Door
 condition:
 - condition: state
-  entity_id: person.jeanette
-  state: not_home
+  entity_id: media_player.receiver
+  state: 'off'
 id: 658abbef143a405887e3df16e0612a78
 trigger:
 - entity_id: person.ryan
   platform: state
-  to: home
+  to: 'home'
+- entity_id: person.jeanette
+  platform: state
+  to: 'home'

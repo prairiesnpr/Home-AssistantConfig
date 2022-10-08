@@ -1,4 +1,11 @@
 binary_sensor:
+  # Update me
+  - name: "Master Bed Presence"
+    unique_id: 3a831702-2412-4543-b4bb-b677a3235988 
+    state: >-
+      {{ is_state("binary_sensor.lumi_lumi_sensor_magnet_aq2_on_off", "off") }}
+    device_class: occupancy
+    icon: mdi:bed-king
   - name: "Nicer Outside"
     unique_id: 4e1f3df6-fed0-11ec-b939-0242ac120002
     state: >-
@@ -18,6 +25,57 @@ binary_sensor:
         {% set last_blade_change_hrs = states('input_number.aeinarr_last_blade_change')|float %}
         {{ blade_interval|float - (cut_time_hrs - last_blade_change_hrs) }}
 sensor:
+  - name: "Living Room AQI"
+    unique_id: 3d310245-3eac-4f47-b480-d4078a96f1c9
+    state: >-
+      {%- if states('sensor.aqi') == 'unavailable' -%}
+        Unavailable
+      {%- elif states('sensor.aqi')|float < 50 -%}
+        Good
+      {%- elif states('sensor.aqi')|float < 100 -%}
+        Moderate
+      {%- elif states('sensor.aqi')|float < 150 -%}
+        Unhealthy for Sensitive Groups
+      {%- elif states('sensor.aqi')|float < 200 -%}
+        Unhealthy
+      {%- elif states('sensor.aqi')|float < 300 -%}
+        Very Unhealthy
+      {%- else -%}
+        Hazerdous
+      {%- endif -%}
+    attributes:
+      state_color: >-
+        {%- if states('sensor.aqi')|float < 50 -%}
+          green 
+        {%- elif states('sensor.aqi')|float < 100 -%}
+          yellow
+        {%- elif states('sensor.aqi')|float < 150 -%}
+          orange
+        {%- elif states('sensor.aqi')|float < 200 -%}
+          red
+        {%- elif states('sensor.aqi')|float < 300 -%}
+          purple
+        {%- else -%}
+          maroon
+        {%- endif -%} 
+  - name: "HP Switch POE Power"
+    unique_id: 49986046-ab28-4187-abd3-8fec7ce61718
+    unit_of_measurement: "W"
+    state_class: measurement
+    state: >-
+      {{ 
+        (
+          int(states('sensor.hp_switch_port_1_power')) + 
+          int(states('sensor.hp_switch_port_2_power')) +
+          int(states('sensor.hp_switch_port_3_power')) +
+          int(states('sensor.hp_switch_port_4_power')) +
+          int(states('sensor.hp_switch_port_5_power')) +
+          int(states('sensor.hp_switch_port_6_power')) +
+          int(states('sensor.hp_switch_port_7_power')) +
+          int(states('sensor.hp_switch_port_8_power'))
+        ) / 1000
+      }} 
+    
   - name: "Forecast Low"
     unique_id: 4e1f3a40-fed0-11ec-b939-0242ac120002
     unit_of_measurement: "F"
@@ -46,8 +104,8 @@ sensor:
     unit_of_measurement: ""
     state_class: measurement
     state: >-
-      {% set t = (states('sensor.weather_front_porch_temperature')|float(0)-32)/1.8 %}
-      {% set h = states('sensor.weather_front_porch_humidity')|float(0) %}
+      {% set t = (states('sensor.lumi_lumi_weather_temperature_4')|float(0)-32)/1.8 %}
+      {% set h = states('sensor.lumi_lumi_weather_humidity_4')|float(0) %}
       {{ (t - (0.55*(1  - (0.01*h) ) * (t - 14.5)))|round(2,0) }}
     attributes:
       comfortable: >-
@@ -62,7 +120,7 @@ sensor:
         {% set alt_cor = 1/((760 - (sen_alt*0.026))/760) %} 
         {% set gen_cor = 1.002334111370457 %}
         {% set hpa_inhg = 0.029529988 %}
-        {{ "%.2f"|format((states('sensor.weather_front_porch_pressure')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
+        {{ "%.2f"|format((states('sensor.lumi_lumi_weather_pressure_4')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
   - name: "Greenhouse Barometric Pressure"
     unique_id: 4e1f2d16-fed0-11ec-b939-0242ac120002
     unit_of_measurement: "inHg"
@@ -73,7 +131,7 @@ sensor:
         {% set alt_cor = 1/((760 - (sen_alt*0.026))/760) %}
         {% set gen_cor = 1.0004 %}
         {% set hpa_inhg = 0.029529988 %}
-        {{ "%.2f"|format((states('sensor.lumi_lumi_weather_810c5c04_pressure')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
+        {{ "%.2f"|format((states('sensor.lumi_lumi_weather_pressure_2')|float * hpa_inhg * alt_cor * gen_cor)|round(2)) }}
   - name: "Bronco Sport Fuel"
     unique_id: 4e1f2bc2-fed0-11ec-b939-0242ac120002
     unit_of_measurement: Gal
@@ -139,7 +197,18 @@ sensor:
   - name: "XBOX Source"
     unique_id: 4e1f2028-fed0-11ec-b939-0242ac120002 
     state: >-
-      {{ state_attr('media_player.xboxone_2', 'media_title') }}
+      {%- if state_attr('media_player.xboxone', 'media_title') == None %}
+        {%- if states('media_player.xboxone') == 'playing' and states('media_player.plex_plex_for_xbox_xboxone') == 'playing' -%}
+          {{ state_attr('media_player.plex_plex_for_xbox_xboxone', 'media_series_title') }}
+        {%- elif states('media_player.xboxone') == 'off' -%}
+          #{{ states('sensor.prairiesnpr_status') }}
+          "System Off"
+        {%- else -%}
+          {{ states('media_player.xboxone') }}
+        {%- endif -%}
+      {%- else -%}
+          {{ state_attr('media_player.xboxone', 'media_title') }}
+      {%- endif -%}
   - name: "Water Heater Start Time"
     unique_id: 4e1f1e5c-fed0-11ec-b939-0242ac120002 
     device_class: timestamp
@@ -179,11 +248,16 @@ sensor:
     unit_of_measurement: "Min"
     state_class: measurement
     state: >-
-      {% if ((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
+      {% if ((((333.2*(140.0-states('sensor.water_heater_temperature_2')|float))/3412.142)/4.5)*60)|round(0) < 0 %}
         0
       {% else %}
-        {{((((333.2*(140.0-states('sensor.zha_40c04dcb_3_1026')|float))/3412.142)/4.5)*60)|round(0)}}
+        {{((((333.2*(140.0-states('sensor.water_heater_temperature_2')|float))/3412.142)/4.5)*60)|round(0)}}
       {% endif %}
+  - name: "Aeinarr update frequency"
+    unique_id: a357ab13-9ffb-49de-a164-34a4d20aabea
+    state: >-
+        {{ state_attr('camera.aeinarr', 'update_frequency_seconds') }}
+    unit_of_measurement: "Seconds"
   - name: "Aeinarr Mowing Zones"
     unique_id: 4e1f1308-fed0-11ec-b939-0242ac120002 
     state: >-
@@ -192,6 +266,10 @@ sensor:
         {%- else -%}
           error
         {%- endif -%}
+#  - name: "Aeinarr Location"
+#    unique_id: d1bee339-dd80-4699-aaae-b10a3f4654ef 
+#    state: >
+#      {{ state_attr("device_tracker.aeinarr", "latitude"), state_attr("device_tracker.aeinarr", "longitude") }}
   - name: "Aeinarr Error Quest Desc"
     unique_id: 4e1f0f70-fed0-11ec-b939-0242ac120002 
     state: >-

@@ -8,7 +8,7 @@ master_bedroom_lights_turn_off:
     data:
       transition: 1
     target:
-      entity_id: light.master_bedroom_lights
+      entity_id: light.bedroom_bed_lights_zha_group 
   - service: adaptive_lighting.apply
     data:
       entity_id: switch.adaptive_lighting_adapt_brightness_master_bedroom

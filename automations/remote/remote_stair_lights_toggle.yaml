@@ -1,5 +1,5 @@
 action:
-- entity_id: light.stairway_lights
+- entity_id: light.stairway_lights_zha_group 
   service: light.toggle
 alias: Remote Press - Stair Lights Toggle
 condition: []

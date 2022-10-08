@@ -1,6 +1,6 @@
 action:
 - data:
-    entity_id: light.jasco_products_45856_61d32600_1
+    entity_id: light.front_porch_lights_light 
   service: homeassistant.turn_on
 alias: Porch Light on if Front Door Opened
 condition:
@@ -11,6 +11,6 @@ condition:
 description: ''
 id: 1f23d1fe1a254f8783f8d9744dfb0563
 trigger:
-- entity_id: binary_sensor.zha_02e2146c_1_6
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3 
   platform: state
   to: 'on'

@@ -4,7 +4,7 @@ description: ''
 trigger:
 - platform: state
   entity_id:
-  - light.master_bedroom_lights
+  - light.bedroom_bed_lights_zha_group 
   from: 'on'
   to: 'off'
 condition: []

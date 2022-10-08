@@ -1,28 +1,28 @@
-include:
-  entities:
-    - device_tracker.aeinarr
-    - sensor.downstairs_thermostat_temperature
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1026
-    - sensor.zha_40c04e54_2_1026
-    - sensor.downstairs_thermostat_humidity
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1029
-    - sensor.zha_40c04e54_2_1029
-    - sensor.lumi_lumi_weather_02c9fa4a_1_1027
-    - sensor.zha_40c04dcb_2_1026
-    - sensor.zha_40c04dcb_3_1026
-    - switch.zha_40c04dcb_1_6
-    - person.ryan
-    - person.jeanette
-    - switch.ledvance_plug_00054922_1
-    - lock.yale_yrd256_tsdb_7b1f1911_door_lock
-    - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water
-    - switch.xbee_xbee_io_4192cf47_210_6 #Blueberries Water
-    - switch.xbee_xbee_io_4192cf47_212_6 #Spare Water
-    - sensor.aeinarr_zone_sensor
-    - sensor.aeinarr_mowing_zones
-    - sensor.weather_front_porch_temperature
-    - sensor.weather_front_porch_humidity
-    - sensor.weather_front_porch_pressure
-    - sensor.weather_master_bedroom_temperature
-    - sensor.weather_master_bedroom_humidity
-    - sensor.weather_master_bedroom_pressure
+#include:
+#  entities:
+#    - device_tracker.aeinarr
+#    - sensor.downstairs_thermostat_temperature
+ #   - sensor.lumi_lumi_weather_02c9fa4a_1_1026
+ #   - sensor.zha_40c04e54_2_1026
+ #   - sensor.downstairs_thermostat_humidity
+ #   - sensor.lumi_lumi_weather_02c9fa4a_1_1029
+ #   - sensor.zha_40c04e54_2_1029
+ #   - sensor.lumi_lumi_weather_02c9fa4a_1_1027
+ #   - sensor.zha_40c04dcb_2_1026
+ #   - sensor.zha_40c04dcb_3_1026
+ #   - switch.zha_40c04dcb_1_6
+ #   - person.ryan
+ #   - person.jeanette
+ #   - switch.ledvance_plug_00054922_1
+ #   - lock.yale_yrd256_tsdb_7b1f1911_door_lock
+ #   - switch.xbee_xbee_io_4192cf47_211_6 #Garden Water
+ #   - switch.xbee_xbee_io_4192cf47_210_6 #Blueberries Water
+ #   - switch.xbee_xbee_io_4192cf47_212_6 #Spare Water
+   # - sensor.aeinarr_zone_sensor
+  #  - sensor.aeinarr_mowing_zones
+  #  - sensor.weather_front_porch_temperature
+   # - sensor.weather_front_porch_humidity
+   # - sensor.weather_front_porch_pressure
+  #  - sensor.weather_master_bedroom_temperature
+ #   - sensor.weather_master_bedroom_humidity
+   # - sensor.weather_master_bedroom_pressure

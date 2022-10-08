@@ -1,0 +1,28 @@
+id: '1659797194024'
+alias: Cast Front Porch Camera to Living Room TV
+description: ''
+trigger:
+- platform: device
+  type: turned_on
+  device_id: 61cfa68de5434e309d71d9c916517c27
+  entity_id: switch.front_door_bell_rung
+  domain: switch
+condition: []
+action:
+- service: script.turn_on
+  target:
+    entity_id: script.prepare_reciever_for_output_no_volume 
+- service: switch.turn_on
+  data: {}
+  target:
+    entity_id: switch.vlc_front_porch
+- delay:
+    hours: 0
+    minutes: 5
+    seconds: 0
+    milliseconds: 0
+- service: switch.turn_off
+  data: {}
+  target:
+    entity_id: switch.vlc_front_porch
+mode: single

@@ -1,0 +1,9 @@
+alias: "Update Ryan Location on Change"
+id: 51301cbb-23a2-4187-8cfa-16cc6f27bbfd 
+trigger:
+  platform: state 
+  entity_id: person.ryan 
+action:
+  - service: rest_command.update_ryan_location 
+    data:
+      new_state: "{{ states('person.ryan') }}" 

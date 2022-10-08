@@ -2,21 +2,21 @@
 <!-- Created with sK1/UniConvertor (http://sk1project.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="560.04468pt"
    height="351.82571pt"
    viewBox="0 0 560.04468 351.82571"
    version="1.1"
    id="svg764"
    sodipodi:docname="wiebelo_bottom_floor.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   style="fill-rule:evenodd">
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   style="fill-rule:evenodd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <metadata
      id="metadata770">
     <rdf:RDF>
@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,22 +40,26 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="2736"
-     inkscape:window-height="1779"
+     inkscape:window-width="890"
+     inkscape:window-height="925"
      id="namedview766"
      showgrid="true"
      inkscape:zoom="2.0214467"
-     inkscape:cx="345.54817"
-     inkscape:cy="148.50967"
-     inkscape:window-x="-13"
-     inkscape:window-y="-13"
-     inkscape:window-maximized="1"
+     inkscape:cx="320.5625"
+     inkscape:cy="-6.9257329"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer8"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     showborder="true" />
+     showborder="true"
+     inkscape:showpageshadow="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt" />
   <g
      inkscape:groupmode="layer"
      id="layer4"
@@ -584,13 +588,13 @@
     <path
        inkscape:connector-curvature="0"
        d="m 73.358887,219.0902 a 4.147624,4.147624 0 0 1 4.004963,2.68188 4.4483178,4.4483178 0 0 1 -0.05955,3.11751 4.1704583,4.1704583 0 0 1 -2.722928,2.38298 8.5877316,8.5877316 0 0 1 -0.97494,0.14905 c -0.591892,0.10258 -1.436767,-0.19729 -1.808537,-0.35764 a 4.1943188,4.1943188 0 0 1 -2.453,-4.44806 4.7636356,4.7636356 0 0 1 0.19883,-0.77457 4.2443488,4.2443488 0 0 1 2.58386,-2.53255 5.0081418,5.0081418 0 0 1 0.834867,-0.18883 q 0.198578,-0.0141 0.397425,-0.0298 z"
-       id="light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off"
+       id="light.office_ceiling_fan_light_2"
        inkscape:label="#Office Fan Lt"
        style="stroke-width:0.25656465"
        inkscape:transform-center-x="1.5376476"
        inkscape:transform-center-y="-7.175746" />
     <path
-       id="fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan"
+       id="fan.office_ceiling_fan_fan_2"
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1875;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 83.054302,218.16678 c -0.25554,-0.0221 -0.520605,0.005 -0.779295,0.0894 -0.811845,0.27062 -1.32591,1.00109 -1.36377,1.79736 l -2.6001,0.84961 c -0.362813,0.12094 -0.564638,0.51169 -0.443843,0.87451 0.10752,0.36279 0.49824,0.56339 0.874508,0.44238 l 2.592772,-0.84667 c 0.498158,0.63238 1.348103,0.92055 2.163578,0.65917 1.048177,-0.34938 1.613317,-1.46427 1.27734,-2.49902 -0.262035,-0.78613 -0.954578,-1.30055 -1.72119,-1.36669 z m -2.984025,3.61982 0.364335,1.11934 c 0.228435,0.77942 1.08849,1.18256 1.867905,0.88694 v 0 l 17.321872,-6.70569 c 0.712221,-0.26877 1.075061,-1.06161 0.846601,-1.77384 l -0.47033,-1.46476 c -0.228461,-0.72568 -0.994428,-1.14226 -1.733531,-0.94068 l -17.953455,4.7437 c -0.79287,0.21499 -1.249762,1.04817 -0.994455,1.82759 l 0.321908,0.98895 m -2.898832,6.41445 c -0.174705,-0.0286 -0.359633,0.008 -0.514163,0.12158 -0.309082,0.22844 -0.376387,0.65919 -0.147952,0.96827 l 1.606934,2.2119 c -0.447254,0.67053 -0.458902,1.57146 0.03367,2.26319 0.645038,0.88691 1.880168,1.08742 2.767095,0.44239 0.886913,-0.64504 1.08888,-1.88017 0.443843,-2.7671 -0.498795,-0.68587 -1.350105,-0.95693 -2.12109,-0.74853 l -1.614262,-2.22217 c -0.114225,-0.14775 -0.279398,-0.24097 -0.454095,-0.26953 z m 0.149295,2.20631 -0.945345,0.68396 c -0.65847,0.48377 -0.77943,1.43789 -0.25533,2.06949 v 0 l 11.731559,14.39233 c 0.483773,0.59127 1.343828,0.69879 1.948553,0.25532 l 1.2363,-0.90036 c 0.618187,-0.44345 0.779437,-1.3035 0.362835,-1.93511 L 80.904944,228.03935 c -0.44346,-0.68535 -1.38414,-0.8735 -2.042617,-0.37627 l -0.848475,0.61386 m -7.768137,-1.33575 c -0.1747,0.0268 -0.33988,0.11731 -0.45411,0.26513 l -1.61718,2.22656 c -0.77751,-0.2151 -1.64163,0.0529 -2.13282,0.74268 -0.63159,0.88694 -0.44306,2.13696 0.44385,2.76855 0.88693,0.6316 2.13696,0.44308 2.76855,-0.44384 0.49045,-0.68873 0.48105,-1.58479 0.0395,-2.25439 l 1.6128,-2.22071 c 0.22854,-0.30908 0.16114,-0.73834 -0.14796,-0.96679 -0.15453,-0.10755 -0.338,-0.14406 -0.51269,-0.11719 z m -1.28298,1.40563 -0.94503,-0.68374 c -0.65848,-0.4838 -1.58572,-0.30908 -2.02918,0.37627 v 0 l -10.06524,15.61519 c -0.41658,0.64504 -0.25531,1.49166 0.36283,1.93511 l 1.23633,0.90036 c 0.61816,0.44347 1.47822,0.33595 1.94854,-0.25532 l 11.73157,-14.39233 c 0.5241,-0.6316 0.40314,-1.58572 -0.26877,-2.06949 l -0.85079,-0.61555 m -6.2782,-10.88068 c -1.35005,0.0668 -2.26342,1.69603 -1.59425,2.88037 0.58069,1.27376 2.51647,1.44229 3.32569,0.31299 0.9095,0.28785 1.80976,0.60944 2.72517,0.87575 0.93697,0.11921 1.00759,-1.34826 0.10029,-1.41068 -0.80217,-0.26212 -1.60435,-0.52424 -2.40652,-0.78636 -0.0259,-1.09395 -1.06296,-1.99618 -2.15038,-1.87207 z m 3.43824,2.29118 c 0.15136,-0.46509 0.29515,-0.93209 0.41728,-1.40452 0.0774,-0.67966 -0.39834,-1.35932 -1.06707,-1.51169 v 0 c -6.0313,-1.59258 -12.05771,-3.20602 -18.09208,-4.78554 -0.83462,-0.16071 -1.56728,0.51861 -1.70388,1.30842 -0.21504,0.77771 -0.73408,1.66004 -0.15586,2.41123 0.48812,0.5932 1.30577,0.68779 1.97057,1.00269 5.37988,2.07692 10.75255,4.17405 16.13695,6.23832 0.84653,0.25835 1.69142,-0.40797 1.83134,-1.23814 0.0731,-0.23765 0.14953,-0.47445 0.22744,-0.71089 m 6.585932,-10.51512 c -1.088512,0 -1.976072,0.88759 -1.976072,1.97608 0,0.84705 0.53928,1.56575 1.290527,1.84569 v 2.73633 c 0,0.37627 0.309255,0.68555 0.685545,0.68555 0.389685,0 0.696608,-0.30928 0.684083,-0.68555 v -2.73486 c 0.760192,-0.27823 1.300305,-0.99775 1.290525,-1.84716 0,-1.08849 -0.88614,-1.97608 -1.974608,-1.97608 z m 0.679343,5.1841 1.174462,-0.0104 c 0.81972,-0.0125 1.478198,-0.69879 1.437885,-1.51851 l -1.034745,-18.54475 c -0.04035,-0.76598 -0.67191,-1.35726 -1.437885,-1.35726 h -1.531965 c -0.765977,0 -1.384137,0.59128 -1.437887,1.35726 l -1.03474,18.54474 c -0.0404,0.81973 0.60472,1.51851 1.43788,1.51851 l 1.053407,-0.0176 m -1.862247,11.60396 c 0.77727,0.41858 1.666182,0.65586 2.609562,0.65586 0.983843,0 1.906178,-0.25721 2.704343,-0.70759 m 1.112302,-0.82778 c 1.044337,-1.00353 1.693042,-2.41448 1.693042,-3.9743 0,-0.37296 -0.03675,-0.73708 -0.106867,-1.08895 m -0.44433,-1.32201 c -0.802268,-1.65252 -2.405542,-2.8395 -4.310085,-3.06123 m -1.405702,0.014 c -1.897345,0.26035 -3.482375,1.48514 -4.251785,3.16021 m -0.40982,1.29688 c -0.0596,0.32473 -0.0907,0.65932 -0.0907,1.00107 0,1.60303 0.68282,3.04276 1.77153,4.04816"
        inkscape:label="#Office Fan"
@@ -599,7 +603,7 @@
        inkscape:transform-center-y="-1.5739711" />
     <rect
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.1125;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off"
+       id="light.feibit_inc_co_fzb56_zcw27lx1_0_light"
        width="63.48912"
        height="11.543476"
        x="256.0553"
@@ -660,7 +664,7 @@
          style="fill:none;stroke:#000000;stroke-width:0.05909558;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
-       id="light.stairway_lights"
+       id="light.stairway_lights_zha_group"
        transform="translate(-52.282212,9.2025187)"
        inkscape:label="#Stairway Lights"
        style="fill:none">
@@ -673,7 +677,7 @@
     </g>
     <g
        style="display:inline;fill:none;fill-rule:evenodd"
-       id="light.jasco_products_45856_61d32600_1"
+       id="light.front_porch_lights_light"
        transform="matrix(0,1.7545155,-0.99619054,0,362.10034,-55.762949)"
        inkscape:label="#Porch Lights">
       <path
@@ -686,13 +690,13 @@
     <path
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.99154192;stroke-linejoin:round;stroke-opacity:1"
        d="m 430.76798,-7.8793334 h -13.45587 v 8.58923901 h 13.45587 z"
-       id="light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+       id="light.garage_walk_in_door_light_light"
        inkscape:connector-curvature="0"
        inkscape:label="#GarageWalkInLight" />
     <path
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.99154192;stroke-linejoin:round;stroke-opacity:1"
        d="m 235.56789,-8.1912118 h -13.45587 v 8.58923898 h 13.45587 z"
-       id="light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off"
+       id="light.deck_light_light_2"
        inkscape:connector-curvature="0"
        inkscape:label="#BackPorchLight" />
     <path
@@ -709,7 +713,7 @@
     <g
        style="display:inline"
        transform="matrix(0.02094346,0,0,0.02094346,142.31858,25.090254)"
-       id="light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2"
+       id="light.lumi_lumi_relay_c2acn01_light_2"
        inkscape:label="#DownstairsBathFanLight">
       <path
          style="stroke-width:0.1"
@@ -783,7 +787,7 @@
          id="polygon430" />
     </g>
     <path
-       id="switch.zha_40c04dcb_1_6"
+       id="switch.water_heater_switch"
        style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.75;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 382.50124,201.39103 a 14.345032,14.345032 0 0 1 -14.34503,14.34503 14.345032,14.345032 0 0 1 -14.34503,-14.34503 14.345032,14.345032 0 0 1 14.34503,-14.34503 14.345032,14.345032 0 0 1 14.34503,14.34503 z m -20.09189,-5.41039 c -0.69977,0.89454 -0.6651,0.7598 -0.3008,1.18253 0.53779,0.61272 0.72861,1.40925 0.53779,2.20579 -0.10983,0.46563 -0.35862,1.04779 -0.60144,1.42159 -0.50298,0.77817 -0.9021,1.91178 -1.00042,2.86157 -0.10415,0.96198 0.10983,1.93013 0.58411,2.68994 0.24297,0.37997 0.89059,1.0785 0.97726,1.04162 0.0578,-0.0184 1.04674,-1.37252 1.04674,-1.43379 0,-0.0184 -0.0636,-0.0858 -0.13299,-0.15326 -0.24865,-0.20218 -0.55513,-0.74761 -0.65345,-1.15815 -0.19082,-0.79653 0.0232,-1.66668 0.7056,-2.88594 0.78076,-1.39706 1.06407,-2.59194 0.87893,-3.68248 -0.10983,-0.63726 -0.29497,-1.12126 -0.59562,-1.61144 -0.24296,-0.38599 -0.83276,-1.07233 -0.92525,-1.07233 -0.0348,0 -0.26613,0.26963 -0.52046,0.59435 z m 5.33188,0.092 -0.54944,0.68618 0.28914,0.34309 c 0.41631,0.49017 0.57829,0.89454 0.61296,1.47052 0.0405,0.77817 -0.12717,1.32962 -0.71711,2.34068 -0.37581,0.6496 -0.6013,1.17651 -0.78644,1.86269 -0.10415,0.39217 -0.13299,0.63726 -0.13299,1.31125 0,0.95581 0.10415,1.40925 0.47428,2.08324 0.21981,0.39217 0.93109,1.22543 1.04674,1.22543 0.0347,0 0.30065,-0.32472 0.58412,-0.72924 l 0.52045,-0.72307 -0.2603,-0.26962 c -0.14464,-0.14709 -0.32963,-0.42289 -0.41645,-0.6067 -0.1445,-0.30636 -0.15615,-0.39835 -0.15033,-1.04162 0,-0.85781 0.10415,-1.18871 0.71711,-2.26706 0.71128,-1.26834 0.96575,-2.17522 0.90792,-3.27812 -0.052,-1.04162 -0.39897,-1.85652 -1.12773,-2.67759 -0.20233,-0.22672 -0.39329,-0.41671 -0.42213,-0.41671 -0.0232,3.1e-4 -0.29483,0.31284 -0.5898,0.68665 z m 5.45337,-0.0613 c -0.27181,0.3431 -0.51463,0.6618 -0.53779,0.70471 -0.0347,0.0613 0.029,0.17764 0.20247,0.3738 0.34698,0.39835 0.49162,0.6618 0.60145,1.12126 0.17931,0.74745 -0.0115,1.54414 -0.64194,2.63469 -0.7056,1.22543 -0.97158,2.10778 -0.97741,3.24138 0,0.82108 0.0983,1.28671 0.41646,1.93014 0.20815,0.42288 0.99474,1.37869 1.13355,1.37869 0.052,0 0.86743,-1.08452 1.02941,-1.37869 0.0232,-0.0429 -0.0636,-0.18983 -0.22549,-0.36763 -0.49161,-0.54543 -0.67661,-1.25615 -0.54361,-2.08324 0.0925,-0.56379 0.2718,-1.01106 0.74594,-1.85652 0.66481,-1.18901 0.89613,-1.96101 0.89613,-2.98426 0,-0.9129 -0.21398,-1.6298 -0.72293,-2.40195 -0.21981,-0.34309 -0.75178,-0.93744 -0.83277,-0.93744 -0.0288,0 -0.27749,0.28182 -0.54347,0.62506 z"
        inkscape:label="#waterheater"
@@ -795,13 +799,13 @@
        id="sensor.dumpster"
        inkscape:label="#dumpster" />
     <path
-       id="light.osram_lightify_a19_rgbw_00a434be_3"
+       id="light.office_engineer_lamp_light_2"
        style="fill:#000000;fill-opacity:0.39215686;stroke:#000000;stroke-width:0.75;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 14.735183,172.40379 a 1.6175967,1.6175967 0 0 1 -1.617592,1.6176 1.6175967,1.6175967 0 0 1 -1.6176,-1.6176 1.6175967,1.6175967 0 0 1 1.6176,-1.61759 1.6175967,1.6175967 0 0 1 1.617592,1.61759 z m 4.751693,0 a 6.3692871,6.3692871 0 0 1 -6.369285,6.36928 6.3692871,6.3692871 0 0 1 -6.3692923,-6.36928 6.3692871,6.3692871 0 0 1 6.3692923,-6.36928 6.3692871,6.3692871 0 0 1 6.369285,6.36928 z"
        inkscape:connector-curvature="0"
        inkscape:label="#office desk light" />
     <g
-       id="light.jasco_products_45857_242c2500_level_on_off"
+       id="light.living_room_can_lights_light"
        inkscape:label="#LvngRmCanLights">
       <path
          inkscape:connector-curvature="0"
@@ -825,7 +829,7 @@
          style="display:inline;fill:#000000;fill-opacity:0.39215686;fill-rule:evenodd;stroke:#000000;stroke-width:0.5024426;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
-       id="light.jasco_products_45857_8a1e2500_level_on_off"
+       id="light.kitchen_can_lights_light_2"
        inkscape:label="#KitchenCanLights">
       <path
          inkscape:connector-curvature="0"
@@ -868,19 +872,19 @@
     <path
        style="fill:none;stroke:#fd0000;stroke-width:0.51403183px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 286.97851,435.71712 h 25.93847 v 3.86464 h -25.93847 v -3.86464 0 0 0"
-       id="binary_sensor.zha_02bfefd9_1_6"
+       id="binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_5"
        inkscape:connector-curvature="0"
        inkscape:label="#Back Door" />
     <path
        style="fill:none;stroke:#ff0000;stroke-width:0.51403183px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 406.84437,435.71712 h 25.93847 v 3.86464 h -25.93847 v -3.86464"
-       id="binary_sensor.zha_02bfe504_1_6"
+       id="binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2"
        inkscape:connector-curvature="0"
        inkscape:label="#Garage Walk In" />
     <path
        style="fill:none;stroke:#0000ff;stroke-width:0.51403183px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 363.07205,442.58784 v 27.48285 h 3.64814 v -27.48285 h -3.64814"
-       id="binary_sensor.zha_02ec0d9e_1_6"
+       id="binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_4"
        inkscape:connector-curvature="0"
        inkscape:label="#Kitchen-Garage Door" />
     <path
@@ -916,7 +920,7 @@
     <path
        style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.54595184px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="m 176.76111,720.64051 h 29.25991 v 3.86464 h -29.25991 v -3.86464"
-       id="binary_sensor.zha_02e2146c_1_6"
+       id="binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3"
        inkscape:connector-curvature="0"
        inkscape:label="#Front Door" />
   </g>
@@ -937,7 +941,7 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       id="switch.ledvance_plug_00054922_1"
+       id="switch.bunn_coffee_pot_switch"
        inkscape:label="#bunn coffee"
        transform="translate(1.0772244e-5,2.1129926e-5)"
        style="fill:none;stroke:#000000;stroke-width:0.75;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">

@@ -2,9 +2,9 @@
   name: "Wiebelo Weather"
   unique_id: b607d5a4-7e1e-4fc1-9c6b-5c3b251a0940
   condition_template: "{{ states('weather.koqt_hourly') }}"
-  temperature_template: "{{ states('sensor.weather_front_porch_temperature') | float }}"
-  pressure_template: "{{ states('sensor.weather_front_porch_pressure') | float }}"
-  humidity_template: "{{ states('sensor.weather_front_porch_humidity') | float }}"
+  temperature_template: "{{ states('sensor.lumi_lumi_weather_temperature_4') | float }}"
+  pressure_template: "{{ states('sensor.lumi_lumi_weather_pressure_4') | float }}"
+  humidity_template: "{{ states('sensor.lumi_lumi_weather_humidity_4') | float }}"
   wind_speed_template: "{{ state_attr('weather.koqt_hourly', 'wind_speed') }}"
   wind_bearing_template: "{{ state_attr('weather.koqt_hourly', 'wind_bearing') }}"
   visibility_template: "{{ state_attr('weather.koqt_hourly', 'visibility') }}"

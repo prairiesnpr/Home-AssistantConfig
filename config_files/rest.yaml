@@ -74,3 +74,54 @@
         - locked
         - ttl
       value_template: '{{ value_json.result[0].name }}'
+- resource: !secret proxmox_zfs_frigate_url
+  scan_interval: 60
+  method: GET
+  verify_ssl: false
+  headers:
+    Authorization: !secret proxmox_api_token
+  sensor:
+    - name: zfs_frigate_pool_state
+      unique_id: 26cc74aa-1c50-4c17-8559-06317219fd71
+      json_attributes_path: '$.data'
+      json_attributes:
+        - errors
+        - action
+        - leaf
+        - name
+        - scan
+      value_template: '{{ value_json.data.state }}'
+- resource: !secret proxmox_zfs_alexandria_url
+  scan_interval: 60
+  method: GET
+  verify_ssl: false
+  headers:
+    Authorization: !secret proxmox_api_token
+  sensor:
+    - name: zfs_alexandria_pool_state
+      unique_id: 65514231-465d-45b5-8151-7ad6c221506f 
+      json_attributes_path: '$.data'
+      json_attributes:
+        - errors
+        - action
+        - leaf
+        - name
+        - scan
+      value_template: '{{ value_json.data.state }}'
+- resource: !secret proxmox_zfs_metropolitan_url
+  scan_interval: 60
+  method: GET
+  verify_ssl: false
+  headers:
+    Authorization: !secret proxmox_api_token
+  sensor:
+    - name: zfs_metropolitan_pool_state
+      unique_id: 12080255-35d7-43fb-95fb-9067328aeed5 
+      json_attributes_path: '$.data'
+      json_attributes:
+        - errors
+        - action
+        - leaf
+        - name
+        - scan
+      value_template: '{{ value_json.data.state }}'

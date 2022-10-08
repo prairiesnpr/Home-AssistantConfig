@@ -1,9 +1,5 @@
-purge_keep_days: 5
+purge_keep_days: 14
 db_url: !secret recorder_url 
 db_max_retries: 100
 db_retry_wait: 6
-exclude:
-  entities:
-    - sensor.amos_screen_0_height
-    - sensor.amos_system_uptime
  

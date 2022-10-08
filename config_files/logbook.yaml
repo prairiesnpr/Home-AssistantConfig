@@ -1,7 +1,6 @@
 exclude:
   entities:
     - sensor.cx02up3yv_last_update_trigger
-    - sensor.amos_screen_0_width
     - sensor.ballam_last_update_trigger
     - weather.wiebelo_weather
     - binary_sensor.ballam_interactive

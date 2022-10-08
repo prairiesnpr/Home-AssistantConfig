@@ -7,6 +7,21 @@ set_cloudflare_record:
   payload: '{"type":"A","name":"{{ site }}","content":"{{ ip }}","ttl":1, "proxied":true}'
   content_type:  'application/json; charset=utf-8'
   verify_ssl: true
-
-
+turn_off_amos:
+  url: !secret proxmox_amos_status_url 
+  method: POST
+  headers:
+    Authorization: !secret proxmox_api_token
+  payload: '{"command": "shutdown", "node": "amos"}'
+  content_type:  'application/json; charset=utf-8'
+  verify_ssl: false  
+update_ryan_location:
+  url: http://10.10.10.5:8123/api/states/person.ryan
+  method: POST
+  headers:
+    authorization: !secret dad_token 
+    content-type: 'application/json'
+  payload: '{"state":"{{ new_state }}"}'
+xbox_server_auth:
+  url: !secret xbox_load_auth
 

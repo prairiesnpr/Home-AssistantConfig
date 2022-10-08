@@ -1,6 +1,6 @@
 action:
 - data:
-    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
   service: light.turn_off
 alias: Turn off counter light if A/V is off
 id: 635ef5930bfc492caef02562737e4b63

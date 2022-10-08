@@ -29,9 +29,13 @@
     content: >
       .toolset__group-outer {
         overflow: visible;
+        /*filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.8));*/
+        /*filter: url(#shadow);*/
       }
       .toolset__group {
         overflow: visible;
+        /*filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.8));*/
+        /*filter: url(#shadow);*/
       }
 
 
@@ -39,6 +43,72 @@
   # Tools in slphabetical order
   #
   #------------------------------------------------------------------------------
+  - descr: ArcSlider tool
+    content: >
+      .sak-circslider__group-inner {
+        pointer-events: none;
+        }
+      #as-thumb-group {
+        overflow: visible;
+        pointer-events: all;
+      }
+      #as-label {
+        overflow: visible;
+      }
+      .sak-circslider {
+        overflow: visible;
+        fill: none;
+        stroke: none;
+        pointer-events: none;
+      }
+      .sak-circslider__capture {
+        overflow: visible;
+        pointer-events: all;
+        fill: none;
+        stroke-width: 0;
+        touch-action: manipulation;
+        fill: grey;
+        fill-opacity: 0.1;
+        stroke-width: 0em;
+        stroke: red;
+      }
+      .sak-circslider__active {
+        stroke: var(--theme-sys-color-primary);
+        stroke-width: 4em;
+        pointer-events: all;
+      }
+      .sak-circslider__track {
+        fill: none;
+        stroke-width: 2em;
+        stroke: var(--theme-sys-elevation-surface-neutral10);
+        overflow: visible;
+        pointer-events: all;
+      }
+      .sak-circslider__thumb {
+        overflow: visible;
+        fill: var(--theme-sys-color-primary);
+        fill-opacity: 1;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .sak-circslider__value {
+        overflow: visible;
+        fill: var(--primary-text-color);
+        font-size: 8em;
+        font-weight: 400;
+        dominant-baseline: central;
+        pointer-events: none;
+      }
+      .sak-circslider__uom {
+        overflow: visible;
+        fill: var(--primary-text-color);
+        text-anchor: middle;
+        dominant-baseline: central;
+        opacity: 0.7;
+        letter-spacing: 0.05em;
+        pointer-events: none;
+      }
+
   - descr: Area tool
     content: >
       .sak-area {
@@ -49,7 +119,7 @@
         fill: var(--primary-text-color);
         opacity: 0.8;
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
         letter-spacing: 0.05em;
       }
 
@@ -133,7 +203,7 @@
         fill: var(--primary-text-color);
         opacity: 1.0;
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
         letter-spacing: 0.05em;
       }
 
@@ -235,13 +305,13 @@
         font-weight: 400;
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
-        alignment-baseline: central;
+        dominant-baseline: central;
       }
       .sak-slider__uom {
         overflow: visible;
         fill: var(--primary-text-color);
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
         opacity: 0.7;
         letter-spacing: 0.05em;
       }
@@ -256,13 +326,13 @@
         fill: var(--primary-text-color);
         opacity: 1.0;
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
         letter-spacing: 0.05em;
       }
       .sak-state__uom {
         fill: var(--primary-text-color);
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
         opacity: 0.7;
         letter-spacing: 0.05em;
       }
@@ -296,7 +366,7 @@
         fill: var(--primary-text-color);
         opacity: 1.0;
         text-anchor: middle;
-        alignment-baseline: central;
+        dominant-baseline: central;
       }
 
   - descr: Usersvg tool
@@ -356,7 +426,30 @@
         }
       }
       
+      @-webkit-keyframes flash {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
       @keyframes flash {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes flashold {
         from,
         50%,
         to {
@@ -558,14 +651,45 @@
         }
       }
       
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0);
+                  transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
       @keyframes spin {
+        0% {
+          -webkit-transform: rotate(0);
+                  transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+      @keyframes spinold {
+          from {
+              -webkit-transform: -webkit-rotate(0deg);
+              transform:rotate(0deg);
+          }
+          to {
+              -webkit-transform: -webkit-rotate(360deg);
+              transform:rotate(360deg);
+          }
+      }
+      
+      @keyframes spinn {
         100% {
           -webkit-transform: -webkit-rotate(360deg);
           transform: rotate(360deg);
         }
       }
       
-      @-webkit-keyframes spin {
+      @-webkit-keyframes spinn {
         100% {
           -webkit-transform: -webkit-rotate(360deg);
           transform: rotate(360deg);

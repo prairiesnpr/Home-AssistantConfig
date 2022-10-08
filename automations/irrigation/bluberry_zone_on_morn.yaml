@@ -1,9 +1,9 @@
 action:
 - data:
     entity_id:
-    - switch.xbee_xbee_io_4192cf47_210_6
+    - switch.irrigation_system_switch_18 
   service: switch.turn_on
-alias: Turn on bluberry irrigation zone in morning
+alias: Turn on blueberry irrigation zone in morning
 condition:
 - condition: template
   value_template: "{% set last_run = state_attr('automation.turn_on_blueberry_irrigation_zone_in_morning',\

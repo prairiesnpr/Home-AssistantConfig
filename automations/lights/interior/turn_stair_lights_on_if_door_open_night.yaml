@@ -1,7 +1,7 @@
 action:
 - data:
     brightness: 50
-    entity_id: light.stairway_lights_zha_group_0x0003
+    entity_id: light.stairway_lights_zha_group 
   service: light.turn_on
 alias: Turn on Stair Lights if Door Opened at Night
 condition:
@@ -10,10 +10,10 @@ condition:
   entity_id: sun.sun
   value_template: '{{ state.attributes.elevation }}'
 - condition: state
-  entity_id: light.stairway_lights
+  entity_id: light.stairway_lights_zha_group 
   state: 'off'
 id: 30d226518fc646bc98d1141105fc4e8a
 trigger:
-- entity_id: binary_sensor.zha_02e2146c_1_6
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3 
   platform: state
   to: 'on'

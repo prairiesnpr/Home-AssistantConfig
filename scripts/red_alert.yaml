@@ -2,14 +2,14 @@ alias: Red Alert
 sequence:
 - alias: Red Alert On
   data:
-    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light
     profile: red_alert_bright
   service: light.turn_on
 - delay:
     seconds: 1
 - alias: Red Alert Off
   data:
-    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+    entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
     profile: red_alert_dim
   service: light.turn_on
 - alias: loop_red_alert

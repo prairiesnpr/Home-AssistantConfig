@@ -2,28 +2,28 @@
   fans:
     upstairs_hvac_fan:
       friendly_name: "Upstairs HVAC Blower"
-      value_template: "{{ states('light.jasco_products_45856_00db2500_1') }}"
+      value_template: "{{ states('light.hvac_booster_fan_light_2') }}"
       turn_on:
         service: homeassistant.turn_on
-        entity_id: light.jasco_products_45856_00db2500_1 
+        entity_id: light.hvac_booster_fan_light_2 
       turn_off:
         service: homeassistant.turn_off
-        entity_id: light.jasco_products_45856_00db2500_1
+        entity_id: light.hvac_booster_fan_light_2 
     downstairs_bath_fan:
       friendly_name: "Downstairs Bathroom Fan"
-      value_template: "{{ states('light.lumi_lumi_relay_c2acn01_08ec4404_on_off') }}"
+      value_template: "{{ states('light.lumi_lumi_relay_c2acn01_light') }}"
       turn_on:
         service: homeassistant.turn_on
-        entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
+        entity_id: light.lumi_lumi_relay_c2acn01_light 
       turn_off:
         service: homeassistant.turn_off
-        entity_id: light.lumi_lumi_relay_c2acn01_08ec4404_on_off
+        entity_id: light.lumi_lumi_relay_c2acn01_light 
     master_bath_fan:
       friendly_name: "Master Bathroom Fan"
-      value_template: "{{ states('light.lumi_lumi_relay_c2acn01_b4012704_on_off_2') }}"
+      value_template: "{{ states('light.lumi_lumi_relay_c2acn01_light_4') }}"
       turn_on:
         service: homeassistant.turn_on
-        entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
+        entity_id: light.lumi_lumi_relay_c2acn01_light_4 
       turn_off:
         service: homeassistant.turn_off
-        entity_id: light.lumi_lumi_relay_c2acn01_b4012704_on_off_2 
+        entity_id: light.lumi_lumi_relay_c2acn01_light_4 

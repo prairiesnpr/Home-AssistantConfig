@@ -1,8 +1,6 @@
 action:
-- data:
-    payload: ''
-    topic: iotlink/prairiesnpr.com/amos/commands/shutdown
-  service: mqtt.publish
+- data: ''
+  service: rest_command.turn_off_amos 
 alias: Power Amos off on Power Failure
 id: a91fc468b2d34aac9b590554343363d5
 trigger:

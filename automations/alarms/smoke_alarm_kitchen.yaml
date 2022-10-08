@@ -19,6 +19,6 @@ action:
 alias: Smoke Alarm Kitchen
 id: d7cdad646254479194e59ddfbbe68d02
 trigger:
-- entity_id: binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280
+- entity_id: binary_sensor.lumi_lumi_sensor_smoke_iaszone 
   platform: state
   to: 'on'

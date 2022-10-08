@@ -6,12 +6,6 @@ action:
 alias: Alert on Woodpecker Pecking
 id: 3108b1820e244706b185009d3f7f609d
 trigger:
-- entity_id: binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1
-  platform: state
-  to: 'on'
-- entity_id: binary_sensor.zha_02b7eb7f_1_1280
-  platform: state
-  to: 'on'
-- entity_id: binary_sensor.zha_02b7eb7f_1
+- entity_id: binary_sensor.lumi_lumi_vibration_aq1_iaszone 
   platform: state
   to: 'on'

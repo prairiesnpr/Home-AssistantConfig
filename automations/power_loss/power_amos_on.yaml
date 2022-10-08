@@ -15,6 +15,6 @@ condition:
     state: Online
 id: ab85d85a267a4600971d12cf470738a1
 trigger:
-- above: 20
+- above: 65
   entity_id: sensor.serverroom_battery_charge
   platform: numeric_state

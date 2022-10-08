@@ -6,22 +6,22 @@ action:
           critical: 1
           name: default
           volume: 1.0
-    message: 'Storage Pool: The Library of Alexandria is {{ trigger.to_state.state
+    message: 'ZFS Pool: The Library of Alexandria is {{ trigger.to_state.state
       }}'
-    title: Storage Pool {{ trigger.to_state.state }}
+    title: ZFS Pool {{ trigger.to_state.state }}
   service: notify.all_ios_devices
 - data:
     data:
       priority: high
       ttl: 0
-    message: 'Storage Pool: The Library of Alexandria is {{ trigger.to_state.state
+    message: 'ZFS Pool: The Library of Alexandria is {{ trigger.to_state.state
       }}'
-    title: Storage Pool {{ trigger.to_state.state }}
+    title: ZFS Pool {{ trigger.to_state.state }}
   service: notify.all_android_devices
-alias: Storage Pool Library of Alexandria Unhealthy
+alias: ZFS Pool Library of Alexandria Unhealthy
 id: 2cd75204325e47fc9a759a5ef29d6a65
 trigger:
-- entity_id: sensor.the_library_of_alexandria_healthstatus_2
-  from: Healthy
+- entity_id: sensor.zfs_alexandria_pool_state 
+  from: ONLINE 
   platform: state
   for: "00:10:00"

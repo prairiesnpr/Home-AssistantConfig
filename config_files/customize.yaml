@@ -1,21 +1,11 @@
 binary_sensor.wiebelo_away:
   device_class: occupancy
-binary_sensor.button:
-  hidden: true
-binary_sensor.workday:
-  hidden: true
 automation.garage_toggle_off:
-  hidden: true
-automation.garage_toggle_on:
   hidden: true
 zha.zha_ge_appliances_zll_light_000230a7:
   hidden: true
 zha.zha_ge_appliances_zll_light_0006c093:
   hidden: true
-group.all_automations:
-  hidden: false
-group.all_scripts:
-  hidden: false
 sensor.samsung_m262x_282x_series_10_10_1_136:
   hidden: true
 binary_sensor.downstairs_thermostat_is_locked:
@@ -34,160 +24,27 @@ sensor.downstairs_thermostat_operation_mode:
   hidden: true
 sensor.downstairs_thermostat_target:
   hidden: true
-group.printer:
-  order: 3
-group.router:
-  order: 2
-group.amos:
-  order: 1
-zha.zha_02ec0d9e:
-  friendly_name: Kitchen to Garge Door
-binary_sensor.zha_02ec0d9e_1_6:
-  device_class: door
-binary_sensor.zha_02e2146c_1_6:
-  device_class: door
-binary_sensor.zha_02bfefd9_1_6:
-  device_class: door
-sensor.zha_40c04e54_5_1026:
-  device_class: temperature
-sensor.zha_40c04e54_5_1029:
-  device_class: humidity
-binary_sensor.lumi_lumi_sensor_magnet_01e1363b_1:
-  device_class: door
-sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1:
-  device_class: battery
-sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1:
-  device_class: battery
-sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1:
-  device_class: battery
-sensor.zha_02ec0d9e_1_1:
-  device_class: battery
-sensor.zha_02e2146c_1_1:
-  device_class: battery
-sensor.zha_02bfefd9_1_1:
-  device_class: battery
-sensor.lumi_lumi_weather_02c9fa4a_1_1:
-  device_class: battery
-sensor.processorload:
-  icon: mdi:chip
-sensor.processorload_4:
-  icon: mdi:chip
-sensor.processorload_5:
-  icon: mdi:chip
-sensor.processorload_2:
-  icon: mdi:chip
-sensor.processorload_3:
-  icon: mdi:chip
-sensor.cpu_usage:
-  icon: mdi:chip
-switch.zha_40c04e54_1_6:
-  friendly_name: Front Door Bell
-sensor.zha_40c04e54_2_1029:
-  device_class: humidity
-  friendly_name: Stairway
-sensor.zha_40c04e54_2_1026:
-  friendly_name: Stairway
-binary_sensor.zha_02bfe504_1_6:
-  device_class: door
-sensor.zha_02b7eb7f_1_1024:
-  device_class: illuminance
-binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280:
-  device_class: moisture
-binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280:
-  device_class: moisture
-binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280:
-  device_class: smoke
-  icon: bha:smoke-detector
-binary_sensor.zha_02b7eb7f_1_1280:
-  device_class: motion
-light.sz_lamp_01_1baff16c_11:
-  friendly_name: Upstairs HVAC Blower
-switch.zha_40c04dcb_1_6:
-  friendly_name: Water Heater
-  icon: mdi:water-boiler
 zha.zha_40c04dcb:
   friendly_name: Water Heater
-sensor.zha_40c04dcb_1_1794:
-  friendly_name: Apparent Power
-  unit_of_measurement: VA
 sensor.water_heater_time_to_temp:
   icon: mdi:camera-timer
 zha.isilentllc_door_1:
   friendly_name: iSilentLLC Door Control
-switch.isilentllc_door_1_41940020_1_6:
-  icon: mdi:garage
-light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off:
-  icon: mdi:led-strip-variant
-light.bedroom_lights:
-  icon: mdi:lamp
-light.sunricher_zg9101sac_hp_106770a5_1:
-  icon: bha:light-string
 zha.ledvance_plug:
   friendly_name: Coffee Pot
-switch.ledvance_plug_00054922_1:
-  friendly_name: Coffee Pot
-  icon: mdi:coffee
-binary_sensor.10_10_1_129_8084:
-  friendly_name: ZoneMinder Up
-light.stairway_lights:
-  icon: mdi:wall-sconce-variant 
-light.osram_lightify_a19_rgbw_00a434be_3:
-  friendly_name: Office Lamp
-  icon: bha:table-lamp-variant
 sensor.xbox_source:
   icon: mdi:xbox
-light.master_bedroom_lights:
-  icon: bha:ceiling-lamp-round
-binary_sensor.lumi_lumi_sensor_magnet_aq2_0232b267_1_6:
-  device_class: door
-binary_sensor.zha_02c39915_1_6:
-  device_class: door
-  friendly_name: Mstr Closet
-sensor.son_of_joel_plex:
-  icon: mdi:plex
 sensor.dumpster:
   icon: mdi:trash-can
 sensor.f150:
   icon: mdi:car-pickup
 sensor.porsche:
   icon: mdi:car-sports
-switch.king_of_fans_inc_hbuniversalcfremote_002757b9_1_6:
-  icon: mdi:lightbulb
-switch.king_of_fans_inc_hbuniversalcfremote_de4d2900_on_off:
-  icon: mdi:lightbulb
-sensor.sengled_e11_n1ea_00038574_1_1794:
-  unit_of_measurement: W
-binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6:
-  device_class: door
 zone.home:
   beacon:
     uuid: B5B182C7-EAB1-4988-AA99-B5C1517008D9
     major: 1
     minor: 62564
-switch.sengled_e1c_nb6_f32d0400_on_off:
-  icon: mdi:pine-tree
-switch.sengled_e1c_nb6_6d0b0400_on_off:
-  icon: bha:path-light 
-light.jasco_products_45856_61d32600_1:
-  icon: mdi:coach-lamp
-light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off:
-  icon: mdi:coach-lamp
-light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off:
-  icon: mdi:coach-lamp
-switch.christmas_lights_switch:
-  icon: mdi:pine-tree
-light.jasco_products_45857_242c2500_level_on_off:
-  icon: mdi:wall-sconce-flat
-light.jasco_products_45857_8a1e2500_level_on_off:
-  icon: mdi:wall-sconce-flat
-sensor.sengled_e11_n1ea_0003232a_1_1794:
-  unit_of_measurement: W
-sensor.jasco_products_45856_00db2500_1_1794: {}
-sensor.jasco_products_45856_61d32600_1_1794: {}
-sensor.jasco_products_45857_242c2500_smartenergy_metering: {}
-sensor.jasco_products_45857_8a1e2500_smartenergy_metering: {}
-light.master_bedroom_closet_zha_group_0x0002:
-  icon: bha:ceiling-lamp-round
 light.path_lights:
   icon: bha:path-light
 device_tracker.aeinarr:

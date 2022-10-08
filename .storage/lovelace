@@ -171,8 +171,9 @@
                           "name": false,
                           "state_icons": {
                             "online": "mdi:power-plug",
-                            "on Battery Battery Discharging": "mdi:battery-alert",
-                            "online Battery Charging": "mdi:battery-charging"
+                            "on battery battery discharging": "mdi:battery-alert",
+                            "online battery charging": "mdi:battery-charging",
+                            "online battery charging low battery": "mdi:battery-charging-outline"
                           },
                           "state_styles": {
                             "online": {
@@ -180,14 +181,19 @@
                                 "color": "green"
                               }
                             },
-                            "online Battery Battery Charging": {
+                            "online battery charging": {
                               "button": {
                                 "color": "yellow"
                               }
                             },
-                            "on Battery Battery Discharging": {
+                            "on battery battery discharging": {
                               "button": {
                                 "color": "red"
+                              }
+                            },
+                            "online battery charging low battery": {
+                              "button": {
+                                "color": "orange"
                               }
                             }
                           },
@@ -210,15 +216,15 @@
                           }
                         },
                         {
-                          "entity": "sensor.the_library_of_alexandria_healthstatus_2",
+                          "entity": "sensor.zfs_alexandria_pool_state",
                           "name": false,
                           "state_styles": {
-                            "healthy": {
+                            "online": {
                               "button": {
                                 "color": "green"
                               }
                             },
-                            "unhealthy": {
+                            "degraded": {
                               "button": {
                                 "color": "red"
                               }
@@ -242,22 +248,22 @@
                           "state_icons": {
                             "unknown": "mdi:server-network-off",
                             "warning": "mdi:server-network-off",
-                            "unhealthy": "mdi:server-network-off",
-                            "healthy": "mdi:server-network",
+                            "degraded": "mdi:server-network-off",
+                            "online": "mdi:server-network",
                             "unavailable": "mdi:server-network-off"
                           },
                           "state_color": true
                         },
                         {
-                          "entity": "sensor.the_metropolitan_library_healthstatus_2",
+                          "entity": "sensor.zfs_frigate_pool_state",
                           "name": false,
                           "state_styles": {
-                            "healthy": {
+                            "online": {
                               "button": {
                                 "color": "green"
                               }
                             },
-                            "unhealthy": {
+                            "degraded": {
                               "button": {
                                 "color": "red"
                               }
@@ -281,37 +287,50 @@
                           "state_icons": {
                             "unknown": "mdi:server-network-off",
                             "warning": "mdi:server-network-off",
-                            "unhealthy": "mdi:server-network-off",
-                            "healthy": "mdi:server-network",
+                            "degraded": "mdi:server-network-off",
+                            "online": "mdi:server-network",
                             "unavailable": "mdi:server-network-off"
                           },
                           "state_color": true
                         },
                         {
-                          "entity": "binary_sensor.amos_power_status",
+                          "entity": "sensor.zfs_metropolitan_pool_state",
                           "name": false,
                           "state_styles": {
-                            "off": {
+                            "online": {
+                              "button": {
+                                "color": "green"
+                              }
+                            },
+                            "degraded": {
                               "button": {
                                 "color": "red"
+                              }
+                            },
+                            "warning": {
+                              "button": {
+                                "color": "red"
+                              }
+                            },
+                            "unknown": {
+                              "button": {
+                                "color": "yellow"
                               }
                             },
                             "unavailable": {
                               "button": {
                                 "color": "red"
                               }
-                            },
-                            "on": {
-                              "button": {
-                                "color": "green"
-                              }
                             }
                           },
                           "state_icons": {
-                            "unavailable": "mdi:server-off",
-                            "off": "mdi:server-off",
-                            "on": "mdi:server"
-                          }
+                            "unknown": "mdi:server-network-off",
+                            "warning": "mdi:server-network-off",
+                            "degraded": "mdi:server-network-off",
+                            "online": "mdi:server-network",
+                            "unavailable": "mdi:server-network-off"
+                          },
+                          "state_color": true
                         }
                       ],
                       "type": "custom:paper-buttons-row"
@@ -349,22 +368,24 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.zha_02bfefd9_1_6"
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3",
+                  "name": "Front"
                 },
                 {
-                  "entity": "binary_sensor.zha_02e2146c_1_6"
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_5",
+                  "name": "Back"
                 },
                 {
-                  "entity": "binary_sensor.zha_02ec0d9e_1_6",
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_4",
                   "name": "Gar/Kit"
                 },
                 {
-                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_3b36e101_1_6",
-                  "name": "Dog"
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2",
+                  "name": "Gar/Bk"
                 },
                 {
-                  "entity": "binary_sensor.zha_02bfe504_1_6",
-                  "name": "Gar/Bk"
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_opening",
+                  "name": "Dog"
                 }
               ],
               "show_name": true,
@@ -390,18 +411,18 @@
                     "action": "call-service",
                     "service": "switch.turn_on",
                     "service_data": {
-                      "entity_id": "switch.xbee_xbee_io_4193fedf_210_6"
+                      "entity_id": "switch.garage_door_switch_3"
                     }
                   },
                   "type": "entity-button"
                 },
                 {
-                  "entity": "lock.yale_yrd256_tsdb_7b1f1911_door_lock",
+                  "show_name": false,
+                  "show_icon": true,
+                  "entity": "lock.front_door_lock_doorlock",
                   "hold_action": {
                     "action": "more-info"
                   },
-                  "show_icon": true,
-                  "show_name": false,
                   "tap_action": {
                     "action": "toggle"
                   },
@@ -413,18 +434,18 @@
             {
               "cards": [
                 {
-                  "entity": "light.bedroom_bed_lights_zha_group_0x0004",
+                  "entity": "light.bedroom_bed_lights_zha_group",
                   "type": "light",
                   "icon": "mdi:lamp",
                   "name": "Bedroom"
                 },
                 {
-                  "entity": "light.sunricher_zg9101sac_hp_106770a5_1",
+                  "entity": "light.master_bath_vanity_light_light",
                   "name": "Master Bath",
                   "type": "light"
                 },
                 {
-                  "entity": "light.stairway_lights_zha_group_0x0003",
+                  "entity": "light.stairway_lights_zha_group",
                   "type": "light",
                   "icon": "mdi:wall-sconce-round-variant",
                   "name": "Stairs"
@@ -435,19 +456,22 @@
             {
               "cards": [
                 {
-                  "entity": "light.jasco_products_45857_242c2500_level_on_off",
-                  "name": "Living Room",
-                  "type": "light"
+                  "entity": "light.living_room_can_lights_light",
+                  "name": "Living",
+                  "type": "light",
+                  "icon": "bha:ceiling-downlight"
                 },
                 {
-                  "entity": "light.jasco_products_45857_8a1e2500_level_on_off",
+                  "entity": "light.kitchen_can_lights_light_2",
                   "name": "Kitchen",
-                  "type": "light"
+                  "type": "light",
+                  "icon": "bha:ceiling-downlight"
                 },
                 {
-                  "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
+                  "entity": "light.feibit_inc_co_fzb56_zcw27lx1_0_light",
                   "name": "Counter",
-                  "type": "light"
+                  "type": "light",
+                  "icon": "mdi:led-strip-variant"
                 }
               ],
               "type": "horizontal-stack"
@@ -457,18 +481,19 @@
               "entities": [
                 {
                   "type": "custom:fold-entity-row",
-                  "head": "light.outdoor_lights",
+                  "head": "light.outdoor_lights_zha_group",
                   "entities": [
                     {
-                      "entity": "light.jasco_products_45856_61d32600_1",
+                      "entity": "light.front_porch_lights_light",
                       "name": "Front Porch"
                     },
                     {
-                      "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                      "name": "Back Porch"
+                      "entity": "light.deck_light_light_2",
+                      "name": "Back Deck"
                     },
                     {
-                      "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
+                      "entity": "light.garage_walk_in_door_light_light",
+                      "name": "Garage Walk In"
                     },
                     {
                       "entity": "light.path_lights",
@@ -476,7 +501,7 @@
                       "state_color": true
                     },
                     {
-                      "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
+                      "entity": "light.deck_strip_lights_light",
                       "icon": "mdi:led-strip-variant",
                       "name": "Backyard RGB"
                     }
@@ -494,7 +519,7 @@
                   },
                   "entities": [
                     {
-                      "entity": "light.lumi_lumi_relay_c2acn01_b4012704_on_off",
+                      "entity": "light.lumi_lumi_relay_c2acn01_light_3",
                       "name": "Fan Light"
                     }
                   ]
@@ -507,7 +532,7 @@
                   },
                   "entities": [
                     {
-                      "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
+                      "entity": "light.lumi_lumi_relay_c2acn01_light_2",
                       "name": "Fan Light"
                     }
                   ]
@@ -518,16 +543,15 @@
             {
               "entities": [
                 {
-                  "entity": "light.osram_lightify_a19_rgbw_00a434be_3",
+                  "entity": "light.office_engineer_lamp_light_2",
                   "icon": "bha:table-lamp-variant"
                 },
                 {
-                  "entity": "light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off",
-                  "icon": "bha:ceiling-lamp",
+                  "entity": "light.office_ceiling_fan_light_2",
                   "name": "Ceiling Light"
                 },
                 {
-                  "entity": "fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan",
+                  "entity": "fan.office_ceiling_fan_fan_2",
                   "name": "Ceiling Fan",
                   "state_color": true,
                   "type": "custom:custom-fan-card"
@@ -539,19 +563,22 @@
             {
               "entities": [
                 {
-                  "entity": "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
-                  "icon": "bha:ceiling-lamp",
+                  "entity": "light.master_bedroom_ceiling_fan_light",
                   "name": "Master Bedroom"
                 },
                 {
-                  "entity": "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
+                  "entity": "fan.master_bedroom_ceiling_fan_fan",
                   "name": "Ceiling Fan",
                   "state_color": true,
                   "type": "custom:custom-fan-card"
                 },
                 {
-                  "entity": "light.master_bedroom_closet_zha_group_0x0002",
+                  "entity": "light.master_closet_light_zha_group",
                   "name": "Walk-In Closet"
+                },
+                {
+                  "entity": "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening",
+                  "name": "Closet Door"
                 }
               ],
               "show_header_toggle": false,
@@ -560,12 +587,11 @@
             {
               "entities": [
                 {
-                  "entity": "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
-                  "icon": "bha:ceiling-lamp",
+                  "entity": "light.guest_bedroom_ceiling_fan_light",
                   "name": "Guest Bedroom"
                 },
                 {
-                  "entity": "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
+                  "entity": "fan.guest_bedroom_ceiling_fan_fan",
                   "name": "Ceiling Fan",
                   "state_color": true,
                   "type": "custom:custom-fan-card"
@@ -632,8 +658,12 @@
                 {
                   "entity": "sensor.cx02up3yv_active_camera",
                   "name": "Ryan on camera"
+                },
+                {
+                  "entity": "binary_sensor.master_bed_presence"
                 }
-              ]
+              ],
+              "state_color": true
             },
             {
               "type": "vertical-stack",
@@ -900,6 +930,24 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.aqi",
+                  "style": ":host {\n  --paper-item-icon-color:\n     {{ state_attr('sensor.living_room_aqi', 'state_color') }}\n}\n"
+                },
+                {
+                  "entity": "sensor.pm10_0"
+                },
+                {
+                  "entity": "sensor.pm1_0"
+                },
+                {
+                  "entity": "sensor.pm2_5"
+                }
+              ]
             }
           ],
           "icon": "mdi:home-assistant",
@@ -1064,7 +1112,7 @@
                   "title": "",
                   "service": "media_player.play_media",
                   "service_data": {
-                    "entity_id": "media_player.xboxone_2",
+                    "entity_id": "media_player.xboxone",
                     "media_content_type": "",
                     "media_content_id": "Home"
                   },
@@ -1163,6 +1211,16 @@
                         "action": "toggle"
                       },
                       "type": "entity-button"
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "group.media_ups",
+                      "icon": "mdi:power-socket-us"
                     }
                   ],
                   "type": "horizontal-stack"
@@ -1175,7 +1233,7 @@
               "type": "media-control"
             },
             {
-              "entity": "media_player.xboxone_2",
+              "entity": "media_player.xboxone",
               "type": "media-control"
             },
             {
@@ -1183,7 +1241,7 @@
               "type": "media-control"
             },
             {
-              "entity": "media_player.living_room_tv",
+              "entity": "media_player.living_room",
               "type": "media-control"
             }
           ],
@@ -1194,574 +1252,33 @@
           "theme": "Backend-selected",
           "icon": "mdi:camera",
           "title": "Camera",
+          "type": "panel",
           "badges": [],
           "cards": [
             {
-              "type": "vertical-stack",
-              "cards": [
+              "type": "custom:frigate-card",
+              "cameras": [
                 {
-                  "type": "picture-elements",
-                  "elements": [
-                    {
-                      "camera_image": "camera.front_porch",
-                      "camera_view": "live",
-                      "entity": "camera.front_porch_direct",
-                      "style": {
-                        "height": "100%",
-                        "left": "50%",
-                        "top": "50%",
-                        "width": "100%"
-                      },
-                      "type": "image"
-                    },
-                    {
-                      "entity": "switch.front_porch_detect",
-                      "prefix": "Front Porch - ",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "left": 0,
-                        "padding": "1vh",
-                        "transform": "initial",
-                        "width": "100%"
-                      },
-                      "type": "state-label"
-                    },
-                    {
-                      "entity": "camera.front_porch",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "padding": "1vh",
-                        "right": 0,
-                        "transform": "initial"
-                      },
-                      "type": "state-label"
-                    }
-                  ],
-                  "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png"
+                  "camera_entity": "camera.front_porch",
+                  "live_provider": "frigate-jsmpeg"
                 },
                 {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_person",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_person",
-                        "show_state": false,
-                        "name": "Man"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_car",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_car",
-                        "show_state": false,
-                        "name": "Car"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_cat",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_cat",
-                        "show_state": false,
-                        "name": "Cat"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_truck",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_truck",
-                        "show_state": false,
-                        "name": "Truck"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_bus",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_bus",
-                        "show_state": false,
-                        "name": "Bus"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_bicycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_bicycle",
-                        "show_state": false,
-                        "name": "Bicycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_bird",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_bird",
-                        "show_state": false,
-                        "name": "Bird"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_motorcycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_motorcycle",
-                        "show_state": false,
-                        "name": "Motorcycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.front_porch_dog",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.front_porch_dog",
-                        "show_state": false,
-                        "name": "Dog"
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "picture-elements",
-                  "elements": [
-                    {
-                      "camera_image": "camera.back_yard",
-                      "camera_view": "live",
-                      "entity": "camera.back_yard_direct",
-                      "style": {
-                        "height": "100%",
-                        "left": "50%",
-                        "top": "50%",
-                        "width": "100%"
-                      },
-                      "type": "image"
-                    },
-                    {
-                      "entity": "switch.back_yard_detect",
-                      "prefix": "Back Yard - ",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "left": 0,
-                        "padding": "1vh",
-                        "transform": "initial",
-                        "width": "100%"
-                      },
-                      "type": "state-label"
-                    },
-                    {
-                      "entity": "camera.back_yard",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "padding": "1vh",
-                        "right": 0,
-                        "transform": "initial"
-                      },
-                      "type": "state-label"
-                    }
-                  ],
-                  "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png"
+                  "camera_entity": "camera.back_yard",
+                  "live_provider": "frigate-jsmpeg"
                 },
                 {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_person",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_person",
-                        "show_state": false,
-                        "name": "Man"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_car",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_car",
-                        "show_state": false,
-                        "name": "Car"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_cat",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_cat",
-                        "show_state": false,
-                        "name": "Cat"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_truck",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_truck",
-                        "show_state": false,
-                        "name": "Truck"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_bus",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_bus",
-                        "show_state": false,
-                        "name": "Bus"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_bicycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_bicycle",
-                        "show_state": false,
-                        "name": "Bicycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_bird",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_bird",
-                        "show_state": false,
-                        "name": "Bird"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_motorcycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_motorcycle",
-                        "show_state": false,
-                        "name": "Motorcycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.back_yard_dog",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.back_yard_dog",
-                        "show_state": false,
-                        "name": "Dog"
-                      }
-                    }
-                  ]
+                  "camera_entity": "camera.garage",
+                  "live_provider": "frigate-jsmpeg"
                 }
-              ]
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "picture-elements",
-                  "elements": [
-                    {
-                      "camera_image": "camera.garage",
-                      "camera_view": "live",
-                      "entity": "camera.garage",
-                      "style": {
-                        "height": "100%",
-                        "left": "50%",
-                        "top": "50%",
-                        "width": "100%"
-                      },
-                      "type": "image"
-                    },
-                    {
-                      "entity": "switch.garage_detect",
-                      "prefix": "Garage - ",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "left": 0,
-                        "padding": "1vh",
-                        "transform": "initial",
-                        "width": "100%"
-                      },
-                      "type": "state-label"
-                    },
-                    {
-                      "entity": "camera.garage",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "padding": "1vh",
-                        "right": 0,
-                        "transform": "initial"
-                      },
-                      "type": "state-label"
-                    }
-                  ],
-                  "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png"
-                },
-                {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_person",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_person",
-                        "show_state": false,
-                        "name": "Man"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_car",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_car",
-                        "show_state": false,
-                        "name": "Car"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_cat",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_cat",
-                        "show_state": false,
-                        "name": "Cat"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_truck",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_truck",
-                        "show_state": false,
-                        "name": "Truck"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_bus",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_bus",
-                        "show_state": false,
-                        "name": "Bus"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_bicycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_bicycle",
-                        "show_state": false,
-                        "name": "Bicycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_bird",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_bird",
-                        "show_state": false,
-                        "name": "Bird"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_motorcycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_motorcycle",
-                        "show_state": false,
-                        "name": "Motorcycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.garage_dog",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.garage_dog",
-                        "show_state": false,
-                        "name": "Dog"
-                      }
-                    }
-                  ]
-                }
-              ]
+              ],
+              "view": {
+                "default": "live",
+                "camera_select": "live",
+                "update_cycle_camera": true
+              },
+              "event_viewer": {
+                "auto_unmute": true
+              }
             }
           ]
         },
@@ -1792,27 +1309,15 @@
                   "name": "Downstairs Thermostat"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_weather_02c9fa4a_1_1026"
-                },
-                {
-                  "entity": "sensor.zha_40c04e54_2_1026"
-                },
-                {
-                  "entity": "sensor.weather_master_bedroom_temperature",
-                  "name": "Master Bedroom"
-                },
-                {
                   "entity": "sensor.downstairs_thermostat_humidity",
                   "name": "Downstairs Thermostat"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_weather_02c9fa4a_1_1029"
-                },
-                {
-                  "entity": "sensor.zha_40c04e54_2_1029"
-                },
-                {
                   "entity": "sensor.weather_master_bedroom_humidity",
+                  "name": "Master Bedroom"
+                },
+                {
+                  "entity": "sensor.weather_master_bedroom_temperature",
                   "name": "Master Bedroom"
                 },
                 {
@@ -1820,7 +1325,23 @@
                   "name": "Master Bedroom"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_weather_02c9fa4a_1_1027",
+                  "entity": "sensor.front_door_bell_temperature",
+                  "name": "Stairway"
+                },
+                {
+                  "entity": "sensor.front_door_bell_humidity",
+                  "name": "Stairway"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_humidity",
+                  "name": "Master Bath"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_temperature",
+                  "name": "Master Bath"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_pressure",
                   "name": "Master Bath"
                 }
               ]
@@ -1850,10 +1371,10 @@
                   "entity": "sensor.koqt_temperature"
                 },
                 {
-                  "entity": "sensor.weather_front_porch_temperature"
+                  "entity": "sensor.lumi_lumi_weather_temperature_4"
                 },
                 {
-                  "entity": "sensor.weather_front_porch_pressure"
+                  "entity": "sensor.lumi_lumi_weather_pressure_4"
                 },
                 {
                   "entity": "sensor.koqt_barometric_pressure"
@@ -1872,7 +1393,7 @@
                 {
                   "type": "custom:fold-entity-row",
                   "head": {
-                    "entity": "switch.zha_40c04dcb_1_6",
+                    "entity": "switch.water_heater_switch",
                     "state_color": true
                   },
                   "entities": [
@@ -1881,13 +1402,13 @@
                       "name": "Time to Temp"
                     },
                     {
-                      "entity": "sensor.zha_40c04dcb_1_1794"
+                      "entity": "sensor.water_heater_temperature"
                     },
                     {
-                      "entity": "sensor.zha_40c04dcb_2_1026"
+                      "entity": "sensor.water_heater_temperature_2"
                     },
                     {
-                      "entity": "sensor.zha_40c04dcb_3_1026"
+                      "entity": "sensor.water_heater_smartenergymetering"
                     }
                   ]
                 }
@@ -1896,7 +1417,8 @@
             {
               "entities": [
                 {
-                  "entity": "switch.ledvance_plug_00054922_1",
+                  "entity": "switch.bunn_coffee_pot_switch",
+                  "name": "Bunn Coffee Pot",
                   "state_color": true,
                   "icon": "mdi:coffee-maker"
                 }
@@ -1947,8 +1469,72 @@
                   "entity": "sensor.serverroom_input_voltage",
                   "graph": "line",
                   "name": "Input"
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "line",
+                  "type": "sensor",
+                  "entity": "sensor.server_room_power",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "line",
+                  "type": "sensor",
+                  "entity": "sensor.hp_switch_poe_power",
+                  "detail": 1
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.pdu_1_udm_pro",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_5_hp_switch",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_7_md1200_psu_a",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_8_obi200",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_9_at_t_fiber_modem",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_10_md1200_psu_b",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_11_amos",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_12_xbox_one_x",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_13_rpi4_home_assistant",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_15_pioneer_avr",
+                  "icon": "mdi:power-socket-us"
+                },
+                {
+                  "entity": "switch.pdu_16_hdmi_extender",
+                  "icon": "mdi:power-socket-us"
+                }
+              ],
+              "state_color": true
             },
             {
               "entities": [
@@ -1962,6 +1548,60 @@
                 }
               ],
               "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.hp_port_1_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_2_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_3_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_4_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_5_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_6_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_7_poe_enabled"
+                },
+                {
+                  "entity": "switch.hp_port_8_poe_enabled"
+                }
+              ],
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "sensor.hp_switch_port_1_power",
+                "sensor.hp_switch_port_2_power",
+                "sensor.hp_switch_port_3_power",
+                "sensor.hp_switch_port_4_power",
+                "sensor.hp_switch_port_5_power",
+                "sensor.hp_switch_port_6_power",
+                "sensor.hp_switch_port_7_power",
+                "sensor.hp_switch_port_8_power"
+              ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "group.cameras_poe",
+              "name": "Camera Power",
+              "icon": "mdi:cctv"
             }
           ],
           "icon": "mdi:power-plug",
@@ -1976,7 +1616,7 @@
                   "entity": "automation.turn_on_garden_irrigation_zone_in_morning"
                 },
                 {
-                  "entity": "automation.turn_on_bluberry_irrigation_zone_in_morning"
+                  "entity": "automation.turn_on_blueberry_irrigation_zone_in_morning"
                 }
               ],
               "type": "entities"
@@ -1984,12 +1624,10 @@
             {
               "entities": [
                 {
-                  "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                  "name": "Garden Zone"
+                  "entity": "switch.irrigation_system_switch_18"
                 },
                 {
-                  "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                  "name": "Blueberry Zone"
+                  "entity": "switch.irrigation_system_switch_19"
                 }
               ],
               "hours_to_show": 168,
@@ -2000,19 +1638,10 @@
             {
               "entities": [
                 {
-                  "entity": "switch.xbee_xbee_io_4192cf47_210_6",
-                  "name": "Blueberries",
-                  "state_color": true
+                  "entity": "switch.irrigation_system_switch_18"
                 },
                 {
-                  "entity": "switch.xbee_xbee_io_4192cf47_211_6",
-                  "name": "Garden",
-                  "state_color": true
-                },
-                {
-                  "entity": "switch.xbee_xbee_io_4192cf47_212_6",
-                  "name": "Spare",
-                  "state_color": true
+                  "entity": "switch.irrigation_system_switch_19"
                 }
               ],
               "title": "Irrigation",
@@ -2021,16 +1650,16 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_pressure",
-                  "name": "Pressure"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_temperature",
+                  "entity": "sensor.lumi_lumi_weather_temperature_2",
                   "name": "Temperature"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_humidity",
+                  "entity": "sensor.lumi_lumi_weather_humidity_2",
                   "name": "Humidity"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_pressure_2",
+                  "name": "Pressure"
                 }
               ],
               "show_header_toggle": false,
@@ -2040,15 +1669,16 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.weather_front_porch_pressure"
-                },
-                {
-                  "entity": "sensor.weather_front_porch_temperature",
+                  "entity": "sensor.lumi_lumi_weather_temperature_4",
                   "name": "Temperature"
                 },
                 {
-                  "entity": "sensor.weather_front_porch_humidity",
+                  "entity": "sensor.lumi_lumi_weather_humidity_4",
                   "name": "Humidity"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_pressure_4",
+                  "name": "Pressure"
                 }
               ],
               "show_header_toggle": false,
@@ -2058,24 +1688,28 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_temperature"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_humidity"
-                },
-                {
-                  "entity": "sensor.weather_front_porch_temperature",
+                  "entity": "sensor.lumi_lumi_weather_temperature_4",
                   "name": "Front Porch"
                 },
                 {
-                  "entity": "sensor.weather_front_porch_humidity",
+                  "entity": "sensor.lumi_lumi_weather_humidity_4",
                   "name": "Front Porch"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_weather_810c5c04_pressure"
+                  "entity": "sensor.lumi_lumi_weather_pressure_4",
+                  "name": "Front Porch"
                 },
                 {
-                  "entity": "sensor.weather_front_porch_pressure"
+                  "entity": "sensor.lumi_lumi_weather_temperature_2",
+                  "name": "Greenhouse"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_pressure_2",
+                  "name": "Greenhouse"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_weather_humidity_2",
+                  "name": "Greenhouse"
                 }
               ],
               "hours_to_show": 24,
@@ -2087,251 +1721,6 @@
           "icon": "mdi:sprout",
           "path": "plants",
           "title": "Plants"
-        },
-        {
-          "badges": [],
-          "cards": [
-            {
-              "cards": [
-                {
-                  "config": {
-                    "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.03",
-                    "rules": [
-                      {
-                        "entities": [
-                          "binary_sensor.zha_02bfefd9_1_6",
-                          "binary_sensor.zha_02e2146c_1_6"
-                        ],
-                        "states": [
-                          {
-                            "class": "door_closed_c",
-                            "state": "off"
-                          },
-                          {
-                            "class": "door_open_c",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "binary_sensor.zha_02ec0d9e_1_6",
-                          "binary_sensor.zha_02bfe504_1_6"
-                        ],
-                        "states": [
-                          {
-                            "class": "door_closed_cc",
-                            "state": "off"
-                          },
-                          {
-                            "class": "door_open_cc",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "light.jasco_products_45856_61d32600_1",
-                          "light.osram_lightify_a19_rgbw_00a434be_3",
-                          "light.stairway_lights",
-                          "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                          "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off",
-                          "light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off",
-                          "light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off",
-                          "light.jasco_products_45857_242c2500_level_on_off",
-                          "light.jasco_products_45857_8a1e2500_level_on_off",
-                          "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2"
-                        ],
-                        "states": [
-                          {
-                            "class": "light-off",
-                            "state": "off"
-                          },
-                          {
-                            "class": "light-on",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "switch.zha_40c04dcb_1_6",
-                          "switch.ledvance_plug_00054922_1"
-                        ],
-                        "states": [
-                          {
-                            "class": "waterheater-off",
-                            "state": "off"
-                          },
-                          {
-                            "class": "waterheater-on",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "binary_sensor.door"
-                        ],
-                        "states": [
-                          {
-                            "class": "garage_closed",
-                            "state": "off"
-                          },
-                          {
-                            "class": "garage_open",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "sensor.porsche",
-                          "sensor.f150"
-                        ],
-                        "states": [
-                          {
-                            "class": "car_home",
-                            "state": "garage"
-                          },
-                          {
-                            "class": "car_away",
-                            "state": "away"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "sensor.dumpster"
-                        ],
-                        "states": [
-                          {
-                            "class": "dumpster_inside",
-                            "state": "garage"
-                          },
-                          {
-                            "class": "dumpster_outside",
-                            "state": "away"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan",
-                          "fan.downstairs_bath_fan"
-                        ],
-                        "states": [
-                          {
-                            "class": "spinning_cfan",
-                            "state": "on"
-                          },
-                          {
-                            "class": "none",
-                            "state": "off"
-                          }
-                        ]
-                      }
-                    ],
-                    "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
-                  },
-                  "title": "Main Floor",
-                  "type": "custom:floorplan-card"
-                },
-                {
-                  "config": {
-                    "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.03",
-                    "rules": [
-                      {
-                        "entities": [
-                          "binary_sensor.zha_02c39915_1_6"
-                        ],
-                        "states": [
-                          {
-                            "class": "door_closed_cc",
-                            "state": "off"
-                          },
-                          {
-                            "class": "door_open_cc",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "light.sunricher_zg9101sac_hp_106770a5_1",
-                          "light.sengled_e11_n1ea_00038574_1",
-                          "light.sengled_e11_n1ea_0003232a_1",
-                          "light.king_of_fans_inc_hbuniversalcfremote_b9572700_level_on_off",
-                          "light.master_bedroom_lights",
-                          "light.king_of_fans_inc_hdc52eastwindfan_84482700_level_on_off",
-                          "light.lumi_lumi_relay_c2acn01_b4012704_on_off"
-                        ],
-                        "states": [
-                          {
-                            "class": "light-off",
-                            "state": "off"
-                          },
-                          {
-                            "class": "light-on",
-                            "state": "on"
-                          }
-                        ]
-                      },
-                      {
-                        "entities": [
-                          "fan.upstairs_hvac_fan",
-                          "fan.king_of_fans_inc_hbuniversalcfremote_002757b9_1_514",
-                          "fan.king_of_fans_inc_hdc52eastwindfan_84482700_fan",
-                          "fan.master_bath_fan"
-                        ],
-                        "states": [
-                          {
-                            "class": "spinning_cfan",
-                            "state": "on"
-                          },
-                          {
-                            "class": "none",
-                            "state": "off"
-                          }
-                        ]
-                      }
-                    ],
-                    "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
-                  },
-                  "title": "Top Floor",
-                  "type": "custom:floorplan-card"
-                }
-              ],
-              "type": "horizontal-stack"
-            },
-            {
-              "cards": [
-                {
-                  "entity": "person.ryan",
-                  "image": "/images/ryan_away.jpg",
-                  "state_image": {
-                    "home": "/images/ryan_home.jpg",
-                    "not_home": "/images/ryan_away.jpg"
-                  },
-                  "type": "picture-entity"
-                },
-                {
-                  "entity": "person.jeanette",
-                  "image": "/images/jeanette_away.jpg",
-                  "state_image": {
-                    "home": "/images/jeanette_home.jpg",
-                    "not_home": "/images/jeanette_away.jpg"
-                  },
-                  "type": "picture-entity"
-                }
-              ],
-              "type": "horizontal-stack"
-            }
-          ],
-          "icon": "mdi:floor-plan",
-          "panel": true,
-          "path": "f",
-          "title": "test"
         },
         {
           "badges": [],
@@ -2384,6 +1773,236 @@
                 }
               ],
               "type": "entities"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Downstairs",
+          "path": "downstairs",
+          "icon": "mdi:home-floor-1",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "config": {
+                "image": "/local/floorplan/wiebelo/wiebelo_bottom_floor.svg?v=2.06",
+                "rules": [
+                  {
+                    "entities": [
+                      "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3",
+                      "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_4"
+                    ],
+                    "states": [
+                      {
+                        "class": "door_closed_c",
+                        "state": "off"
+                      },
+                      {
+                        "class": "door_open_c",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2",
+                      "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_5"
+                    ],
+                    "states": [
+                      {
+                        "class": "door_closed_cc",
+                        "state": "off"
+                      },
+                      {
+                        "class": "door_open_cc",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "light.stairway_lights_zha_group",
+                      "light.front_porch_lights_light",
+                      "light.deck_light_light_2",
+                      "light.garage_walk_in_door_light_light",
+                      "light.deck_strip_lights_light",
+                      "light.path_lights",
+                      "light.living_room_can_lights_light",
+                      "light.kitchen_can_lights_light_2",
+                      "light.feibit_inc_co_fzb56_zcw27lx1_0_light",
+                      "light.lumi_lumi_relay_c2acn01_light_2",
+                      "light.office_engineer_lamp_light_2",
+                      "light.office_ceiling_fan_light_2"
+                    ],
+                    "states": [
+                      {
+                        "class": "light-off",
+                        "state": "off"
+                      },
+                      {
+                        "class": "light-on",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "switch.water_heater_switch",
+                      "switch.bunn_coffee_pot_switch"
+                    ],
+                    "states": [
+                      {
+                        "class": "waterheater-off",
+                        "state": "off"
+                      },
+                      {
+                        "class": "waterheater-on",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "binary_sensor.door"
+                    ],
+                    "states": [
+                      {
+                        "class": "garage_closed",
+                        "state": "off"
+                      },
+                      {
+                        "class": "garage_open",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "sensor.porsche",
+                      "sensor.f150"
+                    ],
+                    "states": [
+                      {
+                        "class": "car_home",
+                        "state": "garage"
+                      },
+                      {
+                        "class": "car_away",
+                        "state": "away"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "sensor.dumpster"
+                    ],
+                    "states": [
+                      {
+                        "class": "dumpster_inside",
+                        "state": "garage"
+                      },
+                      {
+                        "class": "dumpster_outside",
+                        "state": "away"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "fan.office_ceiling_fan_fan_2",
+                      "fan.downstairs_bath_fan"
+                    ],
+                    "states": [
+                      {
+                        "class": "spinning_cfan",
+                        "state": "on"
+                      },
+                      {
+                        "class": "none",
+                        "state": "off"
+                      }
+                    ]
+                  }
+                ],
+                "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
+              },
+              "title": "Main Floor",
+              "type": "custom:floorplan-card"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Upstairs",
+          "path": "upstairs",
+          "icon": "mdi:home-floor-2",
+          "type": "panel",
+          "badges": [],
+          "cards": [
+            {
+              "config": {
+                "image": "/local/floorplan/wiebelo/wiebelo_top_floor.svg?v=2.04",
+                "rules": [
+                  {
+                    "entities": [
+                      "binary_sensor.lumi_lumi_sensor_magnet_aq2_opening"
+                    ],
+                    "states": [
+                      {
+                        "class": "door_closed_cc",
+                        "state": "off"
+                      },
+                      {
+                        "class": "door_open_cc",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "light.master_bath_vanity_light_light",
+                      "light.lumi_lumi_relay_c2acn01_light_3",
+                      "light.master_closet_light_zha_group",
+                      "light.master_bedroom_ceiling_fan_light",
+                      "light.guest_bedroom_ceiling_fan_light",
+                      "light.ryan_bedside_lamp_light",
+                      "light.jeanette_bedside_lamp_light_2"
+                    ],
+                    "states": [
+                      {
+                        "class": "light-off",
+                        "state": "off"
+                      },
+                      {
+                        "class": "light-on",
+                        "state": "on"
+                      }
+                    ]
+                  },
+                  {
+                    "entities": [
+                      "fan.upstairs_hvac_fan",
+                      "fan.guest_bedroom_ceiling_fan_fan",
+                      "fan.master_bedroom_ceiling_fan_fan",
+                      "fan.master_bath_fan"
+                    ],
+                    "states": [
+                      {
+                        "class": "spinning_cfan",
+                        "state": "on"
+                      },
+                      {
+                        "class": "none",
+                        "state": "off"
+                      }
+                    ]
+                  }
+                ],
+                "stylesheet": "/local/floorplan/wiebelo/floorplan.css?v=1.04"
+              },
+              "title": "Top Floor",
+              "type": "custom:floorplan-card"
             }
           ]
         },
@@ -2445,104 +2064,37 @@
             {
               "cards": [
                 {
-                  "cards": [
+                  "entities": [
                     {
-                      "entity": "sensor.cpu_usage",
-                      "max": 100,
-                      "min": 0,
-                      "name": "CPU",
-                      "severity": {
-                        "green": 0,
-                        "red": 75,
-                        "yellow": 50
-                      },
-                      "theme": "default",
-                      "type": "gauge"
+                      "entity": "sensor.samsung_m262x_282x_series_10_10_1_136_output_tray_0"
                     },
                     {
-                      "entity": "sensor.virtual_memory",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Virtual Memory",
-                      "severity": {
-                        "green": 0,
-                        "red": 75,
-                        "yellow": 50
-                      },
-                      "theme": "default",
-                      "type": "gauge"
-                    },
-                    {
-                      "entity": "sensor.swap_memory",
-                      "max": 100,
-                      "min": 0,
-                      "name": "Swap Memory",
-                      "severity": {
-                        "green": 0,
-                        "red": 75,
-                        "yellow": 50
-                      },
-                      "theme": "default",
-                      "type": "gauge"
+                      "entity": "sensor.samsung_m262x_282x_series_10_10_1_136_toner_black"
                     }
                   ],
-                  "type": "horizontal-stack"
-                },
-                {
-                  "entities": [
-                    "sensor.samsung_m262x_282x_series_10_10_1_136_output_tray_0",
-                    "sensor.samsung_m262x_282x_series_10_10_1_136_tray_1",
-                    "sensor.samsung_m262x_282x_series_10_10_1_136_toner_black"
-                  ],
                   "title": "Printer",
-                  "type": "glance"
-                },
-                {
-                  "entities": [
-                    "sensor.memoryavailable_2",
-                    "sensor.memoryusage_2",
-                    "sensor.processorload_2",
-                    "sensor.statusdescriptions_2",
-                    "sensor.uptime_2"
-                  ],
-                  "title": "Ezra (Pihole)",
-                  "type": "glance"
-                },
-                {
-                  "entities": [
-                    "sensor.memoryavailable_5",
-                    "sensor.memoryusage_5",
-                    "sensor.processorload_5",
-                    "sensor.statusdescriptions_5",
-                    "sensor.uptime_5"
-                  ],
-                  "title": "Joel the Lesser (Plex)",
-                  "type": "glance"
-                },
-                {
-                  "entities": [
-                    "sensor.memoryavailable_4",
-                    "sensor.memoryusage_4",
-                    "sensor.processorload_4",
-                    "sensor.statusdescriptions_4",
-                    "sensor.uptime_4"
-                  ],
-                  "title": "Benaiah (Webserver/Docker)",
-                  "type": "glance"
-                },
-                {
-                  "entities": [
-                    "sensor.memoryavailable",
-                    "sensor.memoryusage",
-                    "sensor.processorload",
-                    "sensor.statusdescriptions",
-                    "sensor.uptime"
-                  ],
-                  "title": "Nehemiah (Dad's VM)",
                   "type": "glance"
                 }
               ],
               "type": "vertical-stack"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.zfs_alexandria_pool_state",
+                  "name": "The Library of Alexandria"
+                },
+                {
+                  "entity": "sensor.zfs_frigate_pool_state",
+                  "name": "Frigate"
+                },
+                {
+                  "entity": "sensor.zfs_metropolitan_pool_state",
+                  "name": "The Metropolitan Library"
+                }
+              ],
+              "title": "ZFS Pool States"
             },
             {
               "entities": [
@@ -2557,71 +2109,6 @@
                 "sensor.pi_hole_dns_queries_cached"
               ],
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.the_library_of_alexandria_healthstatus_2",
-                  "name": "Health Status"
-                },
-                {
-                  "entity": "sensor.the_library_of_alexandria_operationalstatus_2",
-                  "name": "Operational Status"
-                },
-                {
-                  "entity": "sensor.the_library_of_alexandria_readonlyreason",
-                  "name": "Readonly Reason"
-                }
-              ],
-              "title": "The Library of Alexandria"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.the_metropolitan_library_healthstatus_2",
-                  "name": "Health Status"
-                },
-                {
-                  "entity": "sensor.the_metropolitan_library_operationalstatus_2",
-                  "name": "Operational Status"
-                },
-                {
-                  "entity": "sensor.the_metropolitan_library_readonlyreason",
-                  "name": "Readonly Reason"
-                }
-              ],
-              "title": "The Metropolitan Library"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.ata_hgst_huh721212al_2_healthstatus",
-                  "name": "HGST 5PJ81J3D"
-                },
-                {
-                  "entity": "sensor.ata_hgst_huh721212al_3_healthstatus",
-                  "name": "HGST 5PJ6WDME"
-                },
-                {
-                  "entity": "sensor.ata_st3000vn000_1hj1_1_healthstatus",
-                  "name": "ATA W7307NXY"
-                },
-                {
-                  "entity": "sensor.ata_st3000vn000_1hj1_4_healthstatus",
-                  "name": "ATA W7307NXW"
-                },
-                {
-                  "entity": "sensor.ata_wdc_wd30efrx_68e_0_healthstatus",
-                  "name": "ATA WD-WCC4N2PNTT9K"
-                },
-                {
-                  "entity": "sensor.ata_wdc_wd30efrx_68e_5_healthstatus",
-                  "name": "ATA WD-WCC4N2FX2JH2"
-                }
-              ]
             }
           ],
           "icon": "mdi:server-network",
@@ -2631,39 +2118,13 @@
           "cards": [
             {
               "entities": [
-                "binary_sensor.lumi_lumi_sensor_wleak_aq1_0279bc76_1_1280",
-                "binary_sensor.lumi_lumi_sensor_wleak_aq1_027b09f4_1_1280"
-              ],
-              "show_state": false,
-              "type": "glance"
-            },
-            {
-              "entities": [
-                "binary_sensor.lumi_lumi_vibration_aq1_02af6e3c_1_1280",
-                "binary_sensor.lumi_lumi_sensor_motion_aq2_02b7eb7f_1_1030",
-                "binary_sensor.zha_02b7eb7f_1_1280"
-              ],
-              "show_state": false,
-              "title": "Woodpecker Detection",
-              "type": "glance"
-            },
-            {
-              "entities": [
-                "binary_sensor.lumi_lumi_sensor_smoke_02cb2ea9_1_1280"
-              ],
-              "show_state": false,
-              "type": "glance"
-            },
-            {
-              "entities": [
-                "sensor.zha_02b7eb7f_1_1024"
-              ],
-              "type": "glance"
-            },
-            {
-              "entities": [
                 {
-                  "entity": "binary_sensor.zha_02c39915_1_6"
+                  "entity": "binary_sensor.lumi_lumi_sensor_wleak_aq1_iaszone",
+                  "name": "Clothes Washer"
+                },
+                {
+                  "entity": "binary_sensor.lumi_lumi_sensor_wleak_aq1_iaszone_2",
+                  "name": "Dishwasher"
                 }
               ],
               "show_state": false,
@@ -2672,15 +2133,33 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy",
+                  "entity": "binary_sensor.lumi_lumi_vibration_aq1_iaszone",
+                  "name": "Vibration"
+                }
+              ],
+              "show_state": false,
+              "title": "Woodpecker Detection",
+              "type": "glance"
+            },
+            {
+              "entities": [
+                "binary_sensor.lumi_lumi_sensor_smoke_iaszone"
+              ],
+              "show_state": false,
+              "type": "glance"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone_3",
                   "name": "Occupied"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_sensor_motion_aq2_4cd42104_illuminance",
+                  "entity": "sensor.lumi_lumi_sensor_motion_aq2_illuminance_3",
                   "name": "Illumination"
                 },
                 {
-                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_ias_zone",
+                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy_3",
                   "name": "Motion"
                 }
               ],
@@ -2690,15 +2169,15 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy",
+                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone",
                   "name": "Occupied"
                 },
                 {
-                  "entity": "sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_illuminance",
+                  "entity": "sensor.lumi_lumi_sensor_motion_aq2_illuminance",
                   "name": "Illumination"
                 },
                 {
-                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_ias_zone",
+                  "entity": "binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy",
                   "name": "Motion"
                 }
               ],
@@ -2709,7 +2188,7 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.lumi_lumi_weather_cd15f007_temperature",
+              "entity": "sensor.lumi_lumi_weather_temperature_3",
               "detail": 1,
               "name": "Deep Freeze"
             },
@@ -2720,11 +2199,25 @@
                   "entity": "binary_sensor.llmillerlaw"
                 },
                 {
-                  "entity": "binary_sensor.frigate"
+                  "entity": "binary_sensor.prairiesnpr_2"
                 },
                 {
-                  "entity": "binary_sensor.prairiesnpr_2"
+                  "entity": "binary_sensor.dad_s_home_assistant"
+                },
+                {
+                  "entity": "binary_sensor.grandpa_s_home_assistant"
+                },
+                {
+                  "entity": "binary_sensor.frigate_2"
                 }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "sensor.watchman_last_updated",
+                "sensor.watchman_missing_entities",
+                "sensor.watchman_missing_services"
               ]
             }
           ],
@@ -2792,6 +2285,51 @@
           "panel": true
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:raspberry-pi",
+          "badges": [],
+          "cards": [
+            {
+              "type": "sensor",
+              "entity": "sensor.processor_use",
+              "graph": "line"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.processor_temperature",
+              "detail": 1
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.last_boot"
+                },
+                {
+                  "entity": "sensor.wan_ip"
+                },
+                {
+                  "entity": "sensor.network_throughput_in_eth0"
+                },
+                {
+                  "entity": "sensor.network_throughput_out_eth0"
+                },
+                {
+                  "entity": "sensor.swap_use_percent"
+                },
+                {
+                  "entity": "sensor.memory_use_percent"
+                },
+                {
+                  "entity": "sensor.disk_use_percent_home_homeassistant_homeassistant"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "badges": [],
           "cards": [
             {
@@ -2847,43 +2385,6 @@
               "title": "Day End"
             },
             {
-              "entities": [
-                {
-                  "entity": "sensor.sengled_e11_n1ea_00038574_1_1794",
-                  "name": "Master Bedroom Left Lamp"
-                },
-                {
-                  "entity": "sensor.sengled_e11_n1ea_0003232a_1_1794",
-                  "name": "Master Bedroom Right Lamp"
-                },
-                {
-                  "entity": "sensor.jasco_products_45856_61d32600_1_1794",
-                  "name": "Front Porch Lights"
-                },
-                {
-                  "entity": "sensor.jasco_products_45856_00db2500_1_1794",
-                  "name": "HVAC Booster Fan"
-                },
-                {
-                  "entity": "sensor.jasco_products_45857_8a1e2500_smartenergy_metering",
-                  "name": "Kitchen Can Lights"
-                },
-                {
-                  "entity": "sensor.jasco_products_45857_242c2500_smartenergy_metering",
-                  "name": "Living Room Can Lights"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_relay_c2acn01_08ec4404_electrical_measurement",
-                  "name": "Downstairs Bathroom Fan"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_relay_c2acn01_b4012704_electrical_measurement",
-                  "name": "Master Bathroom Fan"
-                }
-              ],
-              "type": "entities"
-            },
-            {
               "entity": "automation.turn_on_bedroom_lights_in_the_morning",
               "hold_action": {
                 "action": "more-info"
@@ -2904,7 +2405,8 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.xbox_source"
+                  "entity": "sensor.xbox_source",
+                  "icon": "mdi:microsoft-xbox"
                 }
               ],
               "type": "entities"
@@ -2940,67 +2442,6 @@
               "type": "weather-forecast",
               "entity": "weather.koqt_daynight",
               "show_forecast": true
-            },
-            {
-              "entities": [
-                {
-                  "entity": "light.jasco_products_45856_61d32600_1",
-                  "name": "Front Porch"
-                },
-                {
-                  "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off",
-                  "name": "Back Porch"
-                },
-                {
-                  "entity": "light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off"
-                },
-                {
-                  "entity": "light.ledvance_outdoor_accent_light_rgb_8e830700_level_light_color_on_off",
-                  "icon": "mdi:led-strip-variant",
-                  "name": "Backyard RGB"
-                },
-                {
-                  "entity": "light.path_lights"
-                }
-              ],
-              "show_header_toggle": true,
-              "title": "Outdoor Lights",
-              "type": "entities"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "light.lumi_lumi_relay_c2acn01_08ec4404_on_off_2",
-                  "name": "Fan Light"
-                },
-                {
-                  "entity": "fan.downstairs_bath_fan",
-                  "state_color": true
-                }
-              ],
-              "title": "Downstairs Bathroom",
-              "type": "entities"
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "light.ge_appliances_zll_light_000230a7_1"
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "light.ge_appliances_zll_light_0006c093_1"
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "light.jasco_products_45856_00db2500_1"
             },
             {
               "entity": "weather.dark_sky",
@@ -3068,201 +2509,15 @@
                 }
               ],
               "title": "Æinarr"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "picture-elements",
-                  "elements": [
-                    {
-                      "camera_image": "camera.porsche",
-                      "camera_view": "live",
-                      "entity": "camera.porsche",
-                      "style": {
-                        "height": "100%",
-                        "left": "50%",
-                        "top": "50%",
-                        "width": "100%"
-                      },
-                      "type": "image"
-                    },
-                    {
-                      "entity": "switch.porsche_detect",
-                      "prefix": "Scipio/Peno - ",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "left": 0,
-                        "padding": "1vh",
-                        "transform": "initial",
-                        "width": "100%"
-                      },
-                      "type": "state-label"
-                    },
-                    {
-                      "entity": "camera.porsche",
-                      "style": {
-                        "background-color": "rgba(0, 0, 0, 0.3)",
-                        "bottom": 0,
-                        "color": "white",
-                        "padding": "1vh",
-                        "right": 0,
-                        "transform": "initial"
-                      },
-                      "type": "state-label"
-                    }
-                  ],
-                  "image": "https://ha.prairiesnpr.com/images/stand_by_16_9.png"
-                },
-                {
-                  "type": "horizontal-stack",
-                  "cards": [
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_person",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_person",
-                        "show_state": false,
-                        "name": "Man"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_car",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_car",
-                        "show_state": false,
-                        "name": "Car"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_cat",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_cat",
-                        "show_state": false,
-                        "name": "Cat"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_truck",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_truck",
-                        "show_state": false,
-                        "name": "Truck"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_bus",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_bus",
-                        "show_state": false,
-                        "name": "Bus"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_bicycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_bicycle",
-                        "show_state": false,
-                        "name": "Bicycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_bird",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_bird",
-                        "show_state": false,
-                        "name": "Bird"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_motorcycle",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_motorcycle",
-                        "show_state": false,
-                        "name": "Motorcycle"
-                      }
-                    },
-                    {
-                      "type": "conditional",
-                      "conditions": [
-                        {
-                          "entity": "camera.porsche_dog",
-                          "state": "active"
-                        }
-                      ],
-                      "card": {
-                        "type": "picture-entity",
-                        "entity": "camera.porsche_dog",
-                        "show_state": false,
-                        "name": "Dog"
-                      }
-                    }
-                  ]
-                }
-              ]
             }
           ],
           "path": "test",
           "title": "test"
         },
         {
+          "theme": "Backend-selected",
+          "icon": "mdi:cellphone",
+          "title": "Devices",
           "badges": [],
           "cards": [
             {
@@ -3577,9 +2832,7 @@
               "title": "Bronco Sport",
               "state_color": true
             }
-          ],
-          "icon": "mdi:cellphone-android",
-          "title": "Devices"
+          ]
         },
         {
           "theme": "Backend-selected",
@@ -4163,102 +3416,6 @@
                   }
                 ]
               }
-            }
-          ]
-        },
-        {
-          "theme": "Backend-selected",
-          "icon": "mdi:raspberry-pi",
-          "badges": [],
-          "cards": [
-            {
-              "type": "sensor",
-              "entity": "sensor.processor_use",
-              "graph": "line"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.processor_temperature",
-              "detail": 1
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.last_boot"
-                },
-                {
-                  "entity": "sensor.processor_use"
-                },
-                {
-                  "entity": "sensor.processor_temperature"
-                },
-                {
-                  "entity": "sensor.ipv6_address_eth0"
-                },
-                {
-                  "entity": "sensor.ipv4_address_eth0"
-                },
-                {
-                  "entity": "sensor.wan_ip"
-                },
-                {
-                  "entity": "sensor.network_in_eth0"
-                },
-                {
-                  "entity": "sensor.network_out_eth0"
-                },
-                {
-                  "entity": "sensor.network_throughput_in_eth0"
-                },
-                {
-                  "entity": "sensor.network_throughput_out_eth0"
-                },
-                {
-                  "entity": "sensor.packets_in_eth0"
-                },
-                {
-                  "entity": "sensor.packets_out_eth0"
-                },
-                {
-                  "entity": "sensor.load_15m"
-                },
-                {
-                  "entity": "sensor.load_1m"
-                },
-                {
-                  "entity": "sensor.load_5m"
-                },
-                {
-                  "entity": "sensor.swap_free"
-                },
-                {
-                  "entity": "sensor.swap_use"
-                },
-                {
-                  "entity": "sensor.swap_use_percent"
-                },
-                {
-                  "entity": "sensor.memory_use_percent"
-                },
-                {
-                  "entity": "sensor.memory_use"
-                },
-                {
-                  "entity": "sensor.memory_free"
-                },
-                {
-                  "entity": "sensor.disk_free"
-                },
-                {
-                  "entity": "sensor.disk_use_percent_home_homeassistant_homeassistant"
-                },
-                {
-                  "entity": "sensor.disk_use"
-                }
-              ]
             }
           ]
         }

@@ -93,3 +93,9 @@
    longitude: -84.029662 
    radius: 100
    icon: mdi:church
+ - name: Paranky's
+   latitude: 35.686274
+   longitude: -84.210705
+   icon: mdi:car-wrench
+   radius: 300
+

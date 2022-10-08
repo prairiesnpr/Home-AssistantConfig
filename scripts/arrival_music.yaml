@@ -1,23 +1,48 @@
 alias: Arrival Music
 sequence:
-- data:
-    entity_id: script.prepare_reciever_for_output
-  service: homeassistant.turn_on
-- delay: 00:00:10
-- data:
-    entity_id: media_player.gstreamer
-    message: New user detected, Welcome home master Ryan
-  service: tts.microsoft_say
-- data:
-    entity_id: media_player.receiver
-    volume_level: 0.55
-  service: media_player.volume_set
-- data:
-    entity_id: media_player.gstreamer
-    media_content_id: file:///home/prairiesnpr/arrival_music.mp3
-    media_content_type: music
-  service: media_player.play_media
-- delay: 00:02:00
-- data:
-    entity_id: media_player.receiver
-  service: media_player.turn_off
+  - parallel:
+      - data:
+          entity_id: media_player.receiver
+          source: strm-box
+        service: media_player.select_source
+      - data:
+          entity_id: media_player.receiver
+          volume_level: 0.55
+        service: media_player.volume_set
+  - alias: "Wait for receiver to have a volume"
+    wait_template: "{{ is_state_attr('media_player.receiver', 'volume_level', 0.55) }}"
+    timeout: "00:00:15"
+  - alias: "Wait 1s"
+    delay: 10
+  - data:
+      entity_id: media_player.gstreamer
+      message: "{{ message }}"
+    service: tts.microsoft_say
+  - wait_for_trigger:
+      - platform: state
+        entity_id: media_player.gstreamer
+        to: 'idle'
+    timeout: "00:01:00"
+  - data:
+      entity_id: media_player.gstreamer
+      media_content_id: file:///home/prairiesnpr/arrival_songs/{{ filename }}
+      media_content_type: music
+    service: media_player.play_media
+  - wait_for_trigger:
+      - platform: state
+        entity_id: media_player.gstreamer
+        to: 'idle'
+    timeout: "00:06:00"
+  - alias: "Wait 2s"
+    delay: 2 
+  - data:
+      entity_id: media_player.receiver
+      source: "{{ return_source }}"
+    service: media_player.select_source
+  - data:
+      entity_id: media_player.receiver
+      volume_level: "{{ return_volume }}" 
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.receiver
+    service: media_player.turn_off

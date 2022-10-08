@@ -1,0 +1,39 @@
+alias: Send Notification to all Devices 
+sequence:
+  - parallel:
+     - data:
+         title: >-
+           {{ title }}
+         message: >-
+           {{ message }}
+         data:
+           url: >-
+             {{ ha_url_var }}/api/frigate/{{ id }}/{{ camera }}/clip.mp4
+           tag: '{{ id }}'
+           group: frigate-notification-{{ camera }}
+           clickAction: >-
+             {{ ha_url_var }}/api/frigate/{{ id }}/{{ camera }}/clip.mp4
+           image: >-
+             /api/frigate/notifications/{{ id }}/snapshot.jpg
+           attachment:
+             url: >-
+               /api/frigate/notifications/{{ id }}/snapshot.jpg
+       service: notify.all_android_devices
+     - data:
+         title: >-
+           {{ title }}
+         message: >-
+           {{ message }}
+         data:
+           url: >-
+             {{ ha_url_var }}/api/frigate/{{ id }}/{{ camera }}/clip.mp4
+           tag: '{{ id }}'
+           group: frigate-notification-{{ camera }}
+           clickAction: >-
+             {{ ha_url_var }}/api/frigate/{{ id }}/{{ camera }}/clip.mp4
+           image: >-
+             /api/frigate/notifications/{{ id }}/snapshot.jpg
+           attachment:
+             url: >-
+               /api/frigate/notifications/{{ id }}/snapshot.jpg
+       service: notify.all_ios_devices

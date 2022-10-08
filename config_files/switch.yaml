@@ -1,0 +1,302 @@
+- platform: command_line
+  switches:
+    vlc_front_porch:
+      unique_id: 58054e9a-fae3-4695-8121-ba958d9ef90b
+      command_on: !secret fp_cam_vlc_cmd
+      command_off: "pkill vlc"
+    vlc_backyard:
+      unique_id: cef1246b-9c70-46b1-8f25-e2b377f50d15
+      command_on: !secret uk_cam_vlc_cmd
+      command_off: "pkill vlc"
+    vlc_garage:
+      unique_id: b88ad994-26ad-4487-aa5d-4500fbded6e5
+      command_on: !secret grg_cam_vlc_cmd
+      command_off: "pkill vlc"
+- platform: snmp
+  unique_id: 5c278226-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 1 - UDM Pro'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.1
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.1
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c27844c-2ee8-11ed-a261-0242ac120002
+  name: server power outlet 2
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.2
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.2
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c27856e-2ee8-11ed-a261-0242ac120002
+  name: server power outlet 3
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.3
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.3
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c278686-2ee8-11ed-a261-0242ac120002
+  name: server power outlet 4
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.4
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.4
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c2787a8-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 5 - HP Switch' 
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.5
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.5
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c278ece-2ee8-11ed-a261-0242ac120002
+  name: server power outlet 6
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.6
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.6
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c278ff0-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 7 - MD1200 PSU A'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.7
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.7
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c2790f4-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 8 - OBI200'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.8
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.8
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c2791f8-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 9 - AT&T Fiber Modem'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.9
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.9
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c2792fc-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 10 - MD1200 PSU B'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.10
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.10
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279414-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 11 - Amos'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.11
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.11
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279518-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 12 - Xbox One X'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.12
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.12
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279ad6-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 13 - Rpi4 (Home Assistant)'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.13
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.13
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279c02-2ee8-11ed-a261-0242ac120002
+  name: server power outlet 14
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.14
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.14
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279d10-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 15 - Pioneer AVR'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.15
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.15
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 5c279e1e-2ee8-11ed-a261-0242ac120002
+  name: 'PDU 16 - HDMI Extender'
+  host: !secret pdu_ip
+  vartype: Integer
+  version: 2c
+  community: private
+  baseoid: 1.3.6.1.4.1.1718.3.2.3.1.10.1.1.16
+  command_oid: 1.3.6.1.4.1.1718.3.2.3.1.11.1.1.16
+  payload_on: 5
+  payload_off: 4
+  command_payload_on: 1
+  command_payload_off: 2
+- platform: snmp
+  unique_id: 98809034-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 1 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c' 
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.1 
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 9880939a-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 2 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.2
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 98809584-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 3 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.3
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 98809a52-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 4 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.4
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 98809b92-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 5 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.5
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 98809caa-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 6 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.6
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 9880a010-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 7 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.7
+  payload_on: 1
+  payload_off: 2
+- platform: snmp
+  unique_id: 9880a150-46a1-11ed-b878-0242ac120002
+  name: 'HP Port 8 - POE Enabled'
+  host: !secret hp_switch_ip
+  vartype: Integer
+  version: '2c'
+  community: manage
+  baseoid: 1.3.6.1.2.1.105.1.1.1.3.1.8
+  payload_on: 1
+  payload_off: 2

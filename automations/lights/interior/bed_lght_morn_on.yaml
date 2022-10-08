@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - light.bedroom_bed_lights_zha_group_0x0004
+    - light.bedroom_bed_lights_zha_group 
   service: homeassistant.turn_on
 alias: Turn on bedroom lights in the morning
 condition:

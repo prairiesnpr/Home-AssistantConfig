@@ -1,0 +1,27 @@
+action:
+- data:
+    data:
+      push:
+        sound:
+          critical: 1
+          name: default
+          volume: 1.0
+    message: 'ZFS Pool: Frigate is {{ trigger.to_state.state
+      }}'
+    title: ZFS Pool {{ trigger.to_state.state }}
+  service: notify.all_ios_devices
+- data:
+    data:
+      priority: high
+      ttl: 0
+    message: 'ZFS Pool: Frigate is {{ trigger.to_state.state
+      }}'
+    title: ZFS Pool {{ trigger.to_state.state }}
+  service: notify.all_android_devices
+alias: ZFS Pool Frigate Unhealthy
+id: 9abeee5cfe1848aa87e80ce119142012 
+trigger:
+- entity_id: sensor.zfs_frigate_pool_state 
+  from: ONLINE 
+  platform: state
+  for: "00:10:00"

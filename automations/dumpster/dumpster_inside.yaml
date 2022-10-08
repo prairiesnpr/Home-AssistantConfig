@@ -17,6 +17,6 @@ id: 0af778663e7541448750d51e4129f9f1
 trigger:
 - at: 08:00:00
   platform: time
-- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+- entity_id: switch.garage_door_switch_4 
   platform: state
   to: 'on'

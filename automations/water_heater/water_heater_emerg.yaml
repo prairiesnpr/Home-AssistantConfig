@@ -1,10 +1,10 @@
 action:
 - data:
-    entity_id: switch.zha_40c04dcb_1_6
+    entity_id: switch.water_heater_switch 
   service: switch.turn_on
 alias: Water Heater Emergency Heat
 id: 0066a613ad8649d98269ef198945f2b1
 trigger:
 - below: 45
-  entity_id: sensor.zha_40c04dcb_2_1026
+  entity_id: sensor.water_heater_temperature_2 
   platform: numeric_state

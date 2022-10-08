@@ -1,0 +1,67 @@
+alias: Set Lights based on Xbox Source
+id: 7bf524de9f104eadac9d8c8f774659ea
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: '{{ trigger | default(none) is not none and trigger.to_state is defined }}'
+trigger:
+  entity_id: sensor.xbox_source
+  platform: state
+action:
+  - choose:
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: '{{ ''The Elder Scrolls V: Skyrim Special Edition'' in trigger.to_state.state }}'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light
+              profile: skyrim_blue 
+  - choose:
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: '{{ ''Home'' in trigger.to_state.state }}'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
+              profile: xbox_green 
+  - choose:
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: '{{ ''Netflix'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''Blu-ray'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''Plex'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''Amazon'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''Disney'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''HBO Max'' in trigger.to_state.state }}'
+              - condition: template
+                value_template: '{{ ''YouTube'' in trigger.to_state.state }}'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
+              profile: movie_red
+  - choose:
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: '{{ '''' == trigger.to_state.state }}'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
+              profile: warm_white 

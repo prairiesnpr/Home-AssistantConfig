@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - switch.ledvance_plug_00054922_1
+    - switch.bunn_coffee_pot_switch 
   service: switch.turn_on
 alias: Turn on the Coffee Pot when home (Ryan)
 condition:

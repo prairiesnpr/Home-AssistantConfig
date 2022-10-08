@@ -1,6 +1,6 @@
 action:
 - data:
-    entity_id: switch.zha_40c04dcb_1_6
+    entity_id: switch.water_heater_switch 
   service: switch.turn_off
 alias: Set Water Heater off at night
 id: 1ebbb228fdf4477e8104d736bea059a1

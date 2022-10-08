@@ -1,10 +1,28 @@
-action:
-- data:
-    away_mode: away
-  service: nest.set_away_mode
-alias: Set Nest Away When Away
+alias: Set Nest Home/Away based on Home Owners
 id: 80aada0c1b274af883ae984eae953f86
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: home
+        sequence:
+          - service: nest.set_away_mode
+            data:
+              away_mode: away
+      - conditions:
+          - condition: trigger
+            id: not_home
+        sequence:
+          - service: nest.set_away_mode
+            data:
+              away_mode: home
 trigger:
-- entity_id: group.home_owners
-  platform: state
-  to: not_home
+  - entity_id: group.home_owners
+    platform: state
+    to: 'not_home'
+    id: not_home
+  - entity_id: group.home_owners
+    platform: state
+    to: 'home'
+    id: home
+

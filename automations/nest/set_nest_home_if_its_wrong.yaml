@@ -1,13 +1,13 @@
 action:
   data:
-    away_mode: home
+    away_mode: 'home'
   service: nest.set_away_mode
 alias: Set Nest to Home When Home and Nest thinks Away
 id: b5911011-d7b5-487e-af76-a34925026abb 
 trigger:
 - entity_id: binary_sensor.wiebelo_away
   platform: state
-  to: 'off'
+  to: 'on'
 condition:
   condition: state
   entity_id:

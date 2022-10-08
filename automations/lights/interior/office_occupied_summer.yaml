@@ -1,14 +1,14 @@
 action:
 - data:
     entity_id:
-    - light.osram_lightify_a19_rgbw_00a434be_3
+    - light.office_engineer_lamp_light_2 
   service: light.turn_on
 - data:
     entity_id:
-    - light.king_of_fans_inc_hbuniversalcfremote_de4d2900_level_on_off
+    - light.office_ceiling_fan_light_2 
   service: light.turn_on
 - data:
-    entity_id: fan.king_of_fans_inc_hbuniversalcfremote_de4d2900_fan
+    entity_id: fan.office_ceiling_fan_fan_2 
     percentage: 33 
   service: fan.set_percentage
 alias: Office Occupied Summer
@@ -19,6 +19,6 @@ id: ad908542af5d4dfea1c7231486ab777d
 trigger:
 - device_id: b7ddc3dbfa994a4b9b59f9336197bcf1
   domain: binary_sensor
-  entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_b7ec4c04_occupancy
+  entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy 
   platform: device
   type: occupied

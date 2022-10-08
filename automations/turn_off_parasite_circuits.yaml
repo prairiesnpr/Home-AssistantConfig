@@ -1,0 +1,17 @@
+action:
+- service: homeassistant.turn_off 
+  entity_id: group.media_ups 
+alias: Power Off Parasite UPS Circuits 
+condition:
+- condition: state
+  entity_id: media_player.receiver
+  state: 'off'
+- condition: time
+  after: input_datetime.system_sleep_time
+id: 1ed38950037b4cbeaa77c03ebaef24d4 
+trigger:
+- at: input_datetime.system_sleep_time
+  platform: time
+- entity_id: media_player.receiver
+  platform: state
+  to: 'off'

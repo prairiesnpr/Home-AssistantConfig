@@ -23,7 +23,7 @@ condition:
   state: not_home
 id: 4e53f7e81d654d9e9c32e5c088b7a4db
 trigger:
-- entity_id: switch.xbee_xbee_io_4193fedf_209_6
+- entity_id: switch.garage_door_switch_4 
   from: 'off'
   platform: state
   to: 'on'

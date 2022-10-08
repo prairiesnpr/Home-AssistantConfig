@@ -1,0 +1,9 @@
+alias: Prepare reciever for output - No Volume
+sequence:
+- data:
+    entity_id: media_player.receiver
+  service: media_player.turn_on
+- data:
+    entity_id: media_player.receiver
+    source: strm-box
+  service: media_player.select_source

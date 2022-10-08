@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - switch.xbee_xbee_io_4193fedf_210_6
+    - switch.garage_door_switch_3 
   service: switch.turn_on
 alias: Remote Press - Garage Toggle
 condition: []

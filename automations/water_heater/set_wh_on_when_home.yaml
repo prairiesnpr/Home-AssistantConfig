@@ -1,6 +1,6 @@
 action:
 - data:
-    entity_id: switch.zha_40c04dcb_1_6
+    entity_id: switch.water_heater_switch 
   service: switch.turn_on
 alias: Set Water Heater on When Home
 condition:

@@ -5,7 +5,7 @@ description: >-
   humidity to setpoints as well as inside conditions. 
 trigger:
   - platform: numeric_state
-    entity_id: sensor.weather_front_porch_temperature 
+    entity_id: sensor.lumi_lumi_weather_temperature_4 
     above: sensor.downstairs_thermostat_temperature 
     id: Hotter Outside
     for:
@@ -14,7 +14,7 @@ trigger:
       seconds: 0
       milliseconds: 0
   - platform: numeric_state
-    entity_id: sensor.weather_front_porch_temperature 
+    entity_id: sensor.lumi_lumi_weather_temperature_4 
     below: sensor.downstairs_thermostat_temperature 
     id: Cooler Outside
     for:
@@ -31,8 +31,8 @@ trigger:
       minutes: 5
       seconds: 0
 condition:
-  - condition: time
-    after: sensor.calculated_system_start_time 
+#  - condition: time
+#    after: sensor.calculated_system_start_time 
 #  - condition: state
 #    entity_id: input_boolean.a_in_bed
 #    state: 'off'

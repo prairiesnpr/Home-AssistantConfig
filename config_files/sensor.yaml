@@ -78,3 +78,99 @@
   name: Porsche 
   state_topic: room_presence
   away_timeout: 30
+#- platform: command_line
+#  name: wireguard raw status
+#  json_attributes:
+#    - raw_value
+#  command: 'ssh root@10.10.1.1 "./get_vpn_con.sh"'
+#  value_template: "{{ value_json.connected }}"
+- platform: snmp
+  name: server room pdu power
+  host: !secret pdu_ip
+  baseoid: 1.3.6.1.4.1.1718.3.2.2.1.12.1.1 
+  device_class: power
+  unique_id: d208ccdd-61be-4d4c-aa5f-53d3d51333a8 
+  state_class: measurement
+  unit_of_measurement: W 
+  version: 2c
+  community: public
+- platform: snmp
+  name: HP Switch Port 1 Power 
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.1
+  device_class: power
+  unique_id: a780921c-4699-11ed-b878-0242ac120002 
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage 
+- platform: snmp
+  name: HP Switch Port 2 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.2
+  device_class: power
+  unique_id: a7809668-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 3 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.3
+  device_class: power
+  unique_id: a7809870-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 4 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.4
+  device_class: power
+  unique_id: a7809a50-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 5 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.5
+  device_class: power
+  unique_id: a7809c44-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 6 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.6
+  device_class: power
+  unique_id: a780a1f8-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 7 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.7
+  device_class: power
+  unique_id: a780a3ba-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage
+- platform: snmp
+  name: HP Switch Port 8 Power
+  host: !secret hp_switch_ip
+  baseoid: 1.3.6.1.4.1.25506.2.14.1.1.5.1.8
+  device_class: power
+  unique_id: a780a55e-4699-11ed-b878-0242ac120002
+  state_class: measurement
+  unit_of_measurement: mW
+  version: '2c'
+  community: manage

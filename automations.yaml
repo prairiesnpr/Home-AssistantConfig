@@ -1,0 +1,11 @@
+- id: '1660599437533'
+  alias: Frigate Notification (0.10.0)
+  description: ''
+  use_blueprint:
+    path: hunterjm/frigate_0.10_notification.yaml
+    input:
+      camera: front_porch
+      notify_device: 6bc5874df5b4525c875ead2e74903d75
+      base_url: https://ha.prairiesnpr.com
+      update_thumbnail: true
+      zone_filter: true

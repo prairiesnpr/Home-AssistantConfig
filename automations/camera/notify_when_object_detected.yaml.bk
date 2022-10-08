@@ -1,0 +1,60 @@
+alias: Notify of events
+id: a7b736332d6345abb15a526bacc4251a 
+trigger:
+  platform: mqtt
+  topic: frigate/events
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.payload_json['type'] == 'new' }}"
+    - condition: template
+      value_template: "{{ trigger.payload_json['after']['camera'] in ['garage', 'front_porch', 'back_yard'] }}"
+    - condition: template
+      value_template: "{{ trigger.payload_json['after']['label'] in ['person', 'dog'] }}"
+    - condition: template
+      value_template: >
+        {% if state_attr('automation.notify_of_events', 'last_triggered') -%}
+            {{ (now() - state_attr('automation.notify_of_events', 'last_triggered')).seconds > 300 }}
+        {%- else -%}
+            {{True}}
+        {%- endif %}
+action:
+  - variables:
+      ha_url_var: !secret ha_url
+      entered_zones: '{{trigger.payload_json["after"]["entered_zones"]}}'
+      zone_prep: >
+        {% if entered_zones | count > 1 -%}
+            on
+        {%- elif "deck" in entered_zones -%}
+            on
+        {%- elif "porch_sidewalk" in entered_zones -%}
+            on
+        {%- elif "driveway" in entered_zones -%}
+            on
+        {%- else -%}
+            in
+        {%- endif %}
+      zone_text: >
+        {% if entered_zones|count > 1 -%}
+            ({{trigger.payload_json["after"]["entered_zones"] | join(", ")}}) zones
+        {%- elif entered_zones|count == 1 -%}
+            {{trigger.payload_json["after"]["entered_zones"] | first}}
+        {%- else -%}
+            No Zone
+        {%- endif %}
+      zone_message: 'A {{trigger.payload_json["after"]["label"]}} was detected {{zone_prep}} the {{zone_text}}.'
+  - service: notify.all_ios_devices 
+    data_template:
+      message: '{{zone_message}}'
+      data:
+        attachment:
+          url: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg' 
+          content-type: jpg
+          hide-thumbnail: false
+  - service: notify.all_android_devices
+    data_template:
+      title: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+      message: '{{zone_message}}' 
+      data:
+        image: '{{ha_url_var}}/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg'

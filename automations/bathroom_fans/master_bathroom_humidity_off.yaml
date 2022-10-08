@@ -6,7 +6,7 @@ action:
 alias: Master Bathroom Fan Off humidity
 condition:
   condition: state
-  entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_4cd42104_occupancy
+  entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone_3
   state: 'off'
 description: Turn off bathroom fan when humidity is below setpoint
 id: 0cd07f0891be47d7a475e7d2ead84214
@@ -16,5 +16,5 @@ trigger:
     minutes: 2
     seconds: 0
   platform: template
-  value_template: '{{ states.sensor.lumi_lumi_weather_02c9fa4a_1_1029.state < states.input_number.bath_fan_off.state
+  value_template: '{{ states.sensor.lumi_lumi_weather_humidity.state < states.input_number.bath_fan_off.state
     }}'

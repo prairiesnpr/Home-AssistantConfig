@@ -1,6 +1,6 @@
 action:
   data:
-    entity_id: light.jasco_products_45856_00db2500_1
+    entity_id: light.hvac_booster_fan_light_2 
   service: light.turn_off
 alias: Turn Circulation Fan off With HVAC
 condition:

@@ -10,11 +10,32 @@ jeanette_watch:
     - script.unlock_front_door
     #Lock
     - script.lock_front_door
-    - light.stairway_lights
+    - light.stairway_lights_zha_group 
     #Master Bathroom Light
-    - light.sunricher_zg9101sac_hp_106770a5_1
-    - light.bedroom_lights
+    - light.master_bath_vanity_light_light 
+    - light.bedroom_bed_lights_zha_group 
     #Front Porch Lights
-    - light.jasco_products_45856_61d32600_1
+    - light.front_porch_lights_light 
     #Garage Door
-    - switch.xbee_xbee_io_4193fedf_210_6
+    - switch.garage_door_switch_3 
+nonessential_ups:
+  name: Nonessential UPS Circuits
+  entities:
+    - switch.pdu_10_md1200_psu_b
+    - switch.pdu_16_hdmi_extender
+    - switch.pdu_15_pioneer_avr
+    - switch.pdu_12_xbox_one_x
+    - switch.pdu_8_obi200
+media_ups:
+  name: Media UPS Circuits
+  entities:
+    - switch.pdu_10_md1200_psu_b
+    - switch.pdu_16_hdmi_extender
+    - switch.pdu_15_pioneer_avr
+    - switch.pdu_12_xbox_one_x
+cameras_poe:
+  name: Security Cameras Power
+  entities:
+    - switch.hp_port_2_poe_enabled
+    - switch.hp_port_4_poe_enabled
+    - switch.hp_port_5_poe_enabled

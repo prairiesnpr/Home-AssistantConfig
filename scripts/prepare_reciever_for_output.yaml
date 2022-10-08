@@ -9,5 +9,5 @@ sequence:
   service: media_player.select_source
 - data:
     entity_id: media_player.receiver
-    volume_level: 0.8
+    volume_level: 0.55
   service: media_player.volume_set

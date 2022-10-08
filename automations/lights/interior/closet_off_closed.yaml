@@ -1,10 +1,10 @@
 action:
   data:
-    entity_id: light.master_bedroom_closet_zha_group_0x0002
+    entity_id: light.master_closet_light_zha_group 
   service: light.turn_off
 alias: Mstr Bedroom Closet Lights - Off When Closed
 id: 93b51ff9829048218579e6ef904844ed
 trigger:
-- entity_id: binary_sensor.zha_02c39915_1_6
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening 
   platform: state
   to: 'off'

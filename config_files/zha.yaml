@@ -2,3 +2,19 @@
 #usb_path: /dev/ttyUSB0
 database_path: /home/homeassistant/.homeassistant/zigbee.db 
 #baudrate: 115200 
+zigpy_config:
+  additional_endpoints:
+    - endpoint: 0xE6
+      profile: 0xC105 
+      device_type: 0x0000
+      device_version: 0b0000
+      input_clusters: []
+      output_clusters: [0x21]
+    - endpoint: 0xE8
+      profile: 0xC105
+      device_type: 0x0000
+      device_version: 0b0000
+      input_clusters: []
+      output_clusters: [0x21]
+  znp_config:
+    prefer_endpoint_1: false

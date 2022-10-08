@@ -1,5 +1,5 @@
 alias: Lock Front Door
 sequence:
 - data: {}
-  entity_id: lock.yale_yrd256_tsdb_7b1f1911_door_lock
+  entity_id: lock.front_door_lock_doorlock 
   service: lock.lock

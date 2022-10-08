@@ -7,23 +7,20 @@ http:
 
 logger:
   default: warning
+#  logs:
+#    homeassistant.components.snmp.sensor: debug
+#    homeassistant.components.snmp: debug
 
 
 device_tracker:
   - platform: bluetooth_tracker
 
-rest_command:
-  xbox_server_auth:
-    url: !secret xbox_load_auth
 
 nest:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret 
   project_id: !secret google_proj_id 
 
-husqvarna_automower:
-  client_id: !secret husqvarna_apikey
-  client_secret: !secret husqvarna_client_secret
 
 stream:
 system_health:
@@ -31,6 +28,7 @@ person:
 cloud:
 lovelace:
 config:
+hardware:
 mobile_app:
 discovery:
 conversation:
@@ -49,6 +47,7 @@ input_button:
 input_select:
 input_text:
 scene:
+schedule:
 ssdp:
 tag:
 timer:

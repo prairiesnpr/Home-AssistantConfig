@@ -1,5 +1,5 @@
 
-# Home Assistant (2022.7.1) configuration
+# Home Assistant (2022.10.0) configuration
 
 ## Zigbee Network
 
@@ -7,8 +7,8 @@ I utilize the native ZHA integration.
 
 ## Current Zigbee Devices
 * Coordinator
-  * Xbee S2C
-* Routers (Mains Powered Devices)
+  * [Tube's CC2652P2 POE coordinator](https://www.tubeszb.com/product/cc2652_poe_coordinator/47) 
+ Routers (Mains Powered Devices)
   * Switches
     * Jasco/GE
       * [2] Add on switches [AS2005](https://byjasco.com/ge-enbrighten-add-switch-quickfit-and-simplewire) (Used for 3 way switching)
@@ -26,8 +26,8 @@ I utilize the native ZHA integration.
     * Light Controllers (RGB)
       * [1] Feibit Inc FZB56-ZCW27LX1.0 (Only works with encryption turned off)
     * Bulbs (RGB)
-      * [2] Sengled E11-N1EA
-      * [3] Osram Lightify A19 RGBW
+      * [4] Sengled E11-N1EA
+      * [1] Osram Lightify A19 RGBW - Avoid these, 1 died and they tend to create issues with the mesh
     * Bulbs (Dimmable)
       * [2] GE Wink (Avoid These)
     * Bulbs (Temp Control)
@@ -49,6 +49,7 @@ I utilize the native ZHA integration.
       * [2] Xiaomi Aqara Water Sensor
       * [5] Xiaomi Aqara Weather Sensor
       * [1] Xiaomi/Honeywell Smoke Detector
+      * [1] Bed Sensor made from a Xiaomi door sensor and a FSR
     * Door Lock
       * [1] Yale YRD256 TSDB
     * Remotes
@@ -71,7 +72,6 @@ Created drawing with [designspark mechanical](https://www.rs-online.com/designsp
 * Cameras
   * [2] Hikvision DS-2CD2385FWD-I
   * [1] Amcrest [IP8M-T2499EW-28MM](https://www.amazon.com/gp/product/B07RHQGS8V/)
-  * [1] Foscam FI8918W
   
 ## HVAC
 * Thermostat

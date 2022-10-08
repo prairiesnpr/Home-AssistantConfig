@@ -1,4 +1,6 @@
 action:
+- service: homeassistant.turn_on
+  entity_id: group.nonessential_ups
 - data:
     data:
       push:
@@ -6,7 +8,7 @@ action:
           critical: 1
           name: default
           volume: 1.0
-    message: Server Power Resotred!
+    message: Server Power Restored!
     title: Server Power Restored
   service: notify.all_ios_devices
 - data:
@@ -14,9 +16,9 @@ action:
       priority: high
       ttl: 0
     message: Server Power Restored!
-    title: Server Power Resotred
+    title: Server Power Restored
   service: notify.all_android_devices
-alias: Server Power Resotred
+alias: Server Power Restored
 id: 6f61d4807b8943539bed0205fe379bd7
 trigger:
 - entity_id: sensor.serverroom_status

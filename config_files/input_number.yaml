@@ -1,6 +1,5 @@
 aeinarr_last_blade_change:
   name: Æinarr Last Blade Change
-  initial: 0
   min: 0
   max: 1000000
   step: 1

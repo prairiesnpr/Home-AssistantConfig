@@ -1,0 +1,47 @@
+alias: Master Bed Occupied Summer
+condition:
+  and:
+    - not:
+      - condition: state
+        entity_id: sensor.downstairs_thermostat_operation_mode
+        state: 'heat'
+    - condition: state
+      entity_id: group.home_owners
+      state: 'home'
+description: >-
+  Turn fan on if master bed occupied off if not
+id: b3cb6a07-b130-420c-8662-53ae7cac9779 
+trigger:
+ - platform: state
+   entity_id: binary_sensor.master_bed_presence
+   id: Bed Occupied 
+   to: 'on'
+   for:
+     hours: 0
+     minutes: 0
+     seconds: 15
+ - platform: state
+   entity_id: binary_sensor.master_bed_presence
+   id: Bed Not Occupied
+   to: 'off'
+   for:
+     hours: 0
+     minutes: 5
+     seconds: 0
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: Bed Occupied
+        sequence:
+          - data:
+              entity_id: fan.master_bedroom_ceiling_fan_fan 
+              percentage: 100
+            service: fan.set_percentage
+      - conditions:
+          - condition: trigger
+            id: Bed Not Occupied
+        sequence:
+          - data:
+              entity_id: fan.master_bedroom_ceiling_fan_fan 
+            service: fan.turn_off 

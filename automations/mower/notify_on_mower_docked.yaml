@@ -7,8 +7,8 @@ trigger:
 action:
   - service: notify.all_ios_devices 
     data_template:
-      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} has arrived at the inn.' 
+      message: '{{ state_attr("vacuum.aeinarr", "friendly_name") }} has arrived at the inn.' 
   - service: notify.all_android_devices
     data_template:
-      title: '{{ state_attr("camera.aeinarr", "friendly_name") }} Quest Update!'
-      message: '{{ state_attr("camera.aeinarr", "friendly_name") }} has arrived at the inn.' 
+      title: '{{ state_attr("vacuum.aeinarr", "friendly_name") }} Quest Update!'
+      message: '{{ state_attr("vacuum.aeinarr", "friendly_name") }} has arrived at the inn.' 

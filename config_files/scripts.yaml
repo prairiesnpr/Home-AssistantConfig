@@ -30,10 +30,10 @@ activate_xbox:
       entity_id: media_player.receiver
   - service: media_player.turn_on
     data:
-      entity_id: media_player.samsung_tv_remote
+      entity_id: media_player.living_room
   - service: media_player.turn_on
     data:
-      entity_id: media_player.xbox_one
+      entity_id: media_player.xboxone
   - service: media_player.select_source
     data:
       entity_id: media_player.receiver
@@ -50,10 +50,10 @@ turn_av_off:
       entity_id: media_player.receiver
   - service: media_player.turn_off
     data:
-      entity_id: media_player.xbox_one
+      entity_id: media_player.xboxone
   - service: media_player.turn_off
     data:
-      entity_id: media_player.samsung_tv_remote
+      entity_id: media_player.living_room
 intruder:
   alias: Intruder Alarm
   sequence:
@@ -108,14 +108,14 @@ red_alert:
   - alias: Red Alert On
     service: light.turn_on
     data:
-      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
       profile: red_alert_bright
   - delay:
       seconds: 1
   - alias: Red Alert Off
     service: light.turn_on
     data:
-      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_b15f461c_level_light_color_on_off
+      entity_id: light.feibit_inc_co_fzb56_zcw27lx1_0_light 
       profile: red_alert_dim
   - alias: loop_red_alert
     service: script.turn_on
@@ -170,11 +170,11 @@ red_alert_loop:
   alias: Lock Front Door
   sequence:
   - data: {}
-    entity_id: lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    entity_id: lock.front_door_lock_doorlock 
     service: lock.lock
 '1577500116793':
   alias: Unlock Front Door
   sequence:
   - data: {}
-    entity_id: lock.yale_yrd256_tsdb_7b1f1911_door_lock
+    entity_id: lock.front_door_lock_doorlock 
     service: lock.unlock

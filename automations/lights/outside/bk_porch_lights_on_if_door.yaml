@@ -1,8 +1,8 @@
 action:
 - data:
     entity_id:
-    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_e1dcc4fe_level_light_color_on_off
-    - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_af8ed7fe_level_light_color_on_off
+    - light.garage_walk_in_door_light_light 
+    - light.deck_light_light_2 
   service: homeassistant.turn_on
 alias: Back Porch Light on if Back Door Opened
 condition:
@@ -13,6 +13,9 @@ condition:
 description: ''
 id: 9906146158d54663997a7ffa2c5422e1
 trigger:
-- entity_id: binary_sensor.zha_02bfefd9_1_6
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2 
+  platform: state
+  to: 'on'
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_5 
   platform: state
   to: 'on'

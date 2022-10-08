@@ -1,7 +1,7 @@
 action:
 - data:
     entity_id:
-    - switch.xbee_xbee_io_4192cf47_211_6
+    - switch.irrigation_system_switch_19
   service: switch.turn_on
 alias: Turn on garden irrigation zone in morning
 condition:

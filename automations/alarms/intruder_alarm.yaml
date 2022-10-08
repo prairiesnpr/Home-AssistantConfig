@@ -25,6 +25,6 @@ condition:
   state: not_home
 id: 54e6fbb64e5c445caafffd919d231805
 trigger:
-- entity_id: binary_sensor.zha_02e2146c_1_6
+- entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_3 
   platform: state
   to: 'on'

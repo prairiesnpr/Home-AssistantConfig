@@ -20,7 +20,8 @@
   name: receiver
   receiver_max_volume: 200 
 - platform: gstreamer
-  pipeline: 'audioconvert ! audioresample ! autoaudiosink' 
+  #pipeline: 'audioconvert ! audioresample ! autoaudiosink' 
+  pipeline: 'audioconvert ! alsasink latency-time=4'
 - platform: samsungtv_encrypted
   host: !secret livingroomtv_ip
   token: !secret livingroomtv_token

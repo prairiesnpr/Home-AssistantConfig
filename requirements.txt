@@ -111,7 +111,7 @@ onkyo-eiscp==1.2.7
 orjson==3.7.5
 packaging==21.3
 paho-mqtt==1.6.1
-Pillow==9.1.1
+Pillow==9.3.0
 PlexAPI==4.11.2
 plexauth==0.0.6
 plexwebsocket==0.0.13

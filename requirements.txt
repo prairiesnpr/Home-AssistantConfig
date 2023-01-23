@@ -191,7 +191,7 @@ skyfield==1.42
 sniffio==1.2.0
 snitun==0.31.0
 soupsieve==2.3.2.post1
-spotipy==2.20.0
+spotipy==2.22.1
 SQLAlchemy==1.4.38
 srptools==1.0.1
 sseclient-py==1.7.2

@@ -39,7 +39,7 @@ colorlog==6.6.0
 convertdate==2.4.0
 crccheck==1.1
 crypto==1.4.1
-cryptography==36.0.2
+cryptography==39.0.1
 cycler==0.11.0
 Cython==0.29.30
 deepmerge==1.0.1
